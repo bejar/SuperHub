@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubData.py" afterPath="$PROJECT_DIR$/src/SuperHubData.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubProcessing.py" afterPath="$PROJECT_DIR$/src/SuperHubProcessing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubTransactions.py" afterPath="$PROJECT_DIR$/src/SuperHubTransactions.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -31,7 +28,7 @@
       <file leaf-file-name="SuperHubTest.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="82" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.7081712" vertical-offset="206" max-vertical-offset="720">
+            <state line="42" column="49" selection-start="1294" selection-end="1294" vertical-scroll-proportion="1.3179916" vertical-offset="0" max-vertical-offset="720">
               <folding>
                 <element signature="e#126#196#0" expanded="true" />
               </folding>
@@ -423,7 +420,11 @@
       <created>1389774785292</created>
       <updated>1389774785292</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Refactoring">
+      <created>1389783960183</created>
+      <updated>1389783960183</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -455,12 +456,12 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939634" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19016083" sideWeight="0.6700637" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23719676" sideWeight="0.7170051" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23719676" sideWeight="0.6713198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842416" sideWeight="0.5004234" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28299493" sideWeight="0.49957663" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28299493" sideWeight="0.50044924" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28299493" sideWeight="0.49955076" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32868022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -478,7 +479,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fix" />
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -552,7 +554,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="82" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.7081712" vertical-offset="206" max-vertical-offset="720">
+        <state line="42" column="49" selection-start="1294" selection-end="1294" vertical-scroll-proportion="1.3179916" vertical-offset="0" max-vertical-offset="720">
           <folding>
             <element signature="e#126#196#0" expanded="true" />
           </folding>
