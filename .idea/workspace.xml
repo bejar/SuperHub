@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="Refactoring">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubPlot.py" afterPath="$PROJECT_DIR$/src/SuperHubPlot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubProcessing.py" afterPath="$PROJECT_DIR$/src/SuperHubProcessing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubTransactions.py" afterPath="$PROJECT_DIR$/src/SuperHubTransactions.py" />
+    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHubData.py" afterPath="$PROJECT_DIR$/src/SuperHubData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -28,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SuperHubTest.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SuperHubTest.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="735">
+            <state line="17" column="28" selection-start="370" selection-end="370" vertical-scroll-proportion="0.29961088" vertical-offset="101" max-vertical-offset="735">
               <folding>
                 <element signature="e#126#196#0" expanded="true" />
               </folding>
@@ -50,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SuperHubData.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SuperHubData.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHubData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="36" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.41716567" vertical-offset="451" max-vertical-offset="4755">
+            <state line="54" column="36" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="4755">
               <folding />
             </state>
           </provider>
@@ -113,10 +111,10 @@
         <option value="$PROJECT_DIR$/SuperHubTest.py" />
         <option value="$PROJECT_DIR$/SuperHubData.py" />
         <option value="$PROJECT_DIR$/SuperHubConstants.py" />
-        <option value="$PROJECT_DIR$/src/SuperHubData.py" />
         <option value="$PROJECT_DIR$/src/SuperHubTransactions.py" />
         <option value="$PROJECT_DIR$/src/SuperHubPlot.py" />
         <option value="$PROJECT_DIR$/src/SuperHubProcessing.py" />
+        <option value="$PROJECT_DIR$/src/SuperHubData.py" />
         <option value="$PROJECT_DIR$/src/SuperHubTest.py" />
       </list>
     </option>
@@ -432,7 +430,11 @@
       <created>1389784036687</created>
       <updated>1389784036687</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="improving some functionalities">
+      <created>1389795685716</created>
+      <updated>1389795685716</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -468,7 +470,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28299493" sideWeight="0.50044924" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28299493" sideWeight="0.49955076" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28299493" sideWeight="0.49955076" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -488,7 +490,8 @@
     </option>
     <MESSAGE value="Minor fix" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="improving some functionalities" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving some functionalities" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -553,19 +556,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHubData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="735">
-          <folding>
-            <element signature="e#126#196#0" expanded="true" />
-          </folding>
+        <state line="54" column="36" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="4755">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHubData.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="36" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.41716567" vertical-offset="451" max-vertical-offset="4755">
-          <folding />
+        <state line="17" column="28" selection-start="370" selection-end="370" vertical-scroll-proportion="0.29961088" vertical-offset="101" max-vertical-offset="735">
+          <folding>
+            <element signature="e#126#196#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

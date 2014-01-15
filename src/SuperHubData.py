@@ -43,12 +43,12 @@ def getApplicationData2(application):
     #    names= db.collection_names()
     print 'Retrieving Data ...'
     col = db['sndata']
-    # c = col.find({'app': application,
-    #               'lat': {'$gt': minLat, '$lt': maxLat},
-    #               'lng': {'$gt': minLon, '$lt': maxLon},
-    #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
-    print col.find({'app': application
+    print  col.find({'app': application,
+               'lat': {'$gt': minLat, '$lt': maxLat},
+                  'lng': {'$gt': minLon, '$lt': maxLon},
                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}).count()
+    # print col.find({'app': application
+    #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}).count()
     print 'The End'
 
 
