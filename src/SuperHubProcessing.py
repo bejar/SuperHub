@@ -52,6 +52,11 @@ def dataHistograms(application, lhh=None):
     """
     Histograms for different characteristics of the data
 
+    * Number of daily events
+    * Number of days of users
+    * Accumulated events per hour
+    * Accumulated ecents per weekday
+
     :param: application:
     :param: lhh:
     """
@@ -202,8 +207,7 @@ def diffItems(seq):
     return len(tset)
 
 
-#def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, timeres=4.0):
-def transactionRoutes(dataclean, nfile, scale=100, supp=30, timeres=4.0):
+def transactionRoutes(dataclean, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):
     """
     Diagram of the routes obtained by the frequent itemsets fp-.growth algorithm
 
@@ -218,11 +222,16 @@ def transactionRoutes(dataclean, nfile, scale=100, supp=30, timeres=4.0):
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     nfile = nfile + '-s' + str(scale) + '-sp' + str(supp) + 'tr' + str(
         int(timeres)) + '-ts' + today
+    if colapsed:
+        nfile += '-c'
     rfile = open(cpath + nfile + '.txt', 'w')
     userEvents= dailyDiscretizedTransactions(dataclean, scale=scale, timeres=timeres)
 
     print 'Serializing the transactions'
-    trans = serializeDailyTransactions(userEvents)
+    if not colapsed:
+        trans = serializeDailyTransactions(userEvents)
+    else:
+        trans = colapseUserDailyTransactions(userEvents)
     print 'Transactions', len(trans)
     ltrans = []
     print 'Applying fp-growth'
@@ -275,7 +284,7 @@ def transactionRoutes(dataclean, nfile, scale=100, supp=30, timeres=4.0):
     rfile.close()
 
 
-def transactionRoutesMany(application, lhh=None, lscale=None, supp=30, ltimeres=None):
+def transactionRoutesMany(application, lhh=None, lscale=None, supp=30, ltimeres=None, colapsed=False):
     """
     Computes the diagrams of frequent routes for a list of parameters
 
@@ -288,17 +297,17 @@ def transactionRoutesMany(application, lhh=None, lscale=None, supp=30, ltimeres=
     if not ltimeres: ltimeres = [4.0]
     if not lscale: lscale = [100]
     if not lhh: lhh = [(5, 100)]
-    print 'Reading Data'
+    print 'Reading Data ...'
     data = readData(application)
     for mxhh, mnhh in lhh:
         nfile = application + '-routes' + '-nusr' + str(mxhh) + '#' + str(mnhh)
-        print 'Computing Heavy Hitters'
+        print 'Computing Heavy Hitters. ..'
         lhh = computeHeavyHitters(data, mxhh, mnhh)
-        print 'Selecting Heavy Hitters'
+        print 'Selecting Heavy Hitters ...'
         dataclean = selectDataUsers(data, lhh)
         for scale in lscale:
             for timeres in ltimeres:
-                transactionRoutes(dataclean, nfile, scale=scale, supp=supp, timeres=timeres)
+                transactionRoutes(dataclean, nfile, scale=scale, supp=supp, timeres=timeres, colapsed=colapsed)
     print 'Done.'
 
 
@@ -315,13 +324,19 @@ def userEventsHistogram(application, mxhh, mnhh, scale=100, timeres=4):
     nfile = application + '-allgeotime' + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) \
             + '-tr' + str(int(timeres)) + '-ts' + today
 
+    print 'Reading Data ...'
+    data = readData(application)
+    print 'Computing Heavy Hitters ...'
+    lhh = computeHeavyHitters(data, mxhh, mnhh)
+    print 'Selecting Heavy Hitters ...'
+    dataclean = selectDataUsers(data, lhh)
     transactions = colapseUserDailyTransactions(
-        dailyDiscretizedTransactions(application, mxhh, mnhh, scale=scale,timeres=timeres))
+        dailyDiscretizedTransactions(dataclean, scale=scale,timeres=timeres))
 
     # for v in transactions:
     #     print v, transactions[v]
     # number of different geo-time events
-    hvals = [len(transactions[v]) for v in transactions]
+    hvals = [len(v) for v in transactions]
     mxvals = max(hvals)
 
     saveHisto(hvals,mxvals, cpath + nfile + '.pdf')

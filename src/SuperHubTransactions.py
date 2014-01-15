@@ -33,11 +33,7 @@ def dailyTransactions(application, mxhh, mnhh):
     :return:
     """
     data = readData(application, cpath)
-    #    print data.shape
-    #    dataclean=cleanDataArea(data)
-    #    print dataclean.shape
     dataclean = selectDataUsers(data, computeHeavyHitters(data, mxhh, mnhh))
-    print dataclean.shape
     userEvents = {}
     for i in range(dataclean.shape[0]):
         user = str(int(dataclean[i][3]))
@@ -59,7 +55,7 @@ def dailyTransactions(application, mxhh, mnhh):
 def dailyDiscretizedTransactions(dataclean, scale=100,timeres=4.0):
     """
     Extracts the daily event transactions of the users with most events
-    Discretizing the positions to a NxN grid
+    Discretizing the positions to a NxN grid and a time resolution
 
     :param: application:
     :param: mxhh:
@@ -114,6 +110,23 @@ def serializeDailyTransactions(trans):
     return ltrans
 
 
+# def colapseUserDailyTransactions(trans):
+#     """
+#     Colapses the transactions of a user on a set with all the different items
+#
+#     :param: trans: Dictionary of user/time transactions
+#     :return: Dictionary of daily transactions
+#     """
+#     userEvents = {}
+#     for user in trans:
+#         items = set()
+#         for day in trans[user]:
+#             userdaytrans = trans[user][day]
+#             items = items.union(userdaytrans)
+#         userEvents[user] = items
+#     return userEvents
+
+
 def colapseUserDailyTransactions(trans):
     """
     Colapses the transactions of a user on a set with all the different items
@@ -121,13 +134,13 @@ def colapseUserDailyTransactions(trans):
     :param: trans: Dictionary of user/time transactions
     :return: Dictionary of daily transactions
     """
-    userEvents = {}
+    userEvents = []
     for user in trans:
         items = set()
         for day in trans[user]:
             userdaytrans = trans[user][day]
             items = items.union(userdaytrans)
-        userEvents[user] = items
+        userEvents.append(list(items))
     return userEvents
 
 
