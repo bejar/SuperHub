@@ -33,6 +33,24 @@ import numpy as np
 import operator
 from numpy import genfromtxt, loadtxt
 
+def getApplicationData2(application):
+    client = MongoClient(mgdb)
+
+    db = client.superhub
+
+    db.authenticate(mguser, password=mgpass)
+
+    #    names= db.collection_names()
+    print 'Retrieving Data ...'
+    col = db['sndata']
+    # c = col.find({'app': application,
+    #               'lat': {'$gt': minLat, '$lt': maxLat},
+    #               'lng': {'$gt': minLon, '$lt': maxLon},
+    #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    print col.find({'app': application
+                 }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}).count()
+    print 'The End'
+
 
 def getApplicationData(application):
     """Get the data events from the database and saves it in a csv file
@@ -47,26 +65,30 @@ def getApplicationData(application):
 
     db.authenticate(mguser, password=mgpass)
 
-
     #    names= db.collection_names()
+    print 'Retrieving Data ...'
     rfile = open(cpath + application + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user\n')
     col = db['sndata']
-    c = col.find({'app': application,
-                  'lat': {'$gt': minLat, '$lt': maxLat},
-                  'lng': {'$gt': minLon, '$lt': maxLon},
+    # c = col.find({'app': application,
+    #               'lat': {'$gt': minLat, '$lt': maxLat},
+    #               'lng': {'$gt': minLon, '$lt': maxLon},
+    #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    c = col.find({'app': application
                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    print 'Saving Data ...'
     for t in c:
     #        stime=time.localtime(t['interval'])
     #        evtime=time.strftime('%Y%m%d',stime)
     #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
     #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])+',\''+str(t['text']).strip().replace('\n','')+'\'\n')
-        if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
+        if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
             rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';'
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
     rfile.close()
+    print 'Done'
 
 
 def getLApplicationData(lapplication):
@@ -92,19 +114,22 @@ def getLApplicationData(lapplication):
     col = db['sndata']
 
     for application in lapplication:
+        print 'Retrieving Data ...', application
         c = col.find({'app': application,
                       'lat': {'$gt': minLat, '$lt': maxLat},
                       'lng': {'$gt': minLon, '$lt': maxLon},
                      }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+        print 'Saving Data ...', application
         for t in c:
         #stime=time.localtime(t['interval'])
         #evtime=time.strftime('%Y%m%d',stime)
         #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
         #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])+',\''+str(t['text']).strip().replace('\n','')+'\'\n')
-            if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
+            if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
                 rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
                     t['user']) + '\n')#+';'+t['geohash']+'\n')
     rfile.close()
+    print 'Done'
 
 
 def transferApplicationData(application):
@@ -261,7 +286,7 @@ def hourlyTable(data):
     """
     htable = [0 for i in range(24)]
     for i in range(data.shape[0]):
-        stime = time.localtime(int32(data[i][2]))
+        stime = time.localtime(np.int32(data[i][2]))
         evtime = stime[3]
         htable[evtime] += 1
     return htable
@@ -276,7 +301,22 @@ def dailyTable(data):
     """
     htable = [0 for i in range(7)]
     for i in range(data.shape[0]):
-        stime = time.localtime(int32(data[i][2]))
+        stime = time.localtime(np.int32(data[i][2]))
         evtime = stime[6]
         htable[evtime] += 1
     return htable
+
+
+def heavyHittersData(application, mxhh=100, mnhh=1000):
+    """
+    Reads and deturns the data for the heavy hitters
+
+    @param application:
+    @param mxhh:
+    """
+    print 'Reading Data ...'
+    data = readData(application)
+    print 'Computing Heavy Hitters ...'
+    lhh = computeHeavyHitters(data, mxhh, mnhh)
+    print 'Selecting Heavy Hitters ...'
+    return selectDataUsers(data, lhh)

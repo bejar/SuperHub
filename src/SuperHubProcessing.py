@@ -202,7 +202,8 @@ def diffItems(seq):
     return len(tset)
 
 
-def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, timeres=4.0):
+#def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, timeres=4.0):
+def transactionRoutes(dataclean, nfile, scale=100, supp=30, timeres=4.0):
     """
     Diagram of the routes obtained by the frequent itemsets fp-.growth algorithm
 
@@ -215,35 +216,10 @@ def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, ti
     :param: timeres:
     """
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
-    nfile = application + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) + '-sp' + str(supp) + 'tr' + str(
+    nfile = nfile + '-s' + str(scale) + '-sp' + str(supp) + 'tr' + str(
         int(timeres)) + '-ts' + today
     rfile = open(cpath + nfile + '.txt', 'w')
-
-    userEvents = {}
-    print 'Generating user daily transactions'
-    normLat = scale / (maxLat - minLat)
-    normLon = scale / (maxLon - minLon)
-    for i in range(dataclean.shape[0]):
-        user = str(np.int32(dataclean[i][3]))
-        posy = int((dataclean[i][0] - minLat) * normLat)
-        posx = int((dataclean[i][1] - minLon) * normLon)
-        stime = time.localtime(np.int32(dataclean[i][2]))
-        #        print uint32(dataclean[i][2]),dataclean[i][2]
-        evtime = time.strftime('%Y%m%d', stime)
-        quart = int(stime[3] / timeres)
-        pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart) # Grid position
-        if not user in userEvents:
-            a = set()
-            a.add(pos)
-            userEvents[user] = {evtime: a}
-        else:
-            uev = userEvents[user]
-            if not evtime in uev:
-                a = set()
-                a.add(pos)
-                uev[evtime] = a
-            else:
-                uev[evtime].add(pos)
+    userEvents= dailyDiscretizedTransactions(dataclean, scale=scale, timeres=timeres)
 
     print 'Serializing the transactions'
     trans = serializeDailyTransactions(userEvents)
@@ -264,6 +240,8 @@ def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, ti
     cont = np.zeros((scale, scale))
 
     print 'Generating plot'
+    normLat = scale / (maxLat - minLat)
+    normLon = scale / (maxLon - minLon)
     for i in range(dataclean.shape[0]):
         posy = int(((dataclean[i][0] - minLat) * normLat))
         posx = int(((dataclean[i][1] - minLon) * normLon))
@@ -272,9 +250,6 @@ def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, ti
         for j in range(cont.shape[1]):
             if cont[i, j] == 1:
                 plt.plot(j, i, 'k.')
-
-
-            #    plt.imshow(cont, interpolation='bicubic',cmap=cm.gist_yarg)
 
     col = ['r-', 'g-', 'b-', 'y-', 'r-', 'g-', 'b-', 'y-']
     for t in ltrans:
@@ -316,13 +291,15 @@ def transactionRoutesMany(application, lhh=None, lscale=None, supp=30, ltimeres=
     print 'Reading Data'
     data = readData(application)
     for mxhh, mnhh in lhh:
+        nfile = application + '-routes' + '-nusr' + str(mxhh) + '#' + str(mnhh)
         print 'Computing Heavy Hitters'
         lhh = computeHeavyHitters(data, mxhh, mnhh)
         print 'Selecting Heavy Hitters'
         dataclean = selectDataUsers(data, lhh)
         for scale in lscale:
             for timeres in ltimeres:
-                transactionRoutes(dataclean, application, mxhh, mnhh, scale=scale, supp=supp, timeres=timeres)
+                transactionRoutes(dataclean, nfile, scale=scale, supp=supp, timeres=timeres)
+    print 'Done.'
 
 
 def userEventsHistogram(application, mxhh, mnhh, scale=100, timeres=4):
@@ -335,18 +312,19 @@ def userEventsHistogram(application, mxhh, mnhh, scale=100, timeres=4):
     :param: mnhh:
     """
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
-    nfile = application + 'geotimehisto' + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) \
+    nfile = application + '-allgeotime' + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) \
             + '-tr' + str(int(timeres)) + '-ts' + today
 
     transactions = colapseUserDailyTransactions(
-        dailyDiscretizedTransactions(application, mxhh, mnhh, scale=scale))
+        dailyDiscretizedTransactions(application, mxhh, mnhh, scale=scale,timeres=timeres))
+
+    # for v in transactions:
+    #     print v, transactions[v]
     # number of different geo-time events
-    hvals=[len(v) for v in transactions]
+    hvals = [len(transactions[v]) for v in transactions]
     mxvals = max(hvals)
-    print mxvals, min(hvals)
 
-
-    saveHisto(hvals,int(mxvals/10), cpath + nfile + '.pdf')
+    saveHisto(hvals,mxvals, cpath + nfile + '.pdf')
 
 
 

@@ -23,7 +23,7 @@ import time
 import numpy as np
 
 
-def dailyTransactions(application, mxhh, mnhh, cpath):
+def dailyTransactions(application, mxhh, mnhh):
     """
     Extracts the daily event transactions of the users with most events
 
@@ -56,7 +56,7 @@ def dailyTransactions(application, mxhh, mnhh, cpath):
     return userEvents
 
 
-def dailyDiscretizedTransactions(application, mxhh, mnhh, scale=100):
+def dailyDiscretizedTransactions(dataclean, scale=100,timeres=4.0):
     """
     Extracts the daily event transactions of the users with most events
     Discretizing the positions to a NxN grid
@@ -67,9 +67,6 @@ def dailyDiscretizedTransactions(application, mxhh, mnhh, scale=100):
     :param: scale:
     :return:
     """
-    print 'Reading data ...'
-    data = readData(application)
-    dataclean = selectDataUsers(data, computeHeavyHitters(data, mxhh, mnhh))
     userEvents = {}
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
@@ -81,7 +78,7 @@ def dailyDiscretizedTransactions(application, mxhh, mnhh, scale=100):
         #        print i, user, pos
         stime = time.localtime(np.int32(dataclean[i][2]))
         evtime = time.strftime('%Y%m%d', stime)
-        quart = int(stime[3] / 4)
+        quart = int(stime[3] / timeres)
         pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart) # Grid position
         if not user in userEvents:
             a = set()
@@ -100,7 +97,7 @@ def dailyDiscretizedTransactions(application, mxhh, mnhh, scale=100):
 
 def serializeDailyTransactions(trans):
     """
-    Transforms the transactions from dictionaties to lists
+    Transforms the transactions from dictionaries to lists
 
     :param: trans:
     :return:
@@ -121,21 +118,20 @@ def colapseUserDailyTransactions(trans):
     """
     Colapses the transactions of a user on a set with all the different items
 
-    @rtype : object
     :param: trans: Dictionary of user/time transactions
     :return: Dictionary of daily transactions
     """
     userEvents = {}
     for user in trans:
         items = set()
-        for day in trans:
-            userdaytrans = trans[day]
-            items.union(userdaytrans)
+        for day in trans[user]:
+            userdaytrans = trans[user][day]
+            items = items.union(userdaytrans)
         userEvents[user] = items
     return userEvents
 
 
-def saveDailyTransactions(nfile, application, mxhh, mnhh, scale=100):
+def saveDailyTransactions(nfile, application, mxhh, mnhh, scale=100, timeres=4):
     """
     Saves the daily transactions in a file
 
@@ -146,7 +142,7 @@ def saveDailyTransactions(nfile, application, mxhh, mnhh, scale=100):
     :param: scale:
     """
     rfile = open(cpath + nfile + '.csv', 'w')
-    trans = dailyDiscretizedTransactions(application, mxhh, mnhh, scale)
+    trans = dailyDiscretizedTransactions(application, mxhh, mnhh, scale=scale, timeres=timeres)
     for user in trans:
         usertrans = trans[user]
         for day in usertrans:
