@@ -21,6 +21,7 @@ __author__ = 'bejar'
 import operator
 from SuperHubData import computeHeavyHitters, selectDataUsers, readData, hourlyTable, dailyTable,  cleanDataArea
 from SuperHubTransactions import dailyTransactions, serializeDailyTransactions, dailyDiscretizedTransactions
+from SuperHubTransactions import colapseUserDailyTransactions
 from SuperHubPlot import saveHisto, savePlot, contingency, plotHisto
 from SuperHubConstants import cpath, minLon, minLat, maxLon, maxLat
 import time
@@ -138,6 +139,7 @@ def accumulatedEventsHeavyHitters(application, mxhh, mnhh, distrib=True, scale=1
     print dataclean.shape
     contingency(dataclean, scale, distrib)
 
+
 def hourlyHistogram(application, mxhh, mnhh):
     """
 
@@ -154,6 +156,7 @@ def hourlyHistogram(application, mxhh, mnhh):
     ax = fig.add_subplot(111)
     plt.plot(range(24), ht)
     plt.show()
+
 
 def dailyHistogram(application, mxhh, mnhh):
     """
@@ -173,9 +176,10 @@ def dailyHistogram(application, mxhh, mnhh):
     plt.plot(range(7), ht)
     plt.show()
 
+
 def itemkeysort(v):
     """
-    auxiliary function
+    auxiliary function for sorting geo-time events
 
     :param: v:
     :return:
@@ -200,7 +204,7 @@ def diffItems(seq):
 
 def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, timeres=4.0):
     """
-    Diagrama de las rutas obtenidas a partir de conjuntos frecuentes
+    Diagram of the routes obtained by the frequent itemsets fp-.growth algorithm
 
     :param: dataclean:
     :param: application:
@@ -220,10 +224,10 @@ def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, ti
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
     for i in range(dataclean.shape[0]):
-        user = str(int32(dataclean[i][3]))
+        user = str(np.int32(dataclean[i][3]))
         posy = int((dataclean[i][0] - minLat) * normLat)
         posx = int((dataclean[i][1] - minLon) * normLon)
-        stime = time.localtime(int32(dataclean[i][2]))
+        stime = time.localtime(np.int32(dataclean[i][2]))
         #        print uint32(dataclean[i][2]),dataclean[i][2]
         evtime = time.strftime('%Y%m%d', stime)
         quart = int(stime[3] / timeres)
@@ -298,7 +302,7 @@ def transactionRoutes(dataclean, application, mxhh, mnhh, scale=100, supp=30, ti
 
 def transactionRoutesMany(application, lhh=None, lscale=None, supp=30, ltimeres=None):
     """
-    Calcula el diagrama de las rutas frecuentes para una lista de parametros
+    Computes the diagrams of frequent routes for a list of parameters
 
     :param: application:
     :param: lhh:
@@ -320,14 +324,29 @@ def transactionRoutesMany(application, lhh=None, lscale=None, supp=30, ltimeres=
             for timeres in ltimeres:
                 transactionRoutes(dataclean, application, mxhh, mnhh, scale=scale, supp=supp, timeres=timeres)
 
-def userEventsHistogram(application, mxhh, mnhh, scale=100):
+
+def userEventsHistogram(application, mxhh, mnhh, scale=100, timeres=4):
     """
-    Histogram of the number of places a user has been
+    Histogram of the number of places-time a user has been
 
     :param: scale:
     :param: application:
     :param: mxhh:
     :param: mnhh:
     """
-    transactions = dailyDiscretizedTransactions(application, mxhh, mnhh, scale=scale)
+    today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    nfile = application + 'geotimehisto' + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) \
+            + '-tr' + str(int(timeres)) + '-ts' + today
+
+    transactions = colapseUserDailyTransactions(
+        dailyDiscretizedTransactions(application, mxhh, mnhh, scale=scale))
+    # number of different geo-time events
+    hvals=[len(v) for v in transactions]
+    mxvals = max(hvals)
+    print mxvals, min(hvals)
+
+
+    saveHisto(hvals,int(mxvals/10), cpath + nfile + '.pdf')
+
+
 

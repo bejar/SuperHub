@@ -20,6 +20,8 @@ __author__ = 'bejar'
 from SuperHubConstants import minLat, maxLat, minLon, maxLon, cpath
 from SuperHubData import computeHeavyHitters, selectDataUsers, readData
 import time
+import numpy as np
+
 
 def dailyTransactions(application, mxhh, mnhh, cpath):
     """
@@ -41,7 +43,7 @@ def dailyTransactions(application, mxhh, mnhh, cpath):
         user = str(int(dataclean[i][3]))
         pos = str(dataclean[i][0]) + '/' + str(dataclean[i][1])
         #        print i, user, pos
-        stime = time.localtime(int32(dataclean[i][2]))
+        stime = time.localtime(np.int32(dataclean[i][2]))
         evtime = time.strftime('%Y%m%d', stime)
         if not user in userEvents:
             userEvents[user] = {evtime: [pos]}
@@ -65,15 +67,19 @@ def dailyDiscretizedTransactions(application, mxhh, mnhh, scale=100):
     :param: scale:
     :return:
     """
+    print 'Reading data ...'
     data = readData(application)
     dataclean = selectDataUsers(data, computeHeavyHitters(data, mxhh, mnhh))
     userEvents = {}
+    normLat = scale / (maxLat - minLat)
+    normLon = scale / (maxLon - minLon)
+    print 'Generating Transactions ...'
     for i in range(dataclean.shape[0]):
         user = str(int(dataclean[i][3]))
-        posy = int(((dataclean[i, 0] - minLat) * scale) / (maxLat - minLat))
-        posx = int(((dataclean[i, 1] - minLon) * scale) / (maxLon - minLon))
+        posy = int(((dataclean[i][0] - minLat) * normLat))
+        posx = int(((dataclean[i][1] - minLon) * normLon))
         #        print i, user, pos
-        stime = time.localtime(int32(dataclean[i][2]))
+        stime = time.localtime(np.int32(dataclean[i][2]))
         evtime = time.strftime('%Y%m%d', stime)
         quart = int(stime[3] / 4)
         pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart) # Grid position
@@ -91,9 +97,10 @@ def dailyDiscretizedTransactions(application, mxhh, mnhh, scale=100):
                 uev[evtime].add(pos)
     return userEvents
 
+
 def serializeDailyTransactions(trans):
     """
-    Transforms the transactions from diccionaties to lists
+    Transforms the transactions from dictionaties to lists
 
     :param: trans:
     :return:
@@ -115,7 +122,7 @@ def colapseUserDailyTransactions(trans):
     Colapses the transactions of a user on a set with all the different items
 
     @rtype : object
-    :param: trans: Dictionary od user/time transactions
+    :param: trans: Dictionary of user/time transactions
     :return: Dictionary of daily transactions
     """
     userEvents = {}
