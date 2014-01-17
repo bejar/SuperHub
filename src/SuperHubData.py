@@ -33,7 +33,8 @@ import numpy as np
 import operator
 from numpy import genfromtxt, loadtxt
 
-def getApplicationData2(application):
+
+def getApplicationData2():
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -43,10 +44,11 @@ def getApplicationData2(application):
     #    names= db.collection_names()
     print 'Retrieving Data ...'
     col = db['sndata']
-    print  col.find({'app': application,
-               'lat': {'$gt': minLat, '$lt': maxLat},
-                  'lng': {'$gt': minLon, '$lt': maxLon},
-                 }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}).count()
+    print col.distinct('app')
+    # print  col.find({'app': application,
+    #            'lat': {'$gt': minLat, '$lt': maxLat},
+    #               'lng': {'$gt': minLon, '$lt': maxLon},
+    #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}).count()
     # print col.find({'app': application
     #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}).count()
     print 'The End'
@@ -320,3 +322,12 @@ def heavyHittersData(application, mxhh=100, mnhh=1000):
     lhh = computeHeavyHitters(data, mxhh, mnhh)
     print 'Selecting Heavy Hitters ...'
     return selectDataUsers(data, lhh)
+
+
+def saveDataResult(data, fname):
+    """
+    Save data results in a file
+
+    :param: data:
+    :param: fname:
+    """
