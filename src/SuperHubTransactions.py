@@ -23,7 +23,7 @@ import time
 import numpy as np
 
 
-def dailyTransactions(application, mxhh, mnhh):
+def dailyTransactions(dataclean):
     """
     Extracts the daily event transactions of the users with most events
 
@@ -32,8 +32,7 @@ def dailyTransactions(application, mxhh, mnhh):
     :param: mnhh:
     :return:
     """
-    data = readData(application, cpath)
-    dataclean = selectDataUsers(data, computeHeavyHitters(data, mxhh, mnhh))
+
     userEvents = {}
     for i in range(dataclean.shape[0]):
         user = str(int(dataclean[i][3]))

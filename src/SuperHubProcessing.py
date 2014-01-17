@@ -72,7 +72,7 @@ def dataHistograms(application, lhh=None):
         dataclean = selectDataUsers(data, lhh)
 
         print 'Computing daily length histogram'
-        transactions = dailyTransactions(application, mxhh, mnhh)
+        transactions = dailyTransactions(dataclean)
 
         fr = []
         for user in transactions:
@@ -82,6 +82,7 @@ def dataHistograms(application, lhh=None):
                 fr.append(len(userdaytrans))
 
         saveHisto(fr, max(fr), cpath + application + '-length' + nfile + '.pdf')
+        np.savetxt(cpath + application + '-length' + nfile + '.csv', fr)
 
         print 'Computing prevalence histogram'
         fr = []
@@ -89,17 +90,18 @@ def dataHistograms(application, lhh=None):
             fr.append(len(transactions[user]))
 
         saveHisto(fr, max(fr), cpath + application + '-prevalence' + nfile + '.pdf')
+        np.savetxt(cpath + application + '-prevalence' + nfile + '.csv', fr)
 
         print 'Computing hourly histogram'
         ht = hourlyTable(dataclean)
 
         savePlot(range(24), ht, cpath + application + '-hourly' + nfile + '.pdf')
-
+        np.savetxt(cpath + application + '-hourly' + nfile + '.csv', np.array([range(24),ht/float(np.sum(ht))]).transpose())
         print 'Computing daily histogram'
         ht = dailyTable(dataclean)
 
-        savePlot(range(7), ht, cpath + application + '-hourly' + nfile + '.pdf')
-
+        savePlot(range(7), ht, cpath + application + '-daily' + nfile + '.pdf')
+        np.savetxt(cpath + application + '-daily' + nfile + '.csv', np.array([range(7),ht/float(np.sum(ht))]).transpose())
 
 
 def eventHistograms(application, mxhh, mnhh):
