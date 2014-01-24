@@ -96,12 +96,12 @@ def dataHistograms(application, lhh=None):
         ht = hourlyTable(dataclean)
 
         savePlot(range(24), ht, cpath + application + '-hourly' + nfile + '.pdf')
-        np.savetxt(cpath + application + '-hourly' + nfile + '.csv', np.array([range(24),ht/float(np.sum(ht))]).transpose())
+        np.savetxt(cpath + application + '-hourly' + nfile + '.csv', np.array([range(24),np.array(ht)/float(np.sum(ht))]).transpose())
         print 'Computing daily histogram'
         ht = dailyTable(dataclean)
 
         savePlot(range(7), ht, cpath + application + '-daily' + nfile + '.pdf')
-        np.savetxt(cpath + application + '-daily' + nfile + '.csv', np.array([range(7),ht/float(np.sum(ht))]).transpose())
+        np.savetxt(cpath + application + '-daily' + nfile + '.csv', np.array([range(7),np.array(ht)/float(np.sum(ht))]).transpose())
 
 
 def eventHistograms(application, mxhh, mnhh):
