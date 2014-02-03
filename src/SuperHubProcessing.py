@@ -211,7 +211,7 @@ def diffItems(seq):
 
 def transactionRoutes(dataclean, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):
     """
-    Diagram of the routes obtained by the frequent itemsets fp-.growth algorithm
+    Diagram of the routes obtained by the frequent itemsets fp-growth algorithm
 
     :param: dataclean:
     :param: application:

@@ -108,19 +108,25 @@ def getLApplicationData(lapplication):
 
     #    names= db.collection_names()
     appname = ''
+    apfiles = []
     for ap in lapplication:
+        apfile = open(cpath + ap + '.csv', 'w')
         appname = appname + ap
     rfile = open(cpath + appname + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user\n')
+
+
+
     col = db['sndata']
 
-    for application in lapplication:
+    for application,apfile in zip(lapplication,apfiles):
         print 'Retrieving Data ...', application
         c = col.find({'app': application,
                       'lat': {'$gt': minLat, '$lt': maxLat},
                       'lng': {'$gt': minLon, '$lt': maxLon},
                      }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+        apfile.write('#lat; lng; time; user\n')
         print 'Saving Data ...', application
         for t in c:
         #stime=time.localtime(t['interval'])
@@ -130,7 +136,11 @@ def getLApplicationData(lapplication):
             if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
                 rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
                     t['user']) + '\n')#+';'+t['geohash']+'\n')
+                apfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
+                    t['user']) + '\n')#+';'+t['geohash']+'\n')
     rfile.close()
+    for f in apfiles:
+        f.close()
     print 'Done'
 
 
