@@ -17,22 +17,20 @@ SuperHubTransactions
 
 __author__ = 'bejar'
 
-from SuperHubConstants import minLat, maxLat, minLon, maxLon, cpath
-from SuperHubData import computeHeavyHitters, selectDataUsers, readData
 import time
+
 import numpy as np
+
+from SuperHub.Constants import minLat, maxLat, minLon, maxLon, cpath
 
 
 def dailyTransactions(dataclean):
     """
-    Extracts the daily event transactions of the users with most events
+    Extracts the daily event transactions of the users
 
     :param: application:
-    :param: mxhh:
-    :param: mnhh:
     :return:
     """
-
     userEvents = {}
     for i in range(dataclean.shape[0]):
         user = str(int(dataclean[i][3]))
@@ -53,12 +51,10 @@ def dailyTransactions(dataclean):
 
 def dailyDiscretizedTransactions(dataclean, scale=100,timeres=4.0):
     """
-    Extracts the daily event transactions of the users with most events
-    Discretizing the positions to a NxN grid and a time resolution
+    Extracts the daily event transactions of the users, discretizing
+    the positions to a NxN grid and a time resolution
 
     :param: application:
-    :param: mxhh:
-    :param: mnhh:
     :param: scale:
     :return:
     """
@@ -129,6 +125,8 @@ def serializeDailyTransactions(trans):
 def colapseUserDailyTransactions(trans):
     """
     Colapses the transactions of a user on a set with all the different items
+    in the transactions (basically where has been and when (considering the
+    discretization used) during the period of time covered by the transactions
 
     :param: trans: Dictionary of user/time transactions
     :return: Dictionary of daily transactions
@@ -140,6 +138,27 @@ def colapseUserDailyTransactions(trans):
             userdaytrans = trans[user][day]
             items = items.union(userdaytrans)
         userEvents.append(list(items))
+    return userEvents
+
+
+def colapseUserDailyTransactionsCount(trans):
+    """
+    Colapsed the transactions of a user on a dictionary with all the different items in the
+    transctions, counting how many times the user has been at that time at that place (considering
+    the discretization used)
+    @param trans:
+    @return:
+    """
+    userEvents = []
+    for user in trans:
+        items = {}
+        for day in trans[user]:
+            userdaytrans = trans[user][day]
+            if userdaytrans in items:
+                items[userdaytrans] += 1
+            else:
+                items[userdaytrans] = 1
+        userEvents.append(items)
     return userEvents
 
 

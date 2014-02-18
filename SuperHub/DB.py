@@ -23,15 +23,19 @@ SuperHubData
 
 import time
 import pprint
-from SuperHubConstants import minLat, maxLat, minLon, maxLon, cpath
-from SuperHubConstants import mgdb, mgpass, mguser
-from SuperHubConstants import msqldb, msqldbs, msqlpass, msqluser
+import operator
+
 from pymongo import MongoClient
 import pymysql
 from pymysql.err import MySQLError
 import numpy as np
-import operator
-from numpy import genfromtxt, loadtxt
+from numpy import loadtxt
+
+from SuperHub.Constants import minLat, maxLat, minLon, maxLon, cpath
+from SuperHub.Constants import mgdb, mgpass, mguser
+from SuperHub.Constants import msqldb, msqldbs, msqlpass, msqluser
+import SuperHub.Data as shdata
+import subprocess
 
 
 def getApplicationData2():
@@ -79,6 +83,8 @@ def getApplicationData(application):
     #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
     c = col.find({'app': application
                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+
+    subprocess.call('rm ' + cpath + application + '.csv.bz2')
     print 'Saving Data ...'
     for t in c:
     #        stime=time.localtime(t['interval'])
@@ -90,11 +96,15 @@ def getApplicationData(application):
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
     rfile.close()
+    subprocess.call('bzip2 ' + cpath + application + '.csv')
     print 'Done'
 
 
 def getLApplicationData(lapplication):
     """
+    Retrieves data from a lists of Social applications
+    Saves an individual file for each application
+    and a file with all the data
 
     :param lapplication:
     """
@@ -109,9 +119,15 @@ def getLApplicationData(lapplication):
     #    names= db.collection_names()
     appname = ''
     apfiles = []
+    apnames = []
     for ap in lapplication:
         apfile = open(cpath + ap + '.csv', 'w')
+        apfile.write('#lat; lng; time; user\n')
+        apfiles.append(apfile)
         appname = appname + ap
+        apnames.append(cpath + ap + '.csv')
+        subprocess.call('rm ' + cpath + ap + '.csv.bz2')
+    subprocess.call('rm ' + cpath + appname + '.csv.bz2')
     rfile = open(cpath + appname + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user\n')
@@ -139,13 +155,17 @@ def getLApplicationData(lapplication):
                 apfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
                     t['user']) + '\n')#+';'+t['geohash']+'\n')
     rfile.close()
-    for f in apfiles:
+    subprocess.call('bzip2 '+ cpath + application + '.csv')
+
+    for f,n in zip(apfiles,apnames):
         f.close()
+        subprocess.call('bzip2 '+ n)
     print 'Done'
 
 
 def transferApplicationData(application):
     """
+    Trasfers data from
 
     :param: application:
     """
@@ -210,128 +230,143 @@ def getApplicationDataOne(application):
 
 
 
-def readData(application):
-    """
-    Loads the data from the csv file
-
-    :param: application:
-    :return:
-    """
-    fname = cpath + application + '.csv'
-    data = loadtxt(fname, skiprows=1, dtype=[('lat', 'f8'), ('lng', 'f8')
-        , ('time', 'i32'), ('user', 'S20')], usecols=(0, 1, 2, 3), delimiter=';', comments='#')
-    #    print data.dtype
-    return data
-
-
-def cleanDataArea(data):
-    """
-    Deletes all the events out of the interest region
-
-    :param: data:
-    :return:
-    """
-    dataclean = None
-    for i in range(data.shape[0]):
-        if (minLat <= data[i][0] < maxLat) and (minLon <= data[i][1] < maxLon):
-            if dataclean is None:
-                aval = np.zeros((1, 4), dtype='f')
-                aval[0, 0] = data[i][0]
-                aval[0, 1] = data[i][1]
-                aval[0, 2] = data[i][2]
-                aval[0, 3] = data[i][3]
-                dataclean = aval
-            else:
-                aval = np.zeros((1, 4), dtype='f')
-                aval[0, 0] = data[i][0]
-                aval[0, 1] = data[i][1]
-                aval[0, 2] = data[i][2]
-                aval[0, 3] = data[i][3]
-                dataclean = np.row_stack((dataclean, aval))
-    return dataclean
+# def readData(application):
+#     """
+#     Loads the data from the csv file
+#
+#     :param: application:
+#     :return:
+#     """
+#     fname = cpath + application + '.csv.bz2'
+#     data = loadtxt(fname, skiprows=1, dtype=[('lat', 'f8'), ('lng', 'f8')
+#         , ('time', 'i32'), ('user', 'S20')], usecols=(0, 1, 2, 3), delimiter=';', comments='#')
+#     #    print data.dtype
+#     return data
 
 
-def computeHeavyHitters(data, mxhh, mnhh):
-    """
-    Computes the list of the number of events
-    and return a list with the users between the
-    positions mxhh and mnhh in the descendent order
-
-    :param: data:
-    :param: mxhh:
-    :param: mnhh:
-    :return: list with the list of users
-    """
-    usercount = {}
-    for i in range(data.shape[0]):
-        if data[i][3] in usercount:
-            usercount[data[i][3]] += 1
-        else:
-            usercount[data[i][3]] = 1
-    sorted_x = sorted(usercount.iteritems(), key=operator.itemgetter(1), reverse=True)
-    mnhht = min(mnhh, len(sorted_x))
-    hhitters = [x for x, y in sorted_x[mxhh:mnhht]]
-    return hhitters
-
-
-def selectDataUsers(data, users):
-    """
-    Deletes all the events that are not in the user list
-
-    :param: data:
-    :param: users:
-    :return:
-    """
-    dataclean = None
-    sel = [data[i][3] in users for i in range(data.shape[0])]
-    asel = np.array(sel)
-    dataclean = data[asel]
-    return dataclean
+# def cleanDataArea(data):
+#     """
+#     Deletes all the events out of the interest region
+#
+#     :param: data:
+#     :return:
+#     """
+#     dataclean = None
+#     for i in range(data.shape[0]):
+#         if (minLat <= data[i][0] < maxLat) and (minLon <= data[i][1] < maxLon):
+#             if dataclean is None:
+#                 aval = np.zeros((1, 4), dtype='f')
+#                 aval[0, 0] = data[i][0]
+#                 aval[0, 1] = data[i][1]
+#                 aval[0, 2] = data[i][2]
+#                 aval[0, 3] = data[i][3]
+#                 dataclean = aval
+#             else:
+#                 aval = np.zeros((1, 4), dtype='f')
+#                 aval[0, 0] = data[i][0]
+#                 aval[0, 1] = data[i][1]
+#                 aval[0, 2] = data[i][2]
+#                 aval[0, 3] = data[i][3]
+#                 dataclean = np.row_stack((dataclean, aval))
+#     return dataclean
 
 
-def hourlyTable(data):
-    """
-    Computes the accumulated events by hour for the data table
-
-    :param: data:
-    :return:
-    """
-    htable = [0 for i in range(24)]
-    for i in range(data.shape[0]):
-        stime = time.localtime(np.int32(data[i][2]))
-        evtime = stime[3]
-        htable[evtime] += 1
-    return htable
-
-
-def dailyTable(data):
-    """
-    Computes the accumulated events by day for the data table
-
-    :param: data:
-    :return:
-    """
-    htable = [0 for i in range(7)]
-    for i in range(data.shape[0]):
-        stime = time.localtime(np.int32(data[i][2]))
-        evtime = stime[6]
-        htable[evtime] += 1
-    return htable
+# def computeHeavyHitters(data, mxhh, mnhh):
+#     """
+#     Computes the list of the number of events
+#     and return a list with the users between the
+#     positions mxhh and mnhh in the descendent order
+#
+#     :param: data:
+#     :param: mxhh:
+#     :param: mnhh:
+#     :return: list with the list of users
+#     """
+#     usercount = {}
+#     for i in range(data.shape[0]):
+#         if data[i][3] in usercount:
+#             usercount[data[i][3]] += 1
+#         else:
+#             usercount[data[i][3]] = 1
+#     sorted_x = sorted(usercount.iteritems(), key=operator.itemgetter(1), reverse=True)
+#     mnhht = min(mnhh, len(sorted_x))
+#     hhitters = [x for x, y in sorted_x[mxhh:mnhht]]
+#     return hhitters
 
 
-def heavyHittersData(application, mxhh=100, mnhh=1000):
-    """
-    Reads and deturns the data for the heavy hitters
+# def selectDataUsers(data, users):
+#     """
+#     Deletes all the events that are not in the user list
+#
+#     :param: data:
+#     :param: users:
+#     :return:
+#     """
+#     dataclean = None
+#     sel = [data[i][3] in users for i in range(data.shape[0])]
+#     asel = np.array(sel)
+#     dataclean = data[asel]
+#     return dataclean
 
-    @param application:
-    @param mxhh:
-    """
-    print 'Reading Data ...'
-    data = readData(application)
-    print 'Computing Heavy Hitters ...'
-    lhh = computeHeavyHitters(data, mxhh, mnhh)
-    print 'Selecting Heavy Hitters ...'
-    return selectDataUsers(data, lhh)
+
+# def hourlyTable(data):
+#     """
+#     Computes the accumulated events by hour for the data table
+#
+#     :param: data:
+#     :return:
+#     """
+#     htable = [0 for i in range(24)]
+#     for i in range(data.shape[0]):
+#         stime = time.localtime(np.int32(data[i][2]))
+#         evtime = stime[3]
+#         htable[evtime] += 1
+#     return htable
+#
+#
+# def dailyTable(data):
+#     """
+#     Computes the accumulated events by day for the data table
+#
+#     :param: data:
+#     :return:
+#     """
+#     htable = [0 for i in range(7)]
+#     for i in range(data.shape[0]):
+#         stime = time.localtime(np.int32(data[i][2]))
+#         evtime = stime[6]
+#         htable[evtime] += 1
+#     return htable
+#
+#
+# def monthlyTable(data):
+#     """
+#     Computes the accumulated events by month
+#
+#     @param data:
+#     @return:
+#     """
+#     htable = [0 for i in range(12)]
+#     for i in range(data.shape[0]):
+#         stime = time.localtime(np.int32(data[i][2]))
+#         evtime = stime[1]
+#         htable[evtime - 1] += 1
+#     return htable
+
+
+# def heavyHittersData(application, mxhh=100, mnhh=1000):
+#     """
+#     Reads and deturns the data for the heavy hitters
+#
+#     @param application:
+#     @param mxhh:
+#     """
+#     data = shdata(cpath,application)
+#     print 'Reading Data ...'
+#     data.read_data()
+#     print 'Selecting Heavy Hitters ...'
+#     data.select_heavy_hitters(mxhh, mnhh)
+#     return data
 
 
 def saveDataResult(data, fname):
@@ -341,3 +376,5 @@ def saveDataResult(data, fname):
     :param: data:
     :param: fname:
     """
+    pass
+
