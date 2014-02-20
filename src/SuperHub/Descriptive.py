@@ -14,19 +14,14 @@ For now mainly histograms
 
 __author__ = 'bejar'
 
-
 import time
 
-
+import numpy as np
 
 from SuperHub.Plots import saveHisto, savePlot
-from SuperHub.Constants import homepath
+from Constants import homepath
 from SuperHub.Data import Data
 from SuperHub.Transactions import DailyTransactions, DailyDiscretizedTransactions
-from SuperHub.Util import item_key_sort, diff_items
-
-
-import numpy as np
 
 
 def plot_accumulated_events(data, distrib=True, scale=100):

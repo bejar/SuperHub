@@ -18,7 +18,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-from SuperHub.Constants import minLat, maxLat, minLon, maxLon
+from Constants import minLat, maxLat, minLon, maxLon
 
 
 class Data:

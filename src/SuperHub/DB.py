@@ -23,19 +23,15 @@ SuperHubData
 
 import time
 import pprint
-import operator
+import subprocess
 
 from pymongo import MongoClient
 import pymysql
 from pymysql.err import MySQLError
-import numpy as np
-from numpy import loadtxt
 
-from SuperHub.Constants import minLat, maxLat, minLon, maxLon, homepath
-from SuperHub.Constants import mgdb, mgpass, mguser
-from SuperHub.Constants import msqldb, msqldbs, msqlpass, msqluser
-import SuperHub.Data as shdata
-import subprocess
+from Constants import minLat, maxLat, minLon, maxLon, homepath
+from Constants import mgdb, mgpass, mguser
+from Constants import msqldb, msqldbs, msqlpass, msqluser
 
 
 def getApplicationData2():

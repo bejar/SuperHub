@@ -14,15 +14,15 @@ __author__ = 'bejar'
 
 #from fp_growth import find_frequent_itemsets
 from fim import fpgrowth
-import numpy as np
 import time
-import matplotlib.pyplot as plt
 import operator
 
-from SuperHub.Constants import homepath, minLon, minLat, maxLon, maxLat
+import numpy as np
+import matplotlib.pyplot as plt
+
+from Constants import homepath, minLon, minLat, maxLon, maxLat
 from SuperHub.Transactions import DailyDiscretizedTransactions
 from SuperHub.Util import item_key_sort, diff_items
-
 
 
 def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):

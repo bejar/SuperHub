@@ -14,7 +14,7 @@ import time
 
 import numpy as np
 
-from SuperHub.Constants import minLat, maxLat, minLon, maxLon
+from Constants import minLat, maxLat, minLon, maxLon
 
 
 class Transactions:

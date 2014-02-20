@@ -17,10 +17,6 @@ SuperHubPlot
 __author__ = 'bejar'
 
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-import numpy as np
-
-from SuperHub.Constants import minLat, maxLat, minLon, maxLon
 
 
 def plotHisto(data, bins):
