@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
-.. module:: SuperHubPlot
+.. module:: SuperHub.Plot
 
-SuperHubPlot
+Plot
 ************
 
 :Description: Different plots of the data
@@ -20,8 +19,7 @@ import matplotlib.pyplot as plt
 
 
 def plotHisto(data, bins):
-    """
-    Plots a histogram
+    """Plots a histogram
 
     :param: data:
     :param: bins:
@@ -41,8 +39,7 @@ def plotHisto(data, bins):
 
 
 def saveHisto(data, bins, fname):
-    """
-    Saves a histogram
+    """Saves a histogram
 
     :param: data:
     :param: bins:
