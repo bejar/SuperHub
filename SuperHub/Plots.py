@@ -12,7 +12,6 @@ SuperHubPlot
 
 :Version: 1.0
 
-
 """
 
 __author__ = 'bejar'
@@ -67,7 +66,6 @@ def saveHisto(data, bins, fname):
     title= fname.split('/')
     plt.title(title[-1])
 
-
     fig.savefig(fname, orientation='landscape', format='pdf')
 
 
@@ -87,48 +85,51 @@ def savePlot(axis, data, fname):
     fig.savefig(fname, orientation='landscape', format='pdf')
 
 
-# def contingency(data, scale, distrib=True):
-#     """
-#     Generates an scale x scale accumulated plot of the events
-#
-#     :param: data:
-#     :param: scale:
-#     :param: distrib:
-#     """
-#
-#     cont = np.zeros((scale, scale))
-#     normLat = scale / (maxLat - minLat)
-#     normLon = scale / (maxLon - minLon)
-#
-#     # syn = (index, rel index, class)
-#     for i in range(data.shape[0]):
-#         posy = int(((data[i][0] - minLat) * normLat))
-#         posx = int(((data[i][1] - minLon) * normLon))
-# #        print posx,posy,data[i][0],data[i][1], normLat, normLon
-#         try:
-#             if distrib:
-#                 cont[scale - posy - 1, posx - 1] += 1
-#             else:
-#                 cont[scale - posy - 1, posx - 1] = 1
-#         except IndexError:
-#             print data[i][0], data[i][1]
-#         if distrib:
-#             cont = cont / np.sum(cont)
-#
-#     fig = plt.figure()
-#
-#     ax = fig.add_subplot(111)
-#     plt.title('Density ')
-#
-#     plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
-#     vmax = np.max(cont)
-#     #    vmin=np.min(cont)
-#
-#     if distrib:
-#         plt.colorbar(ticks=np.round(np.linspace(0, 1, 10), 2),
-#                      orientation='vertical')
-#
-#     #    fig.savefig(cpath+'/contingency'+str(nsync)+'.pdf', orientation='landscape',format='pdf')
-#
-#     plt.show()
+def hourly_histogram(data):
+    """
+    Plots of events accumulated by hours
+
+    """
+    ht = data.hourlyTable()
+
+    fig = plt.figure()
+
+    ax = fig.add_subplot(111)
+    plt.plot(range(24), ht)
+    plt.show()
+
+
+def daily_histogram(data):
+    """
+    Plot of events accumulated by week day
+
+    :param: application:
+    :param: mxhh:
+    :param: mnhh:
+    """
+    ht = data.daily_table()
+
+    fig = plt.figure()
+
+    ax = fig.add_subplot(111)
+    plt.plot(range(7), ht)
+    plt.show()
+
+
+def montly_histogram(data):
+    """
+    Plots the events accumulated by month
+
+    @param application:
+    @param mxhh:
+    @param mnhh:
+    @return:
+    """
+    ht = data.monthly_table()
+
+    fig = plt.figure()
+
+    ax = fig.add_subplot(111)
+    plt.plot(range(12), ht)
+    plt.show()
 

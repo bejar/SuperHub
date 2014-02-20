@@ -21,14 +21,12 @@ class Transactions:
     """
     Class for the user transactions
     """
-
     usertrans = None
+    application = None
+    wpath = None
 
     def __init__(self):
         self.usertrans = None
-
-
-
 
 
 class DailyTransactions(Transactions):
@@ -42,6 +40,8 @@ class DailyTransactions(Transactions):
         :param: data is a SuperHub Data object
         :return:
         """
+        self.application = data.application
+        self.wpath = data.wpath
         dataclean = data.get_dataset()
         usertrans = {}
         for i in range(dataclean.shape[0]):
@@ -79,6 +79,7 @@ class DailyTransactions(Transactions):
                     l.append(pos)
                 ltrans.append(l)
         return ltrans
+
 
     def colapse(self):
         """

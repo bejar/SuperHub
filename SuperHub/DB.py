@@ -31,7 +31,7 @@ from pymysql.err import MySQLError
 import numpy as np
 from numpy import loadtxt
 
-from SuperHub.Constants import minLat, maxLat, minLon, maxLon, cpath
+from SuperHub.Constants import minLat, maxLat, minLon, maxLon, homepath
 from SuperHub.Constants import mgdb, mgpass, mguser
 from SuperHub.Constants import msqldb, msqldbs, msqlpass, msqluser
 import SuperHub.Data as shdata
@@ -73,7 +73,7 @@ def getApplicationData(application):
 
     #    names= db.collection_names()
     print 'Retrieving Data ...'
-    rfile = open(cpath + application + '.csv', 'w')
+    rfile = open(homepath + application + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user\n')
     col = db['sndata']
@@ -84,7 +84,7 @@ def getApplicationData(application):
     c = col.find({'app': application
                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
 
-    subprocess.call('rm ' + cpath + application + '.csv.bz2')
+    subprocess.call('rm ' + homepath + application + '.csv.bz2')
     print 'Saving Data ...'
     for t in c:
     #        stime=time.localtime(t['interval'])
@@ -96,7 +96,7 @@ def getApplicationData(application):
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
     rfile.close()
-    subprocess.call('bzip2 ' + cpath + application + '.csv')
+    subprocess.call('bzip2 ' + homepath + application + '.csv')
     print 'Done'
 
 
@@ -121,14 +121,14 @@ def getLApplicationData(lapplication):
     apfiles = []
     apnames = []
     for ap in lapplication:
-        apfile = open(cpath + ap + '.csv', 'w')
+        apfile = open(homepath + ap + '.csv', 'w')
         apfile.write('#lat; lng; time; user\n')
         apfiles.append(apfile)
         appname = appname + ap
-        apnames.append(cpath + ap + '.csv')
-        subprocess.call('rm ' + cpath + ap + '.csv.bz2')
-    subprocess.call('rm ' + cpath + appname + '.csv.bz2')
-    rfile = open(cpath + appname + '.csv', 'w')
+        apnames.append(homepath + ap + '.csv')
+        subprocess.call('rm ' + homepath + ap + '.csv.bz2')
+    subprocess.call('rm ' + homepath + appname + '.csv.bz2')
+    rfile = open(homepath + appname + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user\n')
 
@@ -155,7 +155,7 @@ def getLApplicationData(lapplication):
                 apfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
                     t['user']) + '\n')#+';'+t['geohash']+'\n')
     rfile.close()
-    subprocess.call('bzip2 '+ cpath + application + '.csv')
+    subprocess.call('bzip2 '+ homepath + application + '.csv')
 
     for f,n in zip(apfiles,apnames):
         f.close()

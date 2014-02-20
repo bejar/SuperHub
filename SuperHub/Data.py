@@ -34,22 +34,22 @@ class Data:
     """
     dataset = None
     application = None
-    cpath = None
+    wpath = None
     mxhh = None
     mnhh = None
     lhh = None
     datasethh = None
 
-    def __init__(self,cpath, application):
+    def __init__(self,path, application):
         """
         Just sets the path and application for the dataset
 
-        @param cpath:
+        @param path:
         @param application:
         @return:
         """
         self.application = application
-        self.cpath = cpath
+        self.wpath = path
 
 
     def read_data(self):
@@ -60,7 +60,7 @@ class Data:
         :return:
         """
         print 'Reading Data ...'
-        fname = self.cpath + self.application + '.csv.bz2'
+        fname = self.wpath +'Data/'+ self.application + '.csv.bz2'
         self.dataset = loadtxt(fname, skiprows=1, dtype=[('lat', 'f8'), ('lng', 'f8')
             ,('time', 'i32'), ('user', 'S20')], usecols=(0, 1, 2, 3), delimiter=';', comments='#')
 
@@ -89,6 +89,7 @@ class Data:
                     usercount[self.dataset[i][3]] += 1
                 else:
                     usercount[self.dataset[i][3]] = 1
+            # we memorize the list of users so it can be reused
             sorted_x = sorted(usercount.iteritems(), key=operator.itemgetter(1), reverse=True)
             self.lhh = sorted_x
             mnhht = min(mnhh, len(sorted_x))
@@ -99,40 +100,43 @@ class Data:
     def select_heavy_hitters(self, mxhh, mnhh):
         """
         Deletes all the events that are not from the heavy hitters
+        Returns a new data object only with the heavy hitters
 
         @param mxhh:
         @param mnhh:
-        @return:
+        @return: A list of the most active users in the indicated range
         """
         self.mxhh = mxhh
         self.mnhh = mnhh
         lhh = self.compute_heavy_hitters(mxhh, mnhh)
         print 'Selecting Heavy Hitters ...'
-        self.select_data_users(lhh)
+        return self.select_data_users(lhh)
 
 
     def select_data_users(self, users):
         """
         Selects only the events from the list of users
+        Returns a new object with the selected users
 
-        :param: data:
-        :param: users:
+        :param: users: List of users to select
         :return:
         """
         print 'Selecting Users ...'
-        # computes the boolean array for the selection
+        # First transforms the list of users to a set to be efficient
         susers = set(users)
+        # computes the boolean array for the selection
         sel = [self.dataset[i][3] in susers for i in range(self.dataset.shape[0])]
         asel = np.array(sel)
-        self.dataset = self.dataset[asel]
+        data = Data(self.wpath,self.application)
+        data.dataset = self.dataset[asel]
+        return data
 
 
     def hourly_table(self):
         """
         Computes the accumulated events by hour for the data table
 
-        :param: data:
-        :return:
+        :return: An hourly table
         """
         htable = [0 for i in range(24)]
         for i in range(self.dataset.shape[0]):
@@ -146,8 +150,7 @@ class Data:
         """
         Computes the accumulated events by day for the data table
 
-        :param: data:
-        :return:
+        :return: A daily table
         """
         htable = [0 for i in range(7)]
         for i in range(self.dataset.shape[0]):
@@ -161,8 +164,7 @@ class Data:
         """
         Computes the accumulated events by month
 
-        @param data:
-        @return:
+        @return: A montly rable
         """
         htable = [0 for i in range(12)]
         for i in range(self.dataset.shape[0]):
