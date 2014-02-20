@@ -127,7 +127,7 @@ class Data:
         # computes the boolean array for the selection
         sel = [self.dataset[i][3] in susers for i in range(self.dataset.shape[0])]
         asel = np.array(sel)
-        data = Data(self.wpath,self.application)
+        data = Data(self. wpath, self.application)
         data.dataset = self.dataset[asel]
         return data
 

@@ -25,23 +25,24 @@ class Transactions:
     application = None
     wpath = None
 
-    def __init__(self):
+    def __init__(self, data):
         self.usertrans = None
-
+        self.application = data.application
+        self.wpath = data.wpath
 
 class DailyTransactions(Transactions):
     """
     Class for the daily transactions
     """
+
     def __init__(self, data):
         """
-        Extracts the daily event transactions of the users
+            Extracts the daily event transactions of the users
 
-        :param: data is a SuperHub Data object
-        :return:
-        """
-        self.application = data.application
-        self.wpath = data.wpath
+            :param: data is a SuperHub Data object
+            :return:
+            """
+        Transactions.__init__(self, data)
         dataclean = data.get_dataset()
         usertrans = {}
         for i in range(dataclean.shape[0]):
@@ -106,7 +107,6 @@ class DailyTransactions(Transactions):
         Colapsed the transactions of a user on a dictionary with all the different items in the
         transctions, counting how many times the user has been at that time at that place (considering
         the discretization used)
-        @param trans:
         @return:
         """
         trans = self.usertrans
@@ -178,15 +178,20 @@ class DailyDiscretizedTransactions(DailyTransactions):
     """
     Class for the daily discretized transactions
     """
+
     def __init__(self, data, scale=100, timeres=4.0):
         """
-        Extracts the daily event transactions of the users, discretizing
-        the positions to a NxN grid and a time resolution
+            Extracts the daily event transactions of the users, discretizing
+            the positions to a NxN grid and a time resolution
 
-        :param: application:
-        :param: scale:
-        :return:
-        """
+            :param: application:
+            :param: scale:
+            :return:
+            @param data:
+            @param scale:
+            @param timeres:
+            """
+        DailyTransactions.__init__(self, data)
         dataclean = data.get_dataset()
         userEvents = {}
         normLat = scale / (maxLat - minLat)
@@ -200,7 +205,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
             stime = time.localtime(np.int32(dataclean[i][2]))
             evtime = time.strftime('%Y%m%d', stime)
             quart = int(stime[3] / timeres)
-            pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart) # Grid position
+            pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart)  # Grid position
             if not user in userEvents:
                 a = set()
                 a.add(pos)

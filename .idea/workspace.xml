@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SuperHub/Descriptive.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SuperHub/Routes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SuperHub/Util.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SuperHubProcessing.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SuperHubTransactions.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/DB.py" afterPath="$PROJECT_DIR$/SuperHub/DB.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Data.py" afterPath="$PROJECT_DIR$/SuperHub/Data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Plots.py" afterPath="$PROJECT_DIR$/SuperHub/Plots.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Transactions.py" afterPath="$PROJECT_DIR$/SuperHub/Transactions.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -45,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Constants.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SuperHub/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="5" selection-start="526" selection-end="526" vertical-scroll-proportion="0.82244897" vertical-offset="77" max-vertical-offset="585">
+            <state line="32" column="5" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
@@ -103,10 +96,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Data.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SuperHub/Data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="15" selection-start="3142" selection-end="3142" vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="3525">
+            <state line="211" column="8" selection-start="6160" selection-end="6160" vertical-scroll-proportion="0.26530612" vertical-offset="3035" max-vertical-offset="3525">
               <folding>
                 <element signature="e#113#128#0" expanded="true" />
               </folding>
@@ -117,7 +110,7 @@
       <file leaf-file-name="Transactions.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SuperHub/Transactions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="207" column="17" selection-start="6022" selection-end="6022" vertical-scroll-proportion="0.0" vertical-offset="2762" max-vertical-offset="3330">
+            <state line="181" column="8" selection-start="4941" selection-end="4941" vertical-scroll-proportion="0.0" vertical-offset="905" max-vertical-offset="3405">
               <folding>
                 <element signature="e#121#132#0" expanded="true" />
               </folding>
@@ -166,13 +159,13 @@
         <option value="$PROJECT_DIR$/SuperHub/Util.py" />
         <option value="$PROJECT_DIR$/src/SuperHubTransactions.py" />
         <option value="$PROJECT_DIR$/SuperHub/Plots.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Transactions.py" />
         <option value="$PROJECT_DIR$/SuperHub/Constants.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Data.py" />
         <option value="$PROJECT_DIR$/src/SuperHubProcessing.py" />
         <option value="$PROJECT_DIR$/SuperHub/Descriptive.py" />
         <option value="$PROJECT_DIR$/SuperHub/Routes.py" />
         <option value="$PROJECT_DIR$/src/SuperHubTest.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Transactions.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Data.py" />
       </list>
     </option>
   </component>
@@ -548,7 +541,11 @@
       <created>1392734801551</created>
       <updated>1392734801551</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Heavy refactoring">
+      <created>1392906442549</created>
+      <updated>1392906442549</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -729,24 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Transactions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="17" selection-start="6022" selection-end="6022" vertical-scroll-proportion="0.0" vertical-offset="2762" max-vertical-offset="3330">
-          <folding>
-            <element signature="e#121#132#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="15" selection-start="3142" selection-end="3142" vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="3525">
-          <folding>
-            <element signature="e#113#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/Descriptive.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="39" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="104" max-vertical-offset="2040">
@@ -795,8 +774,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="526" selection-end="526" vertical-scroll-proportion="0.82244897" vertical-offset="77" max-vertical-offset="585">
+        <state line="32" column="5" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="77" max-vertical-offset="585">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Transactions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="181" column="8" selection-start="4941" selection-end="4941" vertical-scroll-proportion="0.0" vertical-offset="905" max-vertical-offset="3405">
+          <folding>
+            <element signature="e#121#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="8" selection-start="6160" selection-end="6160" vertical-scroll-proportion="0.26530612" vertical-offset="3035" max-vertical-offset="3525">
+          <folding>
+            <element signature="e#113#128#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
