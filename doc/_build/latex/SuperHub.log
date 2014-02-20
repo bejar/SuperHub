@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=pdflatex 2012.8.30)  15 JAN 2014 08:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=pdflatex 2012.8.30)  20 FEB 2014 16:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -793,20 +793,7 @@ Package: hypcap 2011/02/16 v1.11 Adjusting the anchors of captions (HO)
 
 
 Writing index file SuperHub.idx
-(./SuperHub.aux
-
-LaTeX Warning: Label `index:module-SuperHubProcessing' multiply defined.
-
-
-LaTeX Warning: Label `index:module-SuperHubData' multiply defined.
-
-
-LaTeX Warning: Label `index:module-SuperHubPlot' multiply defined.
-
-
-LaTeX Warning: Label `index:module-SuperHubTransactions' multiply defined.
-
-)
+(./SuperHub.aux)
 \openout1 = `SuperHub.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
@@ -908,7 +895,11 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 ] (./SuperHub.toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
-)
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 3.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+))
 \tf@toc=\write7
 \openout7 = `SuperHub.toc'.
 
@@ -936,101 +927,47 @@ l.113 \tableofcontents
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 120.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 137.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 137.
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--157
-[]\T1/ptm/m/it/10 application\T1/ptm/m/n/10 , \T1/ptm/m/it/10 mxhh\T1/ptm/m/n/1
-0 , \T1/ptm/m/it/10 mnhh\T1/ptm/m/n/10 , \T1/ptm/m/it/10 dis-
- []
-
-[3]
-Underfull \hbox (badness 5817) in paragraph at lines 285--285
-[]\T1/ptm/m/it/10 dataclean\T1/ptm/m/n/10 , \T1/ptm/m/it/10 ap-pli-ca-tion\T1/p
-tm/m/n/10 , \T1/ptm/m/it/10 mxhh\T1/ptm/m/n/10 , \T1/ptm/m/it/10 mnhh\T1/ptm/m/
-n/10 , \T1/ptm/m/it/10 scale=100\T1/ptm/m/n/10 ,
- []
-
-[4]
-Chapter 2.
-[5
-
-] [6]
-Chapter 3.
-[7
-
-] [8
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 123.
+[3] [4
 
 ]
-Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 655--655
-[]\T1/ptm/m/it/10 application\T1/ptm/m/n/10 , \T1/ptm/m/it/10 mxhh\T1/ptm/m/n/1
-0 , \T1/ptm/m/it/10 mnhh\T1/ptm/m/n/10 ,
- []
-
-[9] [10]
-Chapter 5.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 745.
+Chapter 2.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 152.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [11
+) (./SuperHub.ind)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
 
-] [12
-
-] [13
-
-
-]
-(./SuperHub.ind [14
-
-
-]
-Underfull \hbox (badness 5787) in paragraph at lines 6--7
-[]\T1/ptm/m/n/10 accumulatedEvents() (in mod-ule Su-per-
- []
-
-[15
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 769.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 769.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
  (./SuperHub.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 769.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 769.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 167.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
 Package rerunfilecheck Info: File `SuperHub.out' has not changed.
-(rerunfilecheck)             Checksum: 2746C66EDCAF9E43F5093ED01276F40E;353.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 769.
+(rerunfilecheck)             Checksum: 1FC0ED4E057D05055E9F7AFF527B89E5;645.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
  ) 
 Here is how much of TeX's memory you used:
- 8928 strings out of 494971
- 124120 string characters out of 3179592
- 216277 words of memory out of 3000000
- 11874 multiletter control sequences out of 15000+200000
- 49646 words of font info for 56 fonts, out of 3000000 for 9000
+ 8863 strings out of 494971
+ 122606 string characters out of 3179592
+ 211203 words of memory out of 3000000
+ 11853 multiletter control sequences out of 15000+200000
+ 48946 words of font info for 57 fonts, out of 3000000 for 9000
  61 hyphenation exceptions out of 8191
- 36i,11n,45p,293b,508s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,11n,45p,250b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/
-uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on SuperHub.pdf (19 pages, 100580 bytes).
+uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on SuperHub.pdf (9 pages, 72466 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 217 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 137 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,8 +1,12 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}SuperHubProcessing}{3}{chapter.1}
-\contentsline {chapter}{\numberline {2}SuperHubData}{5}{chapter.2}
-\contentsline {chapter}{\numberline {3}SuperHubPlot}{7}{chapter.3}
-\contentsline {chapter}{\numberline {4}SuperHubTransactions}{9}{chapter.4}
-\contentsline {chapter}{\numberline {5}Indices and tables}{11}{chapter.5}
-\contentsline {chapter}{Python Module Index}{13}{section*.41}
-\contentsline {chapter}{Index}{15}{section*.42}
+\contentsline {chapter}{\numberline {1}SuperHub Package}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}\texttt {SuperHub} Package}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}\texttt {Constants} Module}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}\texttt {DB} Module}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}\texttt {Data} Module}{3}{section.1.4}
+\contentsline {section}{\numberline {1.5}\texttt {Descriptive} Module}{3}{section.1.5}
+\contentsline {section}{\numberline {1.6}\texttt {Plots} Module}{3}{section.1.6}
+\contentsline {section}{\numberline {1.7}\texttt {Routes} Module}{3}{section.1.7}
+\contentsline {section}{\numberline {1.8}\texttt {Transactions} Module}{3}{section.1.8}
+\contentsline {section}{\numberline {1.9}\texttt {Util} Module}{3}{section.1.9}
+\contentsline {chapter}{\numberline {2}Indices and tables}{5}{chapter.2}

@@ -2,7 +2,7 @@
 """
 .. module:: SuperHubConstants
 
-SuperHubConstants
+Constants
 ************
 
 :Description: SuperHub constants,

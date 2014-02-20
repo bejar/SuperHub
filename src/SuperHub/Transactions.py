@@ -1,6 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-File: Transactions
+.. module:: Transactions
+
+Transactions
+*************
+
+
+:Description: Transactions,
+
+    Class for transactions processing
+
+:Authors:
+    bejar
+
+:Version: 1.0
 
 Created on 18/02/2014 10:59 
 

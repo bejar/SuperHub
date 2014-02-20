@@ -1,8 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-File: Routes
 
-Routines that compute routes
+.. module:: Routes
+
+Routes
+******
+
+
+:Description: Routes
+
+    Routines that compute routes
+
+:Authors:
+    bejar
+
+:Version: 1.0
+
+File: Routes
 
 Created on 20/02/2014 15:17 
 
@@ -21,8 +35,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from Constants import homepath, minLon, minLat, maxLon, maxLat
-from SuperHub.Transactions import DailyDiscretizedTransactions
-from SuperHub.Util import item_key_sort, diff_items
+from Transactions import DailyDiscretizedTransactions
+from Util import item_key_sort, diff_items
 
 
 def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):

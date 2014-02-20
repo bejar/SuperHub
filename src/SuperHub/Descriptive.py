@@ -18,10 +18,10 @@ import time
 
 import numpy as np
 
-from SuperHub.Plots import saveHisto, savePlot
+from Plots import saveHisto, savePlot
 from Constants import homepath
-from SuperHub.Data import Data
-from SuperHub.Transactions import DailyTransactions, DailyDiscretizedTransactions
+from Data import Data
+from Transactions import DailyTransactions, DailyDiscretizedTransactions
 
 
 def plot_accumulated_events(data, distrib=True, scale=100):
