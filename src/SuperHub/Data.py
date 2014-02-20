@@ -1,5 +1,19 @@
 # -*- coding: utf-8 -*-
 """
+.. module:: Data
+
+Data
+************
+
+:Description: SuperHub Data class
+
+    Performs different processings to the data matrix
+
+:Authors:
+    bejar
+
+:Version: 1.0
+
 File: Data
 
 Created on 18/02/2014 10:09 

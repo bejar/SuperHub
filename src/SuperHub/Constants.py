@@ -8,6 +8,7 @@ Constants
 :Description: SuperHub constants,
 
     The coordinates of the region of interest and the path to the data files
+    And the information of the mongo database
 
 :Authors:
     bejar

@@ -5,7 +5,6 @@
 Transactions
 *************
 
-
 :Description: Transactions,
 
     Class for transactions processing

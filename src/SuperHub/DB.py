@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-.. module:: SuperHubData
+.. module:: DB
 
-SuperHubData
+DB
 ************
 
 :Description: SuperHub data functions

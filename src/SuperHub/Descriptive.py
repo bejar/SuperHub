@@ -1,12 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-File: Descriptive
+.. module:: Descriptive
 
-Created on 20/02/2014 15:23
+Descriptive
+************
+
+:Description: SuperHub Descriptive data functions
 
 Functions for computing descriptive statistics from the dataset
 
 For now mainly histograms
+
+:Authors:
+    bejar
+
+:Version: 1.0
+
+
+File: Descriptive
+
+Created on 20/02/2014 15:23
+
+
 
 @author: bejar
 

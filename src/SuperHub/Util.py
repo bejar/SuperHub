@@ -1,11 +1,22 @@
 # -*- coding: utf-8 -*-
 """
+.. module:: Util
+
+Util
+******
+
+:Description: Util
+
+    Different Auxiliary functions used for different purposes
+
+:Authors:
+    bejar
+
+:Version: 1.0
+
 File: Util
 
 Created on 20/02/2014 14:12
-
-
-Different Auxiliary functions used for different purposes
 
 @author: bejar
 

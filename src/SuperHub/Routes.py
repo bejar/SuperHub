@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-
 .. module:: Routes
 
 Routes
 ******
-
 
 :Description: Routes
 
