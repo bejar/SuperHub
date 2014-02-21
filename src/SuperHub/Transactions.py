@@ -115,7 +115,7 @@ class DailyTransactions(Transactions):
     def colapse_count(self):
         """
         Colapsed the transactions of a user on a dictionary with all the different items in the
-        transctions, counting how many times the user has been at that time at that place (considering
+        transactions, counting how many times the user has been at that time at that place (considering
         the discretization used)
         @return:
         """
@@ -215,7 +215,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
             stime = time.localtime(np.int32(dataclean[i][2]))
             evtime = time.strftime('%Y%m%d', stime)
             quart = int(stime[3] / timeres)
-            pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart)  # Grid position
+            pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart)  # Grid position/time
             if not user in userEvents:
                 a = set()
                 a.add(pos)
