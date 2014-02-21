@@ -13,12 +13,9 @@ Util
 
 :Version: 1.0
 
-File: Util
+:File: Util
 
-Created on 20/02/2014 14:12
-
-@author: bejar
-
+:Created on: 20/02/2014 14:12
 """
 
 __author__ = 'bejar'

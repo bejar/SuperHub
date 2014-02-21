@@ -14,9 +14,7 @@ Transactions
 
 :Version: 1.0
 
-Created on 18/02/2014 10:59 
-
-@author: bejar
+:Created on: 18/02/2014 10:59
 
 """
 

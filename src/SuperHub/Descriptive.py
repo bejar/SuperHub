@@ -17,13 +17,10 @@ For now mainly histograms
 :Version: 1.0
 
 
-File: Descriptive
+:File: Descriptive
 
-Created on 20/02/2014 15:23
+:Created on: 20/02/2014 15:23
 
-
-
-@author: bejar
 
 """
 

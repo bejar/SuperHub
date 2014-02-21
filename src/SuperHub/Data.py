@@ -16,9 +16,7 @@ Data
 
 File: Data
 
-Created on 18/02/2014 10:09 
-
-@author: bejar
+:Created on: 18/02/2014 10:09
 
 """
 
