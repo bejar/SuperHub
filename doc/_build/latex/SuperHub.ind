@@ -1,0 +1,109 @@
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter A
+  \item application (SuperHub.Data.Data attribute), \hyperpage{7}
+  \item application (SuperHub.Transactions.Transactions attribute), \hyperpage{16}
+
+  \indexspace
+  \bigletter C
+  \item colapse() (SuperHub.Transactions.DailyTransactions method), \hyperpage{15}
+  \item colapse\_count() (SuperHub.Transactions.DailyTransactions method), \hyperpage{15}
+  \item compute\_heavy\_hitters() (SuperHub.Data.Data method), \hyperpage{7}
+  \item contingency() (SuperHub.Data.Data method), \hyperpage{7}
+
+  \indexspace
+  \bigletter D
+  \item daily\_histogram() (in module SuperHub.Plots), \hyperpage{11}
+  \item daily\_table() (SuperHub.Data.Data method), \hyperpage{7}
+  \item DailyDiscretizedTransactions (class in SuperHub.Transactions), \hyperpage{15}
+  \item DailyTransactions (class in SuperHub.Transactions), \hyperpage{15}
+  \item Data (class in SuperHub.Data), \hyperpage{7}
+  \item Data (module), \hyperpage{7}
+  \item data\_histograms() (in module SuperHub.Descriptive), \hyperpage{9}
+  \item dataset (SuperHub.Data.Data attribute), \hyperpage{8}
+  \item datasethh (SuperHub.Data.Data attribute), \hyperpage{8}
+  \item DB (module), \hyperpage{5}
+  \item Descriptive (module), \hyperpage{9}
+  \item diff\_items() (in module SuperHub.Util), \hyperpage{17}
+
+  \indexspace
+  \bigletter G
+  \item get\_dataset() (SuperHub.Data.Data method), \hyperpage{8}
+  \item getApplicationData() (in module SuperHub.DB), \hyperpage{5}
+  \item getApplicationData2() (in module SuperHub.DB), \hyperpage{5}
+  \item getApplicationDataOne() (in module SuperHub.DB), \hyperpage{5}
+  \item getLApplicationData() (in module SuperHub.DB), \hyperpage{5}
+
+  \indexspace
+  \bigletter H
+  \item hourly\_histogram() (in module SuperHub.Plots), \hyperpage{11}
+  \item hourly\_table() (SuperHub.Data.Data method), \hyperpage{8}
+
+  \indexspace
+  \bigletter I
+  \item item\_key\_sort() (in module SuperHub.Util), \hyperpage{17}
+
+  \indexspace
+  \bigletter L
+  \item lhh (SuperHub.Data.Data attribute), \hyperpage{8}
+
+  \indexspace
+  \bigletter M
+  \item mnhh (SuperHub.Data.Data attribute), \hyperpage{8}
+  \item monthly\_table() (SuperHub.Data.Data method), \hyperpage{8}
+  \item montly\_histogram() (in module SuperHub.Plots), \hyperpage{11}
+  \item mxhh (SuperHub.Data.Data attribute), \hyperpage{8}
+
+  \indexspace
+  \bigletter P
+  \item plot\_accumulated\_events() (in module SuperHub.Descriptive), \hyperpage{9}
+  \item plotHisto() (in module SuperHub.Plots), \hyperpage{11}
+
+  \indexspace
+  \bigletter R
+  \item read\_data() (SuperHub.Data.Data method), \hyperpage{8}
+  \item Routes (module), \hyperpage{13}
+
+  \indexspace
+  \bigletter S
+  \item save() (SuperHub.Transactions.DailyTransactions method), \hyperpage{15}
+  \item saveDataResult() (in module SuperHub.DB), \hyperpage{5}
+  \item saveHisto() (in module SuperHub.Plots), \hyperpage{11}
+  \item savePlot() (in module SuperHub.Plots), \hyperpage{11}
+  \item select\_data\_users() (SuperHub.Data.Data method), \hyperpage{8}
+  \item select\_heavy\_hitters() (SuperHub.Data.Data method), \hyperpage{8}
+  \item serialize() (SuperHub.Transactions.DailyTransactions method), \hyperpage{16}
+  \item SuperHub.Constants (module), \hyperpage{3}
+  \item SuperHub.Data (module), \hyperpage{7}
+  \item SuperHub.DB (module), \hyperpage{5}
+  \item SuperHub.Descriptive (module), \hyperpage{9}
+  \item SuperHub.Plot (module), \hyperpage{11}
+  \item SuperHub.Plots (module), \hyperpage{11}
+  \item SuperHub.Routes (module), \hyperpage{13}
+  \item SuperHub.Transactions (module), \hyperpage{15}
+  \item SuperHub.Util (module), \hyperpage{17}
+  \item SuperHubConstants (module), \hyperpage{3}
+
+  \indexspace
+  \bigletter T
+  \item transaction\_routes() (in module SuperHub.Routes), \hyperpage{13}
+  \item transaction\_routes\_many() (in module SuperHub.Routes), \hyperpage{13}
+  \item Transactions (class in SuperHub.Transactions), \hyperpage{16}
+  \item Transactions (module), \hyperpage{15}
+  \item transferApplicationData() (in module SuperHub.DB), \hyperpage{5}
+
+  \indexspace
+  \bigletter U
+  \item user\_events\_histogram() (in module SuperHub.Descriptive), \hyperpage{9}
+  \item users\_daily\_length() (SuperHub.Transactions.DailyTransactions method), \hyperpage{16}
+  \item users\_prevalence() (SuperHub.Transactions.DailyTransactions method), \hyperpage{16}
+  \item usertrans (SuperHub.Transactions.Transactions attribute), \hyperpage{16}
+  \item Util (module), \hyperpage{17}
+
+  \indexspace
+  \bigletter W
+  \item wpath (SuperHub.Data.Data attribute), \hyperpage{8}
+  \item wpath (SuperHub.Transactions.Transactions attribute), \hyperpage{16}
+
+\end{theindex}

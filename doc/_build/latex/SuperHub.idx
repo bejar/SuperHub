@@ -1,0 +1,64 @@
+\indexentry{SuperHub.Constants (module)|hyperpage}{3}
+\indexentry{SuperHubConstants (module)|hyperpage}{3}
+\indexentry{SuperHub.DB (module)|hyperpage}{5}
+\indexentry{DB (module)|hyperpage}{5}
+\indexentry{getApplicationData() (in module SuperHub.DB)|hyperpage}{5}
+\indexentry{getApplicationData2() (in module SuperHub.DB)|hyperpage}{5}
+\indexentry{getApplicationDataOne() (in module SuperHub.DB)|hyperpage}{5}
+\indexentry{getLApplicationData() (in module SuperHub.DB)|hyperpage}{5}
+\indexentry{saveDataResult() (in module SuperHub.DB)|hyperpage}{5}
+\indexentry{transferApplicationData() (in module SuperHub.DB)|hyperpage}{5}
+\indexentry{SuperHub.Data (module)|hyperpage}{7}
+\indexentry{Data (module)|hyperpage}{7}
+\indexentry{Data (class in SuperHub.Data)|hyperpage}{7}
+\indexentry{application (SuperHub.Data.Data attribute)|hyperpage}{7}
+\indexentry{compute\_heavy\_hitters() (SuperHub.Data.Data method)|hyperpage}{7}
+\indexentry{contingency() (SuperHub.Data.Data method)|hyperpage}{7}
+\indexentry{daily\_table() (SuperHub.Data.Data method)|hyperpage}{7}
+\indexentry{dataset (SuperHub.Data.Data attribute)|hyperpage}{8}
+\indexentry{datasethh (SuperHub.Data.Data attribute)|hyperpage}{8}
+\indexentry{get\_dataset() (SuperHub.Data.Data method)|hyperpage}{8}
+\indexentry{hourly\_table() (SuperHub.Data.Data method)|hyperpage}{8}
+\indexentry{lhh (SuperHub.Data.Data attribute)|hyperpage}{8}
+\indexentry{mnhh (SuperHub.Data.Data attribute)|hyperpage}{8}
+\indexentry{monthly\_table() (SuperHub.Data.Data method)|hyperpage}{8}
+\indexentry{mxhh (SuperHub.Data.Data attribute)|hyperpage}{8}
+\indexentry{read\_data() (SuperHub.Data.Data method)|hyperpage}{8}
+\indexentry{select\_data\_users() (SuperHub.Data.Data method)|hyperpage}{8}
+\indexentry{select\_heavy\_hitters() (SuperHub.Data.Data method)|hyperpage}{8}
+\indexentry{wpath (SuperHub.Data.Data attribute)|hyperpage}{8}
+\indexentry{SuperHub.Descriptive (module)|hyperpage}{9}
+\indexentry{Descriptive (module)|hyperpage}{9}
+\indexentry{data\_histograms() (in module SuperHub.Descriptive)|hyperpage}{9}
+\indexentry{plot\_accumulated\_events() (in module SuperHub.Descriptive)|hyperpage}{9}
+\indexentry{user\_events\_histogram() (in module SuperHub.Descriptive)|hyperpage}{9}
+\indexentry{SuperHub.Plots (module)|hyperpage}{11}
+\indexentry{SuperHub.Plot (module)|hyperpage}{11}
+\indexentry{daily\_histogram() (in module SuperHub.Plots)|hyperpage}{11}
+\indexentry{hourly\_histogram() (in module SuperHub.Plots)|hyperpage}{11}
+\indexentry{montly\_histogram() (in module SuperHub.Plots)|hyperpage}{11}
+\indexentry{plotHisto() (in module SuperHub.Plots)|hyperpage}{11}
+\indexentry{saveHisto() (in module SuperHub.Plots)|hyperpage}{11}
+\indexentry{savePlot() (in module SuperHub.Plots)|hyperpage}{11}
+\indexentry{SuperHub.Routes (module)|hyperpage}{13}
+\indexentry{Routes (module)|hyperpage}{13}
+\indexentry{transaction\_routes() (in module SuperHub.Routes)|hyperpage}{13}
+\indexentry{transaction\_routes\_many() (in module SuperHub.Routes)|hyperpage}{13}
+\indexentry{SuperHub.Transactions (module)|hyperpage}{15}
+\indexentry{Transactions (module)|hyperpage}{15}
+\indexentry{DailyDiscretizedTransactions (class in SuperHub.Transactions)|hyperpage}{15}
+\indexentry{DailyTransactions (class in SuperHub.Transactions)|hyperpage}{15}
+\indexentry{colapse() (SuperHub.Transactions.DailyTransactions method)|hyperpage}{15}
+\indexentry{colapse\_count() (SuperHub.Transactions.DailyTransactions method)|hyperpage}{15}
+\indexentry{save() (SuperHub.Transactions.DailyTransactions method)|hyperpage}{15}
+\indexentry{serialize() (SuperHub.Transactions.DailyTransactions method)|hyperpage}{16}
+\indexentry{users\_daily\_length() (SuperHub.Transactions.DailyTransactions method)|hyperpage}{16}
+\indexentry{users\_prevalence() (SuperHub.Transactions.DailyTransactions method)|hyperpage}{16}
+\indexentry{Transactions (class in SuperHub.Transactions)|hyperpage}{16}
+\indexentry{application (SuperHub.Transactions.Transactions attribute)|hyperpage}{16}
+\indexentry{usertrans (SuperHub.Transactions.Transactions attribute)|hyperpage}{16}
+\indexentry{wpath (SuperHub.Transactions.Transactions attribute)|hyperpage}{16}
+\indexentry{SuperHub.Util (module)|hyperpage}{17}
+\indexentry{Util (module)|hyperpage}{17}
+\indexentry{diff\_items() (in module SuperHub.Util)|hyperpage}{17}
+\indexentry{item\_key\_sort() (in module SuperHub.Util)|hyperpage}{17}

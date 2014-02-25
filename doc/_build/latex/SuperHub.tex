@@ -13,7 +13,7 @@
 
 
 \title{SuperHub Documentation}
-\date{February 20, 2014}
+\date{febrero 20, 2014}
 \release{}
 \author{Javier Bejar}
 \newcommand{\sphinxlogo}{}
@@ -117,35 +117,852 @@
 Contents:
 
 
-\chapter{SuperHub Package}
-\label{SuperHub:superhub-package}\label{SuperHub:welcome-to-superhub-s-documentation}\label{SuperHub::doc}
+\chapter{\texttt{Constants} Module}
+\label{index:constants-module}\label{index:welcome-to-superhub-s-documentation}\label{index:module-SuperHub.Constants}\index{SuperHub.Constants (module)}\phantomsection\label{index:module-SuperHubConstants}\index{SuperHubConstants (module)}
 
-\section{\texttt{SuperHub} Package}
-\label{SuperHub:id1}
+\section{Constants}
+\label{index:constants}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+SuperHub constants,
 
-\section{\texttt{Constants} Module}
-\label{SuperHub:constants-module}
+The coordinates of the region of interest and the path to the data files
+And the information of the mongo database
 
-\section{\texttt{DB} Module}
-\label{SuperHub:db-module}
+\item[{Authors}] \leavevmode
+bejar
 
-\section{\texttt{Data} Module}
-\label{SuperHub:data-module}
+\item[{Version}] \leavevmode
+1.0
 
-\section{\texttt{Descriptive} Module}
-\label{SuperHub:descriptive-module}
+\end{description}\end{quote}
 
-\section{\texttt{Plots} Module}
-\label{SuperHub:plots-module}
 
-\section{\texttt{Routes} Module}
-\label{SuperHub:routes-module}
+\chapter{\texttt{DB} Module}
+\label{index:module-SuperHub.DB}\label{index:db-module}\index{SuperHub.DB (module)}\phantomsection\label{index:module-DB}\index{DB (module)}
 
-\section{\texttt{Transactions} Module}
-\label{SuperHub:transactions-module}
+\section{DB}
+\label{index:db}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+SuperHub data functions
 
-\section{\texttt{Util} Module}
-\label{SuperHub:util-module}
+Exports data from database to csv file
+
+Loads data from csv file
+
+Performs different processings to the data matrix
+
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+\index{getApplicationData() (in module SuperHub.DB)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.DB.getApplicationData}\pysiglinewithargsret{\code{SuperHub.DB.}\bfcode{getApplicationData}}{\emph{application}}{}
+Get the data events from the database and saves it in a csv file
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application
+
+\item[{Param }] \leavevmode
+cpath
+
+\item[{Param }] \leavevmode
+square
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{getApplicationData2() (in module SuperHub.DB)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.DB.getApplicationData2}\pysiglinewithargsret{\code{SuperHub.DB.}\bfcode{getApplicationData2}}{}{}
+\end{fulllineitems}
+
+\index{getApplicationDataOne() (in module SuperHub.DB)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.DB.getApplicationDataOne}\pysiglinewithargsret{\code{SuperHub.DB.}\bfcode{getApplicationDataOne}}{\emph{application}}{}~\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{getLApplicationData() (in module SuperHub.DB)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.DB.getLApplicationData}\pysiglinewithargsret{\code{SuperHub.DB.}\bfcode{getLApplicationData}}{\emph{lapplication}}{}
+Retrieves data from a lists of Social applications
+Saves an individual file for each application
+and a file with all the data
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{lapplication} -- 
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{saveDataResult() (in module SuperHub.DB)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.DB.saveDataResult}\pysiglinewithargsret{\code{SuperHub.DB.}\bfcode{saveDataResult}}{\emph{data}, \emph{fname}}{}
+Save data results in a file
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+data:
+
+\item[{Param }] \leavevmode
+fname:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{transferApplicationData() (in module SuperHub.DB)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.DB.transferApplicationData}\pysiglinewithargsret{\code{SuperHub.DB.}\bfcode{transferApplicationData}}{\emph{application}}{}
+Trasfers data from
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\chapter{\texttt{Data} Module}
+\label{index:data-module}\label{index:module-SuperHub.Data}\index{SuperHub.Data (module)}\phantomsection\label{index:module-Data}\index{Data (module)}
+
+\section{Data}
+\label{index:data}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+SuperHub Data class
+
+Performs different processings to the data matrix
+
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+
+File: Data
+
+Created on 18/02/2014 10:09
+
+@author: bejar
+\index{Data (class in SuperHub.Data)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data}\pysiglinewithargsret{\strong{class }\code{SuperHub.Data.}\bfcode{Data}}{\emph{path}, \emph{application}}{}
+Class for a superhub dataset
+
+dataset = numpy array
+application = Name of the data file
+cpath = Path of the data file
+mxhh = maximum position of the heavy hitters list
+mnhh = minimum position of the heavy hitters list
+lhh = list of users ordered by the number of elements in the dataset
+\index{application (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.application}\pysigline{\bfcode{application}\strong{ = None}}
+\end{fulllineitems}
+
+\index{compute\_heavy\_hitters() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.compute_heavy_hitters}\pysiglinewithargsret{\bfcode{compute\_heavy\_hitters}}{\emph{mxhh}, \emph{mnhh}}{}
+Computes the list of the number of events
+and returns a list with the users between the
+positions mxhh and mnhh in the descendent order
+
+If the list heavy hitters have already been computed it is reused
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+data:
+
+\item[{Param }] \leavevmode
+mxhh:
+
+\item[{Param }] \leavevmode
+mnhh:
+
+\item[{Returns}] \leavevmode
+list with the list of users
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{contingency() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.contingency}\pysiglinewithargsret{\bfcode{contingency}}{\emph{scale}, \emph{distrib=True}}{}
+Generates an scale x scale accumulated plot of the events
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+data:
+
+\item[{Param }] \leavevmode
+scale:
+
+\item[{Param }] \leavevmode
+distrib:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{daily\_table() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.daily_table}\pysiglinewithargsret{\bfcode{daily\_table}}{}{}
+Computes the accumulated events by day for the data table
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+A daily table
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{dataset (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.dataset}\pysigline{\bfcode{dataset}\strong{ = None}}
+\end{fulllineitems}
+
+\index{datasethh (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.datasethh}\pysigline{\bfcode{datasethh}\strong{ = None}}
+\end{fulllineitems}
+
+\index{get\_dataset() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.get_dataset}\pysiglinewithargsret{\bfcode{get\_dataset}}{}{}
+Returns the numpy array that represents the dataset
+@return:
+
+\end{fulllineitems}
+
+\index{hourly\_table() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.hourly_table}\pysiglinewithargsret{\bfcode{hourly\_table}}{}{}
+Computes the accumulated events by hour for the data table
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+An hourly table
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{lhh (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.lhh}\pysigline{\bfcode{lhh}\strong{ = None}}
+\end{fulllineitems}
+
+\index{mnhh (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.mnhh}\pysigline{\bfcode{mnhh}\strong{ = None}}
+\end{fulllineitems}
+
+\index{monthly\_table() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.monthly_table}\pysiglinewithargsret{\bfcode{monthly\_table}}{}{}
+Computes the accumulated events by month
+
+@return: A montly rable
+
+\end{fulllineitems}
+
+\index{mxhh (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.mxhh}\pysigline{\bfcode{mxhh}\strong{ = None}}
+\end{fulllineitems}
+
+\index{read\_data() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.read_data}\pysiglinewithargsret{\bfcode{read\_data}}{}{}
+Loads the data from the csv file
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application:
+
+\item[{Returns}] \leavevmode
+
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{select\_data\_users() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.select_data_users}\pysiglinewithargsret{\bfcode{select\_data\_users}}{\emph{users}}{}
+Selects only the events from the list of users
+Returns a new object with the selected users
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+users: List of users to select
+
+\item[{Returns}] \leavevmode
+
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{select\_heavy\_hitters() (SuperHub.Data.Data method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.select_heavy_hitters}\pysiglinewithargsret{\bfcode{select\_heavy\_hitters}}{\emph{mxhh}, \emph{mnhh}}{}
+Deletes all the events that are not from the heavy hitters
+Returns a new data object only with the heavy hitters
+
+@param mxhh:
+@param mnhh:
+@return: A list of the most active users in the indicated range
+
+\end{fulllineitems}
+
+\index{wpath (SuperHub.Data.Data attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Data.Data.wpath}\pysigline{\bfcode{wpath}\strong{ = None}}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
+\chapter{\texttt{Descriptive} Module}
+\label{index:module-SuperHub.Descriptive}\label{index:descriptive-module}\index{SuperHub.Descriptive (module)}\phantomsection\label{index:module-Descriptive}\index{Descriptive (module)}
+
+\section{Descriptive}
+\label{index:descriptive}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+SuperHub Descriptive data functions
+
+\end{description}\end{quote}
+
+Functions for computing descriptive statistics from the dataset
+
+For now mainly histograms
+\begin{quote}\begin{description}
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+
+File: Descriptive
+
+Created on 20/02/2014 15:23
+
+@author: bejar
+\index{data\_histograms() (in module SuperHub.Descriptive)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Descriptive.data_histograms}\pysiglinewithargsret{\code{SuperHub.Descriptive.}\bfcode{data\_histograms}}{\emph{application}, \emph{lhh=None}}{}
+Generate histograms for different characteristics of the data
+Outputs the data used to generate the histograms
+\begin{itemize}
+\item {} 
+Number of daily events
+
+\item {} 
+Number of days of users
+
+\item {} 
+Accumulated events per hour
+
+\item {} 
+Accumulated ecents per weekday
+
+\end{itemize}
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application:
+
+\item[{Param }] \leavevmode
+lhh:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{plot\_accumulated\_events() (in module SuperHub.Descriptive)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Descriptive.plot_accumulated_events}\pysiglinewithargsret{\code{SuperHub.Descriptive.}\bfcode{plot\_accumulated\_events}}{\emph{data}, \emph{distrib=True}, \emph{scale=100}}{}
+Plots the accumulated geographical events in the selected area to the
+specified scale
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application: name of the data file
+
+\item[{Param }] \leavevmode
+distrib: whether the PDF or the absolute numbers are plotted
+
+\item[{Param }] \leavevmode
+scale: scale of the discretization
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{user\_events\_histogram() (in module SuperHub.Descriptive)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Descriptive.user_events_histogram}\pysiglinewithargsret{\code{SuperHub.Descriptive.}\bfcode{user\_events\_histogram}}{\emph{data}, \emph{scale=100}, \emph{timeres=4}}{}
+Histogram of the number of places-time a user has been
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+scale:
+
+\item[{Param }] \leavevmode
+application:
+
+\item[{Param }] \leavevmode
+mxhh:
+
+\item[{Param }] \leavevmode
+mnhh:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\chapter{\texttt{Plots} Module}
+\label{index:plots-module}\label{index:module-SuperHub.Plots}\index{SuperHub.Plots (module)}\phantomsection\label{index:module-SuperHub.Plot}\index{SuperHub.Plot (module)}
+
+\section{Plot}
+\label{index:plot}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+Different plots of the data
+
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+\index{daily\_histogram() (in module SuperHub.Plots)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Plots.daily_histogram}\pysiglinewithargsret{\code{SuperHub.Plots.}\bfcode{daily\_histogram}}{\emph{data}}{}
+Plot of events accumulated by week day
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application:
+
+\item[{Param }] \leavevmode
+mxhh:
+
+\item[{Param }] \leavevmode
+mnhh:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{hourly\_histogram() (in module SuperHub.Plots)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Plots.hourly_histogram}\pysiglinewithargsret{\code{SuperHub.Plots.}\bfcode{hourly\_histogram}}{\emph{data}}{}
+Plots of events accumulated by hours
+
+\end{fulllineitems}
+
+\index{montly\_histogram() (in module SuperHub.Plots)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Plots.montly_histogram}\pysiglinewithargsret{\code{SuperHub.Plots.}\bfcode{montly\_histogram}}{\emph{data}}{}
+Plots the events accumulated by month
+
+@param application:
+@param mxhh:
+@param mnhh:
+@return:
+
+\end{fulllineitems}
+
+\index{plotHisto() (in module SuperHub.Plots)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Plots.plotHisto}\pysiglinewithargsret{\code{SuperHub.Plots.}\bfcode{plotHisto}}{\emph{data}, \emph{bins}}{}
+Plots a histogram
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+data:
+
+\item[{Param }] \leavevmode
+bins:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{saveHisto() (in module SuperHub.Plots)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Plots.saveHisto}\pysiglinewithargsret{\code{SuperHub.Plots.}\bfcode{saveHisto}}{\emph{data}, \emph{bins}, \emph{fname}}{}
+Saves a histogram
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+data:
+
+\item[{Param }] \leavevmode
+bins:
+
+\item[{Param }] \leavevmode
+fname:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{savePlot() (in module SuperHub.Plots)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Plots.savePlot}\pysiglinewithargsret{\code{SuperHub.Plots.}\bfcode{savePlot}}{\emph{axis}, \emph{data}, \emph{fname}}{}
+Saves a plot of the data using the values of axis
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+data:
+
+\item[{Param }] \leavevmode
+num:
+
+\item[{Param }] \leavevmode
+fname:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\chapter{\texttt{Routes} Module}
+\label{index:routes-module}\label{index:module-SuperHub.Routes}\index{SuperHub.Routes (module)}\phantomsection\label{index:module-Routes}\index{Routes (module)}
+
+\section{Routes}
+\label{index:routes}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+Routes
+
+Routines that compute routes
+
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+
+File: Routes
+
+Created on 20/02/2014 15:17
+
+@author: bejar
+\index{transaction\_routes() (in module SuperHub.Routes)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Routes.transaction_routes}\pysiglinewithargsret{\code{SuperHub.Routes.}\bfcode{transaction\_routes}}{\emph{data}, \emph{nfile}, \emph{scale=100}, \emph{supp=30}, \emph{timeres=4.0}, \emph{colapsed=False}}{}
+Generates a diagram of the routes obtained by the frequent itemsets fp-growth algorithm
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+dataclean:
+
+\item[{Param }] \leavevmode
+application:
+
+\item[{Param }] \leavevmode
+mxhh:
+
+\item[{Param }] \leavevmode
+mnhh:
+
+\item[{Param }] \leavevmode
+scale:
+
+\item[{Param }] \leavevmode
+supp:
+
+\item[{Param }] \leavevmode
+timeres:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{transaction\_routes\_many() (in module SuperHub.Routes)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Routes.transaction_routes_many}\pysiglinewithargsret{\code{SuperHub.Routes.}\bfcode{transaction\_routes\_many}}{\emph{data}, \emph{lhh=None}, \emph{lscale=None}, \emph{supp=30}, \emph{ltimeres=None}, \emph{colapsed=False}}{}
+Computes the diagrams of frequent routes for a list of parameters
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+application:
+
+\item[{Param }] \leavevmode
+lhh:
+
+\item[{Param }] \leavevmode
+lscale:
+
+\item[{Param }] \leavevmode
+supp:
+
+\item[{Param }] \leavevmode
+ltimeres:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\chapter{\texttt{Transactions} Module}
+\label{index:module-SuperHub.Transactions}\label{index:transactions-module}\index{SuperHub.Transactions (module)}\phantomsection\label{index:module-Transactions}\index{Transactions (module)}
+
+\section{Transactions}
+\label{index:transactions}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+Transactions,
+
+Class for transactions processing
+
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+
+Created on 18/02/2014 10:59
+
+@author: bejar
+\index{DailyDiscretizedTransactions (class in SuperHub.Transactions)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyDiscretizedTransactions}\pysiglinewithargsret{\strong{class }\code{SuperHub.Transactions.}\bfcode{DailyDiscretizedTransactions}}{\emph{data}, \emph{scale=100}, \emph{timeres=4.0}}{}
+Bases: {\hyperref[index:SuperHub.Transactions.DailyTransactions]{\code{SuperHub.Transactions.DailyTransactions}}}
+
+Class for the daily discretized transactions
+
+\end{fulllineitems}
+
+\index{DailyTransactions (class in SuperHub.Transactions)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions}\pysiglinewithargsret{\strong{class }\code{SuperHub.Transactions.}\bfcode{DailyTransactions}}{\emph{data}}{}
+Bases: {\hyperref[index:SuperHub.Transactions.Transactions]{\code{SuperHub.Transactions.Transactions}}}
+
+Class for the daily transactions
+\index{colapse() (SuperHub.Transactions.DailyTransactions method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions.colapse}\pysiglinewithargsret{\bfcode{colapse}}{}{}
+Colapses the transactions of a user on a set with all the different items
+in the transactions (basically where has been and when (considering the
+discretization used) during the period of time covered by the transactions
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+trans: Dictionary of user/time transactions
+
+\item[{Returns}] \leavevmode
+Dictionary of daily transactions
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{colapse\_count() (SuperHub.Transactions.DailyTransactions method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions.colapse_count}\pysiglinewithargsret{\bfcode{colapse\_count}}{}{}
+Colapsed the transactions of a user on a dictionary with all the different items in the
+transctions, counting how many times the user has been at that time at that place (considering
+the discretization used)
+@return:
+
+\end{fulllineitems}
+
+\index{save() (SuperHub.Transactions.DailyTransactions method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions.save}\pysiglinewithargsret{\bfcode{save}}{\emph{rfile}}{}
+Saves the daily transactions in a file
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+nfile:
+
+\item[{Param }] \leavevmode
+application:
+
+\item[{Param }] \leavevmode
+mxhh:
+
+\item[{Param }] \leavevmode
+mnhh:
+
+\item[{Param }] \leavevmode
+scale:
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{serialize() (SuperHub.Transactions.DailyTransactions method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions.serialize}\pysiglinewithargsret{\bfcode{serialize}}{}{}
+Transforms the transactions from dictionaries to lists
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+trans:
+
+\item[{Returns}] \leavevmode
+
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{users\_daily\_length() (SuperHub.Transactions.DailyTransactions method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions.users_daily_length}\pysiglinewithargsret{\bfcode{users\_daily\_length}}{}{}
+Computes the list of lengths of the daily transactions for all users
+
+\end{fulllineitems}
+
+\index{users\_prevalence() (SuperHub.Transactions.DailyTransactions method)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.DailyTransactions.users_prevalence}\pysiglinewithargsret{\bfcode{users\_prevalence}}{}{}
+Computes the number of daily transactions for all users
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{Transactions (class in SuperHub.Transactions)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.Transactions}\pysiglinewithargsret{\strong{class }\code{SuperHub.Transactions.}\bfcode{Transactions}}{\emph{data}}{}
+Class for the user transactions
+\index{application (SuperHub.Transactions.Transactions attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.Transactions.application}\pysigline{\bfcode{application}\strong{ = None}}
+\end{fulllineitems}
+
+\index{usertrans (SuperHub.Transactions.Transactions attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.Transactions.usertrans}\pysigline{\bfcode{usertrans}\strong{ = None}}
+\end{fulllineitems}
+
+\index{wpath (SuperHub.Transactions.Transactions attribute)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Transactions.Transactions.wpath}\pysigline{\bfcode{wpath}\strong{ = None}}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
+\chapter{\texttt{Util} Module}
+\label{index:util-module}\label{index:module-SuperHub.Util}\index{SuperHub.Util (module)}\phantomsection\label{index:module-Util}\index{Util (module)}
+
+\section{Util}
+\label{index:util}\begin{quote}\begin{description}
+\item[{Description}] \leavevmode
+Util
+
+Different Auxiliary functions used for different purposes
+
+\item[{Authors}] \leavevmode
+bejar
+
+\item[{Version}] \leavevmode
+1.0
+
+\end{description}\end{quote}
+
+File: Util
+
+Created on 20/02/2014 14:12
+
+@author: bejar
+\index{diff\_items() (in module SuperHub.Util)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Util.diff_items}\pysiglinewithargsret{\code{SuperHub.Util.}\bfcode{diff\_items}}{\emph{seq}}{}
+Number of different geo point in a sequence
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+seq:
+
+\item[{Returns}] \leavevmode
+
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{item\_key\_sort() (in module SuperHub.Util)}
+
+\begin{fulllineitems}
+\phantomsection\label{index:SuperHub.Util.item_key_sort}\pysiglinewithargsret{\code{SuperHub.Util.}\bfcode{item\_key\_sort}}{\emph{v}}{}
+auxiliary function for sorting geo-time events
+\begin{quote}\begin{description}
+\item[{Param }] \leavevmode
+v:
+
+\item[{Returns}] \leavevmode
+
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
 
 \chapter{Indices and tables}
 \label{index:indices-and-tables}\begin{itemize}
@@ -161,6 +978,35 @@ Contents:
 \end{itemize}
 
 
+\renewcommand{\indexname}{Python Module Index}
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+\bigletter{d}
+\item {\texttt{Data}}, \pageref{index:module-Data}
+\item {\texttt{DB}}, \pageref{index:module-DB}
+\item {\texttt{Descriptive}}, \pageref{index:module-Descriptive}
+\indexspace
+\bigletter{r}
+\item {\texttt{Routes}}, \pageref{index:module-Routes}
+\indexspace
+\bigletter{s}
+\item {\texttt{SuperHub.Constants}}, \pageref{index:module-SuperHub.Constants}
+\item {\texttt{SuperHub.Data}}, \pageref{index:module-SuperHub.Data}
+\item {\texttt{SuperHub.DB}}, \pageref{index:module-SuperHub.DB}
+\item {\texttt{SuperHub.Descriptive}}, \pageref{index:module-SuperHub.Descriptive}
+\item {\texttt{SuperHub.Plot}}, \pageref{index:module-SuperHub.Plot}
+\item {\texttt{SuperHub.Plots}}, \pageref{index:module-SuperHub.Plots}
+\item {\texttt{SuperHub.Routes}}, \pageref{index:module-SuperHub.Routes}
+\item {\texttt{SuperHub.Transactions}}, \pageref{index:module-SuperHub.Transactions}
+\item {\texttt{SuperHub.Util}}, \pageref{index:module-SuperHub.Util}
+\item {\texttt{SuperHubConstants}}, \pageref{index:module-SuperHubConstants}
+\indexspace
+\bigletter{t}
+\item {\texttt{Transactions}}, \pageref{index:module-Transactions}
+\indexspace
+\bigletter{u}
+\item {\texttt{Util}}, \pageref{index:module-Util}
+\end{theindex}
 
 \renewcommand{\indexname}{Index}
 \printindex

@@ -24,6 +24,7 @@ DB
 import time
 import pprint
 import subprocess
+import shutil
 
 from pymongo import MongoClient
 import pymysql
@@ -117,18 +118,16 @@ def getLApplicationData(lapplication):
     apfiles = []
     apnames = []
     for ap in lapplication:
-        apfile = open(homepath + ap + '.csv', 'w')
+        apfile = open(homepath + 'Data/' + ap + '.csv', 'w')
         apfile.write('#lat; lng; time; user\n')
         apfiles.append(apfile)
         appname = appname + ap
-        apnames.append(homepath + ap + '.csv')
-        subprocess.call('rm ' + homepath + ap + '.csv.bz2')
-    subprocess.call('rm ' + homepath + appname + '.csv.bz2')
-    rfile = open(homepath + appname + '.csv', 'w')
+        apnames.append(homepath + 'Data/' + ap + '.csv')
+        shutil.move(homepath + 'Data/' + ap + '.csv.bz2', homepath + 'Data/' + ap + '.csv.old.bz2')
+    shutil.move(homepath + 'Data/' + appname + '.csv.bz2', homepath + 'Data/' + appname + '.csv.old.bz2')
+    rfile = open(homepath + appname + 'Data/' + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user\n')
-
-
 
     col = db['sndata']
 
@@ -151,11 +150,11 @@ def getLApplicationData(lapplication):
                 apfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
                     t['user']) + '\n')#+';'+t['geohash']+'\n')
     rfile.close()
-    subprocess.call('bzip2 '+ homepath + application + '.csv')
+    subprocess.call(['bzip2 '], [homepath + 'Data/' + application + '.csv'])
 
     for f,n in zip(apfiles,apnames):
         f.close()
-        subprocess.call('bzip2 '+ n)
+        subprocess.call(['bzip2 '], [n])
     print 'Done'
 
 
@@ -224,153 +223,4 @@ def getApplicationDataOne(application):
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(c)
 
-
-
-# def readData(application):
-#     """
-#     Loads the data from the csv file
-#
-#     :param: application:
-#     :return:
-#     """
-#     fname = cpath + application + '.csv.bz2'
-#     data = loadtxt(fname, skiprows=1, dtype=[('lat', 'f8'), ('lng', 'f8')
-#         , ('time', 'i32'), ('user', 'S20')], usecols=(0, 1, 2, 3), delimiter=';', comments='#')
-#     #    print data.dtype
-#     return data
-
-
-# def cleanDataArea(data):
-#     """
-#     Deletes all the events out of the interest region
-#
-#     :param: data:
-#     :return:
-#     """
-#     dataclean = None
-#     for i in range(data.shape[0]):
-#         if (minLat <= data[i][0] < maxLat) and (minLon <= data[i][1] < maxLon):
-#             if dataclean is None:
-#                 aval = np.zeros((1, 4), dtype='f')
-#                 aval[0, 0] = data[i][0]
-#                 aval[0, 1] = data[i][1]
-#                 aval[0, 2] = data[i][2]
-#                 aval[0, 3] = data[i][3]
-#                 dataclean = aval
-#             else:
-#                 aval = np.zeros((1, 4), dtype='f')
-#                 aval[0, 0] = data[i][0]
-#                 aval[0, 1] = data[i][1]
-#                 aval[0, 2] = data[i][2]
-#                 aval[0, 3] = data[i][3]
-#                 dataclean = np.row_stack((dataclean, aval))
-#     return dataclean
-
-
-# def computeHeavyHitters(data, mxhh, mnhh):
-#     """
-#     Computes the list of the number of events
-#     and return a list with the users between the
-#     positions mxhh and mnhh in the descendent order
-#
-#     :param: data:
-#     :param: mxhh:
-#     :param: mnhh:
-#     :return: list with the list of users
-#     """
-#     usercount = {}
-#     for i in range(data.shape[0]):
-#         if data[i][3] in usercount:
-#             usercount[data[i][3]] += 1
-#         else:
-#             usercount[data[i][3]] = 1
-#     sorted_x = sorted(usercount.iteritems(), key=operator.itemgetter(1), reverse=True)
-#     mnhht = min(mnhh, len(sorted_x))
-#     hhitters = [x for x, y in sorted_x[mxhh:mnhht]]
-#     return hhitters
-
-
-# def selectDataUsers(data, users):
-#     """
-#     Deletes all the events that are not in the user list
-#
-#     :param: data:
-#     :param: users:
-#     :return:
-#     """
-#     dataclean = None
-#     sel = [data[i][3] in users for i in range(data.shape[0])]
-#     asel = np.array(sel)
-#     dataclean = data[asel]
-#     return dataclean
-
-
-# def hourlyTable(data):
-#     """
-#     Computes the accumulated events by hour for the data table
-#
-#     :param: data:
-#     :return:
-#     """
-#     htable = [0 for i in range(24)]
-#     for i in range(data.shape[0]):
-#         stime = time.localtime(np.int32(data[i][2]))
-#         evtime = stime[3]
-#         htable[evtime] += 1
-#     return htable
-#
-#
-# def dailyTable(data):
-#     """
-#     Computes the accumulated events by day for the data table
-#
-#     :param: data:
-#     :return:
-#     """
-#     htable = [0 for i in range(7)]
-#     for i in range(data.shape[0]):
-#         stime = time.localtime(np.int32(data[i][2]))
-#         evtime = stime[6]
-#         htable[evtime] += 1
-#     return htable
-#
-#
-# def monthlyTable(data):
-#     """
-#     Computes the accumulated events by month
-#
-#     @param data:
-#     @return:
-#     """
-#     htable = [0 for i in range(12)]
-#     for i in range(data.shape[0]):
-#         stime = time.localtime(np.int32(data[i][2]))
-#         evtime = stime[1]
-#         htable[evtime - 1] += 1
-#     return htable
-
-
-# def heavyHittersData(application, mxhh=100, mnhh=1000):
-#     """
-#     Reads and deturns the data for the heavy hitters
-#
-#     @param application:
-#     @param mxhh:
-#     """
-#     data = shdata(cpath,application)
-#     print 'Reading Data ...'
-#     data.read_data()
-#     print 'Selecting Heavy Hitters ...'
-#     data.select_heavy_hitters(mxhh, mnhh)
-#     return data
-
-
-def saveDataResult(data, fname):
-    """
-    Save data results in a file
-
-    :param: data:
-    :param: fname:
-    """
-    pass
 

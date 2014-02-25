@@ -72,7 +72,7 @@ class Data:
         :return:
         """
         print 'Reading Data ...'
-        fname = self.wpath +'Data/'+ self.application + '.csv.bz2'
+        fname = self.wpath + 'Data/' + self.application + '.csv.bz2'
         self.dataset = loadtxt(fname, skiprows=1, dtype=[('lat', 'f8'), ('lng', 'f8')
             ,('time', 'i32'), ('user', 'S20')], usecols=(0, 1, 2, 3), delimiter=';', comments='#')
 

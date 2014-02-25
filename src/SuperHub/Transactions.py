@@ -125,10 +125,11 @@ class DailyTransactions(Transactions):
             items = {}
             for day in trans[user]:
                 userdaytrans = trans[user][day]
-                if userdaytrans in items:
-                    items[userdaytrans] += 1
-                else:
-                    items[userdaytrans] = 1
+                for utrans in userdaytrans:
+                    if utrans in items:
+                        items[utrans] += 1
+                    else:
+                        items[utrans] = 1
             userEvents.append(items)
         return userEvents
 
@@ -188,7 +189,8 @@ class DailyDiscretizedTransactions(DailyTransactions):
     """
     Class for the daily discretized transactions
     """
-
+    scale = None
+    timeres = None
     def __init__(self, data, scale=100, timeres=4.0):
         """
             Extracts the daily event transactions of the users, discretizing
@@ -201,6 +203,8 @@ class DailyDiscretizedTransactions(DailyTransactions):
             @param scale:
             @param timeres:
             """
+        self.scale = scale
+        self.timeres = timeres
         DailyTransactions.__init__(self, data)
         dataclean = data.get_dataset()
         userEvents = {}
