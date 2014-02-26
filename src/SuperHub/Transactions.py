@@ -25,11 +25,14 @@ import time
 import numpy as np
 
 from Constants import minLat, maxLat, minLon, maxLon
-
+from Util import item_to_column
+from scipy.sparse import coo_matrix
+from math import log
 
 class Transactions:
     """
     Class for the user transactions
+    :param data: STData
     """
     usertrans = None
     application = None
@@ -40,6 +43,7 @@ class Transactions:
         self.application = data.application
         self.wpath = data.wpath
 
+
 class DailyTransactions(Transactions):
     """
     Class for the daily transactions
@@ -47,11 +51,10 @@ class DailyTransactions(Transactions):
 
     def __init__(self, data):
         """
-            Extracts the daily event transactions of the users
+        Extracts the daily event transactions of the users
 
-            :param: data is a SuperHub Data object
-            :return:
-            """
+        :param data: is a SuperHub Data object
+        """
         Transactions.__init__(self, data)
         dataclean = data.get_dataset()
         usertrans = {}
@@ -71,13 +74,11 @@ class DailyTransactions(Transactions):
                     uev[evtime].append(pos)
         self.usertrans = usertrans
 
-
     def serialize(self):
         """
         Transforms the transactions from dictionaries to lists
 
-        :param: trans:
-        :return:
+        :returns: Returns a list representation of the transactions
         """
         trans = self.usertrans
         ltrans = []
@@ -91,16 +92,15 @@ class DailyTransactions(Transactions):
                 ltrans.append(l)
         return ltrans
 
-
     def colapse(self):
         """
         Colapses the transactions of a user on a set with all the different items
         in the transactions (basically where has been and when (considering the
         discretization used) during the period of time covered by the transactions
 
-        :param: trans: Dictionary of user/time transactions
-        :return: Dictionary of daily transactions
+       :returns: Dictionary of daily transactions
         """
+        print 'Generating colapsed Transactions ...'
         trans = self.usertrans
         userEvents = []
         for user in trans:
@@ -111,14 +111,15 @@ class DailyTransactions(Transactions):
             userEvents.append(list(items))
         return userEvents
 
-
     def colapse_count(self):
         """
         Colapsed the transactions of a user on a dictionary with all the different items in the
         transactions, counting how many times the user has been at that time at that place (considering
         the discretization used)
-        @return:
+
+        :returns: A list with the count for all users of the times he has been in a place
         """
+        print 'Generating colapsed Transactions ...'
         trans = self.usertrans
         userEvents = []
         for user in trans:
@@ -133,16 +134,11 @@ class DailyTransactions(Transactions):
             userEvents.append(items)
         return userEvents
 
-
     def save(self, rfile):
         """
         Saves the daily transactions in a file
 
-        :param: nfile:
-        :param: application:
-        :param: mxhh:
-        :param: mnhh:
-        :param: scale:
+        :param rfile: File for the output. The function closes the file
         """
         trans = self.usertrans
         for user in trans:
@@ -159,10 +155,11 @@ class DailyTransactions(Transactions):
                 rfile.flush()
         rfile.close()
 
-
     def users_daily_length(self):
         """
         Computes the list of lengths of the daily transactions for all users
+
+        :returns: A list with the count of events of each the users for each day
         """
         transactions = self.usertrans
         fr = []
@@ -173,10 +170,13 @@ class DailyTransactions(Transactions):
                 fr.append(len(userdaytrans))
         return fr
 
-
     def users_prevalence(self):
         """
         Computes the number of daily transactions for all users
+
+        Used to compute user prevalence histograms
+
+        :returns: list with the count of tractactions for each user
         """
         transactions = self.usertrans
         fr = []
@@ -188,21 +188,24 @@ class DailyTransactions(Transactions):
 class DailyDiscretizedTransactions(DailyTransactions):
     """
     Class for the daily discretized transactions
+
+    :param data: STData
+    :param scale: Space distretization
+    :param timeres: Time distretization
     """
     scale = None
     timeres = None
-    def __init__(self, data, scale=100, timeres=4.0):
-        """
-            Extracts the daily event transactions of the users, discretizing
-            the positions to a NxN grid and a time resolution
 
-            :param: application:
-            :param: scale:
-            :return:
-            @param data:
-            @param scale:
-            @param timeres:
-            """
+    def __init__(self, data, scale=100, timeres=4):
+        """
+        Extracts the daily event transactions of the users, discretizing
+        the positions to a NxN grid and a time resolution
+
+        :param: data: STData
+        :param: scale: Space distretization
+        :param: timeres: Time distretization
+
+        """
         self.scale = scale
         self.timeres = timeres
         DailyTransactions.__init__(self, data)
@@ -233,3 +236,73 @@ class DailyDiscretizedTransactions(DailyTransactions):
                 else:
                     uev[evtime].add(pos)
         self.usertrans = userEvents
+
+    def generate_data_matrix(self, minloc=20, mode='af'):
+        """
+        Generates a sparse data matrix from the transactions
+
+        :param int minloc: Minimun number of locations for a user
+        :param string mode:
+
+         * af = location absolute frequency (total number of times)
+         * nf = location normalized frequency for the user (divided by all user locations)
+         * bin = presence/non presence of the location
+
+          if the mode includes 'idf' the td x idf value is computed
+
+        :returns: csc sparse numpy array representing the user locations
+        :rtype: csc sparse matrix
+        """
+        print 'Generating data matrix ...'
+        trans = self.colapse_count()
+        # Computing the idf term
+        nd = 0
+        idf = {}
+        if 'idf' in mode:
+            for user in trans:
+                if len(user) > minloc:
+                    for tr in user:
+                        if tr in idf:
+                            idf[tr] += 1
+                        else:
+                          idf[tr] = 1
+                nd += 1
+        for tr in idf:
+            idf[tr] = log(nd / idf[tr])
+        ## Computing the value
+        lcol = []
+        lrow = []
+        lval = []
+        i = 0
+        for user in trans:
+            if len(user) > minloc:
+                if 'nf' in mode:
+                    usum = reduce(lambda x, y: x + y, [user[v] for v in user])
+                    for tr in user:
+                        lcol.append(item_to_column(tr, self.scale))
+                        lrow.append(i)
+                        if 'idf' in mode:
+                            lval.append(user[tr]/float(usum) * idf[tr])
+                        else:
+                            lval.append(user[tr]/float(usum))
+                if 'af' in mode:
+                    for tr in user:
+                        lcol.append(item_to_column(tr, self.scale))
+                        lrow.append(i)
+                        if 'idf' in mode:
+                            lval.append(user[tr] * idf[tr])
+                        else:
+                            lval.append(user[tr])
+                elif 'bin' in mode:
+                    for tr in user:
+                        lcol.append(item_to_column(tr, self.scale))
+                        lrow.append(i)
+                        if 'idf' in mode:
+                            lval.append(idf[tr])
+                        else:
+                            lval.append(1)
+
+                i += 1
+        datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))), shape=(i, self.scale*self.scale*(24/self.timeres)))
+        return datamat.tocsc()
+

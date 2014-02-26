@@ -16,7 +16,6 @@ Contents:
 
 .. automodule:: SuperHub.Constants
     :members:
-    :undoc-members:
     :show-inheritance:
 
 :mod:`DB` Module
@@ -24,15 +23,13 @@ Contents:
 
 .. automodule:: SuperHub.DB
     :members:
-    :undoc-members:
     :show-inheritance:
 
-:mod:`Data` Module
+:mod:`STData` Module
 ------------------
 
-.. automodule:: SuperHub.Data
+.. automodule:: SuperHub.STData
     :members:
-    :undoc-members:
     :show-inheritance:
 
 :mod:`Descriptive` Module
@@ -40,7 +37,6 @@ Contents:
 
 .. automodule:: SuperHub.Descriptive
     :members:
-    :undoc-members:
     :show-inheritance:
 
 :mod:`Plots` Module
@@ -48,7 +44,6 @@ Contents:
 
 .. automodule:: SuperHub.Plots
     :members:
-    :undoc-members:
     :show-inheritance:
 
 :mod:`Routes` Module
@@ -56,7 +51,6 @@ Contents:
 
 .. automodule:: SuperHub.Routes
     :members:
-    :undoc-members:
     :show-inheritance:
 
 :mod:`Transactions` Module
@@ -64,17 +58,15 @@ Contents:
 
 .. automodule:: SuperHub.Transactions
     :members:
-    :undoc-members:
     :show-inheritance:
+.. inheritance-diagram:: SuperHub.Transactions
 
 :mod:`Util` Module
 ------------------
 
 .. automodule:: SuperHub.Util
     :members:
-    :undoc-members:
     :show-inheritance:
-
 
 
 Indices and tables

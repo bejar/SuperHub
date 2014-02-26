@@ -3,8 +3,8 @@
 \contentsline {section}{\numberline {1.1}Constants}{3}{section.1.1}
 \contentsline {chapter}{\numberline {2}\texttt {DB} Module}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}DB}{5}{section.2.1}
-\contentsline {chapter}{\numberline {3}\texttt {Data} Module}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Data}{7}{section.3.1}
+\contentsline {chapter}{\numberline {3}\texttt {STData} Module}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}STData}{7}{section.3.1}
 \contentsline {chapter}{\numberline {4}\texttt {Descriptive} Module}{9}{chapter.4}
 \contentsline {section}{\numberline {4.1}Descriptive}{9}{section.4.1}
 \contentsline {chapter}{\numberline {5}\texttt {Plots} Module}{11}{chapter.5}
@@ -16,5 +16,5 @@
 \contentsline {chapter}{\numberline {8}\texttt {Util} Module}{17}{chapter.8}
 \contentsline {section}{\numberline {8.1}Util}{17}{section.8.1}
 \contentsline {chapter}{\numberline {9}Indices and tables}{19}{chapter.9}
-\contentsline {chapter}{Python Module Index}{21}{section*.59}
-\contentsline {chapter}{Index}{23}{section*.60}
+\contentsline {chapter}{Python Module Index}{21}{section*.50}
+\contentsline {chapter}{Index}{23}{section*.51}

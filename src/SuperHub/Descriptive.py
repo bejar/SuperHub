@@ -32,7 +32,7 @@ import numpy as np
 
 from Plots import saveHisto, savePlot
 from Constants import homepath
-from Data import Data
+from STData import STData
 from Transactions import DailyTransactions, DailyDiscretizedTransactions
 
 
@@ -54,15 +54,16 @@ def data_histograms(application, lhh=None):
     Outputs the data used to generate the histograms
 
     * Number of daily events
-    * Number of days of users
+    * Number of days of users (prevalence)
     * Accumulated events per hour
-    * Accumulated ecents per weekday
+    * Accumulated events per weekday
+    * Accumulated events per month
 
     :param: application:
     :param: lhh:
     """
     if not lhh: lhh = [(5, 100)]
-    data = Data(homepath, application)
+    data = STData(homepath, application)
     data.read_data()
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     homepathr = homepath + 'Results/'
@@ -98,7 +99,7 @@ def data_histograms(application, lhh=None):
         np.savetxt(homepathr + application + '-daily' + nfile + '.csv',
                    np.array([range(7), np.array(ht) / float(np.sum(ht))]).transpose())
 
-        print 'Computing daily histogram'
+        print 'Computing montly histogram'
         ht = data.monthly_table()
 
         savePlot(range(12), ht, homepath + application + '-daily' + nfile + '.pdf')
@@ -110,10 +111,9 @@ def user_events_histogram(data, scale=100, timeres=4):
     """
     Histogram of the number of places-time a user has been
 
-    :param: scale:
-    :param: application:
-    :param: mxhh:
-    :param: mnhh:
+    :param: data: STData
+    :param: scale: Discretization scale
+    :param: timeres: Time resolution in number of segments from the 24h period
     """
     application = data.application
     mxhh = data.mxhh

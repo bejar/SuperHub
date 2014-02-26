@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=pdflatex 2012.8.30)  20 FEB 2014 17:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=pdflatex 2012.8.30)  26 FEB 2014 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -940,13 +940,13 @@ Chapter 2.
 
 ]
 Chapter 3.
-[7] [8]
-Chapter 4.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 495.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 254.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [9
+) [7] [8]
+Chapter 4.
+[9
 
 ] [10]
 Chapter 5.
@@ -957,14 +957,14 @@ Chapter 5.
 ]
 Chapter 6.
 
-Underfull \hbox (badness 5519) in paragraph at lines 700--700
+Underfull \hbox (badness 5519) in paragraph at lines 656--656
 []\T1/ptm/m/it/10 data\T1/ptm/m/n/10 , \T1/ptm/m/it/10 nfile\T1/ptm/m/n/10 , \T
 1/ptm/m/it/10 scale=100\T1/ptm/m/n/10 , \T1/ptm/m/it/10 supp=30\T1/ptm/m/n/10 ,
  \T1/ptm/m/it/10 timeres=4.0\T1/ptm/m/n/10 , \T1/ptm/m/it/10 co-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--731
+Underfull \hbox (badness 10000) in paragraph at lines 687--687
 []\T1/ptm/m/it/10 data\T1/ptm/m/n/10 , \T1/ptm/m/it/10 lhh=None\T1/ptm/m/n/10 ,
  \T1/ptm/m/it/10 lscale=None\T1/ptm/m/n/10 , \T1/ptm/m/it/10 supp=30\T1/ptm/m/n
 /10 ,
@@ -974,13 +974,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 731--731
 
 ]
 Chapter 7.
+[15]
+<inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.pdf, id=225, 505.89pt x 8
+7.32625pt>
+File: inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.pdf Graphic file (ty
+pe pdf)
+ <use inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.pdf>
+Package pdftex.def Info: inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.p
+df used on input line 901.
+(pdftex.def)             Requested size: 505.88875pt x 87.32603pt.
+File: inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.pdf Graphic file (ty
+pe pdf)
 
-Underfull \hbox (badness 10000) in paragraph at lines 779--779
-[]\T1/ptm/m/it/10 data\T1/ptm/m/n/10 , \T1/ptm/m/it/10 scale=100\T1/ptm/m/n/10 
-,
- []
-
-[15] [16]
+<use inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.pdf>
+Package pdftex.def Info: inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.p
+df used on input line 901.
+(pdftex.def)             Requested size: 469.755pt x 81.08998pt.
+ [16 <./inheritance-41bf35056b7b4b19386ebd00053c44d0f36e76f4.pdf>]
 Chapter 8.
 [17
 
@@ -997,98 +1007,113 @@ Chapter 9.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-[]\T1/ptm/m/n/10 application (Su-per-Hub.Transactions.Transactions at-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
 []\T1/ptm/m/n/10 colapse() (Su-per-Hub.Transactions.DailyTransactions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
 []\T1/ptm/m/n/10 colapse_count() (Su-per-
  []
 
 
-Underfull \hbox (badness 6412) in paragraph at lines 11--12
+Underfull \hbox (badness 6412) in paragraph at lines 6--7
 \T1/ptm/m/n/10 Hub.Transactions.DailyTransactions method),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]\T1/ptm/m/n/10 compute_heavy_hitters() (Su-per-Hub.STData.STData
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
 []\T1/ptm/m/n/10 DailyDiscretizedTransactions (class in Su-per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
+[]\T1/ptm/m/n/10 generate_data_matrix() (Su-per-
+ []
+
+
+Overfull \hbox (1.2002pt too wide) in paragraph at lines 24--26
+\T1/ptm/m/n/10 Hub.Transactions.DailyDiscretizedTransactions
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
 []\T1/ptm/m/n/10 plot_accumulated_events() (in mod-ule Su-per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 []\T1/ptm/m/n/10 save() (Su-per-Hub.Transactions.DailyTransactions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+[]\T1/ptm/m/n/10 select_heavy_hitters() (Su-per-Hub.STData.STData
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
 []\T1/ptm/m/n/10 serialize() (Su-per-Hub.Transactions.DailyTransactions
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+[]\T1/ptm/m/n/10 transaction_routes_many() (in mod-ule Su-per-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+[]\T1/ptm/m/n/10 user_events_histogram() (in mod-ule Su-per-
  []
 
 [23
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
-[]\T1/ptm/m/n/10 transaction_routes_many() (in mod-ule Su-per-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
-[]\T1/ptm/m/n/10 user_events_histogram() (in mod-ule Su-per-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 []\T1/ptm/m/n/10 users_daily_length() (Su-per-
  []
 
 
-Underfull \hbox (badness 6412) in paragraph at lines 99--100
+Underfull \hbox (badness 6412) in paragraph at lines 87--88
 \T1/ptm/m/n/10 Hub.Transactions.DailyTransactions method),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 []\T1/ptm/m/n/10 users_prevalence() (Su-per-
  []
 
 
-Underfull \hbox (badness 6412) in paragraph at lines 100--101
+Underfull \hbox (badness 6412) in paragraph at lines 88--89
 \T1/ptm/m/n/10 Hub.Transactions.DailyTransactions method),
  []
 
 [24
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1013.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1013.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1020.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1020.
  (./SuperHub.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1013.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1013.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1020.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1020.
 
 Package rerunfilecheck Info: File `SuperHub.out' has not changed.
-(rerunfilecheck)             Checksum: 9D6FF51FC16AECD7C85A8B31A22C599D;970.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1013.
+(rerunfilecheck)             Checksum: 098A50A64779F2255ABBF315BE9AD16A;974.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1020.
  ) 
 Here is how much of TeX's memory you used:
- 9032 strings out of 494971
- 126100 string characters out of 3179592
- 217596 words of memory out of 3000000
- 11937 multiletter control sequences out of 15000+200000
+ 9018 strings out of 494971
+ 126002 string characters out of 3179592
+ 217306 words of memory out of 3000000
+ 11931 multiletter control sequences out of 15000+200000
  50721 words of font info for 60 fonts, out of 3000000 for 9000
  61 hyphenation exceptions out of 8191
- 36i,12n,45p,294b,524s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,11n,45p,294b,524s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
@@ -1097,10 +1122,10 @@ uhvbo8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on SuperHub.pdf (28 pages, 114009 bytes).
+Output written on SuperHub.pdf (28 pages, 122515 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
- 375 compressed objects within 4 object streams
- 104 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 360 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

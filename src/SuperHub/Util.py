@@ -23,10 +23,10 @@ __author__ = 'bejar'
 
 def item_key_sort(v):
     """
-    auxiliary function for sorting geo-time events
+    auxiliary function for sorting geo-time events using the t
 
-    :param: v:
-    :return:
+    :param v: item
+    :return: time discretization of the item
     """
     _, _, h = v.split('#')
     return h
@@ -36,11 +36,25 @@ def diff_items(seq):
     """
     Number of different geo point in a sequence
 
-    :param: seq:
-    :return:
+    :param seq: sequence of ST items
+    :return: number of different items in the sequence
     """
     tset = set()
     for s in seq:
         x1, y1, _ = s.split('#')
         tset.add(str(x1) + '#' + str(y1))
     return len(tset)
+
+
+def item_to_column(item, scale):
+    """
+    Transforms an item to a column nuber given the scale of the discretization
+    an item is a string with the format posx#posy#time
+
+    :param string item: string corresponding to two coordinates and a time dicretization
+    :param int scale: value used in the scaling
+    :returns: Integer corresponding to the column of the item
+    :rtype: int
+    """
+    x, y, t = item.split('#')
+    return (int(t) * scale * scale) + (int(y) * scale) + int(x)

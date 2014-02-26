@@ -6,7 +6,7 @@ Clustering
 
 :Description: Clustering
 
-    Generateq clusterings from  user transactions
+    Generate clusterings from  user transactions
 
 :Authors: bejar
     
@@ -19,75 +19,29 @@ Clustering
 
 __author__ = 'bejar'
 
-from Transactions import DailyDiscretizedTransactions
-from scipy.sparse import coo_matrix, csr_matrix
 import numpy as np
 from sklearn.cluster import MiniBatchKMeans, KMeans, AffinityPropagation
 from sklearn.metrics.pairwise import euclidean_distances
 
-
-def item_to_column(item, scale):
-    """
-    Transforms an item to a column nuber given the scale of the discretization
-
-    @param item:
-    @param scale:
-    @return:
-    """
-    x, y, t = item.split('#')
-    return (int(t) * scale * scale) + (int(y) * scale) + int(x)
-
-def generate_data_matrix(trans, scale=100, timeres=4, minloc=20, mode='tf'):
-    """
-    Generates a sparse data matrix from the transactions
-    mode - tf = location frequency for the user
-            bin = presence/non presence of the location
-
-    @param trans:
-    @param mode:
-    @return:
-    """
-    lcol = []
-    lrow = []
-    lval = []
-    i = 0
-    for user in trans:
-        #print user
-        if len(user) > minloc:
-            if mode == 'tf':
-                usum = reduce(lambda x, y: x + y, [user[v] for v in user])
-                for tr in user:
-                    lcol.append(item_to_column(tr, scale))
-                    lrow.append(i)
-                    lval.append(user[tr]/float(usum))
-            elif mode == 'bin':
-                for tr in user:
-                    lcol.append(item_to_column(tr, scale))
-                    lrow.append(i)
-                    lval.append(1)
-
-            i += 1
-
-    datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))), shape=(i, scale*scale*(24/timeres)))
-    return datamat.tocsc()
-
-
-def cluster_colapsed_events(data, scale=100, timeres=4, minloc=20, nclust=10, mode='tf'):
+def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='tf'):
     """
      Generates a clustering of the users by colapsing the transactions of the user events
      the users have to have at least minloc different locations in their transactions
 
-     mode - tf = location frequency for the user
-            bin = presence/non presence of the location
-    :param: data:
-    :return:
+     Args:
+        trans: Transaction object
+
+     KWargs:
+     minloc: Minimum number of locations
+     nclust: Number of clusters
+     mode:
+      * tf = location frequency for the user
+      * bin = presence/non presence of the location
+
     """
-    # Generates the transactions from the user data
-    trans = DailyDiscretizedTransactions(data, scale=scale, timeres=timeres)
-    usertrans = trans.colapse_count()
 
     # Generates a sparse matrix for the transactions
-    dataclust = generate_data_matrix(usertrans,scale=scale, timeres=timeres, minloc=minloc, mode=mode)
+    dataclust = trans.generate_data_matrix(minloc=minloc, mode=mode)
 
     # Clustering with k-means
     k_means = KMeans(init='k-means++', n_clusters=nclust, n_init=10, n_jobs=-1)

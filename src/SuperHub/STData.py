@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: Data
+.. moduleauthor:: Javier Béjar
 
-Data
+STData
 ************
 
-:Description: SuperHub Data class
+:Description: SuperHub STData class
+
+    Representation for Spatio Temporal data, basically latitude, longitude and time events with the user that
+    generated the event
 
     Performs different processings to the data matrix
 
@@ -14,7 +18,7 @@ Data
 
 :Version: 1.0
 
-File: Data
+:File: Data
 
 :Created on: 18/02/2014 10:09
 
@@ -33,16 +37,13 @@ import matplotlib.cm as cm
 from Constants import minLat, maxLat, minLon, maxLon
 
 
-class Data:
+class STData:
     """
-    Class for a superhub dataset
+    Class for a superhub dataset:
 
-    dataset = numpy array
-    application = Name of the data file
-    cpath = Path of the data file
-    mxhh = maximum position of the heavy hitters list
-    mnhh = minimum position of the heavy hitters list
-    lhh = list of users ordered by the number of elements in the dataset
+    :arg path: Sets the path of the file
+    :arg application: Sets the application of the dataset
+
     """
     dataset = None
     application = None
@@ -56,9 +57,10 @@ class Data:
         """
         Just sets the path and application for the dataset
 
-        @param path:
-        @param application:
-        @return:
+
+         :arg path: Sets the path of the file
+         :arg application: Sets the application of the dataset
+
         """
         self.application = application
         self.wpath = path
@@ -68,8 +70,6 @@ class Data:
         """
         Loads the data from the csv file
 
-        :param: application:
-        :return:
         """
         print 'Reading Data ...'
         fname = self.wpath + 'Data/' + self.application + '.csv.bz2'
@@ -85,10 +85,11 @@ class Data:
 
         If the list heavy hitters have already been computed it is reused
 
-        :param: data:
-        :param: mxhh:
-        :param: mnhh:
-        :return: list with the list of users
+        :param int mxhh: initial position of the heavy hitters list
+        :param int mnhh: final position of the heavy hitters list
+
+        :returns: list with the list of users ordered (desc) by number of events
+        :rtype: list
         """
         print 'Computing Heavy Hitters ...'
         if self.lhh is not None:
@@ -114,9 +115,12 @@ class Data:
         Deletes all the events that are not from the heavy hitters
         Returns a new data object only with the heavy hitters
 
-        @param mxhh:
-        @param mnhh:
-        @return: A list of the most active users in the indicated range
+
+        :param int mxhh: initial position of the heavy hitters list
+        :param int mnhh: final position of the heavy hitters list
+
+        :retuns:
+         A list of the most active users in the indicated range
         """
         self.mxhh = mxhh
         self.mnhh = mnhh
@@ -128,10 +132,9 @@ class Data:
     def select_data_users(self, users):
         """
         Selects only the events from the list of users
-        Returns a new object with the selected users
 
-        :param: users: List of users to select
-        :return:
+        :arg list users: List of users to select
+        :returns:  Returns a new object with the selected users
         """
         print 'Selecting Users ...'
         # First transforms the list of users to a set to be efficient
@@ -139,7 +142,7 @@ class Data:
         # computes the boolean array for the selection
         sel = [self.dataset[i][3] in susers for i in range(self.dataset.shape[0])]
         asel = np.array(sel)
-        data = Data(self. wpath, self.application)
+        data = STData(self. wpath, self.application)
         data.dataset = self.dataset[asel]
         return data
 
@@ -148,7 +151,8 @@ class Data:
         """
         Computes the accumulated events by hour for the data table
 
-        :return: An hourly table
+        :returns:
+         A list with the accumulated number of events for each hour of the day
         """
         htable = [0 for i in range(24)]
         for i in range(self.dataset.shape[0]):
@@ -162,7 +166,8 @@ class Data:
         """
         Computes the accumulated events by day for the data table
 
-        :return: A daily table
+        :returns:
+         A list with the accumulated number of events for each day of the week
         """
         htable = [0 for i in range(7)]
         for i in range(self.dataset.shape[0]):
@@ -176,7 +181,8 @@ class Data:
         """
         Computes the accumulated events by month
 
-        @return: A montly rable
+        :returns:
+         A list with the accumulated number of events for each mont of the year
         """
         htable = [0 for i in range(12)]
         for i in range(self.dataset.shape[0]):
@@ -190,9 +196,11 @@ class Data:
         """
         Generates an scale x scale accumulated plot of the events
 
-        :param: data:
-        :param: scale:
-        :param: distrib:
+
+        :param  scale: Scale of the spatial discretization
+        :type scale: int
+        :param distrib: If returns the frequency or the accumulated events
+        :type distrib: bool
         """
         print 'Generating the plot ...'
 
@@ -236,7 +244,8 @@ class Data:
     def get_dataset(self):
         """
         Returns the numpy array that represents the dataset
-        @return:
 
+        :returns:
+            numpy array with the data
         """
         return self.dataset
