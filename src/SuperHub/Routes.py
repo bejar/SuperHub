@@ -81,7 +81,7 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
     print 'Generating plot'
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
-    dataset = data.get_dataset()
+    dataset = data.dataset
     for i in range(dataset.shape[0]):
         posy = int(((dataset[i][0] - minLat) * normLat))
         posx = int(((dataset[i][1] - minLon) * normLon))

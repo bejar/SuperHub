@@ -62,7 +62,8 @@ def data_histograms(application, lhh=None):
     :param: application:
     :param: lhh:
     """
-    if not lhh: lhh = [(5, 100)]
+    if not lhh:
+        lhh = [(5, 100)]
     data = STData(homepath, application)
     data.read_data()
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())

@@ -23,7 +23,7 @@ import numpy as np
 from sklearn.cluster import MiniBatchKMeans, KMeans, AffinityPropagation
 from sklearn.metrics.pairwise import euclidean_distances
 
-def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinity'):
+def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinity',damping=None):
     """
      Generates a clustering of the users by colapsing the transactions of the user events
      the users have to have at least minloc different locations in their transactions
@@ -38,12 +38,13 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
       * adding idf used the inverse document frequency
 
     """
-    print "Clustering Transactions ..."
     # Generates a sparse matrix for the transactions and a list of users
     data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
 
+    print "Clustering Transactions ..."
+
     if alg == 'affinity':
-        ap = AffinityPropagation(damping=0.97)
+        ap = AffinityPropagation(damping=damping)
         ap.fit(data)
 
         ap_labels = ap.labels_
@@ -53,15 +54,18 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
         clusters = {}
         for v in ap_labels:
             cclass[v] += 1
-            clusters['c'+str(v)] = []
+
+        for v in range(cclass.shape[0]):
+            if cclass[v] > 20:
+                clusters['c'+str(v)] = []
 
         for v,u in  zip(ap_labels,users):
             if cclass[v] > 20:
                 clusters['c'+str(v)].append(u)
 
         for c in clusters:
-            if len(clusters[c]) != 0:
-                print c, len(clusters[c])
+            print c, len(clusters[c])
+    return clusters
 
 
 

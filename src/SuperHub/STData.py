@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-from Constants import minLat, maxLat, minLon, maxLon
+from Constants import minLat, maxLat, minLon, maxLon, homepath
 
 
 class STData:
@@ -53,7 +53,7 @@ class STData:
     lhh = None
     datasethh = None
 
-    def __init__(self,path, application):
+    def __init__(self, path, application):
         """
         Just sets the path and application for the dataset
 
@@ -65,7 +65,6 @@ class STData:
         self.application = application
         self.wpath = path
 
-
     def read_data(self):
         """
         Loads the data from the csv file
@@ -73,9 +72,9 @@ class STData:
         """
         print 'Reading Data ...'
         fname = self.wpath + 'Data/' + self.application + '.csv.bz2'
-        self.dataset = loadtxt(fname, skiprows=1, dtype=[('lat', 'f8'), ('lng', 'f8')
-            ,('time', 'i32'), ('user', 'S20')], usecols=(0, 1, 2, 3), delimiter=';', comments='#')
-
+        self.dataset = loadtxt(fname, skiprows=1,
+                               dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
+                               usecols=(0, 1, 2, 3), delimiter=';', comments='#')
 
     def compute_heavy_hitters(self, mxhh, mnhh):
         """
@@ -109,7 +108,6 @@ class STData:
             hhitters = [x for x, y in sorted_x[mxhh:mnhht]]
         return hhitters
 
-
     def select_heavy_hitters(self, mxhh, mnhh):
         """
         Deletes all the events that are not from the heavy hitters
@@ -128,7 +126,6 @@ class STData:
         print 'Selecting Heavy Hitters ...'
         return self.select_data_users(lhh)
 
-
     def select_data_users(self, users):
         """
         Selects only the events from the list of users
@@ -142,10 +139,11 @@ class STData:
         # computes the boolean array for the selection
         sel = [self.dataset[i][3] in susers for i in range(self.dataset.shape[0])]
         asel = np.array(sel)
-        data = STData(self. wpath, self.application)
+        data = STData(self.wpath, self.application)
         data.dataset = self.dataset[asel]
+        data.mxhh = self.mxhh
+        data.mnhh = self.mnhh
         return data
-
 
     def hourly_table(self):
         """
@@ -161,7 +159,6 @@ class STData:
             htable[evtime] += 1
         return htable
 
-
     def daily_table(self):
         """
         Computes the accumulated events by day for the data table
@@ -175,7 +172,6 @@ class STData:
             evtime = stime[6]
             htable[evtime] += 1
         return htable
-
 
     def monthly_table(self):
         """
@@ -191,16 +187,13 @@ class STData:
             htable[evtime - 1] += 1
         return htable
 
-
-    def contingency(self, scale, distrib=True):
+    def contingency(self, scale, distrib=True, dataname=''):
         """
         Generates an scale x scale accumulated plot of the events
 
-
-        :param  scale: Scale of the spatial discretization
-        :type scale: int
-        :param distrib: If returns the frequency or the accumulated events
-        :type distrib: bool
+        :param int scale: Scale of the spatial discretization
+        :param bool distrib: If returns the frequency or the accumulated events
+        :param string dataname: Name to append to the filename
         """
         print 'Generating the plot ...'
 
@@ -220,8 +213,8 @@ class STData:
                     cont[scale - posy - 1, posx - 1] = 1
             except IndexError:
                 print self.dataset[i][0], self.dataset[i][1]
-            if distrib:
-                cont = cont / np.sum(cont)
+        if distrib:
+            cont = cont / np.max(cont)
 
         fig = plt.figure()
 
@@ -235,17 +228,49 @@ class STData:
         if distrib:
             plt.colorbar(ticks=np.round(np.linspace(0, 1, 10), 2),
                          orientation='vertical')
+        nfile = self.application + '-' + dataname
 
-        #    fig.savefig(cpath+'/contingency'+str(nsync)+'.pdf', orientation='landscape',format='pdf')
+        fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape',format='pdf')
 
-        plt.show()
+        #plt.show()
 
-
-    def get_dataset(self):
+    def plot_events(self, scale, distrib=True, dataname=''):
         """
-        Returns the numpy array that represents the dataset
+        Generates an scale x scale plot of the events
+        Every event is represented by a point in the graph
 
-        :returns:
-            numpy array with the data
+        :param int scale: Scale of the spatial discretization
+        :param bool distrib: If returns the frequency or the accumulated events
+        :param string dataname: Name to append to the filename
         """
-        return self.dataset
+        print 'Generating the events plot ...'
+        fig = plt.figure()
+
+        ax = fig.add_subplot(111)
+
+        cont = np.zeros((scale, scale))
+
+        normLat = scale / (maxLat - minLat)
+        normLon = scale / (maxLon - minLon)
+        for i in range(self.dataset.shape[0]):
+            posy = int(((self.dataset[i][0] - minLat) * normLat))
+            posx = int(((self.dataset[i][1] - minLon) * normLon))
+            if distrib:
+                cont[scale - posy - 1, posx - 1] += 1
+            else:
+                cont[scale - posy - 1, posx - 1] = 1
+
+        if distrib:
+            cont = cont / np.max(cont)
+            plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
+        else:
+            for i in range(cont.shape[0]):
+                for j in range(cont.shape[1]):
+                    if cont[i, j] != 0:
+                         plt.plot(j, scale - i, 'k.')
+        today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+        nfile = self.application + '-' + dataname
+        if self.mnhh is not None and self.mnhh is not None:
+            nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
+        nfile += '-s' + str(scale) + '-ts' + today
+        fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape', format='pdf')

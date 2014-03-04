@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="Moving things">
+    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Clustering.py" afterPath="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/DB.py" afterPath="$PROJECT_DIR$/src/SuperHub/DB.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Descriptive.py" afterPath="$PROJECT_DIR$/src/SuperHub/Descriptive.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Plots.py" afterPath="$PROJECT_DIR$/src/SuperHub/Plots.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Routes.py" afterPath="$PROJECT_DIR$/src/SuperHub/Routes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/STData.py" afterPath="$PROJECT_DIR$/src/SuperHub/STData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SuperHub.iml" afterPath="$PROJECT_DIR$/.idea/SuperHub.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Transactions.py" afterPath="$PROJECT_DIR$/src/SuperHub/Transactions.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
@@ -28,73 +34,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="SuperHubTest.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="71" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.6632653" vertical-offset="605" max-vertical-offset="1755">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Transactions.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="282" column="1" selection-start="8640" selection-end="8640" vertical-scroll-proportion="0.0" vertical-offset="4188" max-vertical-offset="4665">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Clustering.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="48" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1545">
+              <folding>
+                <element signature="e#225#243#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="STData.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="81" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0" vertical-offset="899" max-vertical-offset="4230">
+              <folding>
+                <element signature="e#432#447#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Descriptive.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/Descriptive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="25" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="2145">
+            <state line="123" column="80" selection-start="3652" selection-end="3692" vertical-scroll-proportion="0.0" vertical-offset="1430" max-vertical-offset="2055">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Plots.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
+      <file leaf-file-name="SuperHubTest2.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHubTest2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2010">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Util.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="765">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Routes.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Routes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="28" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2145">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="45" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="600">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transactions.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="14" selection-start="2999" selection-end="2999" vertical-scroll-proportion="-2.4951456" vertical-offset="2980" max-vertical-offset="3495">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DB.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="28" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="5730">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="28" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3585">
+            <state line="34" column="32" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="765">
               <folding />
             </state>
           </provider>
@@ -147,23 +139,30 @@
         <option value="$PROJECT_DIR$/SuperHub/Routes.py" />
         <option value="$PROJECT_DIR$/SuperHub/Transactions.py" />
         <option value="$PROJECT_DIR$/SuperHub/Data.py" />
-        <option value="$PROJECT_DIR$/doc/conf.py" />
-        <option value="$PROJECT_DIR$/src/SuperHubTest.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Data.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Constants.py" />
+        <option value="$PROJECT_DIR$/src/GetData.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/Data.py" />
+        <option value="$PROJECT_DIR$/doc/SuperHub.rst" />
+        <option value="$PROJECT_DIR$/doc/conf.py" />
+        <option value="$PROJECT_DIR$/doc/index.rst" />
+        <option value="$PROJECT_DIR$/src/SuperHub/Util.py" />
+        <option value="$PROJECT_DIR$/src/SuperHubTest2.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/Routes.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Descriptive.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Plots.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Routes.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Util.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Transactions.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/STData.py" />
+        <option value="$PROJECT_DIR$/src/SuperHubTest.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="49" />
-    <option name="width" value="1001" />
-    <option name="height" value="719" />
+    <option name="x" value="23" />
+    <option name="y" value="36" />
+    <option name="width" value="1232" />
+    <option name="height" value="871" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -223,6 +222,20 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="SuperHub" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -241,11 +254,11 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="69" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="options.lastSelected" value="fileTemplates" />
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Docencia/ECSDI/lab/ECSDILab" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="86" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="790" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="790" />
@@ -288,6 +301,42 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SuperHub" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHubTest.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetData" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/GetData.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SuperHubTest2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHubTest2.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -338,22 +387,6 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="docs" factoryName="Docutils task">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -369,6 +402,22 @@
       <option name="docutils_params" value="" />
       <option name="docutils_task" value="" />
       <option name="docutils_open_in_browser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="docs" factoryName="Sphinx task">
@@ -448,12 +497,16 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.SuperHubTest" />
+      <item index="1" class="java.lang.String" itemvalue="Python.GetData" />
+      <item index="2" class="java.lang.String" itemvalue="Python.SuperHubTest2" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="3">
         <item index="0" class="java.lang.String" itemvalue="Python.SuperHubTest" />
+        <item index="1" class="java.lang.String" itemvalue="Python.SuperHubTest2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.GetData" />
       </list>
     </recent_temporary>
   </component>
@@ -542,7 +595,27 @@
       <created>1392910405302</created>
       <updated>1392910405302</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Moving things">
+      <created>1392910763701</created>
+      <updated>1392910763701</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Moving things">
+      <created>1392912619750</created>
+      <updated>1392912619750</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Adding Clustering">
+      <created>1393320176970</created>
+      <updated>1393320176970</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Adding Clustering">
+      <created>1393416630076</created>
+      <updated>1393416630076</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Adding Clustering">
+      <created>1393925475674</created>
+      <updated>1393925475674</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -566,24 +639,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="49" width="1001" height="719" extended-state="0" />
+    <frame x="23" y="36" width="1232" height="871" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31979695" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939634" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3187251" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939634" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18903592" sideWeight="0.7170051" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22028689" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18898305" sideWeight="0.7170051" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20580913" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28249568" sideWeight="0.50044924" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2805851" sideWeight="0.49955076" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32625994" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27888447" sideWeight="0.5004177" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27715877" sideWeight="0.49874687" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32536522" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39895013" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -608,50 +681,36 @@
     <MESSAGE value="Heavy refactoring" />
     <MESSAGE value="Minor fix" />
     <MESSAGE value="Moving things" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moving things" />
+    <MESSAGE value="Adding Clustering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Clustering" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Descriptive.py">
+    <entry file="file://$PROJECT_DIR$/doc/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="25" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2145">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2010">
-          <folding />
-        </state>
+        <state line="10" column="72" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="4365" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="765">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="28" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2145">
-          <folding />
-        </state>
+        <state line="15" column="0" selection-start="28" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="2160" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="600">
-          <folding />
-        </state>
+        <state line="10" column="45" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="600" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="3555">
+        <state line="6" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="3585">
           <folding />
         </state>
       </provider>
@@ -663,25 +722,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Data.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="28" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3705">
+        <state line="2" column="0" selection-start="28" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3735">
+          <folding>
+            <element signature="e#432#447#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1005">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Descriptive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="5" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1965">
-          <folding />
-        </state>
+        <state line="23" column="5" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1965" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="5" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="2190">
-          <folding />
-        </state>
+        <state line="38" column="5" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="2190" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
@@ -698,46 +762,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Data.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="211" column="8" selection-start="6151" selection-end="6151" vertical-scroll-proportion="0.0" vertical-offset="3165" max-vertical-offset="3525">
-          <folding />
+          <folding>
+            <element signature="e#432#447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <folding />
-        </state>
+        <state line="32" column="5" selection-start="526" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2115">
-          <folding />
-        </state>
+        <state line="85" column="0" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2115" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Descriptive.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="39" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="104" max-vertical-offset="2040">
-          <folding />
-        </state>
+        <state line="22" column="39" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="104" max-vertical-offset="2040" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1980">
-          <folding />
-        </state>
+        <state line="22" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1980" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="20" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="660">
-          <folding />
-        </state>
+        <state line="38" column="20" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0" vertical-offset="110" max-vertical-offset="660" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
@@ -747,10 +803,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Data.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="211" column="8" selection-start="6160" selection-end="6160" vertical-scroll-proportion="0.0" vertical-offset="3035" max-vertical-offset="3525">
-          <folding />
+          <folding>
+            <element signature="e#432#447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -761,9 +819,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="348" column="7" selection-start="10402" selection-end="10402" vertical-scroll-proportion="0.0" vertical-offset="5220" max-vertical-offset="5310">
+        <state line="31" column="30" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="765">
           <folding />
         </state>
       </provider>
@@ -771,6 +829,27 @@
     <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="348" column="7" selection-start="10402" selection-end="10402" vertical-scroll-proportion="0.0" vertical-offset="5220" max-vertical-offset="5310">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="30" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="348" column="7" selection-start="10402" selection-end="10402" vertical-scroll-proportion="0.0" vertical-offset="5220" max-vertical-offset="5310">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="1" selection-start="1143" selection-end="1143" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="750">
           <folding />
         </state>
       </provider>
@@ -787,6 +866,13 @@
         <state line="68" column="0" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2100" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="19" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="735">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="24" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="5070" />
@@ -797,63 +883,128 @@
         <state line="68" column="0" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2100" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/348993582/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4999" column="4" selection-start="171100" selection-end="171100" vertical-scroll-proportion="0.33194155" vertical-offset="74826" max-vertical-offset="76080" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TweetsLanguage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="3" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+    <entry file="file://$PROJECT_DIR$/src/GetData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="28" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5580">
-          <folding />
-        </state>
+        <state line="26" column="47" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
+        <state line="33" column="39" selection-start="598" selection-end="598" vertical-scroll-proportion="0.79571986" vertical-offset="86" max-vertical-offset="600" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Descriptive.py">
+    <entry file="file://$PROJECT_DIR$/doc/SuperHub.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="25" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2190">
-          <folding />
-        </state>
+        <state line="30" column="27" selection-start="507" selection-end="507" vertical-scroll-proportion="0.8754864" vertical-offset="0" max-vertical-offset="1215" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
+    <entry file="file://$PROJECT_DIR$/doc/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2010">
+        <state line="33" column="33" selection-start="1360" selection-end="1360" vertical-scroll-proportion="0.51859504" vertical-offset="244" max-vertical-offset="4380" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/index.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260" />
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib64/python2.7/site-packages/sklearn/mixture/dpgmm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="508" column="0" selection-start="20993" selection-end="20993" vertical-scroll-proportion="0.33268481" vertical-offset="7449" max-vertical-offset="11400" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="228" column="39" selection-start="7608" selection-end="7608" vertical-scroll-proportion="0.0" vertical-offset="3149" max-vertical-offset="3630">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="28" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
+        <state line="112" column="0" selection-start="2899" selection-end="2994" vertical-scroll-proportion="0.0" vertical-offset="1239" max-vertical-offset="2010">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="765">
+        <state line="28" column="32" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Data.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="28" selection-end="201" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3615">
+        <state line="39" column="0" selection-start="625" selection-end="625" vertical-scroll-proportion="1.1938776" vertical-offset="0" max-vertical-offset="2010">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="32" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="74" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Descriptive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="80" selection-start="3652" selection-end="3692" vertical-scroll-proportion="0.0" vertical-offset="1430" max-vertical-offset="2055">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="48" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="1545">
+          <folding>
+            <element signature="e#225#243#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="14" selection-start="2999" selection-end="2999" vertical-scroll-proportion="-2.4951456" vertical-offset="2980" max-vertical-offset="3495">
+        <state line="282" column="1" selection-start="8640" selection-end="8640" vertical-scroll-proportion="0.0" vertical-offset="4188" max-vertical-offset="4665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="81" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0" vertical-offset="899" max-vertical-offset="4230">
+          <folding>
+            <element signature="e#432#447#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="71" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.6632653" vertical-offset="605" max-vertical-offset="1755">
           <folding />
         </state>
       </provider>

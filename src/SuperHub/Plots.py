@@ -56,7 +56,7 @@ def saveHisto(data, bins, fname):
     #    ax.set_xlim(min(data), 1500)
     #    ax.set_ylim(0, 0.1)
     ax.grid(True)
-    title= fname.split('/')
+    title = fname.split('/')
     plt.title(title[-1])
 
     fig.savefig(fname, orientation='landscape', format='pdf')
@@ -73,7 +73,7 @@ def savePlot(axis, data, fname):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     plt.plot(axis, data)
-    title= fname.split('/')
+    title = fname.split('/')
     plt.title(title[-1])
     fig.savefig(fname, orientation='landscape', format='pdf')
 

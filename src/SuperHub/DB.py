@@ -226,6 +226,7 @@ def getApplicationDataOne(application):
 
 def getTweets():
     """
+    Gets tweets texts from the database
 
     :param: application:
     """

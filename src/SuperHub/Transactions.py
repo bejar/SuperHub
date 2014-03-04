@@ -56,7 +56,7 @@ class DailyTransactions(Transactions):
         :param data: is a SuperHub Data object
         """
         Transactions.__init__(self, data)
-        dataclean = data.get_dataset()
+        dataclean = data.dataset
         usertrans = {}
         for i in range(dataclean.shape[0]):
             user = str(int(dataclean[i][3]))
@@ -113,15 +113,15 @@ class DailyTransactions(Transactions):
 
     def colapse_count(self):
         """
-        Colapsed the transactions of a user on a dictionary with all the different items in the
+        Colapses the transactions of a user on a dictionary with all the different items in the
         transactions, counting how many times the user has been at that time at that place (considering
         the discretization used)
 
-        :returns: A list with the count for all users of the times he has been in a place
+        :returns: A dictionary of users with the count of the times they has been in a place/time
         """
         print 'Generating colapsed Transactions ...'
         trans = self.usertrans
-        userEvents = []
+        userEvents = {}
         for user in trans:
             items = {}
             for day in trans[user]:
@@ -131,7 +131,7 @@ class DailyTransactions(Transactions):
                         items[utrans] += 1
                     else:
                         items[utrans] = 1
-            userEvents.append(items)
+            userEvents[user] = items
         return userEvents
 
     def save(self, rfile):
@@ -209,7 +209,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
         self.scale = scale
         self.timeres = timeres
         DailyTransactions.__init__(self, data)
-        dataclean = data.get_dataset()
+        dataclean = data.dataset
         userEvents = {}
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
@@ -261,8 +261,8 @@ class DailyDiscretizedTransactions(DailyTransactions):
         idf = {}
         if 'idf' in mode:
             for user in trans:
-                if len(user) > minloc:
-                    for tr in user:
+                if len(trans[user]) > minloc:
+                    for tr in trans[user]:
                         if tr in idf:
                             idf[tr] += 1
                         else:
@@ -277,27 +277,28 @@ class DailyDiscretizedTransactions(DailyTransactions):
         lusers = []
         i = 0
         for user in trans:
-            if len(user) > minloc:
+            if len(trans[user]) > minloc:
                 lusers.append(user)
+                lplaces = trans[user]
                 if 'nf' in mode:
-                    usum = reduce(lambda x, y: x + y, [user[v] for v in user])
-                    for tr in user:
+                    usum = reduce(lambda x, y: x + y, [lplaces[v] for v in lplaces])
+                    for tr in lplaces:
                         lcol.append(item_to_column(tr, self.scale))
                         lrow.append(i)
                         if 'idf' in mode:
-                            lval.append(user[tr]/float(usum) * idf[tr])
+                            lval.append(lplaces[tr]/float(usum) * idf[tr])
                         else:
-                            lval.append(user[tr]/float(usum))
+                            lval.append(lplaces[tr]/float(usum))
                 if 'af' in mode:
-                    for tr in user:
+                    for tr in lplaces:
                         lcol.append(item_to_column(tr, self.scale))
                         lrow.append(i)
                         if 'idf' in mode:
-                            lval.append(user[tr] * idf[tr])
+                            lval.append(lplaces[tr] * idf[tr])
                         else:
-                            lval.append(user[tr])
+                            lval.append(lplaces[tr])
                 elif 'bin' in mode:
-                    for tr in user:
+                    for tr in lplaces:
                         lcol.append(item_to_column(tr, self.scale))
                         lrow.append(i)
                         if 'idf' in mode:
@@ -307,5 +308,5 @@ class DailyDiscretizedTransactions(DailyTransactions):
 
                 i += 1
         datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))), shape=(i, self.scale*self.scale*(24/self.timeres)))
-        return datamat.tocsc(),lusers
+        return datamat.tocsc(), lusers
 
