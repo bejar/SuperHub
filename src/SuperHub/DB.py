@@ -78,16 +78,16 @@ def getApplicationData(application):
     #               'lat': {'$gt': minLat, '$lt': maxLat},
     #               'lng': {'$gt': minLon, '$lt': maxLon},
     #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
-    c = col.find({'app': application
-                 }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    c = col.find({'app': application}, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
 
     subprocess.call('rm ' + homepath + application + '.csv.bz2')
     print 'Saving Data ...'
     for t in c:
-    #        stime=time.localtime(t['interval'])
-    #        evtime=time.strftime('%Y%m%d',stime)
-    #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
-    #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])+',\''+str(t['text']).strip().replace('\n','')+'\'\n')
+        #        stime=time.localtime(t['interval'])
+        #        evtime=time.strftime('%Y%m%d',stime)
+        #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
+        #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])
+        # +',\''+str(t['text']).strip().replace('\n','')+'\'\n')
         if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
             rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';'
                         + str(t['interval']) + ';' + str(t['user'])
@@ -112,7 +112,6 @@ def getLApplicationData(lapplication):
 
     db.authenticate(mguser, password=mgpass)
 
-
     #    names= db.collection_names()
     appname = ''
     apfiles = []
@@ -131,28 +130,29 @@ def getLApplicationData(lapplication):
 
     col = db['sndata']
 
-    for application,apfile in zip(lapplication,apfiles):
+    for application, apfile in zip(lapplication, apfiles):
         print 'Retrieving Data ...', application
         c = col.find({'app': application,
                       'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                     }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+                      'lng': {'$gt': minLon, '$lt': maxLon}}
+                     , {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
         apfile.write('#lat; lng; time; user\n')
         print 'Saving Data ...', application
         for t in c:
-        #stime=time.localtime(t['interval'])
-        #evtime=time.strftime('%Y%m%d',stime)
-        #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
-        #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])+',\''+str(t['text']).strip().replace('\n','')+'\'\n')
+            #stime=time.localtime(t['interval'])
+            #evtime=time.strftime('%Y%m%d',stime)
+            #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
+            #rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])
+            # +',\''+str(t['text']).strip().replace('\n','')+'\'\n')
             if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
                 rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
-                    t['user']) + '\n')#+';'+t['geohash']+'\n')
+                    t['user']) + '\n')  #+';'+t['geohash']+'\n')
                 apfile.write(str(t['lat']) + ';' + str(t['lng']) + ';' + str(t['interval']) + ';' + str(
-                    t['user']) + '\n')#+';'+t['geohash']+'\n')
+                    t['user']) + '\n')  #+';'+t['geohash']+'\n')
     rfile.close()
     subprocess.call(['bzip2 '], [homepath + 'Data/' + application + '.csv'])
 
-    for f,n in zip(apfiles,apnames):
+    for f, n in zip(apfiles, apnames):
         f.close()
         subprocess.call(['bzip2 '], [n])
     print 'Done'
@@ -216,11 +216,31 @@ def getApplicationDataOne(application):
     #    names= db.collection_names()
     col = db['sndata']
     c = col.find_one({'app': application,
-                  'lat': {'$gt': minLat, '$lt': maxLat},
-                  'lng': {'$gt': minLon, '$lt': maxLon},
-                 }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+                      'lat': {'$gt': minLat, '$lt': maxLat},
+                      'lng': {'$gt': minLon, '$lt': maxLon},
+                     }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
     #c = col.find_one({'app': application})
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(c)
 
+
+def getTweets():
+    """
+
+    :param: application:
+    """
+    client = MongoClient(mgdb)
+
+    db = client.superhub
+
+    db.authenticate(mguser, password=mgpass)
+
+
+    #    names= db.collection_names()
+    col = db['sndata']
+    c = col.find({'app': 'twitter',
+                      'lat': {'$gt': minLat, '$lt': maxLat},
+                      'lng': {'$gt': minLon, '$lt': maxLon},
+                     }, {'text': 1})
+    return c
 

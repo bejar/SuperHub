@@ -251,7 +251,8 @@ class DailyDiscretizedTransactions(DailyTransactions):
           if the mode includes 'idf' the td x idf value is computed
 
         :returns: csc sparse numpy array representing the user locations
-        :rtype: csc sparse matrix
+             and a list of the selected users
+        :rtype: csc sparse matrix, list
         """
         print 'Generating data matrix ...'
         trans = self.colapse_count()
@@ -273,9 +274,11 @@ class DailyDiscretizedTransactions(DailyTransactions):
         lcol = []
         lrow = []
         lval = []
+        lusers = []
         i = 0
         for user in trans:
             if len(user) > minloc:
+                lusers.append(user)
                 if 'nf' in mode:
                     usum = reduce(lambda x, y: x + y, [user[v] for v in user])
                     for tr in user:
@@ -304,5 +307,5 @@ class DailyDiscretizedTransactions(DailyTransactions):
 
                 i += 1
         datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))), shape=(i, self.scale*self.scale*(24/self.timeres)))
-        return datamat.tocsc()
+        return datamat.tocsc(),lusers
 
