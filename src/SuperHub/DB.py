@@ -224,7 +224,7 @@ def getApplicationDataOne(application):
     pp.pprint(c)
 
 
-def getTweets():
+def getTweets(time=None):
     """
     Gets tweets texts from the database
 
@@ -242,6 +242,7 @@ def getTweets():
     c = col.find({'app': 'twitter',
                       'lat': {'$gt': minLat, '$lt': maxLat},
                       'lng': {'$gt': minLon, '$lt': maxLon},
-                     }, {'text': 1})
+                      'interval': {'$gt': time}
+                     }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
     return c
 

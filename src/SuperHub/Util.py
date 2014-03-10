@@ -20,6 +20,7 @@ Util
 
 __author__ = 'bejar'
 
+import string
 
 def item_key_sort(v):
     """
@@ -58,3 +59,12 @@ def item_to_column(item, scale):
     """
     x, y, t = item.split('#')
     return (int(t) * scale * scale) + (int(y) * scale) + int(x)
+
+
+def strip_nl(val):
+    """
+    Deletes the CR of the string and deletes leading and trailing spaces
+    @param val:
+    @return:
+    """
+    return (string.lstrip(string.rstrip(val[:len(val)-1])))
