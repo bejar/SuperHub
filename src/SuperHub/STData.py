@@ -274,3 +274,12 @@ class STData:
             nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
         nfile += '-s' + str(scale) + '-ts' + today
         fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape', format='pdf')
+
+    def generate_user_dict(self):
+        res={}
+        for i in range(self.dataset.shape[0]):
+            if self.dataset[i][3].strip() not in res:
+                res[self.dataset[i][3].strip()]=1
+            else:
+                res[self.dataset[i][3].strip()]+=1
+        return res

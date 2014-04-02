@@ -30,12 +30,14 @@ from pymongo import MongoClient
 import pymysql
 from pymysql.err import MySQLError
 
-from Constants import minLat, maxLat, minLon, maxLon, homepath
-from Constants import mgdb, mgpass, mguser
+from Constants import homepath
+from Constants import mgpass, mguser, bcnparam, milanparam
 from Constants import msqldb, msqldbs, msqlpass, msqluser
 
 
-def getApplicationData2():
+def getApplicationData2(cityparam):
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -55,13 +57,15 @@ def getApplicationData2():
     print 'The End'
 
 
-def getApplicationData(application):
+def getApplicationData(cityparam, application):
     """Get the data events from the database and saves it in a csv file
 
     :param: application
     :param: cpath
     :param: square
     """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -70,9 +74,9 @@ def getApplicationData(application):
 
     #    names= db.collection_names()
     print 'Retrieving Data ...'
-    rfile = open(homepath + application + '.csv', 'w')
+    rfile = open(homepath + 'Data/' + application  + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
-    rfile.write('#lat; lng; time; user\n')
+    rfile.write('#lat; lng; time; user; geohash\n')
     col = db['sndata']
     # c = col.find({'app': application,
     #               'lat': {'$gt': minLat, '$lt': maxLat},
@@ -80,7 +84,7 @@ def getApplicationData(application):
     #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
     c = col.find({'app': application}, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
 
-    subprocess.call('rm ' + homepath + application + '.csv.bz2')
+    #subprocess.call('rm ' + homepath + 'Data/' + application + '.csv.bz2')
     print 'Saving Data ...'
     for t in c:
         #        stime=time.localtime(t['interval'])
@@ -93,11 +97,11 @@ def getApplicationData(application):
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
     rfile.close()
-    subprocess.call('bzip2 ' + homepath + application + '.csv')
+    #subprocess.call('bzip2 ' + homepath + 'Data/' + application + '.csv')
     print 'Done'
 
 
-def getLApplicationData(lapplication):
+def getLApplicationData(cityparam, lapplication):
     """
     Retrieves data from a lists of Social applications
     Saves an individual file for each application
@@ -105,6 +109,8 @@ def getLApplicationData(lapplication):
 
     :param lapplication:
     """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
 
     client = MongoClient(mgdb)
 
@@ -158,12 +164,14 @@ def getLApplicationData(lapplication):
     print 'Done'
 
 
-def transferApplicationData(application):
+def transferApplicationData(cityparam, application):
     """
     Trasfers data from
 
     :param: application:
     """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
 
     client = MongoClient(mgdb)
     db = client.superhub
@@ -201,11 +209,14 @@ def transferApplicationData(application):
                 con.commit()
 
 
-def getApplicationDataOne(application):
+def getApplicationDataOne(cityparam, application):
     """
 
     :param: application:
     """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
+
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -215,21 +226,24 @@ def getApplicationDataOne(application):
 
     #    names= db.collection_names()
     col = db['sndata']
-    c = col.find_one({'app': application,
-                      'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                     }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
-    #c = col.find_one({'app': application})
+    # c = col.find_one({'app': application,
+    #                   'lat': {'$gt': minLat, '$lt': maxLat},
+    #                   'lng': {'$gt': minLon, '$lt': maxLon},
+    #                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    c = col.find_one({'app': application})
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(c)
 
 
-def getTweets(time=None):
+def getTweets(cityparam, time=None):
     """
     Gets tweets texts from the database
 
     :param: application:
     """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
+
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -243,6 +257,6 @@ def getTweets(time=None):
                       'lat': {'$gt': minLat, '$lt': maxLat},
                       'lng': {'$gt': minLon, '$lt': maxLon},
                       'interval': {'$gt': time}
-                     }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+                     }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
     return c
 
