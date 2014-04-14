@@ -66,6 +66,7 @@ def getApplicationData(cityparam, application):
     """
     mgdb = cityparam[0]
     minLat, maxLat, minLon, maxLon = cityparam[1]
+    cityname = cityparam[2]
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -74,7 +75,7 @@ def getApplicationData(cityparam, application):
 
     #    names= db.collection_names()
     print 'Retrieving Data ...'
-    rfile = open(homepath + 'Data/' + application  + '.csv', 'w')
+    rfile = open(homepath + 'Data/' + cityname +'-'+ application  + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user; geohash\n')
     col = db['sndata']
