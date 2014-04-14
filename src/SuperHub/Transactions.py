@@ -24,7 +24,7 @@ import time
 
 import numpy as np
 
-from Constants import minLat, maxLat, minLon, maxLon
+#from Constants import minLat, maxLat, minLon, maxLon
 from Util import item_to_column
 from scipy.sparse import coo_matrix
 from math import log
@@ -210,6 +210,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
         self.timeres = timeres
         DailyTransactions.__init__(self, data)
         dataclean = data.dataset
+        minLat, maxLat, minLon, maxLon = data.city[1]
         userEvents = {}
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)

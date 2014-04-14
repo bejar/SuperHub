@@ -29,14 +29,10 @@ msqldb = 'polaris.lsi.upc.edu'
 msqluser = 'superhub'
 msqlpass = 'superhub'
 msqldbs = 'SuperHub'
-minLat = 41.24
-maxLat = 41.52
-minLon = 1.95
-maxLon = 2.34
 # 45.467 9.200
 bcncoord = (41.24, 41.52, 1.95, 2.34)
 milancoord = (45.33, 45.59, 9.03, 9.37)
-hlsnkcoord = (60.02,60.30,24.72,25.10)
+hlsnkcoord = (60.02, 60.30, 24.72, 25.10)
 homepath = '/home/bejar/Data/SuperHub/'
 bcnparam = (mgdbbcn, bcncoord,'bcn')
 milanparam = (mgdbmilan, milancoord, 'milan')

@@ -27,7 +27,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-from Constants import minLat, maxLat, minLon, maxLon, homepath
+from Constants import homepath
 
 
 class TIJoinData:

@@ -31,7 +31,7 @@ import operator
 import numpy as np
 import matplotlib.pyplot as plt
 
-from Constants import homepath, minLon, minLat, maxLon, maxLat
+from Constants import homepath
 from Transactions import DailyDiscretizedTransactions
 from Util import item_key_sort, diff_items
 
@@ -79,6 +79,7 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
     cont = np.zeros((scale, scale))
 
     print 'Generating plot'
+    minLat, maxLat, minLon, maxLon = data.city[1]
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
     dataset = data.dataset

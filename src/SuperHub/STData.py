@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-from Constants import minLat, maxLat, minLon, maxLon, homepath
+from Constants import homepath
 
 
 class STData:
@@ -73,7 +73,7 @@ class STData:
 
         """
         print 'Reading Data ...'
-        fname = self.wpath + 'Data/' + self.city + '-' +self.application + '.csv.bz2'
+        fname = self.wpath + 'Data/' + self.city[2] + '-' +self.application + '.csv.bz2'
         self.dataset = loadtxt(fname, skiprows=1,
                                dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
                                usecols=(0, 1, 2, 3), delimiter=';', comments='#')
@@ -141,7 +141,7 @@ class STData:
         # computes the boolean array for the selection
         sel = [self.dataset[i][3] in susers for i in range(self.dataset.shape[0])]
         asel = np.array(sel)
-        data = STData(self.wpath, self.application)
+        data = STData(self.wpath, self.city, self.application)
         data.dataset = self.dataset[asel]
         data.mxhh = self.mxhh
         data.mnhh = self.mnhh
@@ -200,6 +200,7 @@ class STData:
         print 'Generating the plot ...'
 
         cont = np.zeros((scale, scale))
+        minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
 
@@ -232,7 +233,7 @@ class STData:
                          orientation='vertical')
         nfile = self.application + '-' + dataname
 
-        fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape',format='pdf')
+        fig.savefig(homepath + 'Results/' + self.city[2] + '-'+ nfile + '.pdf', orientation='landscape',format='pdf')
 
         #plt.show()
 
@@ -251,7 +252,7 @@ class STData:
         ax = fig.add_subplot(111)
 
         cont = np.zeros((scale, scale))
-
+        minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
         for i in range(self.dataset.shape[0]):
@@ -275,7 +276,7 @@ class STData:
         if self.mnhh is not None and self.mnhh is not None:
             nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
         nfile += '-s' + str(scale) + '-ts' + today
-        fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape', format='pdf')
+        fig.savefig(homepath + 'Results/' + self.city[2] + '-' +nfile + '.pdf', orientation='landscape', format='pdf')
 
     def generate_user_dict(self):
         res={}
