@@ -35,7 +35,9 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
 from Constants import homepath
+import pygmaps
 
+circlesize = 15000
 
 class STData:
     """
@@ -237,46 +239,131 @@ class STData:
 
         #plt.show()
 
-    def plot_events(self, scale, distrib=True, dataname=''):
+    def plot_events(self, scale, distrib=True, dataname='', timeres=0):
         """
         Generates an scale x scale plot of the events
         Every event is represented by a point in the graph
+        the ouput is a pdf file and an html file that uses google maps
 
         :param int scale: Scale of the spatial discretization
         :param bool distrib: If returns the frequency or the accumulated events
         :param string dataname: Name to append to the filename
         """
+        def plot_notimeres():
+            """
+            All time colapsed
+            @return:
+            """
+            cont = np.zeros((scale, scale))
+            for i in range(self.dataset.shape[0]):
+                posy = int(((self.dataset[i][0] - minLat) * normLat))
+                posx = int(((self.dataset[i][1] - minLon) * normLon))
+                if distrib:
+                    cont[scale - posy - 1, posx - 1] += 1
+                else:
+                    cont[scale - posy - 1, posx - 1] = 1
+
+            if distrib:
+                cont = cont / np.max(cont)
+                plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
+                for i in range(cont.shape[0]):
+                    for j in range(cont.shape[1]):
+                        if cont[i, j] != 0:
+                            mymap.addradpoint(minLat+(((scale - i)+0.5)/normLat), minLon+((j+0.5)/normLon),
+                                              cont[i,j]*(circlesize/scale), "#FF0000")
+            else:
+                for i in range(cont.shape[0]):
+                    for j in range(cont.shape[1]):
+                        if cont[i, j] != 0:
+                            plt.plot(j, scale - i, 'k.')
+                            mymap.addradpoint(minLat+(((scale - i )+0.5)/normLat),
+                                              minLon+((j+0.5)/normLon), 30, "#FF0000")
+
+        def plot_timeres(timeres):
+            """
+            Geo points separated by the time resolution zones
+            @return:
+            """
+            step = 255/(timeres+1)
+
+            cont = np.zeros((scale, scale))
+            for i in range(self.dataset.shape[0]):
+                posy = int(((self.dataset[i][0] - minLat) * normLat))
+                posx = int(((self.dataset[i][1] - minLon) * normLon))
+                if distrib:
+                    cont[scale - posy - 1, posx - 1] += 1
+                else:
+                    cont[scale - posy - 1, posx - 1] = 1
+            mxcont = np.max(cont)
+
+            if distrib:
+                cont = cont / mxcont
+                for i in range(cont.shape[0]):
+                    for j in range(cont.shape[1]):
+                        if cont[i, j] != 0:
+                            mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
+                                              cont[i,j]*(circlesize/scale), "#FF0000")
+            else:
+                for i in range(cont.shape[0]):
+                    for j in range(cont.shape[1]):
+                        if cont[i, j] != 0:
+                            mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
+                                              minLon+((j+1.5)/normLon), 30, "#FF0000")
+            tint = 24/timeres
+            for t in range(timeres):
+                color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1)*step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
+                cont = np.zeros((scale, scale))
+                for i in range(self.dataset.shape[0]):
+                    posy = int(((self.dataset[i][0] - minLat) * normLat))
+                    posx = int(((self.dataset[i][1] - minLon) * normLon))
+                    stime = time.localtime(np.int32(self.dataset[i][2]))
+                    evtime = stime[3]
+                    if (evtime/tint) == t:
+                        if distrib:
+                            cont[scale - posy - 1, posx - 1] += 1
+                        else:
+                            cont[scale - posy - 1, posx - 1] = 1
+                if distrib:
+                    cont = cont / mxcont
+                    for i in range(cont.shape[0]):
+                        for j in range(cont.shape[1]):
+                            if cont[i, j] != 0:
+                                mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
+                                                  cont[i,j]*(circlesize/scale), color)
+                else:
+                    for i in range(cont.shape[0]):
+                        for j in range(cont.shape[1]):
+                            if cont[i, j] != 0:
+                                mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
+                                                  minLon+((j+1.5)/normLon), 30, color)
+
         print 'Generating the events plot ...'
-        fig = plt.figure()
 
-        ax = fig.add_subplot(111)
+        if timeres == 0:
+            fig = plt.figure()
+            ax = fig.add_subplot(111)
 
-        cont = np.zeros((scale, scale))
         minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
-        for i in range(self.dataset.shape[0]):
-            posy = int(((self.dataset[i][0] - minLat) * normLat))
-            posx = int(((self.dataset[i][1] - minLon) * normLon))
-            if distrib:
-                cont[scale - posy - 1, posx - 1] += 1
-            else:
-                cont[scale - posy - 1, posx - 1] = 1
-
-        if distrib:
-            cont = cont / np.max(cont)
-            plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
+        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
+        #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
+        if timeres == 0:
+            plot_notimeres()
         else:
-            for i in range(cont.shape[0]):
-                for j in range(cont.shape[1]):
-                    if cont[i, j] != 0:
-                         plt.plot(j, scale - i, 'k.')
-        today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+            plot_timeres(timeres)
+
+        #today = time.strftime('%Y%m%d%H%M%S', time.localtime())
         nfile = self.application + '-' + dataname
         if self.mnhh is not None and self.mnhh is not None:
             nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
-        nfile += '-s' + str(scale) + '-ts' + today
-        fig.savefig(homepath + 'Results/' + self.city[2] + '-' +nfile + '.pdf', orientation='landscape', format='pdf')
+        nfile += '-s' + str(scale) + '-tr' + str(timeres)
+
+        if timeres == 0:
+            fig.savefig(homepath + 'Results/' + self.city[2] + '-' +
+                        nfile + '.pdf', orientation='landscape', format='pdf')
+            plt.close()
+        mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
 
     def generate_user_dict(self):
         res={}

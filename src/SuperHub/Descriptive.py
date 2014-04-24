@@ -48,7 +48,7 @@ def plot_accumulated_events(data, distrib=True, scale=100):
     data.contingency(scale, distrib)
 
 
-def data_histograms(application, lhh=None):
+def data_histograms(data, lhh=None):
     """
     Generate histograms for different characteristics of the data
     Outputs the data used to generate the histograms
@@ -64,8 +64,7 @@ def data_histograms(application, lhh=None):
     """
     if not lhh:
         lhh = [(5, 100)]
-    data = STData(homepath, application)
-    data.read_data()
+    application = data.application
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     homepathr = homepath + 'Results/'
     for mxhh, mnhh in lhh:
@@ -77,38 +76,38 @@ def data_histograms(application, lhh=None):
 
         fr = transactions.users_daily_length()
 
-        saveHisto(fr, max(fr), homepath + application + '-length' + nfile + '.pdf')
+        saveHisto(fr, max(fr), homepathr + application + '-length' + nfile + '.pdf')
         np.savetxt(homepathr + application + '-length' + nfile + '.csv', fr)
 
         print 'Computing prevalence histogram'
         fr = transactions.users_prevalence()
 
-        saveHisto(fr, max(fr), homepath + application + '-prevalence' + nfile + '.pdf')
-        np.savetxt(homepath + application + '-prevalence' + nfile + '.csv', fr)
+        saveHisto(fr, max(fr), homepathr + application + '-prevalence' + nfile + '.pdf')
+        np.savetxt(homepathr + application + '-prevalence' + nfile + '.csv', fr)
 
         print 'Computing hourly histogram'
         ht = data.hourly_table()
 
-        savePlot(range(24), ht, homepath + application + '-hourly' + nfile + '.pdf')
+        savePlot(range(24), ht, homepathr + application + '-hourly' + nfile + '.pdf')
         np.savetxt(homepathr + application + '-hourly' + nfile + '.csv',
                    np.array([range(24), np.array(ht) / float(np.sum(ht))]).transpose())
 
         print 'Computing daily histogram'
         ht = data.daily_table()
 
-        savePlot(range(7), ht, homepath + application + '-daily' + nfile + '.pdf')
+        savePlot(range(7), ht, homepathr + application + '-daily' + nfile + '.pdf')
         np.savetxt(homepathr + application + '-daily' + nfile + '.csv',
                    np.array([range(7), np.array(ht) / float(np.sum(ht))]).transpose())
 
         print 'Computing montly histogram'
         ht = data.monthly_table()
 
-        savePlot(range(12), ht, homepath + application + '-daily' + nfile + '.pdf')
-        np.savetxt(homepathr + application + '-daily' + nfile + '.csv',
+        savePlot(range(12), ht, homepathr + application + '-monthy' + nfile + '.pdf')
+        np.savetxt(homepathr + application + '-monthly' + nfile + '.csv',
                    np.array([range(12), np.array(ht) / float(np.sum(ht))]).transpose())
 
 
-def user_events_histogram(data, scale=100, timeres=4):
+def user_events_histogram(data,  lhh=[0,20000], scale=100, timeres=4):
     """
     Histogram of the number of places-time a user has been
 
@@ -117,9 +116,9 @@ def user_events_histogram(data, scale=100, timeres=4):
     :param: timeres: Time resolution in number of segments from the 24h period
     """
     application = data.application
-    mxhh = data.mxhh
-    mnhh = data.mnhh
-
+    mxhh=lhh[0]
+    mnhh=lhh[1]
+    data.select_heavy_hitters(mxhh, mnhh)
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     nfile = application + '-allgeotime' + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) \
             + '-tr' + str(int(timeres)) + '-ts' + today
@@ -133,6 +132,6 @@ def user_events_histogram(data, scale=100, timeres=4):
 
     saveHisto(hvals, mxvals, homepath + 'Results/' + nfile + '.pdf')
 
-    np.savetxt(homepath + nfile + '.csv', np.array(hvals).transpose())
+    np.savetxt(homepath + 'Results/' + nfile + '.csv', np.array(hvals).transpose())
 
 

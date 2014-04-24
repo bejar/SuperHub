@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 from Constants import homepath
 from Transactions import DailyDiscretizedTransactions
 from Util import item_key_sort, diff_items
-
+import pygmaps
 
 def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):
     """
@@ -83,6 +83,9 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
     dataset = data.dataset
+    mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0,10)
+    #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
+
     for i in range(dataset.shape[0]):
         posy = int(((dataset[i][0] - minLat) * normLat))
         posx = int(((dataset[i][1] - minLon) * normLon))
@@ -108,10 +111,17 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
             x2 = int(x2)
             y2 = int(y2)
             plt.plot([x1, x2], [y1, y2], col[p1])
+            path=[(minLat+((y1+1.5)/normLat), minLon+((x1+1.5)/normLon)),
+                  (minLat+((y2+1.5)/normLat), minLon+((x2+1.5)/normLon))]
+            mymap.addpath(path,"#0000FF")
+
 
     # Saving the plot
     fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape', format='pdf')
     rfile.close()
+    mymap.draw(homepath + 'Results/' + nfile + '.html')
+
+
 
 
 def transaction_routes_many(data, lhh=None, lscale=None, supp=30, ltimeres=None, colapsed=False):
@@ -129,7 +139,7 @@ def transaction_routes_many(data, lhh=None, lscale=None, supp=30, ltimeres=None,
     if not lhh: lhh = [(5, 100)]
     application = data.application
     for mxhh, mnhh in lhh:
-        nfile = application + '-routes' + '-nusr' + str(mxhh) + '#' + str(mnhh)
+        nfile = data.city[2] + '-' + application + '-routes' + '-nusr' + str(mxhh) + '#' + str(mnhh)
         hhdata = data.select_heavy_hitters(mxhh, mnhh)
         for scale in lscale:
             for timeres in ltimeres:

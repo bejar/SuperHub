@@ -159,7 +159,7 @@ class DailyTransactions(Transactions):
         """
         Computes the list of lengths of the daily transactions for all users
 
-        :returns: A list with the count of events of each the users for each day
+        :returns: A list with the count of events of each  user for each day
         """
         transactions = self.usertrans
         fr = []

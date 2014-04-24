@@ -57,6 +57,51 @@ def getApplicationData2(cityparam):
     print 'The End'
 
 
+def getApplicationDataInterval(cityparam, application, intinit, intend):
+    """Get the data events from the database and saves it in a csv file
+
+    :param: application
+    :param: cpath
+    :param: square
+    """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
+    cityname = cityparam[2]
+    client = MongoClient(mgdb)
+
+    db = client.superhub
+
+    db.authenticate(mguser, password=mgpass)
+
+    #    names= db.collection_names()
+    print 'Retrieving Data ...'
+    rfile = open(homepath + 'Data/' + cityname + '-' + application + '-' + str(intinit) + '.csv', 'w')
+    #    rfile.write('#lat; lng; time; user\n')
+    rfile.write('#lat; lng; time; user; geohash\n')
+    col = db['sndata']
+    # c = col.find({'app': application,
+    #               'lat': {'$gt': minLat, '$lt': maxLat},
+    #               'lng': {'$gt': minLon, '$lt': maxLon},
+    #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    c = col.find({'app': application}, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+
+    #subprocess.call('rm ' + homepath + 'Data/' + application + '.csv.bz2')
+    print 'Saving Data ...'
+    for t in c:
+        #        stime=time.localtime(t['interval'])
+        #        evtime=time.strftime('%Y%m%d',stime)
+        #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
+        #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])
+        # +',\''+str(t['text']).strip().replace('\n','')+'\'\n')
+        if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon) and (intinit < t['interval'] < intend) :
+            rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';'
+                        + str(t['interval']) + ';' + str(t['user'])
+                        + ';' + t['geohash'] + '\n')
+    rfile.close()
+    #subprocess.call('bzip2 ' + homepath + 'Data/' + application + '.csv')
+    print 'Done'
+
+
 def getApplicationData(cityparam, application):
     """Get the data events from the database and saves it in a csv file
 

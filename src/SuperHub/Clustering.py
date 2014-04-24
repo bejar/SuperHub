@@ -59,12 +59,33 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
             if cclass[v] > 20:
                 clusters['c'+str(v)] = []
 
-        for v,u in  zip(ap_labels,users):
+        for v,u in zip(ap_labels,users):
             if cclass[v] > 20:
                 clusters['c'+str(v)].append(u)
 
         for c in clusters:
             print c, len(clusters[c])
+    if alg == 'kmeans':
+        k_means = KMeans(init='k-means++', n_clusters=nclust, n_init=10, n_jobs=-1)
+        k_means.fit(data)
+        k_means_labels = k_means.labels_
+        #k_means_cluster_centers = k_means.cluster_centers_
+        k_means_labels_unique = len(np.unique(k_means_labels))
+        cclass = np.zeros(k_means_labels_unique)
+        for v in k_means_labels:
+            cclass[v] += 1
+        for v in range(cclass.shape[0]):
+            if cclass[v] > 20:
+                clusters['c'+str(v)] = []
+
+        for v,u in zip(ap_labels,users):
+            if cclass[v] > 20:
+                clusters['c'+str(v)].append(u)
+
+        for c in clusters:
+            print c, len(clusters[c])
+
+
     return clusters
 
 
