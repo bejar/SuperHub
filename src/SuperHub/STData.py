@@ -35,8 +35,10 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
 from Constants import homepath
-import pygmaps
-
+#import pygmaps
+import folium
+from geojson import LineString, GeometryCollection, FeatureCollection, Feature
+import geojson
 circlesize = 15000
 
 class STData:
@@ -269,22 +271,31 @@ class STData:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] != 0:
-                            mymap.addradpoint(minLat+(((scale - i)+0.5)/normLat), minLon+((j+0.5)/normLon),
-                                              cont[i,j]*(circlesize/scale), "#FF0000")
+                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+                                                radius=cont[i,j]*(circlesize/scale),
+                                                line_color='#FF0000',
+                                                fill_color='#110000')
+                            # mymap.addradpoint(minLat+(((scale - i)+0.5)/normLat), minLon+((j+0.5)/normLon),
+                            #                   cont[i,j]*(circlesize/scale), "#FF0000")
             else:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] != 0:
                             plt.plot(j, scale - i, 'k.')
-                            mymap.addradpoint(minLat+(((scale - i )+0.5)/normLat),
-                                              minLon+((j+0.5)/normLon), 30, "#FF0000")
+                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+                                                radius=30,
+                                                line_color='#FF0000',
+                                                fill_color='#110000')
+                            # mymap.addradpoint(minLat+(((scale - i )+0.5)/normLat),
+                            #                  minLon+((j+0.5)/normLon), 30, "#FF0000")
 
         def plot_timeres(timeres):
             """
             Geo points separated by the time resolution zones
             @return:
             """
-            step = 255/(timeres+1)
+            tint = 24/timeres
+            step = 255/(tint+1)
 
             cont = np.zeros((scale, scale))
             for i in range(self.dataset.shape[0]):
@@ -301,16 +312,23 @@ class STData:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] != 0:
-                            mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
-                                              cont[i,j]*(circlesize/scale), "#FF0000")
+                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+                                                radius=cont[i,j]*(circlesize/scale),
+                                                line_color='#FF0000',
+                                                fill_color='#110000')
+                            #mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
+                            #                  cont[i,j]*(circlesize/scale), "#FF0000")
             else:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] != 0:
-                            mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
-                                              minLon+((j+1.5)/normLon), 30, "#FF0000")
-            tint = 24/timeres
-            for t in range(timeres):
+                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+                                                radius=30,
+                                                line_color='#FF0000',
+                                                fill_color='#110000')
+                            #mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
+                            #                   minLon+((j+1.5)/normLon), 30, "#FF0000")
+            for t in range(tint):
                 color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1)*step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
                 cont = np.zeros((scale, scale))
                 for i in range(self.dataset.shape[0]):
@@ -318,7 +336,7 @@ class STData:
                     posx = int(((self.dataset[i][1] - minLon) * normLon))
                     stime = time.localtime(np.int32(self.dataset[i][2]))
                     evtime = stime[3]
-                    if (evtime/tint) == t:
+                    if (evtime/timeres) == t:
                         if distrib:
                             cont[scale - posy - 1, posx - 1] += 1
                         else:
@@ -328,14 +346,22 @@ class STData:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
                             if cont[i, j] != 0:
-                                mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
-                                                  cont[i,j]*(circlesize/scale), color)
+                                mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+                                                radius=cont[i,j]*(circlesize/scale),
+                                                line_color=color,
+                                                fill_color='#110000')
+                                #mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
+                                #                  cont[i,j]*(circlesize/scale), color)
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
                             if cont[i, j] != 0:
-                                mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
-                                                  minLon+((j+1.5)/normLon), 30, color)
+                                mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+                                                radius=30,
+                                                line_color=color,
+                                                fill_color='#110000')
+                                #mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
+                                #                  minLon+((j+1.5)/normLon), 30, color)
 
         print 'Generating the events plot ...'
 
@@ -346,7 +372,9 @@ class STData:
         minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
-        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
+        mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+
+#        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
         #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
         if timeres == 0:
             plot_notimeres()
@@ -363,7 +391,8 @@ class STData:
             fig.savefig(homepath + 'Results/' + self.city[2] + '-' +
                         nfile + '.pdf', orientation='landscape', format='pdf')
             plt.close()
-        mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
+        mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
+        #mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
 
     def generate_user_dict(self):
         res={}
