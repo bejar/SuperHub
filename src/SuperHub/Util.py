@@ -21,6 +21,12 @@ Util
 __author__ = 'bejar'
 
 import string
+import time
+
+
+def now():
+    print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
+
 
 def item_key_sort(v):
     """

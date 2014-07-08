@@ -51,7 +51,9 @@ class DailyTransactions(Transactions):
 
     def __init__(self, data):
         """
-        Extracts the daily event transactions of the users
+        Extracts the daily event transactions of the users and stores it in a dictionary
+
+        Each user has for each day a list of positions
 
         :param data: is a SuperHub Data object
         """
@@ -184,6 +186,51 @@ class DailyTransactions(Transactions):
             fr.append(len(transactions[user]))
         return fr
 
+class DailyClusteredTransactions(DailyTransactions):
+    """
+    Class for the daily clustered transactions
+
+    For this class the events positions are discretized using the result of a clustering algorithm
+    """
+    timeres = None  # Time discretization (number of hour in a bin
+    cluster = None  # Object that tells what cluster corresponds to a position
+
+    def __init__(self, data, cluster=None, timeres=4):
+        """
+        Extracts the daily events transactions of the users, discretizing
+        the positions using the cluster centroids and a time resolution
+        """
+        self.cluster = cluster
+        self.timeres = timeres
+        DailyTransactions.__init__(self, data)
+        print 'Generating Transactions ...'
+        userEvents = {}
+        for i in range(data.shape[0]):
+            user = str(int(data[i][3]))
+            posy = data[i][0]
+            posx = data[i][1]
+            ncl = cluster.predict(data[i,0:1])
+            if ncl != -1:
+                cenx = cluster.cluster_centers_[ncl, 0]
+                ceny = cluster.cluster_centers_[ncl, 1]
+                #        print i, user, pos
+                stime = time.localtime(np.int32(data[i][2]))
+                evtime = time.strftime('%Y%m%d', stime)
+                quart = int(stime[3] / timeres)
+                pos = '%f3.2#%f3.2#%d' % (cenx,ceny,quart)
+                if not user in userEvents:
+                    a = set()
+                    a.add(pos)
+                    userEvents[user] = {evtime: a}
+                else:
+                    uev = userEvents[user]
+                    if not evtime in uev:
+                        a = set()
+                        a.add(pos)
+                        uev[evtime] = a
+                    else:
+                        uev[evtime].add(pos)
+            self.usertrans = userEvents
 
 class DailyDiscretizedTransactions(DailyTransactions):
     """
@@ -191,7 +238,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
 
     :param data: STData
     :param scale: Space distretization
-    :param timeres: Time distretization
+    :param timeres: Time distretization (number of hours in a bin)
     """
     scale = None
     timeres = None

@@ -77,34 +77,34 @@ def data_histograms(data, lhh=None):
         fr = transactions.users_daily_length()
 
         saveHisto(fr, max(fr), homepathr + application + '-length' + nfile + '.pdf')
-        np.savetxt(homepathr + application + '-length' + nfile + '.csv', fr)
+        np.savetxt(homepathr + application + '-length' + nfile + '.csv', fr, fmt='%d')
 
         print 'Computing prevalence histogram'
         fr = transactions.users_prevalence()
 
         saveHisto(fr, max(fr), homepathr + application + '-prevalence' + nfile + '.pdf')
-        np.savetxt(homepathr + application + '-prevalence' + nfile + '.csv', fr)
+        np.savetxt(homepathr + application + '-prevalence' + nfile + '.csv', fr, fmt='%d')
 
         print 'Computing hourly histogram'
         ht = data.hourly_table()
 
         savePlot(range(24), ht, homepathr + application + '-hourly' + nfile + '.pdf')
         np.savetxt(homepathr + application + '-hourly' + nfile + '.csv',
-                   np.array([range(24), np.array(ht) / float(np.sum(ht))]).transpose())
+                   np.array([range(1,25), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
         print 'Computing daily histogram'
         ht = data.daily_table()
 
         savePlot(range(7), ht, homepathr + application + '-daily' + nfile + '.pdf')
         np.savetxt(homepathr + application + '-daily' + nfile + '.csv',
-                   np.array([range(7), np.array(ht) / float(np.sum(ht))]).transpose())
+                   np.array([range(1,8), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
         print 'Computing montly histogram'
         ht = data.monthly_table()
 
         savePlot(range(12), ht, homepathr + application + '-monthy' + nfile + '.pdf')
         np.savetxt(homepathr + application + '-monthly' + nfile + '.csv',
-                   np.array([range(12), np.array(ht) / float(np.sum(ht))]).transpose())
+                   np.array([range(1,13), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
 
 def user_events_histogram(data,  lhh=[0,20000], scale=100, timeres=4):
@@ -132,6 +132,6 @@ def user_events_histogram(data,  lhh=[0,20000], scale=100, timeres=4):
 
     saveHisto(hvals, mxvals, homepath + 'Results/' + nfile + '.pdf')
 
-    np.savetxt(homepath + 'Results/' + nfile + '.csv', np.array(hvals).transpose())
+    np.savetxt(homepath + 'Results/' + nfile + '.csv', np.array(hvals).transpose(), fmt='%d')
 
 

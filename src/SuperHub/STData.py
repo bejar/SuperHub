@@ -41,6 +41,7 @@ from geojson import LineString, GeometryCollection, FeatureCollection, Feature
 import geojson
 circlesize = 15000
 
+
 class STData:
     """
     Class for a superhub dataset:
@@ -77,10 +78,27 @@ class STData:
 
         """
         print 'Reading Data ...'
-        fname = self.wpath + 'Data/' + self.city[2] + '-' +self.application + '.csv.bz2'
+        fname = self.wpath + 'Data/' + self.city[2] + '-' + self.application + '.csv.bz2'
         self.dataset = loadtxt(fname, skiprows=1,
                                dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
                                usecols=(0, 1, 2, 3), delimiter=';', comments='#')
+
+    def info(self):
+        """
+        Dumps some info about the dataset
+
+        @return:
+        """
+        print 'A= ', self.application
+        print 'C= ', self.city
+        print 'D= ', self.dataset.shape
+
+    def getDataCoordinates(self):
+        coord = np.zeros((self.dataset.shape[0], 2))
+        for i in range(len(self.dataset)):
+            coord[i,0]=self.dataset[i][0]
+            coord[i,1]=self.dataset[i][1]
+        return coord
 
     def compute_heavy_hitters(self, mxhh, mnhh):
         """
@@ -245,7 +263,7 @@ class STData:
         """
         Generates an scale x scale plot of the events
         Every event is represented by a point in the graph
-        the ouput is a pdf file and an html file that uses google maps
+        the ouput is a pdf file and an html file that uses open street maps
 
         :param int scale: Scale of the spatial discretization
         :param bool distrib: If returns the frequency or the accumulated events

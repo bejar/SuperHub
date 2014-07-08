@@ -20,8 +20,18 @@ Clustering
 __author__ = 'bejar'
 
 import numpy as np
-from sklearn.cluster import MiniBatchKMeans, KMeans, AffinityPropagation
+from sklearn.cluster import MiniBatchKMeans, KMeans, AffinityPropagation, DBSCAN
 from sklearn.metrics.pairwise import euclidean_distances
+from collections import Counter
+from cluster.Leader import Leader
+from Util import now
+from Constants import homepath
+
+import folium
+from geojson import LineString, GeometryCollection, FeatureCollection, Feature
+import geojson
+circlesize = 15000
+
 
 def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinity',damping=None):
     """
@@ -115,6 +125,60 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
     #     print np.count_nonzero(ccenters)
 
 
+def cluster_events(data, nclust=10):
+    """
+    Cluster geographical events
+    @param nclust:
+    @return:
+    """
+    coord = data.getDataCoordinates()
+    dbs = Leader(radius=0.005)
+
+    now()
+    dbs.fit(coord)
+    now()
+
+    print np.min(dbs.cluser_sizes_), np.max(dbs.cluser_sizes_)
+
+    print dbs.cluster_centers_.shape[0]
+    sizes = dbs.cluser_sizes_
+
+    plot_clusters(data, dbs.cluster_centers_[sizes  >100], 'leader')
+
+def plot_clusters(data, centroids, dataname=''):
+    """
+    Generates an scale x scale plot of the events
+    Every event is represented by a point in the graph
+    the ouput is a pdf file and an html file that uses open street maps
+
+    :param int scale: Scale of the spatial discretization
+    :param bool distrib: If returns the frequency or the accumulated events
+    :param string dataname: Name to append to the filename
+    """
+
+    print 'Generating the events plot ...'
 
 
+    minLat, maxLat, minLon, maxLon = data.city[1]
+    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+
+    # if distrib:
+    #     cont = cont / np.max(cont)
+    #     plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
+    #     for i in range(cont.shape[0]):
+    #         for j in range(cont.shape[1]):
+    #             if cont[i, j] != 0:
+    #                 mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
+    #                                     radius=cont[i,j]*(circlesize/scale),
+    #                                     line_color='#FF0000',
+    #                                     fill_color='#110000')
+    for i in range(centroids.shape[0]):
+            mymap.circle_marker(location=[centroids[i][0], centroids[i][1]],
+                                radius=30,
+                                line_color='#FF0000',
+                                fill_color='#110000')
+
+    nfile = data.application + '-' + dataname
+
+    mymap.create_map(path=homepath + 'Results/' + data.city[2] + nfile + '.html')
 
