@@ -26,6 +26,7 @@ from collections import Counter
 from cluster.Leader import Leader
 from Util import now
 from Constants import homepath
+import time
 
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature
@@ -125,27 +126,26 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
     #     print np.count_nonzero(ccenters)
 
 
-def cluster_events(data, nclust=10):
+def cluster_events(data, nclust=10, radius=0.01):
     """
     Cluster geographical events
     @param nclust:
     @return:
     """
     coord = data.getDataCoordinates()
-    dbs = Leader(radius=0.005)
+    dbs = Leader(radius=radius)
 
     now()
     dbs.fit(coord)
     now()
 
-    print np.min(dbs.cluser_sizes_), np.max(dbs.cluser_sizes_)
-
     print dbs.cluster_centers_.shape[0]
     sizes = dbs.cluser_sizes_
 
-    plot_clusters(data, dbs.cluster_centers_[sizes  >100], 'leader')
+    plot_clusters(data, dbs.cluster_centers_[sizes > 100], sizes[sizes > 100], 'leader-crd'+str(radius))
+    return dbs
 
-def plot_clusters(data, centroids, dataname=''):
+def plot_clusters(data, centroids, csizes, dataname=''):
     """
     Generates an scale x scale plot of the events
     Every event is represented by a point in the graph
@@ -158,7 +158,7 @@ def plot_clusters(data, centroids, dataname=''):
 
     print 'Generating the events plot ...'
 
-
+    today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     minLat, maxLat, minLon, maxLon = data.city[1]
     mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
 
@@ -174,11 +174,11 @@ def plot_clusters(data, centroids, dataname=''):
     #                                     fill_color='#110000')
     for i in range(centroids.shape[0]):
             mymap.circle_marker(location=[centroids[i][0], centroids[i][1]],
-                                radius=30,
+                                radius=csizes[i]/100.0,
                                 line_color='#FF0000',
                                 fill_color='#110000')
 
     nfile = data.application + '-' + dataname
 
-    mymap.create_map(path=homepath + 'Results/' + data.city[2] + nfile + '.html')
+    mymap.create_map(path=homepath + 'Results/' + data.city[2] + nfile + '-ts' + today + '.html')
 

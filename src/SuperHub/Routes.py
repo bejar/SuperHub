@@ -32,12 +32,86 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from Constants import homepath
-from Transactions import DailyDiscretizedTransactions
+from Transactions import DailyDiscretizedTransactions, DailyClusteredTransactions
 from Util import item_key_sort, diff_items
 #import pygmaps
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature
 import geojson
+
+
+def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4.0, colapsed=False):
+    """
+    Generates a diagram of the routes obtained by the frequent itemsets fp-growth algorithm
+
+    :param: dataclean:
+    :param: application:
+    :param: mxhh:
+    :param: mnhh:
+    :param: scale:
+    :param: supp:
+    :param: timeres:
+    """
+    today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    nfile = nfile + '-tr' + str(int(timeres)) + '-sp' + str(supp) + '-ts' + today
+    if colapsed:
+        nfile += '-c'
+
+    # File for the textual results
+    rfile = open(homepath + 'Results/' + nfile + '.txt', 'w')
+    userEvents = DailyClusteredTransactions(data, cluster=cluster, timeres=timeres)
+
+    print 'Serializing the transactions'
+    if not colapsed:
+        trans = userEvents.serialize()
+    else:
+        trans = userEvents.colapse()
+    print 'Transactions', len(trans)
+    ltrans = []
+    print 'Applying fp-growth'
+    for itemset, sval in fpgrowth(trans, supp=-supp, min=2, target='m'):
+        if diff_items(itemset) > 1:
+            ltrans.append(itemset)
+            print itemset, sval
+            rfile.write(str(sorted(itemset, key=item_key_sort)) + ' ' + str(sval) + '\n')
+
+    print 'Routes', len(ltrans)
+    fig = plt.figure()
+
+    ax = fig.add_subplot(111)
+
+
+    print 'Generating plot'
+    minLat, maxLat, minLon, maxLon = data.city[1]
+
+    dataset = data.dataset
+    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+
+    lgeo=[]
+    for t in ltrans:
+        seq = []
+        for i in t:
+            x, y, h = i.split('#')
+            seq.append((x, y, h))
+        seqs = sorted(seq, key=operator.itemgetter(2))
+        for p1 in range(len(seqs) - 1):
+            x1, y1, _ = seqs[p1]
+            x2, y2, _ = seqs[p1 + 1]
+            x1 = float(x1)
+            y1 = float(y1)
+            x2 = float(x2)
+            y2 = float(y2)
+            lgeo.append(Feature(geometry=LineString([(y1,x1), (y2, x2)])))
+
+    # Saving the plot
+    geoc = FeatureCollection(lgeo)
+    dump = geojson.dumps(geoc)
+    jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
+    jsfile.write(dump)
+    jsfile.close()
+    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_color='Red', line_color='Red', line_weight=3)
+    mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
+
 
 def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):
     """
@@ -138,8 +212,6 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
     mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json')
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
     #mymap.draw(homepath + 'Results/' + nfile + '.html')
-
-
 
 
 def transaction_routes_many(data, lhh=None, lscale=None, supp=30, ltimeres=None, colapsed=False):

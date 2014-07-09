@@ -45,6 +45,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         :param X:
         :return:
         """
+
         self.cluster_centers_, self.labels_, self.cluser_sizes_ = self._fit_process(X)
 
         return self._fit_process(X)
@@ -65,8 +66,6 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
                 clasif.append(-1)
         return clasif
 
-
-
     def _fit_process(self, X):
         """
         Clusters incrementally the examples
@@ -78,7 +77,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         centers = np.zeros((1,X.shape[1]))
         # Initialize with the first example
         scenters[0] = X[0]
-        centers[0]  = X[0]
+        centers[0] = X[0]
         assignments.append([0])
         csizes=np.array([1])
         #print len(scenters), scenters
@@ -117,7 +116,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         :return:
         """
 
-        dist = euclidean_distances(centers,examp)
+        dist = euclidean_distances(centers, examp)
 
         pmin = np.argmin(dist)
         vmin = np.min(dist)
