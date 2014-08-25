@@ -80,11 +80,9 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         centers[0] = X[0]
         assignments.append([0])
         csizes=np.array([1])
-        #print len(scenters), scenters
         # Cluster the rest of examples
         for i in range(1,X.shape[0]):
             ncl,mdist = self._find_nearest_cluster(X[i], centers)
-            #print mdist
 
             # if distance is less than radius, introduce example in nearest class
             if mdist <= self.radius:
@@ -93,22 +91,20 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
                 centers[ncl] = scenters[ncl]/csizes[ncl]
                 assignments[ncl].append(i)
             else: # Create a new cluster
-                scenters = np.append(scenters,np.array( [X[i]]), 0)
-                centers = np.append(centers,np.array( [X[i]]), 0)
+                scenters = np.append(scenters,np.array([X[i]]), 0)
+                centers = np.append(centers,np.array([X[i]]), 0)
                 csizes = np.append(csizes, [1], 0)
                 assignments.append([i])
 
-        # centers = np.zeros(scenters.shape)
-        # for j in range(scenters.shape[0]):
-        #     centers[j] = scenters[j]/csizes[j]
         labels = np.zeros(X.shape[0])
-        for l,ej in enumerate(assignments):
+        for l, ej in enumerate(assignments):
             for e in ej:
                 labels[e] = l
 
         return centers, labels, csizes
 
-    def _find_nearest_cluster(self, examp, centers):
+    @staticmethod
+    def _find_nearest_cluster(examp, centers):
         """
         Finds the nearest cluster for an example
         :param examp:

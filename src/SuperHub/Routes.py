@@ -109,7 +109,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4.
     jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
     jsfile.write(dump)
     jsfile.close()
-    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_color='Red', line_color='Red', line_weight=3)
+    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_color='Red', line_color='Red', line_weight=2)
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
 
 

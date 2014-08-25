@@ -160,7 +160,7 @@ def plot_clusters(data, centroids, csizes, dataname=''):
 
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     minLat, maxLat, minLon, maxLon = data.city[1]
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=900)
 
     # if distrib:
     #     cont = cont / np.max(cont)
