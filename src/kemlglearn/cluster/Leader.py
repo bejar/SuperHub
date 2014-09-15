@@ -37,7 +37,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         self.radius = radius
         self.cluster_centers_ = None
         self.labels_ = None
-        self.cluser_sizes_ = None
+        self.cluster_sizes_ = None
 
     def fit(self,X):
         """
@@ -46,7 +46,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         :return:
         """
 
-        self.cluster_centers_, self.labels_, self.cluser_sizes_ = self._fit_process(X)
+        self.cluster_centers_, self.labels_, self.cluster_sizes_ = self._fit_process(X)
 
         return self._fit_process(X)
 
@@ -79,7 +79,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         scenters[0] = X[0]
         centers[0] = X[0]
         assignments.append([0])
-        csizes=np.array([1])
+        csizes = np.array([1])
         # Cluster the rest of examples
         for i in range(1,X.shape[0]):
             ncl,mdist = self._find_nearest_cluster(X[i], centers)

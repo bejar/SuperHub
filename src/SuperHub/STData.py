@@ -37,7 +37,7 @@ import matplotlib.cm as cm
 from Constants import homepath
 #import pygmaps
 import folium
-from geojson import LineString, GeometryCollection, FeatureCollection, Feature
+from geojson import LineString, GeometryCollection, FeatureCollection, Feature, Polygon
 import geojson
 circlesize = 15000
 
@@ -368,8 +368,6 @@ class STData:
                                                 radius=cont[i,j]*(circlesize/scale),
                                                 line_color=color,
                                                 fill_color='#110000')
-                                #mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
-                                #                  cont[i,j]*(circlesize/scale), color)
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
@@ -378,8 +376,6 @@ class STData:
                                                 radius=30,
                                                 line_color=color,
                                                 fill_color='#110000')
-                                #mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
-                                #                  minLon+((j+1.5)/normLon), 30, color)
 
         print 'Generating the events plot ...'
 
@@ -412,11 +408,68 @@ class STData:
         mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
         #mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
 
+
+    def grid_events(self, scale, threshold=100, distrib=False, dataname=''):
+        """
+        Generates a plot of the events as a grid
+
+        @param scale:
+        @param distrib:
+        @param dataname:
+        @return:
+        """
+        def plot_notimeres(thres):
+            """
+            All time colapsed
+            @return:
+            """
+            cont = np.zeros((scale, scale))
+            for i in range(self.dataset.shape[0]):
+                posx = int(((self.dataset[i][1] - minLon) * normLon))
+                posy = int(((self.dataset[i][0] - minLat) * normLat))
+
+                cont[posx - 1, posy - 1] += 1
+
+            lgeo=[]
+
+            for i in range(cont.shape[0]):
+                for j in range(cont.shape[1]):
+                    if cont[i, j] >= thres:
+                        path = [(minLon + (i+0.5)/normLon, maxLat - (scale-j-1.5)/normLat),
+                                (minLon + (i+0.5)/normLon, maxLat - (scale-j-0.5)/normLat),
+                                (minLon + (i+1.5)/normLon, maxLat - (scale-j-0.5)/normLat),
+                                (minLon + (i+1.5)/normLon, maxLat - (scale-j-1.5)/normLat)
+                               ]
+                        lgeo.append(Feature(geometry=Polygon([path])))
+
+            return lgeo
+        minLat, maxLat, minLon, maxLon = self.city[1]
+        normLat = scale / (maxLat - minLat)
+        normLon = scale / (maxLon - minLon)
+        mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=1000)
+        lgeo = plot_notimeres(threshold)
+
+        nfile = self.application + '-' + dataname
+        if self.mnhh is not None and self.mnhh is not None:
+            nfile += '-nusr' + str(self.mxhh) + '-' + str(self.mnhh)
+        nfile += '-s' + str(scale)
+        nfile += '-tr' + str(threshold)
+
+        geoc = FeatureCollection(lgeo)
+        dump = geojson.dumps(geoc)
+        jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
+        jsfile.write(dump)
+        jsfile.close()
+        mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_opacity=0.2)
+
+        mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
+
+
     def generate_user_dict(self):
         res={}
         for i in range(self.dataset.shape[0]):
             if self.dataset[i][3].strip() not in res:
-                res[self.dataset[i][3].strip()]=1
+                res[self.dataset[i][3].strip()] = 1
             else:
-                res[self.dataset[i][3].strip()]+=1
+                res[self.dataset[i][3].strip()] += 1
         return res

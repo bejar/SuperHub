@@ -217,9 +217,9 @@ class DailyClusteredTransactions(DailyTransactions):
                 cenx = cluster.cluster_centers_[ncl, 0]
                 ceny = cluster.cluster_centers_[ncl, 1]
                 #        print i, user, pos
-                stime = time.localtime(np.int32(data[i][2]))
-                evtime = time.strftime('%Y%m%d', stime)
-                quart = int(stime[3] / timeres)
+                #stime = time.localtime(np.int32(data[i][2]))
+                evtime, quart = timeres.discretize(data[i][2]) #time.strftime('%Y%m%d', stime)
+                #quart = int(stime[3] / timeres)
                 pos = '%f#%f#%d' % (cenx, ceny, quart)
                 if not user in userEvents:
                     a = set()
@@ -246,7 +246,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
     scale = None
     timeres = None
 
-    def __init__(self, data, scale=100, timeres=4):
+    def __init__(self, data, scale=100, timeres=None):
         """
         Extracts the daily event transactions of the users, discretizing
         the positions to a NxN grid and a time resolution
@@ -270,9 +270,9 @@ class DailyDiscretizedTransactions(DailyTransactions):
             posy = int(((dataclean[i][0] - minLat) * normLat))
             posx = int(((dataclean[i][1] - minLon) * normLon))
             #        print i, user, pos
-            stime = time.localtime(np.int32(dataclean[i][2]))
-            evtime = time.strftime('%Y%m%d', stime)
-            quart = int(stime[3] / timeres)
+            #stime = time.localtime(np.int32(dataclean[i][2]))
+            evtime, quart = timeres.discretize(dataclean[i][2]) # time.strftime('%Y%m%d', stime)
+            #quart = int(stime[3] / timeres)
             pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart)  # Grid position/time
             if not user in userEvents:
                 a = set()

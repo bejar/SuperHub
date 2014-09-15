@@ -38,9 +38,10 @@ from Util import item_key_sort, diff_items
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature
 import geojson
+from TimeDiscretizer import TimeDiscretizer
 
 
-def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4.0, colapsed=False):
+def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4, colapsed=False):
     """
     Generates a diagram of the routes obtained by the frequent itemsets fp-growth algorithm
 
@@ -53,13 +54,13 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4.
     :param: timeres:
     """
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
-    nfile = nfile + '-tr' + str(int(timeres)) + '-sp' + str(supp) + '-ts' + today
+    nfile = nfile + '-tr' + str(timeres) + '-sp' + str(supp) + '-ts' + today
     if colapsed:
         nfile += '-c'
 
     # File for the textual results
     rfile = open(homepath + 'Results/' + nfile + '.txt', 'w')
-    userEvents = DailyClusteredTransactions(data, cluster=cluster, timeres=timeres)
+    userEvents = DailyClusteredTransactions(data, cluster=cluster, timeres=TimeDiscretizer(timeres))
 
     print 'Serializing the transactions'
     if not colapsed:
@@ -113,7 +114,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4.
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
 
 
-def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=False):
+def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=False):
     """
     Generates a diagram of the routes obtained by the frequent itemsets fp-growth algorithm
 
@@ -126,13 +127,13 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
     :param: timeres:
     """
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
-    nfile = nfile + '-sr' + str(scale) + '-tr' + str(int(timeres)) + '-sp' + str(supp) + '-ts' + today
+    nfile = nfile + '-sr' + str(scale) + '-tr' + str(timeres) + '-sp' + str(supp) + '-ts' + today
     if colapsed:
         nfile += '-c'
 
     # File for the textual results
     rfile = open(homepath + 'Results/' + nfile + '.txt', 'w')
-    userEvents = DailyDiscretizedTransactions(data, scale=scale, timeres=timeres)
+    userEvents = DailyDiscretizedTransactions(data, scale=scale, timeres=TimeDiscretizer(timeres))
 
     print 'Serializing the transactions'
     if not colapsed:
@@ -191,14 +192,9 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
             x2 = int(x2)
             y2 = int(y2)
             plt.plot([x1, x2], [y1, y2], col[p1])
-            path=[(minLat+((y1+1.5)/normLat), minLon+((x1+1.5)/normLon)),
-                  (minLat+((y2+1.5)/normLat), minLon+((x2+1.5)/normLon))]
+
             lgeo.append(Feature(geometry=LineString([(minLon+((x1+1.5)/normLon),minLat+((y1+1.5)/normLat)),
                                     (minLon+((x2+1.5)/normLon), minLat+((y2+1.5)/normLat))])))
-            # mymap.circle_marker(location=[minLat+((y1+1.5)/normLat), minLon+((x1+1.5)/normLon)], radius=50,
-            #       popup='My Popup Info', line_color='#3186cc',
-            #       fill_color='#3186cc', fill_opacity=0.1)
-            #mymap.addpath(path,"#0000FF")
 
 
     # Saving the plot
@@ -209,7 +205,7 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4.0, colapsed=Fa
     jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
     jsfile.write(dump)
     jsfile.close()
-    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json')
+    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_color='Red', line_color='Red', line_weight=2)
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
     #mymap.draw(homepath + 'Results/' + nfile + '.html')
 
@@ -224,7 +220,7 @@ def transaction_routes_many(data, lhh=None, lscale=None, supp=30, ltimeres=None,
     :param: supp:
     :param: ltimeres:
     """
-    if not ltimeres: ltimeres = [4.0]
+    if not ltimeres: ltimeres = [4]
     if not lscale: lscale = [100]
     if not lhh: lhh = [(5, 100)]
     application = data.application
@@ -233,6 +229,6 @@ def transaction_routes_many(data, lhh=None, lscale=None, supp=30, ltimeres=None,
         hhdata = data.select_heavy_hitters(mxhh, mnhh)
         for scale in lscale:
             for timeres in ltimeres:
-                transaction_routes(hhdata, nfile, scale=scale, supp=supp, timeres=timeres, colapsed=colapsed)
+                transaction_routes(hhdata, nfile, scale=scale, supp=supp, timeres=TimeDiscretizer(timeres), colapsed=colapsed)
     print 'Done.'
 

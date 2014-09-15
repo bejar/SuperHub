@@ -27,10 +27,12 @@ from cluster.Leader import Leader
 from Util import now
 from Constants import homepath
 import time
-
+from numpy import savetxt
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature
 import geojson
+
+
 circlesize = 15000
 
 
@@ -126,33 +128,70 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
     #     print np.count_nonzero(ccenters)
 
 
-def cluster_events(data, nclust=10, radius=0.01):
+def cluster_events(data, nclust=10, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0):
     """
-    Cluster geographical events
+    Cluster geographical events and returns the clusters
+
     @param nclust:
     @return:
     """
     coord = data.getDataCoordinates()
-    dbs = Leader(radius=radius)
 
+    if alg == 'Leader':
+        dbs = Leader(radius=radius)
+    elif alg == 'DBSCAN':
+        dbs = DBSCAN(eps=radius, min_samples=mins,algorithm='kd_tree')
+    else:
+        dbs = None
     now()
     dbs.fit(coord)
     now()
 
-    print dbs.cluster_centers_.shape[0]
-    sizes = dbs.cluser_sizes_
+    if alg == 'Leader':
+        sizes = dbs.cluster_sizes_
+        plot_clusters(data, dbs.cluster_centers_[sizes > size],
+                      sizes[sizes > size],
+                      sizeprop=250,
+                      dataname='leader-crd'+ str(radius) + '-mex' + str(size))
+        nfile = homepath + 'Results/' + data.city[2] + data.application + '-' + 'leader-crd' + str(radius)+'-mex'+ str(size)+'.csv'
+        savetxt(nfile ,dbs.cluster_centers_[sizes > size],delimiter=';')
+    elif alg == 'DBSCAN':
+        labset = set(dbs.labels_)
+        if -1 in labset:
+            dim = len(labset) -1
+        else:
+            dim = len(set)
+        centers = np.zeros((dim,2))
+        sizes = np.zeros(dim)
+        dataset = data.dataset
+        clres = np.zeros((dataset.shape[0],3))
+        for i in range(dataset.shape[0]):
+            clres[i][0] = dataset[i][0]
+            clres[i][1] = dataset[i][1]
+            clres[i][2] = dbs.labels_[i]
+            if dbs.labels_[i] != -1:
+                sizes[int(dbs.labels_[i])] += 1
+                centers[int(dbs.labels_[i])][0] += dataset[i][0]
+                centers[int(dbs.labels_[i])][1] += dataset[i][1]
 
-    plot_clusters(data, dbs.cluster_centers_[sizes > 100], sizes[sizes > 100], 'leader-crd'+str(radius))
+        for i in range(sizes.shape[0]):
+            centers[i][0] /= sizes[i]
+            centers[i][1] /= sizes[i]
+            print sizes[i]
+        nfile = homepath + 'Results/' + data.city[2] + data.application + '-'
+        savetxt(nfile + 'dbscan-crd' +str(radius) + '-mins'+ str(mins) + '-mex'+ str(size) + '.csv', clres, delimiter=';')
+        plot_clusters(data, centers[sizes > size], sizes[sizes > size], dataname='dbscan-crd'+str(radius)
+                      + '-mins'+ str(mins) + '-mex'+str(size), sizeprop=sizeprop)
+
     return dbs
 
-def plot_clusters(data, centroids, csizes, dataname=''):
+
+def plot_clusters(data, centroids, csizes, sizeprop=1000, dataname=''):
     """
     Generates an scale x scale plot of the events
     Every event is represented by a point in the graph
-    the ouput is a pdf file and an html file that uses open street maps
+    the ouput is an html file that uses open street maps
 
-    :param int scale: Scale of the spatial discretization
-    :param bool distrib: If returns the frequency or the accumulated events
     :param string dataname: Name to append to the filename
     """
 
@@ -160,7 +199,7 @@ def plot_clusters(data, centroids, csizes, dataname=''):
 
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     minLat, maxLat, minLon, maxLon = data.city[1]
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=900)
+    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=1400)
 
     # if distrib:
     #     cont = cont / np.max(cont)
@@ -172,9 +211,15 @@ def plot_clusters(data, centroids, csizes, dataname=''):
     #                                     radius=cont[i,j]*(circlesize/scale),
     #                                     line_color='#FF0000',
     #                                     fill_color='#110000')
+    maxsize = np.max(csizes)/sizeprop
+
     for i in range(centroids.shape[0]):
+            if sizeprop != 0:
+                plotsize = csizes[i]/maxsize
+            else:
+                plotsize = 10
             mymap.circle_marker(location=[centroids[i][0], centroids[i][1]],
-                                radius=csizes[i]/100.0,
+                                radius=plotsize,
                                 line_color='#FF0000',
                                 fill_color='#110000')
 
