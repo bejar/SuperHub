@@ -130,6 +130,7 @@ class STData:
             self.lhh = sorted_x
             mnhht = min(mnhh, len(sorted_x))
             hhitters = [x for x, y in sorted_x[mxhh:mnhht]]
+            #print usercount[hhitters[0]], usercount[hhitters[-1]]
         return hhitters
 
     def select_heavy_hitters(self, mxhh, mnhh):

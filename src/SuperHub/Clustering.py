@@ -31,7 +31,8 @@ from numpy import savetxt
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature
 import geojson
-
+import os.path
+import pickle
 
 circlesize = 15000
 
@@ -128,7 +129,21 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
     #     print np.count_nonzero(ccenters)
 
 
-def cluster_events(data, nclust=10, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0):
+def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader'):
+    if alg == 'Leader':
+        nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+            + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)+'.pkl'
+    elif alg == 'DBSCAN':
+        nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+            + '-' + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size) + '.pkl'
+    if os.path.isfile(nfile):
+        pfile = open(nfile,'r')
+        return pickle.load(pfile)
+    else:
+        return None
+
+
+def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0):
     """
     Cluster geographical events and returns the clusters
 
@@ -140,7 +155,7 @@ def cluster_events(data, nclust=10, radius=0.01, mins=100, size=100, alg='Leader
     if alg == 'Leader':
         dbs = Leader(radius=radius)
     elif alg == 'DBSCAN':
-        dbs = DBSCAN(eps=radius, min_samples=mins,algorithm='kd_tree')
+        dbs = DBSCAN(eps=radius, min_samples=mins, algorithm='kd_tree')
     else:
         dbs = None
     now()
@@ -153,8 +168,14 @@ def cluster_events(data, nclust=10, radius=0.01, mins=100, size=100, alg='Leader
                       sizes[sizes > size],
                       sizeprop=250,
                       dataname='leader-crd'+ str(radius) + '-mex' + str(size))
-        nfile = homepath + 'Results/' + data.city[2] + data.application + '-' + 'leader-crd' + str(radius)+'-mex'+ str(size)+'.csv'
-        savetxt(nfile ,dbs.cluster_centers_[sizes > size],delimiter=';')
+        nfile = homepath + 'Results/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)+'.csv'
+        savetxt(nfile, dbs.cluster_centers_[sizes > size],delimiter=';')
+        nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)+'.pkl'
+        pkfile = open(nfile, 'w')
+        pickle.dump(dbs, pkfile)
+        pkfile.close()
     elif alg == 'DBSCAN':
         labset = set(dbs.labels_)
         if -1 in labset:
@@ -179,7 +200,7 @@ def cluster_events(data, nclust=10, radius=0.01, mins=100, size=100, alg='Leader
             centers[i][1] /= sizes[i]
             print sizes[i]
         nfile = homepath + 'Results/' + data.city[2] + data.application + '-'
-        savetxt(nfile + 'dbscan-crd' +str(radius) + '-mins'+ str(mins) + '-mex'+ str(size) + '.csv', clres, delimiter=';')
+        savetxt(nfile + 'DBSCAN-crd' +str(radius) + '-mins'+ str(mins) + '-mex'+ str(size) + '.csv', clres, delimiter=';')
         plot_clusters(data, centers[sizes > size], sizes[sizes > size], dataname='dbscan-crd'+str(radius)
                       + '-mins'+ str(mins) + '-mex'+str(size), sizeprop=sizeprop)
 
