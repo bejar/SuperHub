@@ -78,6 +78,7 @@ def getApplicationDataInterval(cityparam, application, intinit, intend):
     rfile = open(homepath + 'Data/' + cityname + '-' + application + '-' + str(intinit) + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user; geohash\n')
+    rfile.flush()
     col = db['sndata']
     # c = col.find({'app': application,
     #               'lat': {'$gt': minLat, '$lt': maxLat},
@@ -93,10 +94,11 @@ def getApplicationDataInterval(cityparam, application, intinit, intend):
         #        vtime=time.strftime('%Y%m%d%H%M%w',stime)
         #  rfile.write(str(t['lat'])+','+str(t['lng'])+','+vtime+','+str(t['user'])
         # +',\''+str(t['text']).strip().replace('\n','')+'\'\n')
-        if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon) and (intinit < t['interval'] < intend) :
+        if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon) and (intinit < t['interval'] < intend):
             rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';'
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
+            rfile.flush()
     rfile.close()
     #subprocess.call('bzip2 ' + homepath + 'Data/' + application + '.csv')
     print 'Done'
@@ -142,6 +144,8 @@ def getApplicationData(cityparam, application):
             rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';'
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
+            print '.',
+            rfile.flush()
     rfile.close()
     #subprocess.call('bzip2 ' + homepath + 'Data/' + application + '.csv')
     print 'Done'

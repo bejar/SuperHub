@@ -195,7 +195,7 @@ class DailyClusteredTransactions(DailyTransactions):
     timeres = None  # Time discretization (number of hour in a bin
     cluster = None  # Object that tells what cluster corresponds to a position
 
-    def __init__(self, dset, cluster=None, timeres=4):
+    def __init__(self, dset, cluster=None, timeres=None):
         """
         Extracts the daily events transactions of the users, discretizing
         the positions using the cluster centroids and a time resolution
@@ -216,10 +216,7 @@ class DailyClusteredTransactions(DailyTransactions):
             if ncl != -1:
                 cenx = cluster.cluster_centers_[ncl, 0]
                 ceny = cluster.cluster_centers_[ncl, 1]
-                #        print i, user, pos
-                #stime = time.localtime(np.int32(data[i][2]))
-                evtime, quart = timeres.discretize(data[i][2]) #time.strftime('%Y%m%d', stime)
-                #quart = int(stime[3] / timeres)
+                evtime, quart = timeres.discretize(data[i][2])
                 pos = '%f#%f#%d' % (cenx, ceny, quart)
                 if not user in userEvents:
                     a = set()

@@ -170,7 +170,25 @@ class STData:
         data.mnhh = self.mnhh
         return data
 
-    def select_hours(self, ihour, fhour):
+    # def select_hours(self, ihour, fhour):
+    #     """
+    #     Selects only events inside an specific range of hours
+    #
+    #     @param ihour:
+    #     @param fhour:
+    #     @return:
+    #     """
+    #     sel = []
+    #     for i in range(self.dataset.shape[0]):
+    #         stime = time.localtime(np.int32(self.dataset[i][2]))
+    #         hour = stime[3]
+    #         if ihour <= hour < fhour:
+    #             sel.append(i)
+    #     data = STData(self.wpath, self.city, self.application)
+    #     data.dataset = self.dataset[sel]
+    #     return data
+
+    def select_hours(self, lhours):
         """
         Selects only events inside an specific range of hours
 
@@ -178,14 +196,18 @@ class STData:
         @param fhour:
         @return:
         """
-        sel = np.array(self.dataset.shape[0])
-        for i in range(sel.shape[0]):
-            stime = time.localtime(np.int32(self.data[i][2]))
+        sel = []
+        for i in range(self.dataset.shape[0]):
+            stime = time.localtime(np.int32(self.dataset[i][2]))
             hour = stime[3]
-            sel[i] = ihour <= hour < fhour
+            for ih in lhours:
+                ihour, fhour = ih
+                if ihour <= hour < fhour:
+                    sel.append(i)
         data = STData(self.wpath, self.city, self.application)
         data.dataset = self.dataset[sel]
         return data
+
 
     def hourly_table(self):
         """

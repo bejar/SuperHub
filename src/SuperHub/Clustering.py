@@ -129,21 +129,23 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
     #     print np.count_nonzero(ccenters)
 
 
-def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader'):
+def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', lhours=None):
     if alg == 'Leader':
         nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-            + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)+'.pkl'
+            + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
     elif alg == 'DBSCAN':
         nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-            + '-' + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size) + '.pkl'
-    if os.path.isfile(nfile):
-        pfile = open(nfile,'r')
+            + '-' + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size)
+    if lhours is not None:
+        nfile += '-hrs' + str(lhours)
+    if os.path.isfile(nfile + '.pkl'):
+        pfile = open(nfile + '.pkl', 'r')
         return pickle.load(pfile)
     else:
         return None
 
 
-def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0):
+def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0, lhours=None):
     """
     Cluster geographical events and returns the clusters
 
@@ -164,16 +166,27 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
 
     if alg == 'Leader':
         sizes = dbs.cluster_sizes_
+        if lhours is not None:
+            shrs = '-hrs' + str(lhours)
+        else:
+            shrs = ''
+
         plot_clusters(data, dbs.cluster_centers_[sizes > size],
                       sizes[sizes > size],
                       sizeprop=250,
-                      dataname='leader-crd'+ str(radius) + '-mex' + str(size))
+                      dataname='leader-crd'+ str(radius) + '-mex' + str(size) + shrs)
         nfile = homepath + 'Results/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)+'.csv'
-        savetxt(nfile, dbs.cluster_centers_[sizes > size],delimiter=';')
+                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
+        if lhours is not None:
+            nfile += '-hrs' + str(lhours)
+
+        savetxt(nfile + '.csv', dbs.cluster_centers_[sizes > size],delimiter=';')
         nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)+'.pkl'
-        pkfile = open(nfile, 'w')
+                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
+        if lhours is not None:
+            nfile += '-hrs' + str(lhours)
+
+        pkfile = open(nfile + '.pkl', 'w')
         pickle.dump(dbs, pkfile)
         pkfile.close()
     elif alg == 'DBSCAN':
