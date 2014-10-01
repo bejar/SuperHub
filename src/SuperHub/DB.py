@@ -57,7 +57,7 @@ def getApplicationData2(cityparam):
     print 'The End'
 
 
-def getApplicationDataInterval(cityparam, application, intinit, intend):
+def getApplicationDataInterval(cityparam, application, intinit, intend=None):
     """Get the data events from the database and saves it in a csv file
 
     :param: application
@@ -73,6 +73,11 @@ def getApplicationDataInterval(cityparam, application, intinit, intend):
 
     db.authenticate(mguser, password=mgpass)
 
+    if intend is None:
+        intend = int(time.time())
+    print intend
+
+
     #    names= db.collection_names()
     print 'Retrieving Data ...'
     rfile = open(homepath + 'Data/' + cityname + '-' + application + '-' + str(intinit) + '.csv', 'w')
@@ -84,7 +89,14 @@ def getApplicationDataInterval(cityparam, application, intinit, intend):
     #               'lat': {'$gt': minLat, '$lt': maxLat},
     #               'lng': {'$gt': minLon, '$lt': maxLon},
     #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
-    c = col.find({'app': application}, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+
+    c = col.find({'app': application,
+                      'lat': {'$gt': minLat, '$lt': maxLat},
+                      'lng': {'$gt': minLon, '$lt': maxLon},
+                      'interval': {'$gt': intinit, '$lt': intend}
+                     }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
+
+    #c = col.find({'app': application}, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
 
     #subprocess.call('rm ' + homepath + 'Data/' + application + '.csv.bz2')
     print 'Saving Data ...'
@@ -144,7 +156,6 @@ def getApplicationData(cityparam, application):
             rfile.write(str(t['lat']) + ';' + str(t['lng']) + ';'
                         + str(t['interval']) + ';' + str(t['user'])
                         + ';' + t['geohash'] + '\n')
-            print '.',
             rfile.flush()
     rfile.close()
     #subprocess.call('bzip2 ' + homepath + 'Data/' + application + '.csv')
@@ -285,6 +296,34 @@ def getApplicationDataOne(cityparam, application):
     pp.pprint(c)
 
 
+def getApplicationDataOneUser(cityparam, application, user):
+    """
+
+    :param: application:
+    """
+    mgdb = cityparam[0]
+    minLat, maxLat, minLon, maxLon = cityparam[1]
+
+    client = MongoClient(mgdb)
+
+    db = client.superhub
+
+    db.authenticate(mguser, password=mgpass)
+
+
+    #    names= db.collection_names()
+    col = db['sndata']
+    # c = col.find_one({'app': application,
+    #                   'lat': {'$gt': minLat, '$lt': maxLat},
+    #                   'lng': {'$gt': minLon, '$lt': maxLon},
+    #                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
+    c = col.find_one({'app': application,
+                      'lat': {'$gt': minLat, '$lt': maxLat},
+                      'lng': {'$gt': minLon, '$lt': maxLon},
+                      'user': user})
+    return c
+
+
 def getTweets(cityparam, time=None):
     """
     Gets tweets texts from the database
@@ -304,9 +343,9 @@ def getTweets(cityparam, time=None):
     #    names= db.collection_names()
     col = db['sndata']
     c = col.find({'app': 'twitter',
-                      'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                      'interval': {'$gt': time}
-                     }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
+                 'lat': {'$gt': minLat, '$lt': maxLat},
+                 'lng': {'$gt': minLon, '$lt': maxLon},
+                 'interval': {'$gt': time}
+                  }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
     return c
 

@@ -34,6 +34,6 @@ bcncoord = (41.24, 41.52, 1.95, 2.34)
 milancoord = (45.33, 45.59, 9.03, 9.37)
 hlsnkcoord = (60.02, 60.30, 24.72, 25.10)
 homepath = '/home/bejar/Data/SuperHub/'
-bcnparam = (mgdbbcn, bcncoord,'bcn')
+bcnparam = (mgdbbcn, bcncoord, 'bcn')
 milanparam = (mgdbmilan, milancoord, 'milan')
 hlsnkparam = (mgdbhelsinki, hlsnkcoord, 'hlsnk')

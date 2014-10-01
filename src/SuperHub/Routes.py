@@ -73,7 +73,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
     for itemset, sval in fpgrowth(trans, supp=-supp, min=2, target='m'):
         if diff_items(itemset) > 1:
             ltrans.append(itemset)
-            print itemset, sval
+            #print itemset, sval
             rfile.write(str(sorted(itemset, key=item_key_sort)) + ' ' + str(sval) + '\n')
 
     print 'Routes', len(ltrans)

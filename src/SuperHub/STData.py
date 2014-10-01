@@ -100,7 +100,7 @@ class STData:
             coord[i,1]=self.dataset[i][1]
         return coord
 
-    def compute_heavy_hitters(self, mxhh, mnhh):
+    def compute_heavy_hitters(self, mxhh, mnhh, out=False):
         """
         Computes the list of the number of events
         and returns a list with the users between the
