@@ -296,32 +296,11 @@ def getApplicationDataOne(cityparam, application):
     pp.pprint(c)
 
 
-def getApplicationDataOneUser(cityparam, application, user):
-    """
-
-    :param: application:
-    """
-    mgdb = cityparam[0]
-    minLat, maxLat, minLon, maxLon = cityparam[1]
-
-    client = MongoClient(mgdb)
-
-    db = client.superhub
-
-    db.authenticate(mguser, password=mgpass)
 
 
-    #    names= db.collection_names()
-    col = db['sndata']
-    # c = col.find_one({'app': application,
-    #                   'lat': {'$gt': minLat, '$lt': maxLat},
-    #                   'lng': {'$gt': minLon, '$lt': maxLon},
-    #                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
-    c = col.find_one({'app': application,
-                      'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                      'user': user})
-    return c
+
+
+
 
 
 def getTweets(cityparam, time=None):

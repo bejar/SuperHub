@@ -39,6 +39,9 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
         self.labels_ = None
         self.cluster_sizes_ = None
 
+    def num_clusters(self):
+        return self.cluster_centers_.shape[0]
+
     def fit(self,X):
         """
         Clusters the examples

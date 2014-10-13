@@ -23,11 +23,10 @@ __author__ = 'bejar'
 import time
 
 import numpy as np
-
 #from Constants import minLat, maxLat, minLon, maxLon
-from Util import item_to_column
 from scipy.sparse import coo_matrix
 from math import log
+
 
 class Transactions:
     """
@@ -232,13 +231,98 @@ class DailyClusteredTransactions(DailyTransactions):
                         uev[evtime].add(pos)
             self.usertrans = userEvents
 
+    def generate_data_matrix(self, minloc=20, mode='af'):
+        """
+        Generates a sparse data matrix from the transactions
+
+        :param int minloc: Minimun number of locations for a user
+        :param string mode:
+
+         * af = location absolute frequency (total number of times)
+         * nf = location normalized frequency for the user (divided by all user locations)
+         * bin = presence/non presence of the location
+
+          if the mode includes 'idf' the td x idf value is computed
+
+        :returns: csc sparse numpy array representing the user locations
+             and a list of the selected users
+        :rtype: csc sparse matrix, list
+        """
+        def item_to_column(item, cluster):
+            x, y, t = item.split('#')
+            x = float(x)
+            y = float(y)
+            t = int(t)
+            ejem = np.array([[x, y]])
+            ncl = cluster.predict(ejem)
+            ncl = ncl[0]
+            return cluster.num_clusters() * t + ncl
+
+        print 'Generating data matrix ...'
+        trans = self.colapse_count()
+        # Computing the idf term
+        nd = 0
+        idf = {}
+        if 'idf' in mode:
+            for user in trans:
+                if len(trans[user]) > minloc:
+                    for tr in trans[user]:
+                        if tr in idf:
+                            idf[tr] += 1
+                        else:
+                          idf[tr] = 1
+                nd += 1
+        for tr in idf:
+            idf[tr] = log(nd / idf[tr])
+        ## Computing the value
+        lcol = []
+        lrow = []
+        lval = []
+        lusers = []
+        i = 0
+        for user in trans:
+            if len(trans[user]) > minloc:
+                lusers.append(user)
+                lplaces = trans[user]
+                if 'nf' in mode:
+                    usum = reduce(lambda x, y: x + y, [lplaces[v] for v in lplaces])
+                    for tr in lplaces:
+                        lcol.append(item_to_column(tr, self.cluster))
+                        lrow.append(i)
+                        if 'idf' in mode:
+                            lval.append(lplaces[tr]/float(usum) * idf[tr])
+                        else:
+                            lval.append(lplaces[tr]/float(usum))
+                if 'af' in mode:
+                    for tr in lplaces:
+                        lcol.append(item_to_column(tr, self.cluster))
+                        lrow.append(i)
+                        if 'idf' in mode:
+                            lval.append(lplaces[tr] * idf[tr])
+                        else:
+                            lval.append(lplaces[tr])
+                elif 'bin' in mode:
+                    for tr in lplaces:
+                        lcol.append(item_to_column(tr, self.cluster))
+                        lrow.append(i)
+                        if 'idf' in mode:
+                            lval.append(idf[tr])
+                        else:
+                            lval.append(1)
+
+                i += 1
+        datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))),
+                             shape=(i, self.cluster.num_clusters() * len(self.timeres.intervals)))
+        print datamat.shape
+        return datamat.tocsc(), lusers
+
 class DailyDiscretizedTransactions(DailyTransactions):
     """
     Class for the daily discretized transactions
 
     :param data: STData
     :param scale: Space distretization
-    :param timeres: Time distretization (number of hours in a bin)
+    :param timeres: Time distretizer
     """
     scale = None
     timeres = None
@@ -249,8 +333,8 @@ class DailyDiscretizedTransactions(DailyTransactions):
         the positions to a NxN grid and a time resolution
 
         :param: data: STData
-        :param: scale: Space distretization
-        :param: timeres: Time distretization
+        :param: scale: Space discretization
+        :param: timeres: Time discretization
 
         """
         self.scale = scale
@@ -266,10 +350,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
             user = str(int(dataclean[i][3]))
             posy = int(((dataclean[i][0] - minLat) * normLat))
             posx = int(((dataclean[i][1] - minLon) * normLon))
-            #        print i, user, pos
-            #stime = time.localtime(np.int32(dataclean[i][2]))
-            evtime, quart = timeres.discretize(dataclean[i][2]) # time.strftime('%Y%m%d', stime)
-            #quart = int(stime[3] / timeres)
+            evtime, quart = timeres.discretize(dataclean[i][2])
             pos = str(posx - 1) + '#' + str(posy - 1) + '#' + str(quart)  # Grid position/time
             if not user in userEvents:
                 a = set()
@@ -302,6 +383,19 @@ class DailyDiscretizedTransactions(DailyTransactions):
              and a list of the selected users
         :rtype: csc sparse matrix, list
         """
+        def item_to_column(item, scale):
+            """
+            Transforms an item to a column number given the scale of the discretization
+            an item is a string with the format posx#posy#time
+
+            :param string item: string corresponding to two coordinates and a time dicretization
+            :param int scale: value used in the scaling
+            :returns: Integer corresponding to the column of the item
+            :rtype: int
+            """
+            x, y, t = item.split('#')
+            return (int(t) * scale * scale) + (int(y) * scale) + int(x)
+
         print 'Generating data matrix ...'
         trans = self.colapse_count()
         # Computing the idf term
@@ -314,7 +408,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
                         if tr in idf:
                             idf[tr] += 1
                         else:
-                          idf[tr] = 1
+                            idf[tr] = 1
                 nd += 1
         for tr in idf:
             idf[tr] = log(nd / idf[tr])
@@ -355,6 +449,8 @@ class DailyDiscretizedTransactions(DailyTransactions):
                             lval.append(1)
 
                 i += 1
-        datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))), shape=(i, self.scale*self.scale*(24/self.timeres)))
+        datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))),
+                             shape=(i, self.scale*self.scale*len(self.timeres)))
+        print datamat.shape
         return datamat.tocsc(), lusers
 

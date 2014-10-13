@@ -33,11 +33,12 @@ from geojson import LineString, GeometryCollection, FeatureCollection, Feature
 import geojson
 import os.path
 import pickle
+from sklearn.metrics import silhouette_score
 
 circlesize = 15000
 
 
-def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinity',damping=None):
+def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinity', damping=None, minsize=20):
     """
      Generates a clustering of the users by colapsing the transactions of the user events
      the users have to have at least minloc different locations in their transactions
@@ -70,12 +71,13 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
             cclass[v] += 1
 
         for v in range(cclass.shape[0]):
-            if cclass[v] > 20:
+            if cclass[v] > minsize:
                 clusters['c'+str(v)] = []
 
         for v,u in zip(ap_labels,users):
-            if cclass[v] > 20:
+            if cclass[v] > minsize:
                 clusters['c'+str(v)].append(u)
+        print len(clusters)
 
         for c in clusters:
             print c, len(clusters[c])
@@ -91,42 +93,53 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
         for v in k_means_labels:
             cclass[v] += 1
         for v in range(cclass.shape[0]):
-            if cclass[v] > 20:
+            if cclass[v] > minsize:
                 clusters['c'+str(v)] = []
 
         for v,u in zip(k_means_labels,users):
-            if cclass[v] > 20:
+            if cclass[v] > minsize:
                 clusters['c'+str(v)].append(u)
 
+        print len(clusters)
         for c in clusters:
             print c, len(clusters[c])
-
 
     return clusters
 
 
+def cluster_colapsed_events_simple(trans, k, minloc=20, nclust=10, mode='nf', alg='affinity', damping=None):
+    """
+     Generates a clustering of the users by colapsing the transactions of the user events
+     the users have to have at least minloc different locations in their transactions
+     Returns the clustering object
 
-    # print cclass, np.sum(cclass), len(cclass), reduce(lambda x, y: x + y, [1 for v in cclass if v > 20]), \
-    #     reduce(lambda x, y: x + y, [v for v in cclass if v > 20])
+     :arg   trans: Transaction object
+     :arg minloc: Minimum number of locations
+     :arg nclust: Number of clusters, for clustering algorithms that need this parameter
+     :arg mode:
+      * nf = location normalized frequency frequency for the user
+      * af = location absolute frequency for the user
+      * bin = presence/non presence of the location for the user
+      * adding idf used the inverse document frequency
 
+    """
+    # Generates a sparse matrix for the transactions and a list of users
+    data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
 
-    # # Clustering with k-means
-    # k_means = KMeans(init='k-means++', n_clusters=nclust, n_init=10, n_jobs=-1)
-    #
-    # k_means.fit(dataclust)
-    #
-    # k_means_labels = k_means.labels_
-    # k_means_cluster_centers = k_means.cluster_centers_
-    # k_means_labels_unique = len(np.unique(k_means_labels))
-    # print k_means_labels_unique
-    # cclass = np.zeros(k_means_labels_unique)
-    # for v in k_means_labels:
-    #     #print v
-    #     cclass[v] += 1
-    # print cclass, np.sum(cclass)
-    #
-    # for ccenters in k_means_cluster_centers:
-    #     print np.count_nonzero(ccenters)
+    print "Clustering Transactions ..."
+
+    if alg == 'affinity':
+        ap = AffinityPropagation(damping=damping)
+        ap.fit(data)
+        return []
+    elif alg == 'kmeans':
+        lvals = []
+        for i in range (2, nclust):
+            k_means = KMeans(init='k-means++', n_clusters=i, n_init=10, n_jobs=-1)
+            k_means.fit(data)
+            labels = k_means.labels_
+            lvals.append(silhouette_score(data, labels, metric='euclidean'))
+        return lvals
 
 
 def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', lhours=None):

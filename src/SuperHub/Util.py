@@ -55,7 +55,7 @@ def diff_items(seq):
 
 def item_to_column(item, scale):
     """
-    Transforms an item to a column nuber given the scale of the discretization
+    Transforms an item to a column number given the scale of the discretization
     an item is a string with the format posx#posy#time
 
     :param string item: string corresponding to two coordinates and a time dicretization

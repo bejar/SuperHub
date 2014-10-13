@@ -31,7 +31,7 @@ class TimeDiscretizer():
         """
         if type(intervals) is int:
             l = []
-            for v in range(0,24,intervals):
+            for v in range(0, 24, intervals):
                 l.append(v)
             self.intervals = l
         else:
@@ -50,5 +50,5 @@ class TimeDiscretizer():
                 disc = i
         if hour >= self.intervals[-1]:
             disc = len(self.intervals) - 1
-        return ('%d%d%d' % (stime.year, stime.month, stime.day), disc)
+        return '%d%d%d' % (stime.year, stime.month, stime.day), disc
 

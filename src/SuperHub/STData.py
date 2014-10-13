@@ -39,7 +39,6 @@ from Constants import homepath
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature, Polygon
 import geojson
-circlesize = 15000
 
 
 class STData:
@@ -96,8 +95,8 @@ class STData:
     def getDataCoordinates(self):
         coord = np.zeros((self.dataset.shape[0], 2))
         for i in range(len(self.dataset)):
-            coord[i,0]=self.dataset[i][0]
-            coord[i,1]=self.dataset[i][1]
+            coord[i,0] = self.dataset[i][0]
+            coord[i,1] = self.dataset[i][1]
         return coord
 
     def compute_heavy_hitters(self, mxhh, mnhh, out=False):
@@ -299,7 +298,7 @@ class STData:
 
         #plt.show()
 
-    def plot_events(self, scale, distrib=True, dataname='', timeres=0):
+    def plot_events_grid(self, scale, distrib=True, dataname='', timeres=0):
         """
         Generates an scale x scale plot of the events
         Every event is represented by a point in the graph
@@ -328,7 +327,7 @@ class STData:
                 plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
-                        if cont[i, j] != 0:
+                        if cont[i, j] > 0.01:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=cont[i,j]*(circlesize/scale),
                                                 line_color='#FF0000',
@@ -338,7 +337,7 @@ class STData:
             else:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
-                        if cont[i, j] != 0:
+                        if cont[i, j] > 0.01:
                             plt.plot(j, scale - i, 'k.')
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=30,
@@ -369,7 +368,7 @@ class STData:
                 cont = cont / mxcont
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
-                        if cont[i, j] != 0:
+                        if cont[i, j] > 0.01:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=cont[i,j]*(circlesize/scale),
                                                 line_color='#FF0000',
@@ -379,7 +378,7 @@ class STData:
             else:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
-                        if cont[i, j] != 0:
+                        if cont[i, j] > 0.01:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=30,
                                                 line_color='#FF0000',
@@ -403,7 +402,7 @@ class STData:
                     cont = cont / mxcont
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
-                            if cont[i, j] != 0:
+                            if cont[i, j] > 0.01:
                                 mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=cont[i,j]*(circlesize/scale),
                                                 line_color=color,
@@ -411,17 +410,18 @@ class STData:
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
-                            if cont[i, j] != 0:
+                            if cont[i, j] > 0.01:
                                 mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=30,
                                                 line_color=color,
                                                 fill_color='#110000')
 
         print 'Generating the events plot ...'
+        circlesize = 15000
 
-        if timeres == 0:
-            fig = plt.figure()
-            ax = fig.add_subplot(111)
+        # if timeres == 0:
+        #     fig = plt.figure()
+        #     ax = fig.add_subplot(111)
 
         minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
@@ -430,24 +430,186 @@ class STData:
 
 #        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
         #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
-        if timeres == 0:
+        if timeres is None:
             plot_notimeres()
         else:
             plot_timeres(timeres)
 
         #today = time.strftime('%Y%m%d%H%M%S', time.localtime())
-        nfile = self.application + '-' + dataname
+        nfile = self.application + '-' + dataname + '-Grid'
         if self.mnhh is not None and self.mnhh is not None:
             nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
-        nfile += '-s' + str(scale) + '-tr' + str(timeres)
+        if timeres is not None:
+            nfile += '-tr' + str(timeres.interval)
 
-        if timeres == 0:
-            fig.savefig(homepath + 'Results/' + self.city[2] + '-' +
-                        nfile + '.pdf', orientation='landscape', format='pdf')
-            plt.close()
+        nfile += '-s' + str(scale)
+
+        # if timeres == 0:
+        #     fig.savefig(homepath + 'Results/' + self.city[2] + '-' +
+        #                 nfile + '.pdf', orientation='landscape', format='pdf')
+        #     plt.close()
         mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
         #mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
 
+
+    def plot_events_cluster(self, cluster, distrib=True, dataname='', timeres=0):
+        """
+        Generates an scale x scale plot of the events
+        Every event is represented by a point in the graph
+        the ouput is a pdf file and an html file that uses open street maps
+
+        :param int scale: Scale of the spatial discretization
+        :param bool distrib: If returns the frequency or the accumulated events
+        :param string dataname: Name to append to the filename
+        """
+        def plot_notimeres():
+            """
+            All time colapsed
+            @return:
+            """
+            cont = np.zeros(cluster.num_clusters())
+            for i in range(self.dataset.shape[0]):
+                posy = self.dataset[i][0]
+                posx = self.dataset[i][1]
+                ejem = np.array([[posy,posx]])
+                ncl = cluster.predict(ejem)
+                ncl = ncl[0]
+
+                if distrib:
+                    cont[ncl] += 1
+                else:
+                    cont[ncl] = 1
+
+            if distrib:
+                cont = cont / np.max(cont)
+                for i in range(cont.shape[0]):
+                        if cont[i] > 0.01:
+                            cx = cluster.cluster_centers_[i][0]
+                            cy = cluster.cluster_centers_[i][1]
+                            mymap.circle_marker(location=[cx, cy],
+                                                radius=cont[i] * circlesize,
+                                                line_color='#FF0000',
+                                                fill_color='#110000')
+            else:
+                for i in range(cont.shape[0]):
+                        if cont[i] > 0.01:
+                            cx = cluster.cluster_centers_[i][0]
+                            cy = cluster.cluster_centers_[i][1]
+
+                            mymap.circle_marker(location=[cx,cy],
+                                                radius=30,
+                                                line_color='#FF0000',
+                                                fill_color='#110000')
+
+        def plot_timeres(timeres):
+            """
+            Geo points separated by the time resolution zones
+            @return:
+            """
+            tint = 24/len(timeres.intervals)
+            step = 255/(tint+1)
+
+            cont = np.zeros(cluster.num_clusters())
+            for i in range(self.dataset.shape[0]):
+                posy = self.dataset[i][0]
+                posx = self.dataset[i][1]
+                ejem = np.array([[posy, posx]])
+                ncl = cluster.predict(ejem)
+                ncl = ncl[0]
+
+                if distrib:
+                    cont[ncl] += 1
+                else:
+                    cont[ncl] = 1
+
+            if distrib:
+                cont = cont / np.max(cont)
+                for i in range(cont.shape[0]):
+                    if cont[i] > 0.01:
+                        cx = cluster.cluster_centers_[i][0]
+                        cy = cluster.cluster_centers_[i][1]
+                        mymap.circle_marker(location=[cx, cy],
+                                            radius=cont[i] * circlesize,
+                                            line_color='#FF0000',
+                                            fill_color='#110000')
+            else:
+                for i in range(cont.shape[0]):
+                     if cont[i] > 0.01:
+                        cx = cluster.cluster_centers_[i][0]
+                        cy = cluster.cluster_centers_[i][1]
+                        mymap.circle_marker(location=[cx, cy],
+                                            radius=30,
+                                            line_color='#FF0000',
+                                            fill_color='#110000')
+            for t in range(tint):
+                color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1)*step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
+                cont = np.zeros(cluster.num_clusters())
+                for i in range(self.dataset.shape[0]):
+                    posy = self.dataset[i][0]
+                    posx = self.dataset[i][1]
+                    ejem = np.array([[posy,posx]])
+                    ncl = cluster.predict(ejem)
+                    ncl = ncl[0]
+
+                    _, evtime = timeres.discretize(self.dataset[i][2])
+
+                    if (evtime) == t:
+                        if distrib:
+                            cont[ncl] += 1
+                        else:
+                            cont[ncl] = 1
+                if distrib:
+                    cont = cont / np.max(cont)
+                    for i in range(cont.shape[0]):
+                            if cont[i] > 0.01:
+                                cx = cluster.cluster_centers_[i][0]
+                                cy = cluster.cluster_centers_[i][1]
+                                mymap.circle_marker(location=[cx, cy],
+                                                radius=cont[i] * circlesize,
+                                                line_color=color,
+                                                fill_color='#110000')
+                else:
+                    for i in range(cont.shape[0]):
+                        for j in range(cont.shape[1]):
+                            if cont[i] > 0.01:
+                                cx = cluster.cluster_centers_[i][0]
+                                cy = cluster.cluster_centers_[i][1]
+                                mymap.circle_marker(location=[cx, cy],
+                                                radius=30,
+                                                line_color=color,
+                                                fill_color='#110000')
+
+        print 'Generating the events plot ...'
+        circlesize = 60000 * cluster.radius
+
+        # if timeres == 0:
+        #     fig = plt.figure()
+        #     ax = fig.add_subplot(111)
+
+        minLat, maxLat, minLon, maxLon = self.city[1]
+        # normLat = scale / (maxLat - minLat)
+        # normLon = scale / (maxLon - minLon)
+        mymap = folium.Map(location=[(minLat+maxLat)/2.0, (minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+
+        if timeres is None:
+            plot_notimeres()
+        else:
+            plot_timeres(timeres)
+
+        #today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+        nfile = self.application + '-' + dataname + '-Clust'
+        if self.mnhh is not None and self.mnhh is not None:
+            nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
+
+        if timeres is not None:
+            nfile += '-tr' + str(timeres.interval)
+        nfile += '-s' + str(cluster.radius)
+
+        # if timeres == 0:
+        #     fig.savefig(homepath + 'Results/' + self.city[2] + '-' +
+        #                 nfile + '.pdf', orientation='landscape', format='pdf')
+        #     plt.close()
+        mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
 
     def grid_events(self, scale, threshold=100, distrib=False, dataname=''):
         """
@@ -470,7 +632,7 @@ class STData:
 
                 cont[posx - 1, posy - 1] += 1
 
-            lgeo=[]
+            lgeo = []
 
             for i in range(cont.shape[0]):
                 for j in range(cont.shape[1]):
@@ -487,7 +649,7 @@ class STData:
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
         mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=1000)
-        lgeo = plot_notimeres(threshold)
+        lgeog = plot_notimeres(threshold)
 
         nfile = self.application + '-' + dataname
         if self.mnhh is not None and self.mnhh is not None:
@@ -495,7 +657,7 @@ class STData:
         nfile += '-s' + str(scale)
         nfile += '-tr' + str(threshold)
 
-        geoc = FeatureCollection(lgeo)
+        geoc = FeatureCollection(lgeog)
         dump = geojson.dumps(geoc)
         jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
         jsfile.write(dump)
@@ -503,7 +665,6 @@ class STData:
         mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_opacity=0.2)
 
         mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
-
 
     def generate_user_dict(self):
         res={}
