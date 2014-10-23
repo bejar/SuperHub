@@ -256,7 +256,11 @@ class DailyClusteredTransactions(DailyTransactions):
             ejem = np.array([[x, y]])
             ncl = cluster.predict(ejem)
             ncl = ncl[0]
-            return cluster.num_clusters() * t + ncl
+            if ncl != -1:
+                return cluster.num_clusters() * t + ncl
+            else:
+                print "UIUIUI!"
+                return -1
 
         print 'Generating data matrix ...'
         trans = self.colapse_count()

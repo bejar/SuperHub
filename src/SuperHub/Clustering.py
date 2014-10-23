@@ -20,7 +20,7 @@ Clustering
 __author__ = 'bejar'
 
 import numpy as np
-from sklearn.cluster import MiniBatchKMeans, KMeans, AffinityPropagation, DBSCAN
+from sklearn.cluster import MiniBatchKMeans, KMeans, AffinityPropagation, DBSCAN, SpectralClustering
 from sklearn.metrics.pairwise import euclidean_distances
 from collections import Counter
 from cluster.Leader import Leader
@@ -81,7 +81,7 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
 
         for c in clusters:
             print c, len(clusters[c])
-    if alg == 'kmeans':
+    elif alg == 'kmeans':
         k_means = KMeans(init='k-means++', n_clusters=nclust, n_init=10, n_jobs=-1)
         k_means.fit(data)
         k_means_labels = k_means.labels_
@@ -103,11 +103,34 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
         print len(clusters)
         for c in clusters:
             print c, len(clusters[c])
+    elif alg == 'Spectral':
+        spectral = SpectralClustering(n_clusters=nclust,
+                                      assign_labels='discretize', affinity='nearest_neighbors')
+        spectral.fit(data)
+        spectral_labels = spectral.labels_
+        spectral_labels_unique = len(np.unique(spectral_labels))
+        cclass = np.zeros(spectral_labels_unique)
+        clusters = {}
+
+        for v in spectral_labels:
+            cclass[v] += 1
+        for v in range(cclass.shape[0]):
+            if cclass[v] > minsize:
+                clusters['c'+str(v)] = []
+
+        for v,u in zip(spectral_labels,users):
+            if cclass[v] > minsize:
+                clusters['c'+str(v)].append(u)
+
+        print len(clusters)
+        for c in clusters:
+            print c, len(clusters[c])
+
 
     return clusters
 
 
-def cluster_colapsed_events_simple(trans, k, minloc=20, nclust=10, mode='nf', alg='affinity', damping=None):
+def cluster_colapsed_events_simple(trans, minloc=20, nclust=10, mode='nf', alg='affinity', damping=None):
     """
      Generates a clustering of the users by colapsing the transactions of the user events
      the users have to have at least minloc different locations in their transactions
@@ -134,11 +157,14 @@ def cluster_colapsed_events_simple(trans, k, minloc=20, nclust=10, mode='nf', al
         return []
     elif alg == 'kmeans':
         lvals = []
-        for i in range (2, nclust):
+        ic,fc = nclust
+        for i in range (ic, fc):
             k_means = KMeans(init='k-means++', n_clusters=i, n_init=10, n_jobs=-1)
             k_means.fit(data)
             labels = k_means.labels_
-            lvals.append(silhouette_score(data, labels, metric='euclidean'))
+            ssc = silhouette_score(data, labels, metric='euclidean')
+            lvals.append((i, ssc))
+            print i, ssc
         return lvals
 
 

@@ -41,6 +41,8 @@ from geojson import LineString, GeometryCollection, FeatureCollection, Feature, 
 import geojson
 
 
+pltcolors = ['#F00000', '#00F000', '#0000F0', '#0F0000', '#000F00', '#00000F']
+
 class STData:
     """
     Class for a superhub dataset:
@@ -372,7 +374,7 @@ class STData:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=cont[i,j]*(circlesize/scale),
                                                 line_color='#FF0000',
-                                                fill_color='#110000')
+                                                fill_color='#110000', fill_opacity=0.2)
                             #mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
                             #                  cont[i,j]*(circlesize/scale), "#FF0000")
             else:
@@ -382,7 +384,7 @@ class STData:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=30,
                                                 line_color='#FF0000',
-                                                fill_color='#110000')
+                                                fill_color='#110000', fill_opacity=0.2)
                             #mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
                             #                   minLon+((j+1.5)/normLon), 30, "#FF0000")
             for t in range(tint):
@@ -404,17 +406,17 @@ class STData:
                         for j in range(cont.shape[1]):
                             if cont[i, j] > 0.01:
                                 mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                radius=cont[i,j]*(circlesize/scale),
+                                                   radius=cont[i,j]*(circlesize/scale),
                                                 line_color=color,
-                                                fill_color='#110000')
+                                                fill_color='#110000', fill_opacity=0.2)
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
                             if cont[i, j] > 0.01:
                                 mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                radius=30,
-                                                line_color=color,
-                                                fill_color='#110000')
+                                                    radius=30,
+                                                    line_color=color,
+                                                    fill_color='#110000', fill_opacity=0.2)
 
         print 'Generating the events plot ...'
         circlesize = 15000
@@ -426,7 +428,7 @@ class STData:
         minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
-        mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+        mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
 
 #        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
         #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
@@ -452,7 +454,7 @@ class STData:
         #mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
 
 
-    def plot_events_cluster(self, cluster, distrib=True, dataname='', timeres=0):
+    def plot_events_cluster(self, cluster, distrib=True, dataname='', timeres=None):
         """
         Generates an scale x scale plot of the events
         Every event is represented by a point in the graph
@@ -489,7 +491,8 @@ class STData:
                             mymap.circle_marker(location=[cx, cy],
                                                 radius=cont[i] * circlesize,
                                                 line_color='#FF0000',
-                                                fill_color='#110000')
+                                                fill_color='#110000',
+                                                popup=str(cont[i]), fill_opacity=0.2)
             else:
                 for i in range(cont.shape[0]):
                         if cont[i] > 0.01:
@@ -499,7 +502,8 @@ class STData:
                             mymap.circle_marker(location=[cx,cy],
                                                 radius=30,
                                                 line_color='#FF0000',
-                                                fill_color='#110000')
+                                                fill_color='#110000',
+                                                popup=str(cont[i]), fill_opacity=0.2)
 
         def plot_timeres(timeres):
             """
@@ -522,27 +526,27 @@ class STData:
                 else:
                     cont[ncl] = 1
 
-            if distrib:
-                cont = cont / np.max(cont)
-                for i in range(cont.shape[0]):
-                    if cont[i] > 0.01:
-                        cx = cluster.cluster_centers_[i][0]
-                        cy = cluster.cluster_centers_[i][1]
-                        mymap.circle_marker(location=[cx, cy],
-                                            radius=cont[i] * circlesize,
-                                            line_color='#FF0000',
-                                            fill_color='#110000')
-            else:
-                for i in range(cont.shape[0]):
-                     if cont[i] > 0.01:
-                        cx = cluster.cluster_centers_[i][0]
-                        cy = cluster.cluster_centers_[i][1]
-                        mymap.circle_marker(location=[cx, cy],
-                                            radius=30,
-                                            line_color='#FF0000',
-                                            fill_color='#110000')
+            # if distrib:
+            #     cont = cont / np.max(cont)
+            #     for i in range(cont.shape[0]):
+            #         if cont[i] > 0.01:
+            #             cx = cluster.cluster_centers_[i][0]
+            #             cy = cluster.cluster_centers_[i][1]
+            #             mymap.circle_marker(location=[cx, cy],
+            #                                 radius=cont[i] * circlesize,
+            #                                 line_color='#FF0000',
+            #                                 fill_color='#110000')
+            # else:
+            #     for i in range(cont.shape[0]):
+            #         if cont[i] > 0.01:
+            #             cx = cluster.cluster_centers_[i][0]
+            #             cy = cluster.cluster_centers_[i][1]
+            #             mymap.circle_marker(location=[cx, cy],
+            #                                 radius=30,
+            #                                 line_color='#FF0000',
+            #                                 fill_color='#110000')
             for t in range(tint):
-                color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1)*step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
+                color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1) * step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
                 cont = np.zeros(cluster.num_clusters())
                 for i in range(self.dataset.shape[0]):
                     posy = self.dataset[i][0]
@@ -553,7 +557,7 @@ class STData:
 
                     _, evtime = timeres.discretize(self.dataset[i][2])
 
-                    if (evtime) == t:
+                    if evtime == t:
                         if distrib:
                             cont[ncl] += 1
                         else:
@@ -565,9 +569,10 @@ class STData:
                                 cx = cluster.cluster_centers_[i][0]
                                 cy = cluster.cluster_centers_[i][1]
                                 mymap.circle_marker(location=[cx, cy],
-                                                radius=cont[i] * circlesize,
-                                                line_color=color,
-                                                fill_color='#110000')
+                                                    radius=cont[i] * circlesize,
+                                                    line_color=pltcolors[t],
+                                                    fill_color=pltcolors[t],#'#110000',
+                                                    popup=str(t) + '-' + str(cont[i]), fill_opacity=0.2)
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
@@ -575,9 +580,10 @@ class STData:
                                 cx = cluster.cluster_centers_[i][0]
                                 cy = cluster.cluster_centers_[i][1]
                                 mymap.circle_marker(location=[cx, cy],
-                                                radius=30,
-                                                line_color=color,
-                                                fill_color='#110000')
+                                                    radius=30,
+                                                    line_color=pltcolors[t],
+                                                    fill_color=pltcolors[t],#'#110000',
+                                                    popup=str(t) + '-' + str(cont[i]), fill_opacity=0.2)
 
         print 'Generating the events plot ...'
         circlesize = 60000 * cluster.radius
@@ -589,7 +595,7 @@ class STData:
         minLat, maxLat, minLon, maxLon = self.city[1]
         # normLat = scale / (maxLat - minLat)
         # normLon = scale / (maxLon - minLon)
-        mymap = folium.Map(location=[(minLat+maxLat)/2.0, (minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+        mymap = folium.Map(location=[(minLat+maxLat)/2.0, (minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
 
         if timeres is None:
             plot_notimeres()
@@ -602,7 +608,7 @@ class STData:
             nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
 
         if timeres is not None:
-            nfile += '-tr' + str(timeres.interval)
+            nfile += '-tr' + str(timeres.intervals)
         nfile += '-s' + str(cluster.radius)
 
         # if timeres == 0:
