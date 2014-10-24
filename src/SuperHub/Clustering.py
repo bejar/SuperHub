@@ -56,7 +56,7 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
     # Generates a sparse matrix for the transactions and a list of users
     data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
 
-    print "Clustering Transactions ..."
+    print "Clustering Transactions ... ", alg
 
     if alg == 'affinity':
         ap = AffinityPropagation(damping=damping)
@@ -103,7 +103,7 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
         print len(clusters)
         for c in clusters:
             print c, len(clusters[c])
-    elif alg == 'Spectral':
+    elif alg == 'spectral':
         spectral = SpectralClustering(n_clusters=nclust,
                                       assign_labels='discretize', affinity='nearest_neighbors')
         spectral.fit(data)

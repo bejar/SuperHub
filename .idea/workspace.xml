@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Clustering.py" afterPath="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/STData.py" afterPath="$PROJECT_DIR$/src/SuperHub/STData.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Transactions.py" afterPath="$PROJECT_DIR$/src/SuperHub/Transactions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/DB.py" afterPath="$PROJECT_DIR$/src/SuperHub/DB.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -51,9 +50,11 @@
       <file leaf-file-name="fsqtwitter2.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="2895">
-              <caret line="137" column="40" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1903" max-vertical-offset="2970">
+              <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
+              <folding>
+                <element signature="e#183#197#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/instatwitter.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2445">
-              <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+              <caret line="101" column="61" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -71,8 +72,8 @@
       <file leaf-file-name="Clustering.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2242" max-vertical-offset="4410">
-              <caret line="172" column="74" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1252" max-vertical-offset="4410">
+              <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -100,36 +101,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetData.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GetData.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="615">
-              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-              <folding>
-                <element signature="e#171#235#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GenerateClustersPaper.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24342105" vertical-offset="2184" max-vertical-offset="2685">
-              <caret line="153" column="49" selection-start-line="153" selection-start-column="49" selection-end-line="153" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.12280702" vertical-offset="2494" max-vertical-offset="3285">
+              <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
               <folding>
                 <element signature="e#220#288#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenerateRoutesPaper.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GenerateRoutesPaper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="1680">
-              <caret line="103" column="76" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -196,18 +175,18 @@
         <option value="$PROJECT_DIR$/src/SuperHub/Constants.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/DrawMap.py" />
         <option value="$PROJECT_DIR$/src/generatemaps.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
         <option value="$PROJECT_DIR$/src/SuperHubTest.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/TimeDiscretizer.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Util.py" />
         <option value="$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
         <option value="$PROJECT_DIR$/src/GetData.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/STData.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Transactions.py" />
         <option value="$PROJECT_DIR$/src/GenerateRoutesPaper.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
         <option value="$PROJECT_DIR$/src/fsqtwitter2.py" />
         <option value="$PROJECT_DIR$/src/instatwitter.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
         <option value="$PROJECT_DIR$/src/GenerateClustersPaper.py" />
       </list>
     </option>
@@ -399,7 +378,7 @@
       <recent name="$PROJECT_DIR$/SuperHub/Transactions" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.GenerateClustersPaper">
+  <component name="RunManager" selected="Python.instatwitter">
     <configuration default="false" name="fsqtwitter2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -816,7 +795,11 @@
       <created>1413189412548</created>
       <updated>1413189412548</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Minor changes">
+      <created>1414064717098</created>
+      <updated>1414064717098</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -841,8 +824,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="34" y="63" width="1156" height="871" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -851,13 +835,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2729805" sideWeight="0.50177306" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2729805" sideWeight="0.4973404" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2729805" sideWeight="0.4973404" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32536522" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39895013" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -895,7 +878,8 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Function from drawing a route in a map" />
     <MESSAGE value="Some Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some Fixes" />
+    <MESSAGE value="Minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1139,13 +1123,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84008527" vertical-offset="2336" max-vertical-offset="4875">
-          <caret line="193" column="60" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GeoCluster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1321962" vertical-offset="84" max-vertical-offset="1530">
@@ -1211,14 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateRoutesPaper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="1680">
-          <caret line="103" column="76" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6466" max-vertical-offset="6960">
@@ -1243,34 +1212,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2242" max-vertical-offset="4410">
-          <caret line="172" column="74" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="74" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4523" max-vertical-offset="5070">
+          <caret line="328" column="44" selection-start-line="328" selection-start-column="44" selection-end-line="328" selection-end-column="44" />
+          <folding>
+            <element signature="e#271#282#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="2895">
-          <caret line="137" column="40" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1903" max-vertical-offset="2970">
+          <caret line="137" column="32" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
+          <folding>
+            <element signature="e#183#197#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/instatwitter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2445">
-          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+          <caret line="101" column="61" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateRoutesPaper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7368421" vertical-offset="1179" max-vertical-offset="1680">
+          <caret line="103" column="76" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1252" max-vertical-offset="4410">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24342105" vertical-offset="2184" max-vertical-offset="2685">
-          <caret line="153" column="49" selection-start-line="153" selection-start-column="49" selection-end-line="153" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.12280702" vertical-offset="2494" max-vertical-offset="3285">
+          <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding>
             <element signature="e#220#288#0" expanded="true" />
           </folding>

@@ -303,7 +303,7 @@ def getApplicationDataOne(cityparam, application):
 
 
 
-def getTweets(cityparam, time=None):
+def getTweets(cityparam, intinit=None):
     """
     Gets tweets texts from the database
 
@@ -318,13 +318,15 @@ def getTweets(cityparam, time=None):
 
     db.authenticate(mguser, password=mgpass)
 
+    intend = int(time.time())
+    print intend
 
     #    names= db.collection_names()
     col = db['sndata']
     c = col.find({'app': 'twitter',
                  'lat': {'$gt': minLat, '$lt': maxLat},
                  'lng': {'$gt': minLon, '$lt': maxLon},
-                 'interval': {'$gt': time}
+                 'interval': {'$gt': intinit, '$lt': intend}
                   }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
     return c
 
