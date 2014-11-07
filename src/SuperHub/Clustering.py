@@ -38,7 +38,7 @@ from sklearn.metrics import silhouette_score
 circlesize = 15000
 
 
-def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinity', damping=None, minsize=20):
+def cluster_colapsed_events(data, users, minloc=20, nclust=10, mode='nf', alg='affinity', damping=None, minsize=0):
     """
      Generates a clustering of the users by colapsing the transactions of the user events
      the users have to have at least minloc different locations in their transactions
@@ -54,7 +54,7 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
 
     """
     # Generates a sparse matrix for the transactions and a list of users
-    data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
+    #data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
 
     print "Clustering Transactions ... ", alg
 
@@ -118,13 +118,13 @@ def cluster_colapsed_events(trans, minloc=20, nclust=10, mode='nf', alg='affinit
             if cclass[v] > minsize:
                 clusters['c'+str(v)] = []
 
-        for v,u in zip(spectral_labels,users):
+        for v,u in zip(spectral_labels, users):
             if cclass[v] > minsize:
                 clusters['c'+str(v)].append(u)
 
-        print len(clusters)
-        for c in clusters:
-            print c, len(clusters[c])
+        # print len(clusters)
+        # for c in clusters:
+        #     print c, len(clusters[c])
 
 
     return clusters

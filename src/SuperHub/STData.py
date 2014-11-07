@@ -332,7 +332,7 @@ class STData:
                         if cont[i, j] > 0.01:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=cont[i,j]*(circlesize/scale),
-                                                line_color='#FF0000',
+                                                line_color='#000000',
                                                 fill_color='#110000')
                             # mymap.addradpoint(minLat+(((scale - i)+0.5)/normLat), minLon+((j+0.5)/normLon),
                             #                   cont[i,j]*(circlesize/scale), "#FF0000")
@@ -343,7 +343,7 @@ class STData:
                             plt.plot(j, scale - i, 'k.')
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=30,
-                                                line_color='#FF0000',
+                                                line_color='#000000',
                                                 fill_color='#110000')
                             # mymap.addradpoint(minLat+(((scale - i )+0.5)/normLat),
                             #                  minLon+((j+0.5)/normLon), 30, "#FF0000")
@@ -373,8 +373,8 @@ class STData:
                         if cont[i, j] > 0.01:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=cont[i,j]*(circlesize/scale),
-                                                line_color='#FF0000',
-                                                fill_color='#110000', fill_opacity=0.2)
+                                                line_color='#000000',
+                                                fill_color='#110000', fill_opacity=0.3)
                             #mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
                             #                  cont[i,j]*(circlesize/scale), "#FF0000")
             else:
@@ -383,8 +383,8 @@ class STData:
                         if cont[i, j] > 0.01:
                             mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
                                                 radius=30,
-                                                line_color='#FF0000',
-                                                fill_color='#110000', fill_opacity=0.2)
+                                                line_color='#000000',
+                                                fill_color='#110000', fill_opacity=0.3)
                             #mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
                             #                   minLon+((j+1.5)/normLon), 30, "#FF0000")
             for t in range(tint):
@@ -490,9 +490,9 @@ class STData:
                             cy = cluster.cluster_centers_[i][1]
                             mymap.circle_marker(location=[cx, cy],
                                                 radius=cont[i] * circlesize,
-                                                line_color='#FF0000',
+                                                line_color='#000000',
                                                 fill_color='#110000',
-                                                popup=str(cont[i]), fill_opacity=0.2)
+                                                popup=str(cont[i]), fill_opacity=0.4)
             else:
                 for i in range(cont.shape[0]):
                         if cont[i] > 0.01:
@@ -501,9 +501,9 @@ class STData:
 
                             mymap.circle_marker(location=[cx,cy],
                                                 radius=30,
-                                                line_color='#FF0000',
+                                                line_color='#000000',
                                                 fill_color='#110000',
-                                                popup=str(cont[i]), fill_opacity=0.2)
+                                                popup=str(cont[i]), fill_opacity=0.4)
 
         def plot_timeres(timeres):
             """
@@ -615,7 +615,7 @@ class STData:
         #     fig.savefig(homepath + 'Results/' + self.city[2] + '-' +
         #                 nfile + '.pdf', orientation='landscape', format='pdf')
         #     plt.close()
-        mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
+        mymap.create_map(path=homepath + 'Results/clusters/' + self.city[2] + nfile + '.html')
 
     def grid_events(self, scale, threshold=100, distrib=False, dataname=''):
         """
