@@ -51,7 +51,7 @@ class Leader(BaseEstimator,ClusterMixin,TransformerMixin):
 
         self.cluster_centers_, self.labels_, self.cluster_sizes_ = self._fit_process(X)
 
-        return self._fit_process(X)
+        return self
 
     def predict(self,X):
         """
