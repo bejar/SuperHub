@@ -54,7 +54,12 @@ print 'Begins'
 i = 0
 j = 0
 for item in r:
-    if item['coordinates'] is not None:
+    if 'limit' in item:
+        print '%d tweets missed' % item['limit'].get('track')
+    elif 'disconnect' in item:
+        print 'disconnecting because %s' % item['disconnect'].get('reason')
+        break
+    elif item['coordinates'] is not None:
         vals = []
         print
         print 'TW:', i
