@@ -35,7 +35,7 @@ city = bcnparam[2]
 initime = int(time.time())
 
 wfile = open(homepath + city + '-twitter-py-%d.csv'%initime, 'w')
-locstr= '%s,%s,%s,%s' % (str(bcnparam[1][2]), str(bcnparam[1][0]), str(bcnparam[1][3]), str(bcnparam[1][1]))
+locstr = '%s,%s,%s,%s' % (str(bcnparam[1][2]), str(bcnparam[1][0]), str(bcnparam[1][3]), str(bcnparam[1][1]))
 
 r = api.request('statuses/filter', {'locations': locstr})
 
@@ -43,7 +43,7 @@ r = api.request('statuses/filter', {'locations': locstr})
 i = 0
 j = 0
 for item in r:
-    if item['geo'] is not None:
+    if item['coordinates'] is not None:
         vals = []
         print
         print 'TW:', i
