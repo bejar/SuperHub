@@ -21,7 +21,7 @@ __author__ = 'bejar'
 
 from TwitterAPI import TwitterAPI
 import time
-from Constants import homepath, bcnparam
+from Constants import homepath, bcnparam, milanparam, hlsnkparam
 from Private import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET
 
 api = TwitterAPI(
@@ -30,12 +30,13 @@ api = TwitterAPI(
     ACCESS_TOKEN_KEY,
     ACCESS_TOKEN_SECRET)
 
+cityparam = hlsnkparam
 
-city = bcnparam[2]
+city = cityparam[2]
 initime = int(time.time())
 
 wfile = open(homepath + city + '-twitter-py-%d.csv'%initime, 'w')
-locstr = '%s,%s,%s,%s' % (str(bcnparam[1][2]), str(bcnparam[1][0]), str(bcnparam[1][3]), str(bcnparam[1][1]))
+locstr = '%s,%s,%s,%s' % (str(cityparam[1][2]), str(cityparam[1][0]), str(cityparam[1][3]), str(cityparam[1][1]))
 
 r = api.request('statuses/filter', {'locations': locstr})
 
