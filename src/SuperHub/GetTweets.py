@@ -39,7 +39,7 @@ api = TwitterAPI(
 city = bcnparam[2]
 initime = int(time.time())
 
-wfile = open(homepath + city + '-twitter%d.csv'%initime, 'w')
+wfile = open(homepath + city + '-twitter-py-%d.csv'%initime, 'w')
 locstr= '%s,%s,%s,%s' % (str(bcnparam[1][2]), str(bcnparam[1][0]), str(bcnparam[1][3]), str(bcnparam[1][1]))
 
 r = api.request('statuses/filter', {'locations': locstr})

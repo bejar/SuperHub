@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/SuperHub" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/kemlglearn" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 2.7.3 (/usr/bin/python)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 2.7.5 (/usr/bin/python2.7)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
@@ -20,4 +20,3 @@
     <option name="PROJECT_TEST_RUNNER" value="Nosetests" />
   </component>
 </module>
-
