@@ -296,13 +296,6 @@ def getApplicationDataOne(cityparam, application):
     pp.pprint(c)
 
 
-
-
-
-
-
-
-
 def getTweets(cityparam, intinit=None):
     """
     Gets tweets texts from the database

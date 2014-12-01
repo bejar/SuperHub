@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py" afterPath="$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/kemlglearn/feature_selection/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/DB.py" afterPath="$PROJECT_DIR$/src/SuperHub/DB.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -29,9 +33,31 @@
       <file leaf-file-name="fsqtwitter2.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1800" max-vertical-offset="2895">
-              <caret line="137" column="44" selection-start-line="137" selection-start-column="44" selection-end-line="137" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2427" max-vertical-offset="2895">
+              <caret line="176" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="675">
+              <caret line="32" column="36" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetTweets.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7068607" vertical-offset="695" max-vertical-offset="1350">
+              <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+              <folding>
+                <element signature="e#175#208#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,8 +65,8 @@
       <file leaf-file-name="instatwitter.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/instatwitter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2445">
-              <caret line="101" column="61" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1515" max-vertical-offset="2520">
+              <caret line="101" column="64" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -49,8 +75,8 @@
       <file leaf-file-name="Clustering.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2637" max-vertical-offset="4410">
-              <caret line="202" column="13" selection-start-line="202" selection-start-column="13" selection-end-line="202" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1231" max-vertical-offset="4620">
+              <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -59,7 +85,7 @@
       <file leaf-file-name="STData.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4890" max-vertical-offset="10185">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5190" max-vertical-offset="10305">
               <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
               <folding />
             </state>
@@ -69,7 +95,7 @@
       <file leaf-file-name="ClusterCompare.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClusterCompare.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1530">
+            <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1515">
               <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
               <folding />
             </state>
@@ -79,8 +105,18 @@
       <file leaf-file-name="ClusterCount.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClusterCount.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="990">
+            <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="990">
               <caret line="56" column="55" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DB.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3644" max-vertical-offset="4800">
+              <caret line="313" column="29" selection-start-line="313" selection-start-column="4" selection-end-line="313" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -89,28 +125,8 @@
       <file leaf-file-name="GenerateClustersPaper.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1209" max-vertical-offset="3660">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2130" max-vertical-offset="3765">
               <caret line="142" column="43" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LaplacianScore.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="825">
-              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Leader.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71875" vertical-offset="435" max-vertical-offset="1905">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,9 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/SuperHubData.py" />
-        <option value="$PROJECT_DIR$/SuperHubConstants.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Transactions/DailyTransactions.py" />
         <option value="$PROJECT_DIR$/SuperHub/Transactions/Transactions.py" />
         <option value="$PROJECT_DIR$/src/SuperHubPlot.py" />
         <option value="$PROJECT_DIR$/src/SuperHubData.py" />
@@ -180,22 +193,26 @@
         <option value="$PROJECT_DIR$/src/SuperHub/Util.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Transactions.py" />
         <option value="$PROJECT_DIR$/src/GenerateRoutesPaper.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
         <option value="$PROJECT_DIR$/src/GetData.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
         <option value="$PROJECT_DIR$/src/GenerateClustersPaper.py" />
         <option value="$PROJECT_DIR$/src/ClusterCount.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/STData.py" />
         <option value="$PROJECT_DIR$/src/ClusterCompare.py" />
-        <option value="$PROJECT_DIR$/src/fsqtwitter2.py" />
         <option value="$PROJECT_DIR$/src/instatwitter.py" />
-        <option value="$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py" />
         <option value="$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py" />
+        <option value="$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
+        <option value="$PROJECT_DIR$/src/fsqtwitter2.py" />
+        <option value="$PROJECT_DIR$/src/TwitterGet/gettweets.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/gettweets.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="14" />
+    <option name="x" value="15" />
+    <option name="y" value="27" />
     <option name="width" value="1208" />
     <option name="height" value="957" />
   </component>
@@ -241,6 +258,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -287,77 +305,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kemlglearn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kemlglearn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature_selection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kemlglearn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feature_selection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unsupervised" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kemlglearn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cluster" />
+              <option name="myItemId" value="TwitterGet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -381,7 +329,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -421,32 +368,14 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/SuperHub" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/SuperHub" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/SuperHub/Transactions" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.fsqtwitter2">
-    <configuration default="false" name="GenerateClustersPaper" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/GenerateClustersPaper.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.gettweets">
     <configuration default="false" name="ClusterCompare" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -519,6 +448,24 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="gettweets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/TwitterGet" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -564,22 +511,6 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="docs" factoryName="Docutils task">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -595,6 +526,22 @@
       <option name="docutils_params" value="" />
       <option name="docutils_task" value="" />
       <option name="docutils_open_in_browser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="docs" factoryName="Sphinx task">
@@ -675,19 +622,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.GenerateClustersPaper" />
-      <item index="1" class="java.lang.String" itemvalue="Python.ClusterCompare" />
-      <item index="2" class="java.lang.String" itemvalue="Python.fsqtwitter2" />
-      <item index="3" class="java.lang.String" itemvalue="Python.instatwitter" />
-      <item index="4" class="java.lang.String" itemvalue="Python.ClusterCount" />
+      <item index="0" class="java.lang.String" itemvalue="Python.ClusterCompare" />
+      <item index="1" class="java.lang.String" itemvalue="Python.fsqtwitter2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.instatwitter" />
+      <item index="3" class="java.lang.String" itemvalue="Python.ClusterCount" />
+      <item index="4" class="java.lang.String" itemvalue="Python.gettweets" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.fsqtwitter2" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ClusterCount" />
+        <item index="0" class="java.lang.String" itemvalue="Python.gettweets" />
+        <item index="1" class="java.lang.String" itemvalue="Python.fsqtwitter2" />
         <item index="2" class="java.lang.String" itemvalue="Python.instatwitter" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ClusterCompare" />
-        <item index="4" class="java.lang.String" itemvalue="Python.GenerateClustersPaper" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ClusterCount" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ClusterCompare" />
       </list>
     </recent_temporary>
   </component>
@@ -857,7 +804,11 @@
       <created>1415362314061</created>
       <updated>1415362314061</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Fixing Leader Algorithm">
+      <created>1416906422798</created>
+      <updated>1416906422798</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -881,18 +832,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="14" width="1208" height="957" extended-state="2" />
-    <editor active="true" />
+    <frame x="15" y="27" width="1208" height="957" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18794326" sideWeight="0.7170051" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18882303" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18966977" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2729805" sideWeight="0.50177306" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33706468" sideWeight="0.4973404" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33582088" sideWeight="0.5029636" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33582088" sideWeight="0.4970364" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32536522" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -937,7 +888,8 @@
     <MESSAGE value="Function from drawing a route in a map" />
     <MESSAGE value="Some Fixes" />
     <MESSAGE value="Minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
+    <MESSAGE value="Fixing Leader Algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Leader Algorithm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -945,13 +897,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="5220">
-          <caret line="153" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2100">
@@ -1194,7 +1139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="600">
           <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,14 +1146,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6466" max-vertical-offset="6960">
           <caret line="437" column="0" selection-start-line="437" selection-start-column="0" selection-end-line="437" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4890" max-vertical-offset="10185">
+          <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClusterCompare.py">
+    <entry file="file://$PROJECT_DIR$/src/testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1530">
-          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.625" vertical-offset="45" max-vertical-offset="525">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeoCluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.03125" vertical-offset="630" max-vertical-offset="1530">
+          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/testcsv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75" vertical-offset="120" max-vertical-offset="600">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1905">
+          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9375" vertical-offset="810" max-vertical-offset="1395">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3765">
+          <caret line="142" column="43" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1222,101 +1208,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4890" max-vertical-offset="10185">
-          <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1231" max-vertical-offset="4620">
+          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/instatwitter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2445">
-          <caret line="101" column="61" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.625" vertical-offset="45" max-vertical-offset="525">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoCluster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.03125" vertical-offset="630" max-vertical-offset="1530">
-          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testcsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75" vertical-offset="120" max-vertical-offset="600">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1800" max-vertical-offset="2895">
-          <caret line="137" column="44" selection-start-line="137" selection-start-column="44" selection-end-line="137" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="2445">
+          <caret line="101" column="64" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28125" vertical-offset="195" max-vertical-offset="675">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="675">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="4550" max-vertical-offset="5070">
-          <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4441" max-vertical-offset="4965">
+          <caret line="313" column="29" selection-start-line="313" selection-start-column="4" selection-end-line="313" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClusterCompare.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1530">
+          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2160" max-vertical-offset="2895">
+          <caret line="176" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7068607" vertical-offset="695" max-vertical-offset="1350">
+          <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
           <folding>
-            <element signature="e#271#282#0" expanded="true" />
+            <element signature="e#175#208#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1209" max-vertical-offset="3660">
-          <caret line="142" column="43" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="825">
-          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2637" max-vertical-offset="4410">
-          <caret line="202" column="13" selection-start-line="202" selection-start-column="13" selection-end-line="202" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71875" vertical-offset="435" max-vertical-offset="1905">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
