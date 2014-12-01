@@ -21,12 +21,7 @@ __author__ = 'bejar'
 
 from TwitterAPI import TwitterAPI
 import time
-from Constants import homepath, bcnparam
-
-CONSUMER_KEY = 'U9AT8T0I6hZzOShihJB9106LB'
-CONSUMER_SECRET = 'dW2mxwf5UIU7XcZOqJAvYnDkzjyM4q8ZDo98XHEfCSBUuwRiwd'
-ACCESS_TOKEN_KEY = '241178901-XjwcAiPaW6cP0U47hsqsYcKmXCG56skcRmfXXxdj'
-ACCESS_TOKEN_SECRET = 'Gnd0QTqZ111yrGWRoZBvtTXFI4lzLb4Mp0VKsg1ZGUcmZ'
+from Constants import homepath, bcnparam, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET
 
 
 api = TwitterAPI(
