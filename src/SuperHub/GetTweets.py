@@ -56,8 +56,8 @@ for item in r:
         vals.append(str(item['id']))
         vals.append(str(item['user']['screen_name']))
         vals.append(str(item['user']['id']))
-        vals.append(str(item['geo']['coordinates'][1]))
         vals.append(str(item['geo']['coordinates'][0]))
+        vals.append(str(item['geo']['coordinates'][1]))
         vals.append(str(int(item['timestamp_ms'][0:-3])))
         if 'text' in item:
             vals.append('(### %s ###)'%item['text'])
