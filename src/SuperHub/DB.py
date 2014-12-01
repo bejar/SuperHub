@@ -31,7 +31,8 @@ import pymysql
 from pymysql.err import MySQLError
 
 from Constants import homepath
-from Constants import mgpass, mguser, bcnparam, milanparam
+from Constants import bcnparam, milanparam
+from Private import  mgpass, mguser
 from Constants import msqldb, msqldbs, msqlpass, msqluser
 
 

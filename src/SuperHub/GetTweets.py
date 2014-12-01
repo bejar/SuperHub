@@ -21,8 +21,8 @@ __author__ = 'bejar'
 
 from TwitterAPI import TwitterAPI
 import time
-from Constants import homepath, bcnparam, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET
-
+from Constants import homepath, bcnparam
+from Private import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN_KEY, ACCESS_TOKEN_SECRET
 
 api = TwitterAPI(
     CONSUMER_KEY,
