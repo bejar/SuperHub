@@ -29,26 +29,30 @@ msqluser = 'superhub'
 msqlpass = 'superhub'
 msqldbs = 'SuperHub'
 
+homepath = '/home/bejar/Data/SuperHub/'
+
 # 45.467 9.200
 bcncoord = (41.24, 41.52, 1.95, 2.34)
 milancoord = (45.33, 45.59, 9.03, 9.37)
 hlsnkcoord = (60.02, 60.30, 24.72, 25.10)
-pariscoord = (48.45, 48.54, 2.16, 2.25)
-londoncoord = (51.16, 51.45, -0.13, 0.27)
-berlincoord = (52.24, 52.36, 13.15, 13.32)
+pariscoord = (48.52, 49.05, 1.97, 2.68)
+londoncoord = (51.23, 51.59, -0.38, 0.37)
+berlincoord = (52.32, 52.62, 13.11, 13.60)
+romecoord = (41.49, 41.57, 12.24, 12.39)
 
-homepath = '/home/bejar/Data/SuperHub/'
 bcnparam = (mgdbbcn, bcncoord, 'bcn')
 milanparam = (mgdbmilan, milancoord, 'milan')
 hlsnkparam = (mgdbhelsinki, hlsnkcoord, 'hlsnk')
 parisparam = (None, pariscoord, 'paris')
 londonparam = (None, londoncoord, 'london')
 berlinparam = (None, berlincoord, 'berlin')
+romeparam = (None, romecoord, 'rome')
 
 cityparams ={
     'bcn': bcnparam,
     'milan': milanparam,
     'paris': parisparam,
     'london': londonparam,
-    'berlin': berlinparam
+    'berlin': berlinparam,
+    'rome': romeparam
 }
