@@ -30,13 +30,21 @@ from Private import credentials
 import logging
 
 
-def get_tweets(city):
+def get_tweets(city, silent=False):
 
     # Logging configuration
     logger = logging.getLogger('log')
-    logger.setLevel(logging.INFO)
+    if silent:
+        logger.setLevel(logging.ERROR)
+    else:
+        logger.setLevel(logging.INFO)
+
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    if silent:
+        console.setLevel(logging.ERROR)
+    else:
+        console.setLevel(logging.INFO)
+
     formatter = logging.Formatter('%(message)s')
     console.setFormatter(formatter)
     logging.getLogger('log').addHandler(console)
@@ -55,16 +63,16 @@ def get_tweets(city):
     j = 0
     for item in r:
         if 'limit' in item:
-            logger.info('%d tweets missed', item['limit'].get('track'))
+            logger.error('%d tweets missed', item['limit'].get('track'))
         elif 'disconnect' in item:
-            logger.info('disconnecting because %s', item['disconnect'].get('reason'))
+            logger.error('disconnecting because %s', item['disconnect'].get('reason'))
             wfile.close()
             return 0
         elif item['coordinates'] is not None:
             vals = []
             logger.info('TW: %d', i)
             if 'text' in item:
-                logger.info('Text: %s', item['text'])
+                logger.info('Text: %s', item['text'].replace('\n', ' ').replace('\r', ''))
             logger.info('Time: %s', time.ctime(int(item['timestamp_ms'][0:-3])))
             logger.info('ID: %s', str(item['user']['id']))
 
@@ -75,9 +83,9 @@ def get_tweets(city):
             vals.append(str(item['coordinates']['coordinates'][1]))
             vals.append(str(int(item['timestamp_ms'][0:-3])))
             if 'text' in item:
-                vals.append('(### %s ###)'%item['text'])
+                vals.append('(### %s ###)'%item['text'].replace('\n', ' ').replace('\r', ''))
             else:
-                vals.append('(####)')
+                vals.append('(## ##)')
 
             cnt = 0
             for v in vals:
