@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Constants.py" afterPath="$PROJECT_DIR$/src/SuperHub/Constants.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/GetTweets.py" afterPath="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
     <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,41 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fsqtwitter2.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2080" max-vertical-offset="2895">
-              <caret line="176" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Constants.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="690">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="333" max-vertical-offset="840">
+              <caret line="50" column="1" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Private.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Private.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="555">
-              <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetTweets.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GetTweets.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46583852" vertical-offset="450" max-vertical-offset="1275">
-              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+            <state vertical-scroll-proportion="-0.48785424" vertical-offset="1126" max-vertical-offset="1665">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#175#208#0" expanded="true" />
               </folding>
@@ -68,63 +50,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+      <file leaf-file-name="GetTweets-Milan.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="870">
-              <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="871" max-vertical-offset="1365">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding>
-                <element signature="e#162#195#0" expanded="true" />
+                <element signature="e#175#208#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instatwitter.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/instatwitter.py">
+      <file leaf-file-name="GetTweets-BCN.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="2445">
-              <caret line="101" column="64" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="1365">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="37" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Clustering.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+      <file leaf-file-name="GetTweets-London.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-London.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1231" max-vertical-offset="4620">
-              <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="236" max-vertical-offset="1335">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+              <folding>
+                <element signature="e#175#208#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClusterCompare.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ClusterCompare.py">
+      <file leaf-file-name="GetTweets-Paris.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="1530">
-              <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="1350">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding>
+                <element signature="e#175#208#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DB.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+      <file leaf-file-name="Private.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/Private.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="4980">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenerateClustersPaper.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2130" max-vertical-offset="3765">
-              <caret line="142" column="43" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+              <caret line="32" column="111" selection-start-line="32" selection-start-column="111" selection-end-line="32" selection-end-column="111" />
               <folding />
             </state>
           </provider>
@@ -152,67 +128,22 @@
     </option>
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SuperHubData.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Util.py" />
-        <option value="$PROJECT_DIR$/src/SuperHubTransactions.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Plots.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Constants.py" />
-        <option value="$PROJECT_DIR$/src/SuperHubProcessing.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Descriptive.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Routes.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Transactions.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Data.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Data.py" />
-        <option value="$PROJECT_DIR$/doc/SuperHub.rst" />
-        <option value="$PROJECT_DIR$/doc/conf.py" />
-        <option value="$PROJECT_DIR$/doc/index.rst" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Plots.py" />
-        <option value="$PROJECT_DIR$/src/fsqtwitter.py" />
-        <option value="$PROJECT_DIR$/src/SuperHubTest2.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/testcsv.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/TIJoinData.py" />
-        <option value="$PROJECT_DIR$/src/maptest.py" />
-        <option value="$PROJECT_DIR$/src/kemlglearn/cluster/test.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Descriptive.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/testing.py" />
-        <option value="$PROJECT_DIR$/src/SHGenerateReport.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GeoCluster.py" />
-        <option value="$PROJECT_DIR$/src/GenerateRoutes.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Routes.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/DrawMap.py" />
-        <option value="$PROJECT_DIR$/src/generatemaps.py" />
-        <option value="$PROJECT_DIR$/src/SuperHubTest.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/TimeDiscretizer.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Util.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Transactions.py" />
-        <option value="$PROJECT_DIR$/src/GenerateRoutesPaper.py" />
-        <option value="$PROJECT_DIR$/src/GetData.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/Clustering.py" />
-        <option value="$PROJECT_DIR$/src/GenerateClustersPaper.py" />
-        <option value="$PROJECT_DIR$/src/ClusterCount.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/STData.py" />
-        <option value="$PROJECT_DIR$/src/ClusterCompare.py" />
-        <option value="$PROJECT_DIR$/src/instatwitter.py" />
-        <option value="$PROJECT_DIR$/src/kemlglearn/cluster/Leader.py" />
-        <option value="$PROJECT_DIR$/src/kemlglearn/feature_selection/unsupervised/LaplacianScore.py" />
-        <option value="$PROJECT_DIR$/src/fsqtwitter2.py" />
-        <option value="$PROJECT_DIR$/src/TwitterGet/gettweets.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/gettweets.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Private.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Constants.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/DB.py" />
-        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-London.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="15" />
-    <option name="y" value="27" />
-    <option name="width" value="1208" />
-    <option name="height" value="957" />
+    <option name="y" value="45" />
+    <option name="width" value="1260" />
+    <option name="height" value="958" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -234,14 +165,14 @@
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="false" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -338,7 +269,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="69" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="options.lastSelected" value="fileColors" />
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -354,6 +285,7 @@
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="'PÑ-P.OLIKIMUN6YB6GGR4R3EW21ºº&#9;null&#9;null" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -362,6 +294,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/SuperHub" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -373,61 +306,119 @@
       <recent name="$PROJECT_DIR$/SuperHub/Transactions" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration default="false" name="fsqtwitter2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fsqtwitter2.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="instatwitter" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/instatwitter.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ClusterCount" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/ClusterCount.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/SuperHub/GetTweets.py</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
+  <component name="RunManager" selected="Python.GetTweets-Paris">
     <configuration default="false" name="gettweets" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -442,24 +433,83 @@
       <module name="SuperHub" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
       <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="GetTweets-Paris" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/SuperHub" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SuperHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py" />
       <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetTweets-Milan" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/SuperHub" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetTweets-BCN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/SuperHub" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetTweets-London" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/SuperHub" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SuperHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperHub/GetTweets-London.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -540,6 +590,7 @@
       <module name="SuperHub" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="docs" factoryName="Sphinx task">
@@ -620,19 +671,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.fsqtwitter2" />
-      <item index="1" class="java.lang.String" itemvalue="Python.instatwitter" />
-      <item index="2" class="java.lang.String" itemvalue="Python.ClusterCount" />
-      <item index="3" class="java.lang.String" itemvalue="Python.gettweets" />
-      <item index="4" class="java.lang.String" itemvalue="Python.test" />
+      <item index="0" class="java.lang.String" itemvalue="Python.gettweets" />
+      <item index="1" class="java.lang.String" itemvalue="Python.GetTweets-Paris" />
+      <item index="2" class="java.lang.String" itemvalue="Python.GetTweets-Milan" />
+      <item index="3" class="java.lang.String" itemvalue="Python.GetTweets-BCN" />
+      <item index="4" class="java.lang.String" itemvalue="Python.GetTweets-London" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.gettweets" />
-        <item index="2" class="java.lang.String" itemvalue="Python.fsqtwitter2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.instatwitter" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ClusterCount" />
+        <item index="0" class="java.lang.String" itemvalue="Python.GetTweets-BCN" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GetTweets-Paris" />
+        <item index="2" class="java.lang.String" itemvalue="Python.GetTweets-London" />
+        <item index="3" class="java.lang.String" itemvalue="Python.GetTweets-Milan" />
+        <item index="4" class="java.lang.String" itemvalue="Python.gettweets" />
       </list>
     </recent_temporary>
   </component>
@@ -644,179 +695,266 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="" />
       <created>1389697401292</created>
+      <option name="number" value="Default" />
       <updated>1389697401292</updated>
     </task>
     <task id="LOCAL-00001" summary="Minor fix">
       <created>1389774785292</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
       <updated>1389774785292</updated>
     </task>
     <task id="LOCAL-00002" summary="Refactoring">
       <created>1389783960183</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
       <updated>1389783960183</updated>
     </task>
     <task id="LOCAL-00003" summary="Refactoring">
       <created>1389784036687</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
       <updated>1389784036687</updated>
     </task>
     <task id="LOCAL-00004" summary="improving some functionalities">
       <created>1389795685716</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
       <updated>1389795685716</updated>
     </task>
     <task id="LOCAL-00005" summary="Improving some functionalities">
       <created>1389797487965</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
       <updated>1389797487965</updated>
     </task>
     <task id="LOCAL-00006" summary="Improving some functionalities">
       <created>1389949862478</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
       <updated>1389949862478</updated>
     </task>
     <task id="LOCAL-00007" summary="Improving some functionalities">
       <created>1389976764307</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
       <updated>1389976764307</updated>
     </task>
     <task id="LOCAL-00008" summary="Improving some functionalities">
       <created>1390549384457</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
       <updated>1390549384457</updated>
     </task>
     <task id="LOCAL-00009" summary="Improving some functionalities">
       <created>1391431708321</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
       <updated>1391431708321</updated>
     </task>
     <task id="LOCAL-00010" summary="Heavy refactoring">
       <created>1392734801551</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
       <updated>1392734801551</updated>
     </task>
     <task id="LOCAL-00011" summary="Heavy refactoring">
       <created>1392906442549</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
       <updated>1392906442549</updated>
     </task>
     <task id="LOCAL-00012" summary="Minor fix">
       <created>1392906928871</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
       <updated>1392906928871</updated>
     </task>
     <task id="LOCAL-00013" summary="Minor fix">
       <created>1392908592934</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
       <updated>1392908592934</updated>
     </task>
     <task id="LOCAL-00014" summary="Moving things">
       <created>1392909786090</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
       <updated>1392909786090</updated>
     </task>
     <task id="LOCAL-00015" summary="Moving things">
       <created>1392910405302</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
       <updated>1392910405302</updated>
     </task>
     <task id="LOCAL-00016" summary="Moving things">
       <created>1392910763701</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
       <updated>1392910763701</updated>
     </task>
     <task id="LOCAL-00017" summary="Moving things">
       <created>1392912619750</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
       <updated>1392912619750</updated>
     </task>
     <task id="LOCAL-00018" summary="Adding Clustering">
       <created>1393320176970</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
       <updated>1393320176970</updated>
     </task>
     <task id="LOCAL-00019" summary="Adding Clustering">
       <created>1393416630076</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
       <updated>1393416630076</updated>
     </task>
     <task id="LOCAL-00020" summary="Adding Clustering">
       <created>1393925475674</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
       <updated>1393925475674</updated>
     </task>
     <task id="LOCAL-00021" summary="Adding Clustering">
       <created>1393956406417</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
       <updated>1393956406417</updated>
     </task>
     <task id="LOCAL-00022" summary="Adding Clustering">
       <created>1394445213298</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
       <updated>1394445213298</updated>
     </task>
     <task id="LOCAL-00023" summary="Adding Clustering">
       <created>1396436795796</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
       <updated>1396436795796</updated>
     </task>
     <task id="LOCAL-00024" summary="Adding Clustering">
       <created>1397478383375</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
       <updated>1397478383375</updated>
     </task>
     <task id="LOCAL-00025" summary="Adding Clustering">
       <created>1397484094925</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
       <updated>1397484094925</updated>
     </task>
     <task id="LOCAL-00026" summary="Several improvements">
       <created>1398347104806</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
       <updated>1398347104806</updated>
     </task>
     <task id="LOCAL-00027" summary="Several improvements">
       <created>1398850154424</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
       <updated>1398850154424</updated>
     </task>
     <task id="LOCAL-00028" summary="Several improvements including the clustering of events">
       <created>1404819155986</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
       <updated>1404819155986</updated>
     </task>
     <task id="LOCAL-00029" summary="some improvements">
       <created>1404908636166</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
       <updated>1404908636166</updated>
     </task>
     <task id="LOCAL-00030" summary="some improvements">
       <created>1408948375732</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
       <updated>1408948375732</updated>
     </task>
     <task id="LOCAL-00031" summary="Adding flexible time intervals">
       <created>1410787726997</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
       <updated>1410787726997</updated>
     </task>
     <task id="LOCAL-00032" summary="some fixes">
       <created>1411385430896</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
       <updated>1411385430896</updated>
     </task>
     <task id="LOCAL-00033" summary="TimeDiscretizer + TData hours Selection">
       <created>1411629947899</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
       <updated>1411629947899</updated>
     </task>
     <task id="LOCAL-00034" summary="minor changes">
       <created>1411723861578</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
       <updated>1411723861578</updated>
     </task>
     <task id="LOCAL-00035" summary="Function from drawing a route in a map">
       <created>1412180233231</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
       <updated>1412180233231</updated>
     </task>
     <task id="LOCAL-00036" summary="Some Fixes">
       <created>1413189412548</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
       <updated>1413189412548</updated>
     </task>
     <task id="LOCAL-00037" summary="Minor changes">
       <created>1414064717098</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
       <updated>1414064717098</updated>
     </task>
     <task id="LOCAL-00038" summary="Minor changes">
       <created>1414151119104</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
       <updated>1414151119104</updated>
     </task>
     <task id="LOCAL-00039" summary="Minor changes">
       <created>1415362314061</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
       <updated>1415362314061</updated>
     </task>
     <task id="LOCAL-00040" summary="Fixing Leader Algorithm">
       <created>1416906422798</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
       <updated>1416906422798</updated>
     </task>
-    <task id="LOCAL-00041" summary="Twitter Getter">
-      <created>1417424471140</created>
-      <updated>1417424471140</updated>
+    <task id="LOCAL-00041" summary="minor fix">
+      <created>1417424900536</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1417424900536</updated>
     </task>
-    <task id="LOCAL-00042" summary="Twitter Getter">
-      <created>1417425196203</created>
-      <updated>1417425196203</updated>
+    <task id="LOCAL-00042" summary="minor fix">
+      <created>1417430103662</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1417430103662</updated>
     </task>
-    <task id="LOCAL-00043" summary="Twitter Getter">
-      <created>1417425464234</created>
-      <updated>1417425464234</updated>
+    <task id="LOCAL-00043" summary="minor fix">
+      <created>1417433343380</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1417433343380</updated>
     </task>
     <option name="localTasksCounter" value="44" />
     <servers />
@@ -842,27 +980,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="15" y="27" width="1208" height="957" extended-state="0" />
+    <frame x="0" y="45" width="1260" height="958" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34558824" sideWeight="0.502834" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32419547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18794326" sideWeight="0.7170051" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18966977" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32587063" sideWeight="0.5012701" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33498758" sideWeight="0.4970364" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32506204" sideWeight="0.49788314" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19271255" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39828432" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34558824" sideWeight="0.49635628" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39895013" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -899,15 +1039,119 @@
     <MESSAGE value="Some Fixes" />
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Fixing Leader Algorithm" />
-    <MESSAGE value="Twitter Getter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Twitter Getter" />
+    <MESSAGE value="minor fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="1" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="142" max-vertical-offset="690">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#175#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Private.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="255">
+          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1230" max-vertical-offset="4410">
+          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5070" max-vertical-offset="10185">
+          <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="451" max-vertical-offset="4980">
+          <caret line="314" column="29" selection-start-line="314" selection-start-column="4" selection-end-line="314" selection-end-column="29" />
+          <folding>
+            <element signature="e#271#282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="675">
+          <caret line="32" column="36" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#175#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1230" max-vertical-offset="4410">
+          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/STData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5070" max-vertical-offset="10185">
+          <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3644" max-vertical-offset="4800">
+          <caret line="313" column="29" selection-start-line="313" selection-start-column="4" selection-end-line="313" selection-end-column="29" />
+          <folding>
+            <element signature="e#271#282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2100">
+          <caret line="68" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="5070">
@@ -922,38 +1166,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <caret line="21" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/348993582/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33194155" vertical-offset="74826" max-vertical-offset="76080">
-          <caret line="4999" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TweetsLanguage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="8" column="3" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/SuperHub.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8754864" vertical-offset="0" max-vertical-offset="1215">
-          <caret line="30" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -971,38 +1187,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib64/python2.7/site-packages/sklearn/mixture/dpgmm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268481" vertical-offset="7449" max-vertical-offset="11400">
-          <caret line="508" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.7/urllib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15595" max-vertical-offset="24120">
-          <caret line="1050" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="466">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/numpy-1.7.1-py2.7-linux-x86_64.egg/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326226" vertical-offset="11904" max-vertical-offset="27825">
-          <caret line="824" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsqtwitter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5714285" vertical-offset="189" max-vertical-offset="1995">
-          <caret line="93" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1020,52 +1208,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib64/python2.7/site-packages/sklearn/metrics/pairwise.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1029" max-vertical-offset="12450">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/geojson/geometry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326226" vertical-offset="144" max-vertical-offset="990">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Plots.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5522388" vertical-offset="1541" max-vertical-offset="2010">
           <caret line="120" column="29" selection-start-line="120" selection-start-column="29" selection-end-line="120" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SHGenerateReport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1110">
-          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateRoutes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1012" max-vertical-offset="1530">
-          <caret line="64" column="117" selection-start-line="64" selection-start-column="104" selection-end-line="64" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/maptest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4520255" vertical-offset="519" max-vertical-offset="1440">
-          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/generatemaps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="24" column="90" selection-start-line="24" selection-start-column="90" selection-end-line="24" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -1076,31 +1222,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHubTest2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15138593" vertical-offset="514" max-vertical-offset="1065">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHubTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="3585">
-          <caret line="156" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="746" max-vertical-offset="1215">
           <caret line="67" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.7/site-packages/sklearn/metrics/cluster/unsupervised.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326226" vertical-offset="1929" max-vertical-offset="3090">
-          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1125,20 +1250,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateRoutesPaper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7368421" vertical-offset="1179" max-vertical-offset="1680">
-          <caret line="103" column="76" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GetData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="600">
-          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Transactions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6466" max-vertical-offset="6960">
@@ -1151,27 +1262,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4890" max-vertical-offset="10185">
           <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.625" vertical-offset="45" max-vertical-offset="525">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeoCluster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.03125" vertical-offset="630" max-vertical-offset="1530">
-          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testcsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75" vertical-offset="120" max-vertical-offset="600">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1189,92 +1279,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClusterCount.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="990">
-          <caret line="56" column="55" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="451" max-vertical-offset="4980">
+          <caret line="314" column="29" selection-start-line="314" selection-start-column="4" selection-end-line="314" selection-end-column="29" />
+          <folding>
+            <element signature="e#271#282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1365">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#175#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="1365">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="37" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-London.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="236" max-vertical-offset="1335">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding>
+            <element signature="e#175#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="1350">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="e#175#208#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Clustering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1231" max-vertical-offset="4620">
-          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClusterCompare.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1530">
-          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="161" max-vertical-offset="4620">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Private.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6" max-vertical-offset="555">
-          <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/DB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="4980">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GenerateClustersPaper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3765">
-          <caret line="142" column="43" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fsqtwitter2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2160" max-vertical-offset="2895">
-          <caret line="176" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/instatwitter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="2445">
-          <caret line="101" column="64" selection-start-line="101" selection-start-column="61" selection-end-line="101" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <caret line="32" column="111" selection-start-line="32" selection-start-column="111" selection-end-line="32" selection-end-column="111" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="690">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="333" max-vertical-offset="840">
+          <caret line="50" column="1" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="870">
-          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
-          <folding>
-            <element signature="e#162#195#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46583852" vertical-offset="450" max-vertical-offset="1275">
-          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+        <state vertical-scroll-proportion="-0.48785424" vertical-offset="1126" max-vertical-offset="1665">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#175#208#0" expanded="true" />
           </folding>
@@ -1298,4 +1378,3 @@
     </states>
   </component>
 </project>
-
