@@ -38,7 +38,7 @@ hlsnkcoord = (60.02, 60.30, 24.72, 25.10)
 pariscoord = (48.52, 49.05, 1.97, 2.68)
 londoncoord = (51.23, 51.59, -0.38, 0.37)
 berlincoord = (52.32, 52.62, 13.11, 13.60)
-romecoord = (41.49, 41.57, 12.24, 12.39)
+romecoord = (41.47, 41.59, 12.20, 12.39)
 
 bcnparam = (mgdbbcn, bcncoord, 'bcn')
 milanparam = (mgdbmilan, milancoord, 'milan')
