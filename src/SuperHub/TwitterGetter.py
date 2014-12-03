@@ -61,7 +61,7 @@ def get_tweets(city, silent=False):
 
     i = 0
     j = 0
-    for item in r:
+    for item in r.get_iterator():
         if 'limit' in item:
             logger.error('%d tweets missed', item['limit'].get('track'))
         elif 'disconnect' in item:

@@ -56,3 +56,5 @@ cityparams ={
     'berlin': berlinparam,
     'rome': romeparam
 }
+
+TW_TIMEOUT = 21600 # 6 hours
