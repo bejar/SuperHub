@@ -29,7 +29,8 @@ from Constants import homepath, cityparams, TW_TIMEOUT
 from Private import credentials
 import logging
 import signal
-
+import requests
+import socket
 
 class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
@@ -65,7 +66,7 @@ def config_logger(silent=False):
     return logger
 
 
-def get_tweets(city, logger, timeout=60):
+def get_tweets(city, logger, inform=50):
     """
     GEt tweets waiting ot a timeout
 
@@ -77,7 +78,8 @@ def get_tweets(city, logger, timeout=60):
 
     initime = int(time.time())
     wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv'%initime, 'w')
-
+    hostname = socket.gethostname()
+    address = "http://" + hostname + ":8890/Update"
 
     # Set the handler for the SIGALRM signal:
     signal.signal(signal.SIGALRM, _timeout)
@@ -136,6 +138,8 @@ def get_tweets(city, logger, timeout=60):
 
 
                 i += 1
+                if inform != 0 and i%inform == 0:
+                    requests.get(address, params={'content': city})
             j += 1
 
     except TimeoutException:

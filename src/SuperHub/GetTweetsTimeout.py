@@ -19,10 +19,8 @@ gettweets
 
 __author__ = 'bejar'
 
-
 from TwitterGetterTimeout import get_tweets, config_logger
 from time import sleep
-
 
 # City parameter
 city = 'paris'
