@@ -143,5 +143,5 @@ def get_tweets(city, logger, inform=50):
             j += 1
 
     except TimeoutException:
-        logger.info('It timed out!')
+        logger.info('##########################  It timed out! ###############################')
     wfile.close()
