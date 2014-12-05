@@ -25,7 +25,7 @@ from time import sleep
 # City parameter
 city = 'paris'
 
-logger = config_logger()
+logger = config_logger(silent=True)
 while True:
     get_tweets(city, logger)
     sleep(10)

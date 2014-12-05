@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py" afterPath="$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" afterPath="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -31,9 +31,31 @@
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="600">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
               <folding>
                 <element signature="e#176#234#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetTweets.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="570">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetTweetsTimeout.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.70414203" vertical-offset="48" max-vertical-offset="555">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+              <folding>
+                <element signature="e#175#233#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,10 +65,8 @@
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="31" max-vertical-offset="570">
-              <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-              <folding>
-                <element signature="e#175#233#0" expanded="true" />
-              </folding>
+              <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-London.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="570">
-              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+              <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
               <folding>
                 <element signature="e#175#233#0" expanded="true" />
               </folding>
@@ -67,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="585">
-              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
               <folding>
                 <element signature="e#176#234#0" expanded="true" />
               </folding>
@@ -79,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="585">
-              <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
               <folding>
                 <element signature="e#176#234#0" expanded="true" />
               </folding>
@@ -87,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterGetterTimeout.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwitterGetterTimeout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84817815" vertical-offset="1756" max-vertical-offset="2295">
-              <caret line="145" column="94" selection-start-line="145" selection-start-column="94" selection-end-line="145" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="2370">
+              <caret line="147" column="27" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
               <folding>
                 <element signature="e#198#231#0" expanded="true" />
               </folding>
@@ -103,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Rome.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="585">
-              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#176#234#0" expanded="true" />
               </folding>
@@ -141,16 +161,16 @@
         <option value="$PROJECT_DIR$/src/SuperHub/TwitterGetter.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/test.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Constants.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Rome.py" />
         <option value="$PROJECT_DIR$/src/webpages/templates/Status.html" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" />
         <option value="$PROJECT_DIR$/src/webpages/WebStatus.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-London.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-London.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Rome.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" />
       </list>
     </option>
   </component>
@@ -717,9 +737,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.GetTweets-Paris" />
-        <item index="1" class="java.lang.String" itemvalue="Python.GetTweets-London" />
-        <item index="2" class="java.lang.String" itemvalue="Python.GetTweets-Rome" />
+        <item index="0" class="java.lang.String" itemvalue="Python.GetTweets-Rome" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GetTweets-Paris" />
+        <item index="2" class="java.lang.String" itemvalue="Python.GetTweets-London" />
         <item index="3" class="java.lang.String" itemvalue="Python.WebStatus" />
         <item index="4" class="java.lang.String" itemvalue="Python.GetTweetsTimeout" />
       </list>
@@ -1048,7 +1068,19 @@
       <option name="project" value="LOCAL" />
       <updated>1417611520750</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Status of Tweets collection in a webserver">
+      <created>1417674944478</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1417674944478</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Timeout requests exceptions handling">
+      <created>1417762329481</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1417762329482</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1135,7 +1167,8 @@
     <MESSAGE value="Refactoring gettweets" />
     <MESSAGE value="Adding Timeout handling in Tweets" />
     <MESSAGE value="Status of Tweets collection in a webserver" />
-    <option name="LAST_COMMIT_MESSAGE" value="Status of Tweets collection in a webserver" />
+    <MESSAGE value="Timeout requests exceptions handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Timeout requests exceptions handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1446,32 +1479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Rome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="585">
-          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding>
-            <element signature="e#176#234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22874494" vertical-offset="37" max-vertical-offset="570">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8816568" vertical-offset="438" max-vertical-offset="975">
-          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/webpages/templates/Status.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="375">
@@ -1490,28 +1497,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52662724" vertical-offset="48" max-vertical-offset="555">
-          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.8816568" vertical-offset="438" max-vertical-offset="975">
+          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="585">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-          <folding>
-            <element signature="e#176#234#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="585">
-          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding>
+            <element signature="e#176#234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="585">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding>
+            <element signature="e#176#234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="2370">
+          <caret line="147" column="27" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
+          <folding>
+            <element signature="e#198#231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="600">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
           <folding>
             <element signature="e#176#234#0" expanded="true" />
           </folding>
@@ -1521,7 +1548,7 @@
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-London.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="570">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
           <folding>
             <element signature="e#175#233#0" expanded="true" />
           </folding>
@@ -1531,29 +1558,35 @@
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="31" max-vertical-offset="570">
-          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-          <folding>
-            <element signature="e#175#233#0" expanded="true" />
-          </folding>
+          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Rome.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="600">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="585">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#176#234#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py">
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84817815" vertical-offset="1756" max-vertical-offset="2295">
-          <caret line="145" column="94" selection-start-line="145" selection-start-column="94" selection-end-line="145" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="570">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70414203" vertical-offset="48" max-vertical-offset="555">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
           <folding>
-            <element signature="e#198#231#0" expanded="true" />
+            <element signature="e#175#233#0" expanded="true" />
           </folding>
         </state>
       </provider>
