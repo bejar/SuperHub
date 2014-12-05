@@ -31,6 +31,7 @@ import logging
 import signal
 import requests
 import socket
+from requests import RequestException
 
 class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
@@ -144,4 +145,8 @@ def get_tweets(city, logger, inform=50):
 
     except TimeoutException:
         logger.info('##########################  It timed out! ###############################')
+    except RequestException:
+        logger.info('##########################  ERROR ###############################')
+
+
     wfile.close()
