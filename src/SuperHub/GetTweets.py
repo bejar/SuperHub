@@ -24,7 +24,7 @@ from TwitterGetter import get_tweets
 
 # City parameter
 
-city = 'bcn'
+city = 'rome'
 
 
 while True:
