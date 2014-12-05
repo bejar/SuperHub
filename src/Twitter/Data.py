@@ -28,7 +28,7 @@ def getTweetsParts(line):
     st = 0
     for i in range(len(parts)-1):
         pos = line.find(';', st)
-        res[parts[i]] = line[st:pos-1]
+        res[parts[i]] = line[st:pos]
         st = pos + 1
     res[parts[-1]] = line[st:-1]
     return res
