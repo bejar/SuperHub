@@ -57,4 +57,4 @@ cityparams ={
     'rome': romeparam
 }
 
-TW_TIMEOUT = 21600 # 6 hours
+TW_TIMEOUT = 3600 # 1 hour

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" afterPath="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" />
+    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="minor fix">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SuperHub/Constants.py" afterPath="$PROJECT_DIR$/src/SuperHub/Constants.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -27,6 +27,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Constants.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8816568" vertical-offset="438" max-vertical-offset="975">
+              <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GetTweets-Berlin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -49,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetTweetsTimeout.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GetTweetsTimeout.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70414203" vertical-offset="48" max-vertical-offset="555">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="555">
+              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
               <folding>
                 <element signature="e#175#233#0" expanded="true" />
               </folding>
@@ -144,6 +154,7 @@
         <option value="Javier Bejar " />
       </list>
     </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
@@ -155,22 +166,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/logtest.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Private.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/TwitterGetter.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/test.py" />
+        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Constants.py" />
-        <option value="$PROJECT_DIR$/src/webpages/templates/Status.html" />
-        <option value="$PROJECT_DIR$/src/webpages/WebStatus.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeout.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Berlin.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Milan.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-London.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Paris.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweets-Rome.py" />
-        <option value="$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py" />
       </list>
     </option>
   </component>
@@ -205,9 +203,6 @@
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
-  </component>
-  <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -254,8 +249,22 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webpages" />
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterGet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -273,25 +282,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webpages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperHub" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="Twitter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,8 +333,6 @@
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="'PÑ-P.OLIKIMUN6YB6GGR4R3EW21ºº&#9;null&#9;null" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -352,7 +341,6 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/SuperHub" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -1002,85 +990,7 @@
       <option name="project" value="LOCAL" />
       <updated>1417424900536</updated>
     </task>
-    <task id="LOCAL-00042" summary="minor fix">
-      <created>1417430103662</created>
-      <option name="number" value="00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1417430103662</updated>
-    </task>
-    <task id="LOCAL-00043" summary="minor fix">
-      <created>1417433343380</created>
-      <option name="number" value="00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1417433343380</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Refactoring gettweets">
-      <created>1417505362680</created>
-      <option name="number" value="00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1417505362680</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Refactoring gettweets">
-      <created>1417508131127</created>
-      <option name="number" value="00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1417508131127</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Refactoring gettweets">
-      <created>1417514183143</created>
-      <option name="number" value="00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1417514183143</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Refactoring gettweets">
-      <created>1417517844016</created>
-      <option name="number" value="00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1417517844016</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Refactoring gettweets">
-      <created>1417526799630</created>
-      <option name="number" value="00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1417526799630</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Refactoring gettweets">
-      <created>1417527373230</created>
-      <option name="number" value="00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1417527373230</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Refactoring gettweets">
-      <created>1417588089843</created>
-      <option name="number" value="00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1417588089844</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Adding Timeout handling in Tweets">
-      <created>1417597389227</created>
-      <option name="number" value="00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1417597389227</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Status of Tweets collection in a webserver">
-      <created>1417611520749</created>
-      <option name="number" value="00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1417611520750</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Status of Tweets collection in a webserver">
-      <created>1417674944478</created>
-      <option name="number" value="00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1417674944478</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Timeout requests exceptions handling">
-      <created>1417762329481</created>
-      <option name="number" value="00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1417762329482</updated>
-    </task>
-    <option name="localTasksCounter" value="55" />
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1118,7 +1028,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18794326" sideWeight="0.7170051" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19271255" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22267206" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39828432" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34558824" sideWeight="0.49635628" order="2" side_tool="false" content_ui="tabs" />
@@ -1164,11 +1074,7 @@
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Fixing Leader Algorithm" />
     <MESSAGE value="minor fix" />
-    <MESSAGE value="Refactoring gettweets" />
-    <MESSAGE value="Adding Timeout handling in Tweets" />
-    <MESSAGE value="Status of Tweets collection in a webserver" />
-    <MESSAGE value="Timeout requests exceptions handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Timeout requests exceptions handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1497,14 +1403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8816568" vertical-offset="438" max-vertical-offset="975">
-          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweets-BCN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="585">
@@ -1583,11 +1481,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHub/GetTweetsTimeout.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70414203" vertical-offset="48" max-vertical-offset="555">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="555">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
           <folding>
             <element signature="e#175#233#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHub/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8816568" vertical-offset="438" max-vertical-offset="975">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
