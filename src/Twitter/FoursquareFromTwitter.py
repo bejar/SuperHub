@@ -123,72 +123,75 @@ def chop_fsq(url):
     else:
         return None
 
+
+def do_the_job(city):
+    params = cityparams[city]
+    minLat, maxLat, minLon, maxLon = params[1]
+    intend = int(time.time())
+    rfile = open(homepath + 'Data-py/' + city + '-py.data', 'r')
+    wfile = open(homepath + 'Data-py/foursquare/' +  city + '-fsq-f-twitter-'+str(intend)+'.data', 'w')
+    #wfile.write('#twid; lat; lng; time; user; geohash, url; fsqtime; fsqact; fsqusr; gender; place; fsqlat; fsqlng; vntypeid; vntname; vntshtname\n')
+
+
+    cnt = 0
+    for line in rfile:
+        t = getTweetsParts(line)
+        if 'I\'m at' in t['text'] or 'http' in t['text']:
+            text = t['text'].split()
+            url = None
+            for p in text:
+                if 'http' in p:
+                    url = p
+            if url is not None:
+                try:
+                    resp = urllib2.urlopen(url,timeout=5)
+                    if 'foursquare' in resp.url or 'swarmapp' in resp.url:
+                        if (minLat <= float(t['lat'] )< maxLat) and (minLon <= float(t['lng']) < maxLon):
+                            print cnt, time.ctime(int(t['interval'])),
+                            print t['text']
+                            print resp.url
+                            vals = [str(t['twid']),str(t['lat']), str(t['lng']), str(t['interval']), str(t['user']),
+                                    resp.url.rstrip()]
+                            url = vals[5]
+                            val = chop_fsq(url)
+                            if val is None: # Try a second time
+                                val = chop_fsq(url)
+                                print 'Trying a second time ...'
+                            if val is not None:
+                                time.sleep(2)
+                                vals.extend(val)
+                                print vals
+                                i = 0
+                                for v in vals:
+                                    wfile.write(v.encode('ascii', 'ignore').rstrip().replace(']',''))
+                                    i += 1
+                                    if i < len(vals):
+                                        wfile.write('; ')
+
+                                wfile.write('\n')
+                                wfile.flush()
+                            else: # If not successful go to next
+                                print 'Unsuccessfully'
+                            cnt +=1
+                            if cnt % 100 == 0:
+                                time.sleep(5)
+                                print 'Sleeping ...'
+
+
+                except ValueError:
+                    pass
+                except IOError:
+                    pass
+                except UnicodeError:
+                    pass
+                except urllib2.httplib.BadStatusLine:
+                    pass
+
+
 chkinvals = ['createdAt', 'type']
 uservals = ['id','gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
+#'bcn'
+for city in ['milan', 'paris', 'rome', 'london', 'berlin']:
+    do_the_job(city)
 
-
-
-city = 'bcn'
-
-params = cityparams[city]
-minLat, maxLat, minLon, maxLon = params[1]
-intend = int(time.time())
-rfile = open(homepath + 'Data-py/' + city + '-py.data', 'r')
-wfile = open(homepath + 'Data-py/foursquare/' +  city + '-fsq-f-twitter-'+str(intend)+'.data', 'w')
-#wfile.write('#twid; lat; lng; time; user; geohash, url; fsqtime; fsqact; fsqusr; gender; place; fsqlat; fsqlng; vntypeid; vntname; vntshtname\n')
-
-
-cnt = 0
-for line in rfile:
-    t = getTweetsParts(line)
-    if 'I\'m at' in t['text'] or 'http' in t['text']:
-        text = t['text'].split()
-        url = None
-        for p in text:
-            if 'http' in p:
-                url = p
-        if url is not None:
-            try:
-                resp = urllib2.urlopen(url,timeout=5)
-                if 'foursquare' in resp.url or 'swarmapp' in resp.url:
-                    if (minLat <= float(t['lat'] )< maxLat) and (minLon <= float(t['lng']) < maxLon):
-                        print cnt, time.ctime(int(t['interval'])),
-                        print t['text']
-                        print resp.url
-                        vals = [str(t['twid']),str(t['lat']), str(t['lng']), str(t['interval']), str(t['user']),
-                                resp.url.rstrip()]
-                        url = vals[5]
-                        val = chop_fsq(url)
-                        if val is None: # Try a second time
-                            val = chop_fsq(url)
-                            print 'Trying a second time ...'
-                        if val is not None:
-                            time.sleep(2)
-                            vals.extend(val)
-                            print vals
-                            i = 0
-                            for v in vals:
-                                wfile.write(v.encode('ascii', 'ignore').rstrip().replace(']',''))
-                                i += 1
-                                if i < len(vals):
-                                    wfile.write('; ')
-
-                            wfile.write('\n')
-                            wfile.flush()
-                        else: # If not successful go to next
-                            print 'Unsuccessfully'
-                        cnt +=1
-                        if cnt % 100 == 0:
-                            time.sleep(5)
-                            print 'Sleeping ...'
-
-
-            except ValueError:
-                pass
-            except IOError:
-                pass
-            except UnicodeError:
-                pass
-            except urllib2.httplib.BadStatusLine:
-                pass

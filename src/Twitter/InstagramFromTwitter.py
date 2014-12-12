@@ -93,73 +93,77 @@ def chop_fsq(url):
     else:
         return None
 
-uservals = ['id','username']
+def do_the_job(city):
+    params = cityparams[city]
+    minLat, maxLat, minLon, maxLon = params[1]
+    intend = int(time.time())
 
-city = 'bcn'
+    rfile = open(homepath + 'Data-py/' + city + '-py.data', 'r')
+    wfile = open(homepath + 'Data-py/instagram/' + city + '-instg-f-twitter-'+str(intend)+'.data', 'w')
 
-params = cityparams[city]
-minLat, maxLat, minLon, maxLon = params[1]
-intend = int(time.time())
-
-rfile = open(homepath + 'Data-py/' + city + '-py.data', 'r')
-wfile = open(homepath + 'Data-py/instagram/' + city + '-instg-f-twitter-'+str(intend)+'.data', 'w')
-
-#wfile.write('#lat; lng; time; user; geohash; url; instaid; instauser\n')
+    #wfile.write('#lat; lng; time; user; geohash; url; instaid; instauser\n')
 
 
-cnt = 0
-for line in rfile:
-    t = getTweetsParts(line)
-    if 'I\'m at' in t['text'] or 'http' in t['text']:
-        text = t['text'].split()
-        url = None
-        for p in text:
-            if 'http' in p:
-                url = p
-        if url is not None:
-            try:
-                resp = urllib2.urlopen(url,timeout=5)
-                if 'http://instagram' in resp.url:
+    cnt = 0
+    for line in rfile:
+        t = getTweetsParts(line)
+        if 'I\'m at' in t['text'] or 'http' in t['text']:
+            text = t['text'].split()
+            url = None
+            for p in text:
+                if 'http' in p:
+                    url = p
+            if url is not None:
+                try:
+                    resp = urllib2.urlopen(url,timeout=5)
+                    if 'http://instagram' in resp.url:
 
-                    if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
-                        print cnt, time.ctime(int(t['interval']),)
-                        print t['text']
-                        #print resp.url
-                        cnt += 1
-                        vals = [str(t['twid']), str(t['lat']), str(t['lng']), str(t['interval']), str(t['user']),
-                                resp.url.rstrip()]
-                        url = vals[5]
-                        val = chop_fsq(url)
-                        if val is None: # Try a second time
+                        if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
+                            print cnt, time.ctime(int(t['interval']),)
+                            print t['text']
+                            #print resp.url
+                            cnt += 1
+                            vals = [str(t['twid']), str(t['lat']), str(t['lng']), str(t['interval']), str(t['user']),
+                                    resp.url.rstrip()]
+                            url = vals[5]
                             val = chop_fsq(url)
-                            #print 'Trying a second time ...'
-                        if val is not None:
-                            time.sleep(2)
-                            vals.extend(val)
-                            #print vals
-                            i = 0
-                            for v in vals:
-                                wfile.write(v.encode('ascii', 'ignore').rstrip())
-                                i += 1
-                                if i < len(vals):
-                                    wfile.write('; ')
+                            if val is None: # Try a second time
+                                val = chop_fsq(url)
+                                #print 'Trying a second time ...'
+                            if val is not None:
+                                time.sleep(2)
+                                vals.extend(val)
+                                #print vals
+                                i = 0
+                                for v in vals:
+                                    wfile.write(v.encode('ascii', 'ignore').rstrip())
+                                    i += 1
+                                    if i < len(vals):
+                                        wfile.write('; ')
 
-                            wfile.write('\n')
-                            wfile.flush()
-                        #else: # If not successful go to next
-                            #print 'Unsuccessfully'
-                        if cnt % 100 == 0:
-                            time.sleep(20)
-                            #print 'Sleeping ...'
+                                wfile.write('\n')
+                                wfile.flush()
+                            #else: # If not successful go to next
+                                #print 'Unsuccessfully'
+                            if cnt % 100 == 0:
+                                time.sleep(20)
+                                #print 'Sleeping ...'
 
 
 
-            except IOError:
-                pass
-            except UnicodeError:
-                pass
-            except ValueError:
-                pass
-            except urllib2.httplib.BadStatusLine:
-                pass
+                except IOError:
+                    pass
+                except UnicodeError:
+                    pass
+                except ValueError:
+                    pass
+                except urllib2.httplib.BadStatusLine:
+                    pass
+
+
+uservals = ['id','username']
+#'bcn'
+for city in ['milan', 'paris', 'rome', 'london', 'berlin']:
+    do_the_job(city)
+
 
