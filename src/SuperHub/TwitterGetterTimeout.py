@@ -32,6 +32,7 @@ import signal
 import requests
 import socket
 from requests import RequestException
+from requests.packages.urllib3.exceptions import ReadTimeoutError
 
 class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
@@ -144,6 +145,8 @@ def get_tweets(city, logger, inform=50):
             j += 1
 
     except TimeoutException:
+        logger.info('##########################  It timed out! ###############################')
+    except ReadTimeoutError:
         logger.info('##########################  It timed out! ###############################')
     except RequestException:
         logger.info('##########################  ERROR ###############################')
