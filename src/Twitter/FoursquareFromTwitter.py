@@ -124,12 +124,12 @@ def chop_fsq(url):
         return None
 
 
-def do_the_job(city):
+def do_the_job(city, date):
     params = cityparams[city]
     minLat, maxLat, minLon, maxLon = params[1]
     intend = int(time.time())
-    rfile = open(homepath + 'Data-py/' + city + '-py.data', 'r')
-    wfile = open(homepath + 'Data-py/foursquare/' +  city + '-fsq-f-twitter-'+str(intend)+'.data', 'w')
+    rfile = open(homepath + 'Data-py/Data/' + city + '-py-'+date+'.data', 'r')
+    wfile = open(homepath + 'Data-py/foursquare/' +  city + '-fsq-f-twitter-'+date+'.data', 'w')
     #wfile.write('#twid; lat; lng; time; user; geohash, url; fsqtime; fsqact; fsqusr; gender; place; fsqlat; fsqlng; vntypeid; vntname; vntshtname\n')
 
 
@@ -192,6 +192,6 @@ chkinvals = ['createdAt', 'type']
 uservals = ['id','gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 #'bcn'
-for city in ['milan', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city)
+for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
+    do_the_job(city, '20141212')
 
