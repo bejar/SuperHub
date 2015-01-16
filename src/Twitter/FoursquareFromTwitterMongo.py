@@ -27,6 +27,28 @@ from Data import getTweetsParts
 import time
 from Constants import homepath, cityparams
 import urllib
+from pymongo import MongoClient
+import pprint
+from Pconstants import mglocal
+
+def transform(tdata):
+    if tdata[8] == ' ' or tdata[7] == ' ':
+        return None
+    else:
+       return {
+                  'fqurl': tdata[1],
+                  'fqtime': tdata[2],
+                  'fqid': tdata[3],
+                  'gender': tdata[4],
+                  'venueid': tdata[5],
+                  'venuename': tdata[6],
+                  'venuelat': float(tdata[7]),
+                  'venuelng': float(tdata[8]),
+                  'venuecat': tdata[9],
+                  'venuepluralname': tdata[10],
+                  'venueshortname': tdata[11],
+                  'venueurl': tdata[12]
+              }
 
 def fix_bval(bval, gval, lval):
     rval = []
@@ -124,18 +146,20 @@ def chop_fsq(url):
         return None
 
 
-def do_the_job(city, date):
-    params = cityparams[city]
-    minLat, maxLat, minLon, maxLon = params[1]
-    intend = int(time.time())
-    rfile = open(homepath + 'Data-py/Data/' + city + '-py-'+date+'.data', 'r')
-    wfile = open(homepath + 'Data-py/foursquare/' +  city + '-fsq-f-twitter-'+date+'.data', 'w')
-    #wfile.write('#twid; lat; lng; time; user; geohash, url; fsqtime; fsqact; fsqusr; gender; place; fsqlat; fsqlng; vntypeid; vntname; vntshtname\n')
+def do_the_job(ttime):
 
+    mgdb = mglocal[0]
+    client = MongoClient(mgdb)
+    db = client.local
+    db.authenticate(mglocal[2], password=mglocal[3])
+    col = db[mglocal[1]]
+
+
+    cursor = col.find({'time': {'$gt': ttime}
+                     }, {'text': 1, 'twid': 1}, timeout=False)
 
     cnt = 0
-    for line in rfile:
-        t = getTweetsParts(line)
+    for t in cursor:
         if 'I\'m at' in t['text'] or 'http' in t['text']:
             text = t['text'].split()
             url = None
@@ -144,15 +168,13 @@ def do_the_job(city, date):
                     url = p
             if url is not None:
                 try:
-                    resp = urllib2.urlopen(url,timeout=5)
-                    if 'foursquare' in resp.url or 'swarmapp' in resp.url and (minLat <= float(t['lat']) < maxLat) and (
-                            minLon <= float(t['lng']) < maxLon):
+                    resp = urllib2.urlopen(url, timeout=5)
+                    if 'foursquare' in resp.url or 'swarmapp' in resp.url:
                         print cnt, time.ctime(int(t['interval'])),
                         print t['text']
                         print resp.url
-                        vals = [str(t['twid']),str(t['lat']), str(t['lng']), str(t['interval']), str(t['user']),
-                                resp.url.rstrip()]
-                        url = vals[5]
+                        vals = [str(t['twid']), resp.url.rstrip()]
+                        url = vals[1]
                         val = chop_fsq(url)
                         if val is None: # Try a second time
                             val = chop_fsq(url)
@@ -163,14 +185,9 @@ def do_the_job(city, date):
                             print vals
                             i = 0
                             if len(vals) == 18:
-                                for v in vals:
-                                    wfile.write(v.encode('ascii', 'ignore').rstrip().replace(']', ''))
-                                    i += 1
-                                    if i < len(vals):
-                                        wfile.write('; ')
-
-                                wfile.write('\n')
-                            wfile.flush()
+                                upd = transform(vals)
+                                if upd is not None:
+                                    col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
                         else: # If not successful go to next
                             print 'Unsuccessfully'
                         cnt +=1
@@ -192,9 +209,7 @@ def do_the_job(city, date):
 chkinvals = ['createdAt', 'type']
 uservals = ['id','gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
-#'bcn'
 
-#['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
-for city in ['bcn', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city, '20150114')
+
+do_the_job('20150114')
 

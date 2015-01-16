@@ -25,7 +25,7 @@ from Pconstants import mgdbbcn, mgdbmilan, mgdbhelsinki
 homepath = '/home/bejar/Data/SuperHub/'
 
 # 45.467 9.200
-bcncoord = (41.24, 41.52, 1.95, 2.34)
+bcncoord = (41.24, 41.59, 1.95, 2.34)
 milancoord = (45.33, 45.59, 9.03, 9.37)
 hlsnkcoord = (60.02, 60.30, 24.72, 25.10)
 pariscoord = (48.52, 49.05, 1.97, 2.68)

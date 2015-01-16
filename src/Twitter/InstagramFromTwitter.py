@@ -143,11 +143,10 @@ def do_the_job(city, date):
 
                                 wfile.write('\n')
                                 wfile.flush()
-                            #else: # If not successful go to next
-                                #print 'Unsuccessfully'
+
                             if cnt % 100 == 0:
                                 time.sleep(5)
-                                #print 'Sleeping ...'
+
 
 
 

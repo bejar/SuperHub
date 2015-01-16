@@ -112,6 +112,72 @@ class STData:
                                usecols=(0, 4, 3, 5, 2, 1, 6), delimiter=';', comments='*')
 
 
+    def read_py_instagram_data_full(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('igurl', 'S100'), ('igid', 'S20'), ('iguname', 'S20')],
+                               usecols=(0, 1, 2, 5, 6, 7), delimiter=';', comments='*')
+
+    def read_py_foursquare_data_full(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('twid', 'S25'),
+                                      ('fqurl', 'S50'),
+                                      ('fqtime', 'S20'),
+                                      ('fqid', 'S20'),
+                                      ('gender', 'S8'),
+                                      ('venueid', 'S20'),
+                                      ('venuename', 'S50'),
+                                      ('venuelat', 'S10'),
+                                      ('venuelng', 'S10'),
+                                      ('venuecat', 'S50'),
+                                      ('venuepluralname', 'S20'),
+                                      ('venueshortname', 'S20'),
+                                      ('venueurl', 'S100')],
+                               usecols=(0, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17), delimiter=';', comments='*')
+
+
+    def read_py_foursquare_data_full2(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0, dtype=[('twid', 'S25'),
+                                      ('fqurl', 'S50'),
+                                      ('fqtime', 'S20'),
+                                      ('fqid', 'S20'),
+                                      ('gender', 'S8'),
+                                      ('venueid', 'S20'),
+                                      ('venuename', 'S50'),
+                                      ('venuelat', 'S10'),
+                                      ('venuelng', 'S10'),
+                                      ('venuecat', 'S50'),
+                                      ('venuepluralname', 'S20'),
+                                      ('venueshortname', 'S20'),
+                                      ('venueurl', 'S100')], delimiter=';', comments='*')
+
+
 
     def info(self):
         """

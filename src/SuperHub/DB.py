@@ -33,7 +33,7 @@ from pymysql.err import MySQLError
 from Constants import homepath
 from Constants import bcnparam, milanparam
 from Private import mgpass, mguser
-from Constants import msqldb, msqldbs, msqlpass, msqluser
+from Pconstants import msqldb, msqldbs, msqlpass, msqluser
 
 
 def getApplicationData2(cityparam):
