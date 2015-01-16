@@ -192,6 +192,8 @@ chkinvals = ['createdAt', 'type']
 uservals = ['id','gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 #'bcn'
-for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city, '20141215')
+
+#['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
+for city in ['paris', 'rome', 'london', 'berlin']:
+    do_the_job(city, '20150114')
 

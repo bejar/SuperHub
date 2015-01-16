@@ -20,14 +20,7 @@ Constants
 
 __author__ = 'bejar'
 
-mgdbbcn = 'mongodb://atalaya-barcelona.mooo.com:27017/'
-mgdbmilan = 'mongodb://atalaya-milan.mooo.com:27017/'
-mgdbhelsinki = 'mongodb://atalaya-helsinki.mooo.com:27017/'
-
-msqldb = 'polaris.lsi.upc.edu'
-msqluser = 'superhub'
-msqlpass = 'superhub'
-msqldbs = 'SuperHub'
+from Pconstants import mgdbbcn, mgdbmilan, mgdbhelsinki
 
 homepath = '/home/bejar/Data/SuperHub/'
 

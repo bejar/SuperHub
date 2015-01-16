@@ -73,6 +73,7 @@ class STData:
         self.wpath = path
         self.city = city
 
+
     def read_data(self):
         """
         Loads the data from the csv file
@@ -83,6 +84,34 @@ class STData:
         self.dataset = loadtxt(fname, skiprows=1,
                                dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
                                usecols=(0, 1, 2, 3), delimiter=';', comments='#')
+
+    def read_py_data(self):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20')],
+                               usecols=(4, 3, 5, 2), delimiter=';', comments='*')
+
+
+    def read_py_data_full(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20'), ('uname', 'S20'), ('tweet', 'S250')],
+                               usecols=(0, 4, 3, 5, 2, 1, 6), delimiter=';', comments='*')
+
+
 
     def info(self):
         """
@@ -95,10 +124,14 @@ class STData:
         print 'D= ', self.dataset.shape
 
     def getDataCoordinates(self):
+        """
+        Returns an array with the coordinates of all the examples
+        @return:
+        """
         coord = np.zeros((self.dataset.shape[0], 2))
         for i in range(len(self.dataset)):
-            coord[i,0] = self.dataset[i][0]
-            coord[i,1] = self.dataset[i][1]
+            coord[i, 0] = self.dataset[i][0]
+            coord[i, 1] = self.dataset[i][1]
         return coord
 
     def compute_heavy_hitters(self, mxhh, mnhh, out=False):

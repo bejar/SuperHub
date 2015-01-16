@@ -32,7 +32,7 @@ from pymysql.err import MySQLError
 
 from Constants import homepath
 from Constants import bcnparam, milanparam
-from Private import  mgpass, mguser
+from Private import mgpass, mguser
 from Constants import msqldb, msqldbs, msqlpass, msqluser
 
 

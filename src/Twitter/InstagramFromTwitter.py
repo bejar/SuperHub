@@ -146,7 +146,7 @@ def do_the_job(city, date):
                             #else: # If not successful go to next
                                 #print 'Unsuccessfully'
                             if cnt % 100 == 0:
-                                time.sleep(20)
+                                time.sleep(5)
                                 #print 'Sleeping ...'
 
 
@@ -162,8 +162,8 @@ def do_the_job(city, date):
 
 
 uservals = ['id','username']
-#'bcn'
-for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city, '20141215')
+#['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
+for city in [ 'paris', 'rome', 'london', 'berlin']:
+    do_the_job(city, '20150114')
 
 
