@@ -39,7 +39,8 @@ from Constants import homepath
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature, Polygon
 import geojson
-
+from Pconstants import mglocal
+from pymongo import MongoClient
 
 pltcolors = ['#F00000', '#00F000', '#0000F0', '#0F0000', '#000F00', '#00000F']
 
@@ -73,6 +74,17 @@ class STData:
         self.wpath = path
         self.city = city
 
+
+    def read_DB(self):
+        """
+        Loads the data from a mongo DB
+
+        """
+        mgdb = mglocal[0]
+        client = MongoClient(mgdb)
+        db = client.local
+        db.authenticate(mglocal[2], password=mglocal[3])
+        col = db[mglocal[1]]
 
     def read_data(self):
         """
