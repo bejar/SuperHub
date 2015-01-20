@@ -62,7 +62,7 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20141215'
+cdate = '20150119'
 
 
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
@@ -71,7 +71,7 @@ for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     data.read_py_data_full(date=cdate)
 
     for d in data.dataset:
-        #print d
+        #print 'TWID= ', d[0]
         col.insert(transform(d, city))
     c = col.find({'city': city})
     print c.count()

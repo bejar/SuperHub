@@ -60,7 +60,7 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20141215'
+cdate = '20150114'
 
 
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
@@ -70,7 +70,7 @@ for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
 
 
     for d in data.dataset:
-        print 'UPD', d[0]
+        #print 'UPD', d[0]
         upd = transform(d)
         col.update({'twid': d[0]}, {'$set': {"instagram": upd}})
 

@@ -85,6 +85,24 @@ class STData:
         db = client.local
         db.authenticate(mglocal[2], password=mglocal[3])
         col = db[mglocal[1]]
+        minLat, maxLat, minLon, maxLon = self.city[1]
+        cityname = self.city[2]
+
+        c = col.find({'city': cityname,
+                     'lat': {'$gt': minLat, '$lt': maxLat},
+                     'lng': {'$gt': minLon, '$lt': maxLon},
+                          #'time': {'$gt': intinit, '$lt': intend}
+                    }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+
+        qsize = c.count()
+        self.dataset =  np.zeros((qsize,), dtype=('f8,f8,i32,S20'))
+        cnt = 0
+        for val in c:
+            self.dataset[cnt][0] = val['lat']
+            self.dataset[cnt][1] = val['lng']
+            self.dataset[cnt][2] = val['time']
+            self.dataset[cnt][3] = val['user']
+            cnt += 1
 
     def read_data(self):
         """
@@ -109,7 +127,7 @@ class STData:
                                usecols=(4, 3, 5, 2), delimiter=';', comments='*')
 
 
-    def read_py_data_full(self, date = None):
+    def read_py_data_full(self, date=None):
         """
         Loads the data from the csv file
 
