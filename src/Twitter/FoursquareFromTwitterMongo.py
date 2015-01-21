@@ -154,10 +154,8 @@ def do_the_job(ttime):
     db.authenticate(mglocal[2], password=mglocal[3])
     col = db[mglocal[1]]
 
-
     cursor = col.find({'time': {'$gt': ttime}
                      }, {'text': 1, 'twid': 1}, timeout=False)
-
     cnt = 0
     for t in cursor:
         if 'I\'m at' in t['text'] or 'http' in t['text']:

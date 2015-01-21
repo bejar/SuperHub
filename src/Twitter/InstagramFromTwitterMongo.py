@@ -26,6 +26,19 @@ from Data import getTweetsParts
 import time
 from Constants import homepath, cityparams
 import urllib
+from pymongo import MongoClient
+import pprint
+from Pconstants import mglocal
+
+
+def transform(tdata):
+   return {
+        'lat': tdata[1],
+        'lng': tdata[2],
+        'igurl': tdata[3],
+        'igid': tdata[4],
+        'iguname': str(tdata[5])
+      }
 
 def fix_bval(bval, gval, lval):
     rval = []
@@ -93,20 +106,19 @@ def chop_fsq(url):
     else:
         return None
 
-def do_the_job(city, date):
-    params = cityparams[city]
-    minLat, maxLat, minLon, maxLon = params[1]
-    intend = int(time.time())
+def do_the_job(ttime):
+    mgdb = mglocal[0]
+    client = MongoClient(mgdb)
+    db = client.local
+    db.authenticate(mglocal[2], password=mglocal[3])
+    col = db[mglocal[1]]
 
-    rfile = open(homepath + 'Data-py/Data/' + city + '-py-' + date +'.data', 'r')
-    wfile = open(homepath + 'Data-py/instagram/' + city + '-instg-f-twitter-'+date+'.data', 'w')
-
-    #wfile.write('#lat; lng; time; user; geohash; url; instaid; instauser\n')
+    cursor = col.find({'time': {'$gt': ttime}
+                     }, {'text': 1, 'twid': 1}, timeout=False)
 
 
     cnt = 0
-    for line in rfile:
-        t = getTweetsParts(line)
+    for t in cursor:
         if 'I\'m at' in t['text'] or 'http' in t['text']:
             text = t['text'].split()
             url = None
@@ -118,36 +130,25 @@ def do_the_job(city, date):
                     resp = urllib2.urlopen(url,timeout=5)
                     if 'http://instagram' in resp.url:
 
-                        if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
-                            print cnt, time.ctime(int(t['interval']),)
-                            print t['text']
-                            #print resp.url
-                            cnt += 1
-                            vals = [str(t['twid']), str(t['lat']), str(t['lng']), str(t['interval']), str(t['user']),
-                                    resp.url.rstrip()]
-                            url = vals[5]
+                        print cnt, time.ctime(int(t['interval']),)
+                        print t['text']
+                        #print resp.url
+                        cnt += 1
+                        vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
+                        url = vals[5]
+                        val = chop_fsq(url)
+                        if val is None: # Try a second time
                             val = chop_fsq(url)
-                            if val is None: # Try a second time
-                                val = chop_fsq(url)
-                                #print 'Trying a second time ...'
-                            if val is not None:
-                                time.sleep(2)
-                                vals.extend(val)
-                                #print vals
-                                i = 0
-                                for v in vals:
-                                    wfile.write(v.encode('ascii', 'ignore').rstrip())
-                                    i += 1
-                                    if i < len(vals):
-                                        wfile.write('; ')
+                            #print 'Trying a second time ...'
+                        if val is not None:
+                            time.sleep(2)
+                            vals.extend(val)
+                            upd = transform(vals)
+                            if upd is not None:
+                                col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
 
-                                wfile.write('\n')
-                                wfile.flush()
-
-                            if cnt % 100 == 0:
-                                time.sleep(5)
-
-
+                        if cnt % 100 == 0:
+                            time.sleep(5)
 
 
                 except IOError:
@@ -161,8 +162,6 @@ def do_the_job(city, date):
 
 
 uservals = ['id','username']
-#['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
-for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city, '20150121')
 
+do_the_job('20150114')
 

@@ -41,6 +41,7 @@ from TIJoinData import TIJoinData
 import time
 from Transactions import DailyTransactions, DailyDiscretizedTransactions
 from pymongo import MongoClient
+from pymongo.errors import DuplicateKeyError
 import pprint
 from Pconstants import mglocal
 
@@ -62,7 +63,7 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20150119'
+cdate = '20150121'
 
 
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
@@ -72,7 +73,11 @@ for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
 
     for d in data.dataset:
         #print 'TWID= ', d[0]
-        col.insert(transform(d, city))
+        try:
+            col.insert(transform(d, city))
+        except DuplicateKeyError:
+            print 'Duplicate: ',  d[0]
+
     c = col.find({'city': city})
     print c.count()
 
