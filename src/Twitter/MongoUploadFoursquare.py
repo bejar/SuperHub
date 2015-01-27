@@ -70,8 +70,9 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20150119'
+cdate = '20150126'
 
+print cdate
 #
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     print city

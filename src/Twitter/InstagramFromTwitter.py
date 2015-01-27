@@ -163,6 +163,6 @@ def do_the_job(city, date):
 uservals = ['id','username']
 #['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city, '20150121')
+    do_the_job(city, '20150126')
 
 
