@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/FoursquareFromTwitter.py" afterPath="$PROJECT_DIR$/src/Twitter/FoursquareFromTwitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/InstagramFromTwitter.py" afterPath="$PROJECT_DIR$/src/Twitter/InstagramFromTwitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/MongoUploadFoursquare.py" afterPath="$PROJECT_DIR$/src/Twitter/MongoUploadFoursquare.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/MongoUploadInstagram.py" afterPath="$PROJECT_DIR$/src/Twitter/MongoUploadInstagram.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -584,12 +580,6 @@
       <option name="number" value="Default" />
       <updated>1389697401292</updated>
     </task>
-    <task id="LOCAL-00010" summary="Heavy refactoring">
-      <created>1392734801551</created>
-      <option name="number" value="00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1392734801551</updated>
-    </task>
     <task id="LOCAL-00011" summary="Heavy refactoring">
       <created>1392906442549</created>
       <option name="number" value="00011" />
@@ -878,7 +868,13 @@
       <option name="project" value="LOCAL" />
       <updated>1421825944933</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="More mongo stuff">
+      <created>1422367732689</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1422367732689</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -905,6 +901,7 @@
     <frame x="42" y="67" width="1705" height="957" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -921,7 +918,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39895013" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
