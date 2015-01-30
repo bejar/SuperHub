@@ -39,7 +39,8 @@ from Constants import homepath
 import folium
 from geojson import LineString, GeometryCollection, FeatureCollection, Feature, Polygon
 import geojson
-
+from Pconstants import mglocal
+from pymongo import MongoClient
 
 pltcolors = ['#F00000', '#00F000', '#0000F0', '#0F0000', '#000F00', '#00000F']
 
@@ -73,6 +74,36 @@ class STData:
         self.wpath = path
         self.city = city
 
+
+    def read_DB(self):
+        """
+        Loads the data from a mongo DB
+
+        """
+        mgdb = mglocal[0]
+        client = MongoClient(mgdb)
+        db = client.local
+        db.authenticate(mglocal[2], password=mglocal[3])
+        col = db[mglocal[1]]
+        minLat, maxLat, minLon, maxLon = self.city[1]
+        cityname = self.city[2]
+
+        c = col.find({'city': cityname,
+                     'lat': {'$gt': minLat, '$lt': maxLat},
+                     'lng': {'$gt': minLon, '$lt': maxLon},
+                          #'time': {'$gt': intinit, '$lt': intend}
+                    }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+
+        qsize = c.count()
+        self.dataset =  np.zeros((qsize,), dtype=('f8,f8,i32,S20'))
+        cnt = 0
+        for val in c:
+            self.dataset[cnt][0] = val['lat']
+            self.dataset[cnt][1] = val['lng']
+            self.dataset[cnt][2] = val['time']
+            self.dataset[cnt][3] = val['user']
+            cnt += 1
+
     def read_data(self):
         """
         Loads the data from the csv file
@@ -83,6 +114,100 @@ class STData:
         self.dataset = loadtxt(fname, skiprows=1,
                                dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
                                usecols=(0, 1, 2, 3), delimiter=';', comments='#')
+
+    def read_py_data(self):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20')],
+                               usecols=(4, 3, 5, 2), delimiter=';', comments='*')
+
+
+    def read_py_data_full(self, date=None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20'), ('uname', 'S20'), ('tweet', 'S250')],
+                               usecols=(0, 4, 3, 5, 2, 1, 6), delimiter=';', comments='*')
+
+
+    def read_py_instagram_data_full(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('igurl', 'S100'), ('igid', 'S20'), ('iguname', 'S20')],
+                               usecols=(0, 1, 2, 5, 6, 7), delimiter=';', comments='*')
+
+    def read_py_foursquare_data_full(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0,
+                               dtype=[('twid', 'S25'),
+                                      ('fqurl', 'S50'),
+                                      ('fqtime', 'S20'),
+                                      ('fqid', 'S20'),
+                                      ('gender', 'S8'),
+                                      ('venueid', 'S20'),
+                                      ('venuename', 'S50'),
+                                      ('venuelat', 'S10'),
+                                      ('venuelng', 'S10'),
+                                      ('venuecat', 'S50'),
+                                      ('venuepluralname', 'S20'),
+                                      ('venueshortname', 'S20'),
+                                      ('venueurl', 'S100')],
+                               usecols=(0, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17), delimiter=';', comments='*')
+
+
+    def read_py_foursquare_data_full2(self, date = None):
+        """
+        Loads the data from the csv file
+
+        """
+        print 'Reading Data ...'
+        if date is None:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter.data.bz2'
+        else:
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-'+ date + '.data'
+        self.dataset = loadtxt(fname, skiprows=0, dtype=[('twid', 'S25'),
+                                      ('fqurl', 'S50'),
+                                      ('fqtime', 'S20'),
+                                      ('fqid', 'S20'),
+                                      ('gender', 'S8'),
+                                      ('venueid', 'S20'),
+                                      ('venuename', 'S50'),
+                                      ('venuelat', 'S10'),
+                                      ('venuelng', 'S10'),
+                                      ('venuecat', 'S50'),
+                                      ('venuepluralname', 'S20'),
+                                      ('venueshortname', 'S20'),
+                                      ('venueurl', 'S100')], delimiter=';', comments='*')
+
+
 
     def info(self):
         """
@@ -95,10 +220,14 @@ class STData:
         print 'D= ', self.dataset.shape
 
     def getDataCoordinates(self):
+        """
+        Returns an array with the coordinates of all the examples
+        @return:
+        """
         coord = np.zeros((self.dataset.shape[0], 2))
         for i in range(len(self.dataset)):
-            coord[i,0] = self.dataset[i][0]
-            coord[i,1] = self.dataset[i][1]
+            coord[i, 0] = self.dataset[i][0]
+            coord[i, 1] = self.dataset[i][1]
         return coord
 
     def compute_heavy_hitters(self, mxhh, mnhh, out=False):
