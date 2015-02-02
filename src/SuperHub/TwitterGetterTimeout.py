@@ -136,7 +136,8 @@ def get_tweets(city, logger, inform=50):
 
                 currtime = int(time.time())
                 deltatime = (currtime - initime) / 60.0
-                logger.info('---- %2.3f tweets/minute', i/deltatime)
+                if deltatime != 0:
+                    logger.info('---- %2.3f tweets/minute', i/deltatime)
 
 
                 i += 1
@@ -145,11 +146,11 @@ def get_tweets(city, logger, inform=50):
             j += 1
 
     except TimeoutException:
-        logger.info('##########################  It timed out! ###############################')
+        logger.error('##########################  It timed out! ###############################')
     except ReadTimeoutError:
-        logger.info('##########################  It timed out! ###############################')
+        logger.error('##########################  It timed out! ###############################')
     except RequestException:
-        logger.info('##########################  ERROR ###############################')
+        logger.error('##########################  ERROR ###############################')
 
 
     wfile.close()
