@@ -196,5 +196,5 @@ venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName'
 
 #['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
-    do_the_job(city, '20150122')
+    do_the_job(city, '20150202')
 

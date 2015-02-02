@@ -70,7 +70,7 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20150126'
+cdate = '20150130'
 
 print cdate
 #
