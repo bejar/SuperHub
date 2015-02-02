@@ -19,27 +19,46 @@ InstagramGetter
 
 __author__ = 'bejar'
 
-from Private import ig_credentials
-from instagram.client import InstagramAPI
+import requests
+import time
+
 
 client_id = 'c1ea5533e5634fd58870220b4adc5851'
 client_secret = 'e7eb412c9990464db0aabfc33e4ba517'
 redirect_uri = 'http://polaris.lsi.upc.edu:9999/Instagram'
+scope = ''
 
+access_token = (u'1684203437.c1ea553.2fa85716cdd14d5fbf2b98f94496c6d9',
+                {u'username': u'javier.bejar', u'bio': u'', u'website': u'', u'profile_picture': u'https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg', u'full_name': u'Javier Bejar', u'id': u'1684203437'})
 
-api = InstagramAPI(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
-redirect_uri = api.get_authorize_login_url(scope='')
+api = requests.get('https://api.instagram.com/v1/media/search?lat=48.858844&lng=2.294351&distance=3000&count=100&min_timestamp=1422879173&max_timestamp=1422879303&access_token=%s' %access_token[0])
+res = api.json()
+i = 0
+print res['data'][0].keys()
+for media in res['data']:
+  print media['user']['id']
+  print media['location']
+  print media['type']
+  print media['id']
+  if 'caption' in media:
+      v = media['caption']
+      if v is not None and 'text' in v:
+            print v['text']
+      else:
+          print '******************************************'
+  print time.ctime(float(media['created_time']))
+  i += 1
 
-access_token = api.exchange_code_for_access_token("8a88fe0ad33b4886b4f7ba398ded3677")
-print access_token
-#access_token = "acccb47475b540ef93096bd3cf12fdfc"
-api = InstagramAPI(access_token=access_token)
-recent_media, next_ = api.user_recent_media(user_id="javier.bejar", count=10)
-for media in recent_media:
-   print media.caption.text
+print '------------------', i
 
-
-# api = InstagramAPI(client_id=ig_credentials['ID'], client_secret=ig_credentials['Secret'])
-# popular_media = api.media_popular(count=20)
-# for media in popular_media:
-#    print media.images['standard_resolution'].url
+i = 0
+# api = requests.get('https://api.instagram.com/v1/media/search?lat=41.32&lng=1.21&distance=2000&access_token=%s' %access_token[0])
+# res = api.json()
+#
+# for media in res['data']:
+#   print media.keys()
+#   print media['user']
+#   print media['location']
+#   i += 1
+#
+# print '------------------', i
