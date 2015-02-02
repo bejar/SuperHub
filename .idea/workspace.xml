@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Instagram/InstagramGetter.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Instagram/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/FoursquareFromTwitter.py" afterPath="$PROJECT_DIR$/src/Twitter/FoursquareFromTwitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/InstagramFromTwitter.py" afterPath="$PROJECT_DIR$/src/Twitter/InstagramFromTwitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/MongoUpload.py" afterPath="$PROJECT_DIR$/src/Twitter/MongoUpload.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/MongoUploadFoursquare.py" afterPath="$PROJECT_DIR$/src/Twitter/MongoUploadFoursquare.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twitter/MongoUploadInstagram.py" afterPath="$PROJECT_DIR$/src/Twitter/MongoUploadInstagram.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -102,8 +95,8 @@
       <file leaf-file-name="IGCallback.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Instagram/IGCallback.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6164383" vertical-offset="0" max-vertical-offset="511">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -690,18 +683,6 @@
       <option name="number" value="Default" />
       <updated>1389697401292</updated>
     </task>
-    <task id="LOCAL-00012" summary="Minor fix">
-      <created>1392906928871</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1392906928871</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Minor fix">
-      <created>1392908592934</created>
-      <option name="number" value="00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1392908592934</updated>
-    </task>
     <task id="LOCAL-00014" summary="Moving things">
       <created>1392909786090</created>
       <option name="number" value="00014" />
@@ -984,7 +965,19 @@
       <option name="project" value="LOCAL" />
       <updated>1422367766712</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Adding Instagram Getters">
+      <created>1422862518080</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1422862518080</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Adding Instagram Getters">
+      <created>1422862554256</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1422862554256</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1049,7 +1042,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Refactoring" />
     <MESSAGE value="improving some functionalities" />
     <MESSAGE value="Improving some functionalities" />
     <MESSAGE value="Heavy refactoring" />
@@ -1074,7 +1066,8 @@
     <MESSAGE value="More mongo db stuff" />
     <MESSAGE value="London Coordinates" />
     <MESSAGE value="More mongo stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="More mongo stuff" />
+    <MESSAGE value="Adding Instagram Getters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Instagram Getters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1467,8 +1460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Instagram/IGCallback.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="511">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6164383" vertical-offset="0" max-vertical-offset="511">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
