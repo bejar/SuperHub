@@ -32,8 +32,9 @@ pariscoord = (48.52, 49.05, 1.97, 2.68)
 londoncoord = (51.23, 51.8, -0.50, 0.37)
 berlincoord = (52.32, 52.62, 13.11, 13.60)
 romecoord = (41.78, 42.0, 12.33, 12.62)
+bcnigcircles = [(41.37, 2.15), (41.42,2.20), (41.31, 2.10), (41.45, 2.07)]
 
-bcnparam = (mgdbbcn, bcncoord, 'bcn')
+bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles)
 milanparam = (mgdbmilan, milancoord, 'milan')
 hlsnkparam = (mgdbhelsinki, hlsnkcoord, 'hlsnk')
 parisparam = (None, pariscoord, 'paris')
@@ -51,3 +52,4 @@ cityparams ={
 }
 
 TW_TIMEOUT = 3600 # 1 hour
+IG_TIMEOUT = 300 # 5 minutes

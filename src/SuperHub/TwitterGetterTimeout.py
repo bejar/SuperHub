@@ -85,12 +85,12 @@ def get_tweets(city, logger, inform=50):
 
     # Set the handler for the SIGALRM signal:
     signal.signal(signal.SIGALRM, _timeout)
-    # Send the SIGALRM signal in 10 seconds:
+    # Send the SIGALRM signal in TW_TIMEOUT seconds:
     signal.alarm(TW_TIMEOUT)
 
     try:
         api = TwitterAPI(
-            credentials[city][0],credentials[city][1],credentials[city][2],credentials[city][3])
+            credentials[city][0], credentials[city][1], credentials[city][2], credentials[city][3])
 
         locstr = '%s,%s,%s,%s' % (str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]), str(cityparams[city][1][1]))
 
