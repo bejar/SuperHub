@@ -6,7 +6,7 @@ InstagramGetter
 
 :Description: InstagramGetter
 
-    
+Getting photograph ingormation from instagram
 
 :Authors: bejar
     
