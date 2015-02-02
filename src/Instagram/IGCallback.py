@@ -37,12 +37,15 @@ def callback():
 
     @return:
     """
-    global city_status
+    #global city_status
 
-    city = request.args['content']
-    res = city.json()
+    #city = request.args['content']
+    #res = city.json()
+    code = request.args['code']
 
-    return res
+    #res = city['hub.challenge']
+
+    return code
 
 @app.route('/Status')
 def info():

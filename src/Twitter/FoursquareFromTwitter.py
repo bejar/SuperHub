@@ -144,7 +144,7 @@ def do_the_job(city, date):
                     url = p
             if url is not None:
                 try:
-                    resp = urllib2.urlopen(url,timeout=5)
+                    resp = urllib2.urlopen(url, timeout=5)
                     if 'foursquare' in resp.url or 'swarmapp' in resp.url and (minLat <= float(t['lat']) < maxLat) and (
                             minLon <= float(t['lng']) < maxLon):
                         print cnt, time.ctime(int(t['interval'])),
