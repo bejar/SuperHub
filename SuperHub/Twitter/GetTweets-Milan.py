@@ -35,7 +35,6 @@ client = MongoClient(mgdb)
 db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db['Twitter']
-timeout = cityparams[city][4]
 
 
 while True:
