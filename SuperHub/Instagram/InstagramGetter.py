@@ -27,8 +27,8 @@ import folium
 from pymongo.errors import DuplicateKeyError
 from simplejson.scanner import JSONDecodeError
 
-from src.Parameters.Constants import homepath, cityparams
-from src.Parameters.Private import ig_credentials
+from Parameters.Constants import homepath, cityparams
+from Parameters.Private import ig_credentials
 
 
 class TimeoutException(Exception):

@@ -24,8 +24,8 @@ import time
 import requests
 import folium
 
-from src.Parameters.Constants import homepath, cityparams
-from src.Parameters.Private import ig_credentials
+from Parameters.Constants import homepath, cityparams
+from Parameters.Private import ig_credentials
 
 
 def MapThis(city, coords, cent, nfile):

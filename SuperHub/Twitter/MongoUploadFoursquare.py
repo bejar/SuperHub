@@ -22,7 +22,7 @@ __author__ = 'bejar'
 from pylab import *
 from pymongo import MongoClient
 
-from src.Parameters.Constants import homepath, cityparams
+from Parameters.Constants import homepath, cityparams
 from Analysis import STData
 from Parameters.Pconstants import mglocal
 

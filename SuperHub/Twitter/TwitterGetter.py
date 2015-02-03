@@ -26,8 +26,8 @@ import logging
 
 from TwitterAPI import TwitterAPI
 
-from src.Parameters.Constants import homepath, cityparams
-from src.Parameters.Private import credentials
+from Parameters.Constants import homepath, cityparams
+from Parameters.Private import credentials
 
 
 def get_tweets(city, silent=False):

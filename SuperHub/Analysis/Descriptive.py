@@ -31,7 +31,7 @@ import time
 import numpy as np
 
 from Analysis.Plots import saveHisto, savePlot
-from src.Parameters.Constants import homepath
+from Parameters.Constants import homepath
 from Transactions import DailyTransactions, DailyDiscretizedTransactions
 
 

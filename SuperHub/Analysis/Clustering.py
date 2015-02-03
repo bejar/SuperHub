@@ -29,9 +29,9 @@ from numpy import savetxt
 import folium
 from sklearn.metrics import silhouette_score
 
-from cluster.Leader import Leader
+from kemlglearn.cluster.Leader import Leader
 from Analysis.Util import now
-from src.Parameters.Constants import homepath
+from Parameters.Constants import homepath
 
 
 circlesize = 15000

@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-from src.Parameters.Constants import homepath
+from Parameters.Constants import homepath
 
 
 

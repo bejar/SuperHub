@@ -31,8 +31,8 @@ from requests import RequestException
 from requests.packages.urllib3.exceptions import ReadTimeoutError
 from pymongo import MongoClient
 
-from src.Parameters.Constants import cityparams, TW_TIMEOUT
-from src.Parameters.Private import credentials
+from Parameters.Constants import cityparams, TW_TIMEOUT
+from Parameters.Private import credentials
 from Parameters.Pconstants import mglocal
 
 

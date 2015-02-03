@@ -25,7 +25,7 @@ import time
 from bs4 import BeautifulSoup
 
 from Twitter.Data import getTweetsParts
-from src.Parameters.Constants import homepath, cityparams
+from Parameters.Constants import homepath, cityparams
 
 
 def fix_bval(bval, gval, lval):

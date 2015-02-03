@@ -31,8 +31,8 @@ import requests
 from requests import RequestException
 from requests.packages.urllib3.exceptions import ReadTimeoutError
 
-from src.Parameters.Constants import homepath, cityparams, TW_TIMEOUT
-from src.Parameters.Private import credentials
+from Parameters.Constants import homepath, cityparams, TW_TIMEOUT
+from Parameters.Private import credentials
 
 
 class TimeoutException(Exception):

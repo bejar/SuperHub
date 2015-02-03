@@ -23,7 +23,7 @@ import time
 
 import folium
 
-from src.Parameters.Constants import homepath, cityparams
+from Parameters.Constants import homepath, cityparams
 
 
 def map_all(city):

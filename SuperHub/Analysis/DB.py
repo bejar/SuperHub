@@ -30,8 +30,8 @@ from pymongo import MongoClient
 import pymysql
 from pymysql.err import MySQLError
 
-from src.Parameters.Constants import homepath
-from src.Parameters.Private import mgpass, mguser
+from Parameters.Constants import homepath
+from Parameters.Private import mgpass, mguser
 from Parameters.Pconstants import msqldb, msqldbs, msqlpass, msqluser
 
 

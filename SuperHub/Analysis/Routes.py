@@ -31,7 +31,7 @@ import operator
 import numpy as np
 import matplotlib.pyplot as plt
 
-from src.Parameters.Constants import homepath
+from Parameters.Constants import homepath
 from Transactions import DailyDiscretizedTransactions, DailyClusteredTransactions
 from Util import item_key_sort, diff_items
 

@@ -23,7 +23,7 @@ import folium
 from geojson import LineString, FeatureCollection, Feature
 import geojson
 
-from src.Parameters.Constants import homepath
+from Parameters.Constants import homepath
 
 
 def MapThis(city, routes, nfile):

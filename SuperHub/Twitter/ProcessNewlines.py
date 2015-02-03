@@ -21,7 +21,7 @@ __author__ = 'bejar'
 
 import os
 
-from src.Parameters.Constants import homepath
+from Parameters.Constants import homepath
 
 for nfile in os.listdir(homepath+'Data-py/'):
 
