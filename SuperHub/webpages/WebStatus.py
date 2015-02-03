@@ -36,7 +36,7 @@ def update():
     strtime = time.ctime(int(time.time()))
     city_status[city] = strtime
     city_count[city] = citycount
-    city_delta = delta
+    city_delta[city] = delta
     return 'Ok'
 
 
