@@ -170,7 +170,7 @@ def get_tweets(city, logger, col, inform=50):
 
                 i += 1
                 if inform != 0 and i%inform == 0:
-                    requests.get(address, params={'content': city, 'count': i, 'delta': i/deltatime})
+                    requests.get(address, params={'content': city+'-twt', 'count': i, 'delta': i/deltatime})
             j += 1
 
     except TimeoutException:

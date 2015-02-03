@@ -28,23 +28,24 @@ from pymongo import MongoClient
 from Parameters.Pconstants import mglocal
 
 
+
 def transform(tdata):
-    if tdata[8] == ' ' or tdata[7] == ' ':
+    if tdata[8] == ' ' or tdata[9] == ' ':
         return None
     else:
         return {
                   'fqurl': tdata[1],
                   'fqtime': tdata[2],
-                  'fqid': tdata[3],
-                  'gender': tdata[4].replace('\"','').replace('{','').replace('[','').replace(']','').replace('}',''),
-                  'venueid': tdata[5],
-                  'venuename': tdata[6],
-                  'venuelat': float(tdata[7]),
-                  'venuelng': float(tdata[8]),
-                  'venuecat': tdata[9],
-                  'venuepluralname': tdata[10],
-                  'venueshortname': tdata[11],
-                  'venueurl': tdata[12]
+                  'fqid': tdata[4],
+                  'gender': tdata[5].replace('\"','').replace('{','').replace('[','').replace(']','').replace('}',''),
+                  'venueid': tdata[6],
+                  'venuename': tdata[7],
+                  'venuelat': float(tdata[8]),
+                  'venuelng': float(tdata[9]),
+                  'venuecat': tdata[10],
+                  'venuepluralname': tdata[11],
+                  'venueshortname': tdata[12],
+                  'venueurl': tdata[13]
               }
 
 def fix_bval(bval, gval, lval):
@@ -179,11 +180,9 @@ def do_the_job(ltwid):
                             print 'Trying a second time ...'
                         if val is not None:
                             vals.extend(val)
-                            print '*****************', vals
+                            print 'VALS:', vals
                             upd = transform(vals)
-                            print upd
                             if upd is not None:
-                                print vals[0]
                                 col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
                                 print 'TWID:', vals[0]
                         else: # If not successful go to next
@@ -195,13 +194,16 @@ def do_the_job(ltwid):
 
 
                 except ValueError:
-                    pass
+                    print 'ValueError'
                 except IOError:
                     pass
                 except UnicodeError:
-                    pass
+                    print 'UnicodeError'
                 except urllib2.httplib.BadStatusLine:
                     pass
+                except urllib2.HTTPError:
+                    pass
+
     col = db['Params']
     col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
 

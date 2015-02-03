@@ -48,7 +48,7 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first(val,list):
+def find_first(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
@@ -103,21 +103,20 @@ def chop_fsq(url):
     else:
         return None
 
-def do_the_job(ttime):
+def do_the_job(ltwid):
     mgdb = mglocal[0]
     client = MongoClient(mgdb)
     db = client.local
     db.authenticate(mglocal[2], password=mglocal[3])
     col = db[mglocal[1]]
 
-    cursor = col.find({'time': {'$gt': ttime}
-                     }, {'text': 1, 'twid': 1}, timeout=False)
-
+    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, timeout=False)
 
     cnt = 0
+    lasttwid = ''
     for t in cursor:
-        if 'I\'m at' in t['text'] or 'http' in t['text']:
-            text = t['text'].split()
+        if 'I\'m at' in t['tweet'] or 'http' in t['tweet']:
+            text = t['tweet'].split()
             url = None
             for p in text:
                 if 'http' in p:
@@ -127,22 +126,24 @@ def do_the_job(ttime):
                     resp = urllib2.urlopen(url,timeout=5)
                     if 'http://instagram' in resp.url:
 
-                        print cnt, time.ctime(int(t['interval']),)
-                        print t['text']
+                        print cnt, time.ctime(int(t['time']),)
+                        print t['tweet']
                         #print resp.url
                         cnt += 1
                         vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
-                        url = vals[5]
+                        url = vals[3]
                         val = chop_fsq(url)
                         if val is None: # Try a second time
+                            time.sleep(2)
                             val = chop_fsq(url)
                             #print 'Trying a second time ...'
                         if val is not None:
-                            time.sleep(2)
                             vals.extend(val)
+                            print vals
                             upd = transform(vals)
                             if upd is not None:
                                 col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
+                                print 'TWID:', vals[0]
 
                         if cnt % 100 == 0:
                             time.sleep(5)
@@ -156,9 +157,26 @@ def do_the_job(ttime):
                     pass
                 except urllib2.httplib.BadStatusLine:
                     pass
+    col = db['Params']
+    col.update({'update': 'instagram'}, {'$set': {"ltwid": lasttwid}})
 
 
 uservals = ['id','username']
 
-do_the_job('20150114')
+mgdb = mglocal[0]
+client = MongoClient(mgdb)
+db = client.local
+db.authenticate(mglocal[2], password=mglocal[3])
+col = db['Params']
+
+cursor = col.find({'update': 'instagram'}, {'ltwid': 1}, timeout=False)
+ltw = None
+for t in cursor:
+    ltw = t['ltwid']
+
+print ltw
+
+
+
+do_the_job(ltw)
 

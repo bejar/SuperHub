@@ -127,10 +127,14 @@ def get_instagram(city, logger, col):
 
     lcoord = [(iphotos[v]['lat'], iphotos[v]['lon']) for v in iphotos]
     logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
-    MapThis(cityparams[city], lcoord, lcircles, city)
+    #MapThis(cityparams[city], lcoord, lcircles, city)
 
+    i = 0
     for v in iphotos:
         try:
             col.insert(iphotos[v])
+            i += 1
         except DuplicateKeyError:
             logger.info('Duplicate: %s',  v)
+    address = "http://chandra.lsi.upc.edu:8890/Update"
+    requests.get(address, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
