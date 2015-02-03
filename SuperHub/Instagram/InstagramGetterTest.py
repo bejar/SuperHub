@@ -55,7 +55,7 @@ lcircles = cityparams[city][3]
 itime = int(time.time())
 iphotos = {}
 for circ in lcircles:
-    api = requests.get('https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
+    api = requests.get('https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=200&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
                        (circ[0], circ[1], itime - 3600, itime, access_token))
     res = api.json()
     for media in res['data']:

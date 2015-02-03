@@ -34,7 +34,7 @@ import requests
 from pymongo.errors import DuplicateKeyError
 
 from Parameters.Constants import cityparams, TW_TIMEOUT
-from Parameters.Private import credentials
+from Parameters.Private import credentials, Webservice
 from Parameters.Pconstants import mglocal
 
 
@@ -103,8 +103,6 @@ def get_tweets(city, logger, col, inform=50):
     """
 
     initime = int(time.time())
-    hostname = socket.gethostname()
-    address = "http://" + hostname + ":8890/Update"
 
     # Set the handler for the SIGALRM signal:
     signal.signal(signal.SIGALRM, _timeout)
@@ -170,7 +168,7 @@ def get_tweets(city, logger, col, inform=50):
 
                 i += 1
                 if inform != 0 and i%inform == 0:
-                    requests.get(address, params={'content': city+'-twt', 'count': i, 'delta': i/deltatime})
+                    requests.get(Webservice, params={'content': city+'-twt', 'count': i, 'delta': i/deltatime})
             j += 1
 
     except TimeoutException:

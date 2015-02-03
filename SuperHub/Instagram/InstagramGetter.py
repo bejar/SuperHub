@@ -29,7 +29,8 @@ from simplejson.scanner import JSONDecodeError
 
 from Parameters.Constants import homepath, cityparams
 from Parameters.Private import ig_credentials
-
+from requests.exceptions import ConnectionError
+from Parameters.Private import Webservice
 
 class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
@@ -99,9 +100,9 @@ def get_instagram(city, logger, col):
     itime = int(time.time())
     iphotos = {}
     for circ in lcircles:
-        api = requests.get('https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
-                           (circ[0], circ[1], itime - timeout, itime, access_token))
         try:
+            api = requests.get('https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
+                               (circ[0], circ[1], itime - timeout, itime, access_token))
             res = api.json()
 
             for media in res['data']:
@@ -124,6 +125,8 @@ def get_instagram(city, logger, col):
                     iphotos[mid]['name'] = media['location']['name']
         except JSONDecodeError:
             logger.info('EMPTY')
+        except ConnectionError:
+            logger.info('Connection Error')
 
     lcoord = [(iphotos[v]['lat'], iphotos[v]['lon']) for v in iphotos]
     logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
@@ -136,5 +139,4 @@ def get_instagram(city, logger, col):
             i += 1
         except DuplicateKeyError:
             logger.info('Duplicate: %s',  v)
-    address = "http://chandra.lsi.upc.edu:8890/Update"
-    requests.get(address, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
+    requests.get(Webservice, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
