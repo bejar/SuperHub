@@ -139,11 +139,9 @@ def get_tweets(city, logger, inform=50):
                 deltatime = (currtime - initime) / 60.0
                 if deltatime != 0:
                     logger.info('---- %2.3f tweets/minute', i/deltatime)
-
-
                 i += 1
                 if inform != 0 and i%inform == 0:
-                    requests.get(address, params={'content': city})
+                    requests.get(address, params={'content': city, 'count': i})
             j += 1
 
     except TimeoutException:

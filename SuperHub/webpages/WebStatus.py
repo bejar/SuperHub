@@ -24,8 +24,10 @@ def update():
     global city_status
 
     city = request.args['content']
+    citycount = request.args['count']
     strtime = time.ctime(int(time.time()))
-    city_status[city] = strtime
+    city_status[city]['time'] = strtime
+    city_status[city]['count'] = citycount
     return 'Ok'
 
 
