@@ -49,7 +49,7 @@ def info():
     global city_count
     global city_delta
 
-    return render_template('Status.html', cities=city_status, counts=city_count, counts=city_delta)
+    return render_template('Status.html', cities=city_status, counts=city_count, delta=city_delta)
 
 if __name__ == '__main__':
 
