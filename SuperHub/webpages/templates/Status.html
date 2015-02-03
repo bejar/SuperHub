@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<h1>Twitter Status</h1>
+
+<br>
+
+<p>Cities</p>
+<ul>
+    {% for city in cities %}
+    <li> {{city}} Time: {{cities[city]}}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
