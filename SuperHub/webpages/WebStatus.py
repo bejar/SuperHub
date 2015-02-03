@@ -23,6 +23,7 @@ def update():
     """
 
     global city_status
+    global city_count
 
     city = request.args['content']
     citycount = request.args['count']
@@ -40,7 +41,7 @@ def info():
     global city_status
     global city_count
 
-    return render_template('Status.html', cities=city_status, counts= city_count)
+    return render_template('Status.html', cities=city_status, counts=city_count)
 
 if __name__ == '__main__':
 
