@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="Adding Instagram Getters">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SuperHub/webpages/IGCallback.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Analysis/Clustering.py" afterPath="$PROJECT_DIR$/SuperHub/Analysis/Clustering.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Analysis/DB.py" afterPath="$PROJECT_DIR$/SuperHub/Analysis/DB.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Analysis/Descriptive.py" afterPath="$PROJECT_DIR$/SuperHub/Analysis/Descriptive.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Analysis/DrawMap.py" afterPath="$PROJECT_DIR$/SuperHub/Analysis/DrawMap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitter.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Tests/GenerateClustersPaper.py" afterPath="$PROJECT_DIR$/SuperHub/Tests/GenerateClustersPaper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitter.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py" afterPath="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetterTest.py" afterPath="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetterTest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/MapTweets.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/MapTweets.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/MongoUpload.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/MongoUpload.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/MongoUploadFoursquare.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/MongoUploadFoursquare.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/MongoUploadInstagram.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/MongoUploadInstagram.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/ProcessNewlines.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/ProcessNewlines.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Analysis/Routes.py" afterPath="$PROJECT_DIR$/SuperHub/Analysis/Routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Analysis/STData.py" afterPath="$PROJECT_DIR$/SuperHub/Analysis/STData.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SuperHub.iml" afterPath="$PROJECT_DIR$/.idea/SuperHub.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetter.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py" />
+    <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/webpages/templates/Status.html" afterPath="$PROJECT_DIR$/SuperHub/webpages/templates/Status.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SuperHub.iws" />
@@ -47,11 +27,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="WebStatus.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebStatus.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SuperHub/webpages/WebStatus.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="750">
+              <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Status.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SuperHub/webpages/templates/Status.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4312115" vertical-offset="0" max-vertical-offset="487">
+              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwitterGetterTimeout.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1548" max-vertical-offset="2250">
+              <caret line="140" column="72" selection-start-line="140" selection-start-column="72" selection-end-line="140" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -82,8 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/SuperHub/TwitterGetterMongo.py" />
-        <option value="$PROJECT_DIR$/src/testcsv.py" />
         <option value="$PROJECT_DIR$/src/Twitter/OtherFromTwitter.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/TwitterGetterTimeoutMongo.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/STData.py" />
@@ -116,7 +114,6 @@
         <option value="$PROJECT_DIR$/Instagram/Get-Instagram-Berlin.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetter.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/ProcessNewlines.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/MongoUploadInstagram.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/MongoUploadFoursquare.py" />
@@ -133,6 +130,9 @@
         <option value="$PROJECT_DIR$/SuperHub/Analysis/DrawMap.py" />
         <option value="$PROJECT_DIR$/SuperHub/Analysis/Routes.py" />
         <option value="$PROJECT_DIR$/SuperHub/Analysis/STData.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py" />
+        <option value="$PROJECT_DIR$/SuperHub/webpages/WebStatus.py" />
+        <option value="$PROJECT_DIR$/SuperHub/webpages/templates/Status.html" />
       </list>
     </option>
   </component>
@@ -249,7 +249,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="webpages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="TwitterGet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Twitter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -720,18 +760,6 @@
       <option name="number" value="Default" />
       <updated>1389697401292</updated>
     </task>
-    <task id="LOCAL-00021" summary="Adding Clustering">
-      <created>1393956406417</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1393956406417</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Adding Clustering">
-      <created>1394445213298</created>
-      <option name="number" value="00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1394445213298</updated>
-    </task>
     <task id="LOCAL-00023" summary="Adding Clustering">
       <created>1396436795796</created>
       <option name="number" value="00023" />
@@ -1014,7 +1042,19 @@
       <option name="project" value="LOCAL" />
       <updated>1422953542930</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Refactoring all the way">
+      <created>1422954386180</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1422954386180</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Changing Twitter Web status">
+      <created>1422954804181</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1422954804181</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1079,8 +1119,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Improving some functionalities" />
-    <MESSAGE value="Heavy refactoring" />
     <MESSAGE value="Minor fix" />
     <MESSAGE value="Moving things" />
     <MESSAGE value="Adding Clustering" />
@@ -1104,7 +1142,9 @@
     <MESSAGE value="More mongo stuff" />
     <MESSAGE value="Adding Instagram Getters" />
     <MESSAGE value="Mayor Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mayor Refactoring" />
+    <MESSAGE value="Refactoring all the way" />
+    <MESSAGE value="Changing Twitter Web status" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing Twitter Web status" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1113,30 +1153,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="2445">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="2790">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/MongoUploadInstagram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="1095">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/MongoUploadFoursquare.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="1305">
@@ -1166,7 +1182,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="2550">
           <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
-            <element signature="e#184#198#0" expanded="true" />
+            <element signature="e#184#198#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1184,7 +1200,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#176#234#0" expanded="true" />
+            <element signature="e#176#234#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1202,7 +1218,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3240">
           <caret line="188" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
           <folding>
-            <element signature="e#181#195#0" expanded="true" />
+            <element signature="e#181#195#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1523,10 +1539,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3483366" vertical-offset="689" max-vertical-offset="1605">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1638" max-vertical-offset="2250">
+          <caret line="140" column="72" selection-start-line="140" selection-start-column="72" selection-end-line="140" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/webpages/WebStatus.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="750">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/webpages/templates/Status.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4312115" vertical-offset="0" max-vertical-offset="487">
+          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
           <folding />
         </state>
       </provider>
