@@ -48,6 +48,7 @@ from pymongo import MongoClient
 
 pltcolors = ['#F00000', '#00F000', '#0000F0', '#0F0000', '#000F00', '#00000F']
 
+
 class STData:
     """
     Class for a superhub dataset:

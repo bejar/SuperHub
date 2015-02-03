@@ -31,6 +31,7 @@ from requests import RequestException
 from requests.packages.urllib3.exceptions import ReadTimeoutError
 from pymongo import MongoClient
 import requests
+from pymongo.errors import DuplicateKeyError
 
 from Parameters.Constants import cityparams, TW_TIMEOUT
 from Parameters.Private import credentials
@@ -152,8 +153,11 @@ def get_tweets(city, logger, col, inform=50):
 
                 if (minLat <= vals[2] < maxLat) and (minLon <= vals[1] < maxLon):
                     tomongo = transform(vals, city)
-                    col.insert(tomongo)
-                    logger.info('TWID: %s', tomongo['twid'])
+                    try:
+                        col.insert(tomongo)
+                        logger.info('TWID: %s', tomongo['twid'])
+                    except DuplicateKeyError:
+                        logger.info('Duplicate: %s',  tomongo['twid'])
                 # else:
                 #     print 'Outside Bounding Box'
                 #     print minLat, vals[2], maxLat

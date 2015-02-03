@@ -24,7 +24,7 @@ from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
 
 from Parameters.Constants import homepath, cityparams
-from Analysis import STData
+from Analysis.STData import STData
 from Parameters.Pconstants import mglocal
 
 
@@ -46,7 +46,7 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20150130'
+cdate = '20150202'
 
 
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:

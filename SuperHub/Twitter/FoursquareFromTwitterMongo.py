@@ -32,11 +32,11 @@ def transform(tdata):
     if tdata[8] == ' ' or tdata[7] == ' ':
         return None
     else:
-       return {
+        return {
                   'fqurl': tdata[1],
                   'fqtime': tdata[2],
                   'fqid': tdata[3],
-                  'gender': tdata[4],
+                  'gender': tdata[4].replace('\"','').replace('{','').replace('[','').replace(']','').replace('}',''),
                   'venueid': tdata[5],
                   'venuename': tdata[6],
                   'venuelat': float(tdata[7]),
@@ -143,7 +143,7 @@ def chop_fsq(url):
         return None
 
 
-def do_the_job(ttime):
+def do_the_job(ltwid):
 
     mgdb = mglocal[0]
     client = MongoClient(mgdb)
@@ -151,12 +151,14 @@ def do_the_job(ttime):
     db.authenticate(mglocal[2], password=mglocal[3])
     col = db[mglocal[1]]
 
-    cursor = col.find({'time': {'$gt': ttime}
-                     }, {'text': 1, 'twid': 1}, timeout=False)
+    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1}, timeout=False)
     cnt = 0
+    lasttwid = ''
     for t in cursor:
-        if 'I\'m at' in t['text'] or 'http' in t['text']:
-            text = t['text'].split()
+        if 'I\'m at' in t['tweet'] or 'http' in t['tweet']:
+            if lasttwid < t['twid']:
+                lasttwid = t['twid']
+            text = t['tweet'].split()
             url = None
             for p in text:
                 if 'http' in p:
@@ -165,27 +167,28 @@ def do_the_job(ttime):
                 try:
                     resp = urllib2.urlopen(url, timeout=5)
                     if 'foursquare' in resp.url or 'swarmapp' in resp.url:
-                        print cnt, time.ctime(int(t['interval'])),
-                        print t['text']
+                        print cnt, time.ctime(int(t['time'])),
+                        print t['tweet']
                         print resp.url
                         vals = [str(t['twid']), resp.url.rstrip()]
                         url = vals[1]
                         val = chop_fsq(url)
                         if val is None: # Try a second time
+                            time.sleep(2)
                             val = chop_fsq(url)
                             print 'Trying a second time ...'
                         if val is not None:
-                            time.sleep(2)
                             vals.extend(val)
-                            print vals
-                            i = 0
-                            if len(vals) == 18:
-                                upd = transform(vals)
-                                if upd is not None:
-                                    col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
+                            print '*****************', vals
+                            upd = transform(vals)
+                            print upd
+                            if upd is not None:
+                                print vals[0]
+                                col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
+                                print 'TWID:', vals[0]
                         else: # If not successful go to next
                             print 'Unsuccessfully'
-                        cnt +=1
+                        cnt += 1
                         if cnt % 100 == 0:
                             time.sleep(5)
                             print 'Sleeping ...'
@@ -199,12 +202,25 @@ def do_the_job(ttime):
                     pass
                 except urllib2.httplib.BadStatusLine:
                     pass
-
+    col = db['Params']
+    col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
 
 chkinvals = ['createdAt', 'type']
 uservals = ['id','gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
+mgdb = mglocal[0]
+client = MongoClient(mgdb)
+db = client.local
+db.authenticate(mglocal[2], password=mglocal[3])
+col = db['Params']
 
-do_the_job('20150114')
+cursor = col.find({'update': 'foursquare'}, {'ltwid': 1}, timeout=False)
+ltw = None
+for t in cursor:
+    ltw = t['ltwid']
+
+print ltw
+
+do_the_job(ltw)
 
