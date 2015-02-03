@@ -49,7 +49,7 @@ def MapThis(city, coords, cent, nfile):
 
 
 
-city = 'berlin'
+city = 'milan'
 access_token = ig_credentials[city]['Token']
 lcircles = cityparams[city][3]
 itime = int(time.time())

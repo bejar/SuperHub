@@ -53,9 +53,12 @@ berlinigcircles = [(52.52, 13.40), (52.62, 13.40), (52.42, 13.40),
                    (52.47, 13.50), (52.57, 13.50), (52.37, 13.50),
                    (52.52, 13.60), (52.42, 13.60),
                    (52.52, 13.20), (52.42, 13.20)]
+milanigcircles = [(45.46, 9.18), (45.56, 9.18), (45.36, 9.18),
+                  (45.51, 9.28), (45.41, 9.28),
+                  (45.51, 9.08), (45.41, 9.08)]
 
 bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles, 300)
-milanparam = (mgdbmilan, milancoord, 'milan')
+milanparam = (mgdbmilan, milancoord, 'milan', milanigcircles, 300)
 hlsnkparam = (mgdbhelsinki, hlsnkcoord, 'hlsnk')
 parisparam = (None, pariscoord, 'paris', parisigcircles, 180)
 londonparam = (None, londoncoord, 'london', londonigcircles, 180)
