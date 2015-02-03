@@ -13,6 +13,7 @@ port = 9000
 app = Flask(__name__)
 city_status = {}
 city_count = {}
+city_delta = {}
 
 
 @app.route("/Update")
@@ -25,11 +26,17 @@ def update():
     global city_status
     global city_count
 
+
     city = request.args['content']
     citycount = request.args['count']
+    delta = 0
+    if 'delta' in request.args:
+        delta = request.args['delta']
+
     strtime = time.ctime(int(time.time()))
     city_status[city] = strtime
     city_count[city] = citycount
+    city_delta = delta
     return 'Ok'
 
 
@@ -40,8 +47,9 @@ def info():
     """
     global city_status
     global city_count
+    global city_delta
 
-    return render_template('Status.html', cities=city_status, counts=city_count)
+    return render_template('Status.html', cities=city_status, counts=city_count, counts=city_delta)
 
 if __name__ == '__main__':
 

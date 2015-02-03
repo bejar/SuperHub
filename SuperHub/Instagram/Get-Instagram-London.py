@@ -24,7 +24,7 @@ from time import sleep
 from pymongo import MongoClient
 
 from InstagramGetter import get_instagram, config_logger
-from src.Parameters.Constants import cityparams
+from Parameters.Constants import cityparams
 from Parameters.Pconstants import mglocal
 
 

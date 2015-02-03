@@ -30,6 +30,7 @@ from TwitterAPI import TwitterAPI
 from requests import RequestException
 from requests.packages.urllib3.exceptions import ReadTimeoutError
 from pymongo import MongoClient
+import requests
 
 from Parameters.Constants import cityparams, TW_TIMEOUT
 from Parameters.Private import credentials
@@ -43,16 +44,14 @@ class TimeoutException(Exception):
 
 def transform(tdata, city):
    return {'city': city,
-        'twid': tdata[0],
-        'lat': tdata[2],
-        'lng': tdata[1],
-        'time': str(tdata[3]),
-        'user': tdata[4],
-        'uname': tdata[5],
-        'tweet': tdata[6]
+           'twid': tdata[0],
+           'lat': tdata[2],
+           'lng': tdata[1],
+           'time': str(tdata[3]),
+           'user': tdata[4],
+           'uname': tdata[5],
+           'tweet': tdata[6]
       }
-
-
 
 def _timeout(signum, frame):
     """ Raise an TimeoutException.
@@ -92,7 +91,7 @@ def config_logger(silent=False):
     return logger
 
 
-def get_tweets(city, logger, inform=50):
+def get_tweets(city, logger, col, inform=50):
     """
     GEt tweets waiting ot a timeout
 
@@ -146,19 +145,19 @@ def get_tweets(city, logger, inform=50):
                 vals.append(str(item['user']['id']))
                 vals.append(str(item['user']['screen_name']))
 
-
                 if 'text' in item:
                     vals.append('(### %s ###)' % item['text'].replace('\n', ' ').replace('\r', ''))
                 else:
                     vals.append('(## ##)')
 
                 if (minLat <= vals[2] < maxLat) and (minLon <= vals[1] < maxLon):
-                    print transform(vals, city)
-                    # col.insert(transform(vals, city))
-                else:
-                    print 'Outside Bounding Box'
-                    print minLat, vals[2], maxLat
-                    print minLon, vals[1], maxLon
+                    tomongo = transform(vals, city)
+                    col.insert(tomongo)
+                    logger.info('TWID: %s', tomongo['twid'])
+                # else:
+                #     print 'Outside Bounding Box'
+                #     print minLat, vals[2], maxLat
+                #     print minLon, vals[1], maxLon
 
                 currtime = int(time.time())
                 deltatime = (currtime - initime) / 60.0
@@ -166,8 +165,8 @@ def get_tweets(city, logger, inform=50):
 
 
                 i += 1
-                # if inform != 0 and i%inform == 0:
-                #     requests.get(address, params={'content': city})
+                if inform != 0 and i%inform == 0:
+                    requests.get(address, params={'content': city, 'count': i, 'delta': i/deltatime})
             j += 1
 
     except TimeoutException:
