@@ -34,7 +34,6 @@ client = MongoClient(mgdb)
 db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db['Twitter']
-logger = config_logger(silent=False)
 
 while True:
     get_tweets(city, logger, col, inform=50)
