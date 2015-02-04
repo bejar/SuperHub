@@ -17,7 +17,7 @@
 
 <p>Cities</p>
 <table>
-    <tr><td>City</td><td>Time</td><td>Count</td><td>Delta</td></tr>
+    <tr><th>City</th><th>Time</th><th>Count</th><th>Delta</th></tr>
     {% for city in cities %}
     <tr><td> {{city}}</td> <td>{{cities[city]}}</td><td>{{counts[city]}}</td> <td>{{delta[city]}}</td></tr>
     {% endfor %}
