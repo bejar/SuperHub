@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Spatio Temporal Analysis Status Page</title>
+
+    <style type="text/css">
+        table, th, td {
+    border: 1px solid black;
+}
+    </style>
 </head>
 <body>
 
@@ -10,7 +16,7 @@
 <br>
 
 <p>Cities</p>
-<table border="1">
+<table>
     <tr><td>City</td><td>Time</td><td>Count</td><td>Delta</td></tr>
     {% for city in cities %}
     <tr><td> {{city}}</td> <td>{{cities[city]}}</td><td>{{counts[city]}}</td> <td>{{delta[city]}}</td></tr>
