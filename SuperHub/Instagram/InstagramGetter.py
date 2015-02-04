@@ -109,20 +109,21 @@ def get_instagram(city, logger, col):
                 mid = media['id']
                 capt = ''
 
-                iphotos[mid] = {'city': city,
-                                'igid': mid,
-                                'uid': media['user']['id'],
-                                'lat': media['location']['latitude'],
-                                'lon': media['location']['longitude'],
-                                'time': media['created_time'],
-                                'text': capt
-                }
-                if 'caption' in media:
-                    v = media['caption']
-                    if v is not None and 'text' in v:
-                         iphotos[mid]['text']= v['text']
-                if 'name' in media['location']:
-                    iphotos[mid]['name'] = media['location']['name']
+                if media['user'] is not None:
+                    iphotos[mid] = {'city': city,
+                                    'igid': mid,
+                                    'uid': media['user']['id'],
+                                    'lat': media['location']['latitude'],
+                                    'lon': media['location']['longitude'],
+                                    'time': media['created_time'],
+                                    'text': capt
+                    }
+                    if 'caption' in media:
+                        v = media['caption']
+                        if v is not None and 'text' in v:
+                             iphotos[mid]['text']= v['text']
+                    if 'name' in media['location']:
+                        iphotos[mid]['name'] = media['location']['name']
         except JSONDecodeError:
             logger.info('EMPTY')
         except ConnectionError:

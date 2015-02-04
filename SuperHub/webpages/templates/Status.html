@@ -10,11 +10,11 @@
 <br>
 
 <p>Cities</p>
-<ul>
+<table>
+    <tr><td>City</td><td>Time</td><td>Count</td><td>Delta</td></tr>
     {% for city in cities %}
-    <li> {{city}} Time: {{cities[city]}} Count: {{counts[city]}} delta: {{delta[city]}}</li>
+    <tr><td> {{city}}</td> <td>{{cities[city]}}<td><td>{{counts[city]}}</td> <td>{{delta[city]}}</td></tr>
     {% endfor %}
-</ul>
-
+</table>
 </body>
 </html>
