@@ -40,3 +40,5 @@ col = db['Twitter']
 while True:
     get_tweets(city, logger, col, inform=100)
     sleep(5)
+    if not client.alive():
+        col = None

@@ -98,6 +98,9 @@ def get_instagram(city, logger, col):
     timeout = cityparams[city][4]
 
     itime = int(time.time())
+    if col is None:
+        wfile = open(homepath + cityparams[city][2] + '-instagram-py-%d.csv' % itime, 'w')
+
     iphotos = {}
     for circ in lcircles:
         try:
@@ -121,7 +124,7 @@ def get_instagram(city, logger, col):
                     if 'caption' in media:
                         v = media['caption']
                         if v is not None and 'text' in v:
-                             iphotos[mid]['text']= v['text']
+                            iphotos[mid]['text'] = v['text']
                     if 'name' in media['location']:
                         iphotos[mid]['name'] = media['location']['name']
         except JSONDecodeError:
@@ -135,9 +138,31 @@ def get_instagram(city, logger, col):
 
     i = 0
     for v in iphotos:
-        try:
-            col.insert(iphotos[v])
-            i += 1
-        except DuplicateKeyError:
-            logger.info('Duplicate: %s',  v)
+        if col is not None:
+            try:
+                col.insert(iphotos[v])
+                i += 1
+            except DuplicateKeyError:
+                logger.info('Duplicate: %s',  v)
+        else:
+            cnt = 0
+            for att in lattr:
+
+                if att in iphotos[v]:
+                    try:
+                        wfile.write(str(iphotos[v][att]).encode('utf8', 'replace').rstrip())
+                    except UnicodeEncodeError:
+                        wfile.write('')
+                else:
+                    wfile.write('')
+                cnt += 1
+                if cnt < len(lattr):
+                    wfile.write('; ')
+
+            wfile.write('\n')
+            wfile.flush()
+
     requests.get(Webservice, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
+
+
+lattr = ['city', 'igid', 'uid', 'lat', 'lon', 'time', 'text', 'name']

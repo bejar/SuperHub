@@ -33,7 +33,7 @@ from pymongo import MongoClient
 import requests
 from pymongo.errors import DuplicateKeyError
 
-from Parameters.Constants import cityparams, TW_TIMEOUT
+from Parameters.Constants import cityparams, TW_TIMEOUT, homepath
 from Parameters.Private import credentials, Webservice
 from Parameters.Pconstants import mglocal
 
@@ -103,6 +103,8 @@ def get_tweets(city, logger, col, inform=50):
     """
 
     initime = int(time.time())
+    if col is None:
+        wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
 
     # Set the handler for the SIGALRM signal:
     signal.signal(signal.SIGALRM, _timeout)
@@ -111,7 +113,7 @@ def get_tweets(city, logger, col, inform=50):
     minLat = cityparams[city][1][0]
     maxLat = cityparams[city][1][1]
     minLon = cityparams[city][1][2]
-    maxLon =  cityparams[city][1][3]
+    maxLon = cityparams[city][1][3]
 
     try:
         api = TwitterAPI(
@@ -150,12 +152,29 @@ def get_tweets(city, logger, col, inform=50):
                     vals.append('(## ##)')
 
                 if (minLat <= vals[2] < maxLat) and (minLon <= vals[1] < maxLon):
-                    tomongo = transform(vals, city)
-                    try:
-                        col.insert(tomongo)
-                        logger.info('TWID: %s', tomongo['twid'])
-                    except DuplicateKeyError:
-                        logger.info('Duplicate: %s',  tomongo['twid'])
+                    if col is not None:
+                        tomongo = transform(vals, city)
+                        try:
+                            col.insert(tomongo)
+                            logger.info('TWID: %s', tomongo['twid'])
+                        except DuplicateKeyError:
+                            logger.info('Duplicate: %s',  tomongo['twid'])
+                    else:
+                        cnt = 0
+                        for v in vals:
+                            if type(v) is float:
+                                wfile.write(str(v))
+                            elif type(v) is unicode:
+                                wfile.write(v.encode('utf8', 'replace').rstrip())
+                            else:
+                                wfile.write(v)
+                            cnt += 1
+                            if cnt < len(vals):
+                                wfile.write('; ')
+
+                        wfile.write('\n')
+                        wfile.flush()
+
                 # else:
                 #     print 'Outside Bounding Box'
                 #     print minLat, vals[2], maxLat
@@ -179,3 +198,5 @@ def get_tweets(city, logger, col, inform=50):
         logger.info('##########################  ERROR ###############################')
 
 
+    if col is None:
+        wfile.close()

@@ -181,10 +181,11 @@ def do_the_job(ltwid):
                         if val is not None:
                             vals.extend(val)
                             print 'VALS:', vals
-                            upd = transform(vals)
-                            if upd is not None:
-                                col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
-                                print 'TWID:', vals[0]
+                            if len(vals) == 14:
+                                upd = transform(vals)
+                                if upd is not None:
+                                    col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
+                                    print 'TWID:', vals[0]
                         else: # If not successful go to next
                             print 'Unsuccessfully'
                         cnt += 1
