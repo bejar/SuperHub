@@ -28,6 +28,8 @@ import socket
 
 from TwitterAPI import TwitterAPI
 from requests import RequestException
+from requests.exceptions import Timeout
+
 from requests.packages.urllib3.exceptions import ReadTimeoutError
 from pymongo import MongoClient
 import requests
@@ -92,7 +94,7 @@ def config_logger(silent=False):
     return logger
 
 
-def get_tweets(city, logger, col, inform=50):
+def get_tweets(city, logger, col, inform=50, wsinf=True):
     """
     GEt tweets waiting ot a timeout
 
@@ -186,8 +188,12 @@ def get_tweets(city, logger, col, inform=50):
 
 
                 i += 1
-                if inform != 0 and i%inform == 0:
-                    requests.get(Webservice, params={'content': city+'-twt', 'count': i, 'delta': i/deltatime})
+                if wsinf and inform != 0 and i%inform == 0:
+                    try:
+                        requests.get(Webservice, params={'content': city+'-twt', 'count': i, 'delta': i/deltatime})
+                    except Timeout:
+                        wsinf = False
+
             j += 1
 
     except TimeoutException:
@@ -196,6 +202,7 @@ def get_tweets(city, logger, col, inform=50):
         logger.info('##########################  It timed out! ###############################')
     except RequestException:
         logger.info('##########################  ERROR ###############################')
+        wsinf = False
 
 
     if col is None:

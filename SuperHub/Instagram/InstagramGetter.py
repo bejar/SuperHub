@@ -23,6 +23,9 @@ import time
 import logging
 
 import requests
+from requests.exceptions import Timeout
+from requests import RequestException
+
 import folium
 from pymongo.errors import DuplicateKeyError
 from simplejson.scanner import JSONDecodeError
@@ -84,7 +87,7 @@ def config_logger(silent=False):
     return logger
 
 
-def get_instagram(city, logger, col):
+def get_instagram(city, logger, col, wsinf=True):
     """
     Gets Instagram data from a city and inserts in a Mongo DB
 
@@ -161,8 +164,14 @@ def get_instagram(city, logger, col):
 
             wfile.write('\n')
             wfile.flush()
+    if wsinf:
+        try:
+            requests.get(Webservice, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
+        except Timeout:
+            wsinf = False
+        except RequestException:
+            wsinf = False
 
-    requests.get(Webservice, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
 
 
 lattr = ['city', 'igid', 'uid', 'lat', 'lon', 'time', 'text', 'name']

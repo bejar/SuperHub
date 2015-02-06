@@ -41,7 +41,7 @@ timeout = cityparams[city][4]
 
 ## Gets instagram Data at interval times
 while True:
-    get_instagram(city, logger, col)
+    get_instagram(city, logger, col, wsinf=True)
     sleep(timeout)
     if not client.alive():
         col = None

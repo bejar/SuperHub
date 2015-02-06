@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f590be-0a13-417f-b423-69d5d0cde9ec" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SuperHub/Twitter/FqIgFromTwitterMongo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitterMongo.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitterMongo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-BCN.py" afterPath="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-BCN.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Berlin.py" afterPath="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Berlin.py" />
@@ -15,6 +16,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Milan.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Milan.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Paris.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Paris.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Rome.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Rome.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py" afterPath="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py" afterPath="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -41,45 +43,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TwitterGetterTimeoutMongo.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py">
+      <file leaf-file-name="FqIgFromTwitterMongo.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/FqIgFromTwitterMongo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33268103" vertical-offset="2335" max-vertical-offset="3120">
-              <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-              <folding>
-                <element signature="e#196#207#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TwitterGetterTimeout.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeout.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1754" max-vertical-offset="2415">
-              <caret line="155" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-              <folding>
-                <element signature="e#196#207#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetTweets-Test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="675">
-              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.8238748" vertical-offset="3344" max-vertical-offset="4740">
+              <caret line="257" column="40" selection-start-line="257" selection-start-column="40" selection-end-line="257" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstagramGetter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py">
+      <file leaf-file-name="InstagramFromTwitterMongo.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1919" max-vertical-offset="2430">
-              <caret line="152" column="69" selection-start-line="152" selection-start-column="69" selection-end-line="152" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1486" max-vertical-offset="2745">
+              <caret line="165" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -110,7 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Instagram/Get-Instagram-London.py" />
         <option value="$PROJECT_DIR$/src/Instagram/Get-Instagram-Rome.py" />
         <option value="$PROJECT_DIR$/src/Instagram/InstagramAccessToken.py" />
         <option value="$PROJECT_DIR$/src/SuperHub/Private.py" />
@@ -139,35 +116,36 @@
         <option value="$PROJECT_DIR$/SuperHub/Parameters/Constants.py" />
         <option value="$PROJECT_DIR$/SuperHub/Analysis/STData.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/MongoUpload.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetterTest.py" />
         <option value="$PROJECT_DIR$/SuperHub/Parameters/Private.py" />
         <option value="$PROJECT_DIR$/SuperHub/webpages/templates/Status.html" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/LastUpdate.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitterMongo.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Test.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-BCN.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Berlin.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-London.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Milan.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Paris.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Rome.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Test.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-BCN.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Berlin.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-London.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Milan.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Paris.py" />
         <option value="$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Rome.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Test.py" />
-        <option value="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-BCN.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Berlin.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-London.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Milan.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Paris.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Rome.py" />
         <option value="$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitterMongo.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py" />
+        <option value="$PROJECT_DIR$/SuperHub/Twitter/FqIgFromTwitterMongo.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="42" />
     <option name="y" value="67" />
-    <option name="width" value="1692" />
+    <option name="width" value="1688" />
     <option name="height" value="957" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -666,9 +644,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.GetTweets-Test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Get-Instagram-Test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.FoursquareFromTwitterMongo" />
+        <item index="0" class="java.lang.String" itemvalue="Python.FoursquareFromTwitterMongo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.GetTweets-Test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Get-Instagram-Test" />
         <item index="3" class="java.lang.String" itemvalue="Python.InstagramFromTwitterMongo" />
         <item index="4" class="java.lang.String" itemvalue="Python.LastUpdate" />
       </list>
@@ -684,12 +662,6 @@
       <created>1389697401292</created>
       <option name="number" value="Default" />
       <updated>1389697401292</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Twitter Getter">
-      <created>1417434276669</created>
-      <option name="number" value="00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1417434276669</updated>
     </task>
     <task id="LOCAL-00048" summary="Extractring Fsq and Igr from twitter data">
       <created>1417783954795</created>
@@ -979,7 +951,13 @@
       <option name="project" value="LOCAL" />
       <updated>1423034031465</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Alternate from MongoDB to files in case of DB error">
+      <created>1423212344934</created>
+      <option name="number" value="00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1423212344978</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1003,18 +981,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="42" y="67" width="1692" height="957" extended-state="0" />
-    <editor active="true" />
+    <frame x="42" y="67" width="1688" height="957" extended-state="0" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31805557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18794326" sideWeight="0.7170051" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.196997" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19747141" sideWeight="0.7177215" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283582" sideWeight="0.4972973" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283582" sideWeight="0.4972973" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978831" sideWeight="0.28608924" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5027027" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32462686" sideWeight="0.49821216" order="10" side_tool="false" content_ui="tabs" />
@@ -1022,7 +1001,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39895013" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1044,7 +1022,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Several improvements" />
     <MESSAGE value="Several improvements including the clustering of events" />
     <MESSAGE value="some improvements" />
     <MESSAGE value="Adding flexible time intervals" />
@@ -1069,7 +1046,8 @@
     <MESSAGE value="Changing Twitter to directly insert in MongoDB" />
     <MESSAGE value="Instagram Milan" />
     <MESSAGE value="fixing things" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing things" />
+    <MESSAGE value="Alternate from MongoDB to files in case of DB error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alternate from MongoDB to files in case of DB error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1078,13 +1056,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SuperHub/Tests/SHGenerateReport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1170">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/Tests/SuperHubTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3585">
@@ -1304,24 +1275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1784" max-vertical-offset="2730">
-          <caret line="144" column="32" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitterMongo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2133" max-vertical-offset="3525">
-          <caret line="166" column="31" selection-start-line="166" selection-start-column="31" selection-end-line="166" selection-end-column="31" />
-          <folding>
-            <element signature="e#181#195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/Parameters/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="59" max-vertical-offset="1245">
@@ -1334,108 +1287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="705">
           <caret line="47" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-BCN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="134" max-vertical-offset="675">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="41" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Berlin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="705">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-London.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="690">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Milan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="149" max-vertical-offset="675">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Paris.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="690">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Rome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="134" max-vertical-offset="660">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-BCN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="780">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding>
-            <element signature="e#200#222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Berlin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="780">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding>
-            <element signature="e#200#222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-London.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="780">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding>
-            <element signature="e#200#222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Milan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="690">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Paris.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="690">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Rome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="690">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1453,26 +1304,146 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1877" max-vertical-offset="2415">
           <caret line="155" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding>
-            <element signature="e#196#207#0" expanded="true" />
+            <element signature="e#196#207#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py">
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-BCN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1919" max-vertical-offset="2430">
-          <caret line="152" column="69" selection-start-line="152" selection-start-column="69" selection-end-line="152" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="690">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Berlin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="690">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Rome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="134" max-vertical-offset="660">
+          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Paris.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="164" max-vertical-offset="690">
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Milan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="149" max-vertical-offset="675">
+          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-London.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="164" max-vertical-offset="690">
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-Berlin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7358121" vertical-offset="179" max-vertical-offset="705">
+          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/GetTweets-BCN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="134" max-vertical-offset="675">
+          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Rome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="164" max-vertical-offset="690">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Paris.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82191783" vertical-offset="135" max-vertical-offset="690">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-Milan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76516634" vertical-offset="164" max-vertical-offset="690">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/Get-Instagram-London.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7358121" vertical-offset="179" max-vertical-offset="690">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/TwitterGetterTimeoutMongo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103" vertical-offset="2335" max-vertical-offset="3120">
-          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="338" max-vertical-offset="3225">
+          <caret line="30" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Instagram/InstagramGetter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2159" max-vertical-offset="2730">
+          <caret line="172" column="25" selection-start-line="172" selection-start-column="25" selection-end-line="172" selection-end-column="25" />
           <folding>
-            <element signature="e#196#207#0" expanded="true" />
+            <element signature="e#234#245#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/FoursquareFromTwitterMongo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2175" max-vertical-offset="3465">
+          <caret line="170" column="72" selection-start-line="170" selection-start-column="72" selection-end-line="170" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/InstagramFromTwitterMongo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2206" max-vertical-offset="2745">
+          <caret line="165" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SuperHub/Twitter/FqIgFromTwitterMongo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8238748" vertical-offset="3344" max-vertical-offset="4740">
+          <caret line="257" column="40" selection-start-line="257" selection-start-column="40" selection-end-line="257" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

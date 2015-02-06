@@ -29,7 +29,7 @@ from Parameters.Pconstants import mglocal
 
 
 
-def transform(tdata):
+def transform_fqr(tdata):
     if tdata[8] == ' ' or tdata[9] == ' ':
         return None
     else:
@@ -48,6 +48,18 @@ def transform(tdata):
                   'venueurl': tdata[13]
               }
 
+
+
+def transform_igr(tdata):
+   return {
+        'lat': tdata[1],
+        'lng': tdata[2],
+        'igurl': tdata[3],
+        'igid': tdata[4],
+        'iguname': str(tdata[5])
+      }
+
+
 def fix_bval(bval, gval, lval):
     rval = []
     for v in lval:
@@ -59,7 +71,7 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first_second(val,list):
+def find_first_second_fq(val,list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
@@ -76,7 +88,7 @@ def find_first_second(val,list):
             return None
 
 
-def find_first(val,list):
+def find_first_fq(val,list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
@@ -85,11 +97,26 @@ def find_first(val,list):
         else:
             pos += 1
     if not found:
-        return find_first_second(val,list)
+        return find_first_second_fq(val,list)
     else:
         return list[pos][-1]
 
-def hack_val(val):
+def find_first_ig(val, list):
+    found = False
+    pos = 0
+    while not found and pos < (len(list)):
+        if val == list[pos][0]:
+            found= True
+        else:
+            pos += 1
+    if not found:
+        return None
+    else:
+        return list[pos][-1]
+
+
+
+def hack_val_fq(val):
     vals = []
     for v in val.split(','):
         vr = v.replace('\"','').replace('{','').replace('[','')
@@ -97,11 +124,20 @@ def hack_val(val):
     #print vals
     return vals
 
+
+def hack_val_ig(val):
+    vals = []
+    for v in val.split(','):
+        vr = v.replace('\"','')
+        vals.append( vr.split(':'))
+    return vals
+
+
 def extract_vals(vals, patt):
     res = []
     for p in patt:
         #print p
-        val = find_first(p,vals)
+        val = find_first_fq(p,vals)
         if val is not None:
             res.append(val)
             #print val
@@ -131,14 +167,39 @@ def chop_fsq(url):
                 pvenue = z.find('venue\"')
                 pfvenue = z.find('fullVenue')
                 chk = z[pchk+11:puser-2]
-                res.extend(extract_vals(hack_val(chk),chkinvals))
+                res.extend(extract_vals(hack_val_fq(chk),chkinvals_fq))
                 user = z[puser+7:pvenue-2]
                 user = user.replace('}','')
-                res.extend(extract_vals(fix_bval(['user', '{id'], 'id', hack_val(user)), uservals))
+                res.extend(extract_vals(fix_bval(['user', '{id'], 'id', hack_val_fq(user)), uservals_fq))
                 venue = z[pvenue+9:pfvenue-1].replace('{\"id\"', 'id')
                 venue = venue.replace('}', '')
                 #print venue
-                res.extend(extract_vals(hack_val(venue), venuevals))
+                res.extend(extract_vals(hack_val_fq(venue), venuevals_fq))
+        return res
+    else:
+        return None
+
+
+def chop_ig(url):
+    error = False
+    try:
+        f = urllib2.urlopen(url)
+        data = f.read()
+        f.close()
+    except urllib2.HTTPError:
+        time.sleep(15)
+        error = True
+
+    if not error:
+        soup = BeautifulSoup(data)
+        res=[]
+        for link in soup.find_all('script'):
+            z = link.get_text()
+            if '_sharedData' in z:
+                powner = z.find('owner')
+                pfowner = z.find(',\"__get_params')
+                chk = z[powner+8:pfowner-2]
+                res.extend(extract_vals(hack_val_ig(chk),uservals_ig))
         return res
     else:
         return None
@@ -156,9 +217,9 @@ def do_the_job(ltwid):
     cnt = 0
     lasttwid = ''
     for t in cursor:
+        if lasttwid < t['twid']:
+            lasttwid = t['twid']
         if 'I\'m at' in t['tweet'] or 'http' in t['tweet']:
-            if lasttwid < t['twid']:
-                lasttwid = t['twid']
             text = t['tweet'].split()
             url = None
             for p in text:
@@ -182,18 +243,39 @@ def do_the_job(ltwid):
                             print 'Trying a second time ...'
                         if val is not None:
                             vals.extend(val)
-                            print 'VALS:', vals
+                            #print 'VALS:', vals
                             if len(vals) == 14:
-                                upd = transform(vals)
+                                upd = transform_fqr(vals)
                                 if upd is not None:
                                     col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
-                                    print 'TWID:', vals[0]
+                                    print 'TWID FQ:', vals[0]
                         else: # If not successful go to next
                             print 'Unsuccessfully'
                         cnt += 1
-                        if cnt % 100 == 0:
-                            time.sleep(5)
-                            print 'Sleeping ...'
+
+                    elif 'http://instagram' in resp.url:
+                        print cnt, time.ctime(int(t['time']),)
+                        print t['tweet']
+                        #print resp.url
+                        cnt += 1
+                        vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
+                        url = vals[3]
+                        val = chop_ig(url)
+                        if val is None: # Try a second time
+                            time.sleep(2)
+                            val = chop_ig(url)
+                            #print 'Trying a second time ...'
+                        if val is not None:
+                            vals.extend(val)
+                            #print vals
+                            upd = transform_igr(vals)
+                            if upd is not None:
+                                col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
+                                print 'TWID IG:', vals[0]
+
+                    if cnt % 100 == 0:
+                        time.sleep(5)
+                        print 'Sleeping ...'
 
 
                 except ValueError as e:
@@ -210,9 +292,12 @@ def do_the_job(ltwid):
     col = db['Params']
     col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
 
-chkinvals = ['createdAt', 'type']
-uservals = ['id','gender']
-venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
+chkinvals_fq = ['createdAt', 'type']
+uservals_fq = ['id','gender']
+venuevals_fq = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
+
+uservals_ig = ['id','username']
+
 
 mgdb = mglocal[0]
 client = MongoClient(mgdb)

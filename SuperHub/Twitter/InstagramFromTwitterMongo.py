@@ -120,12 +120,13 @@ def do_the_job(ltwid):
             url = None
             for p in text:
                 if 'http' in p:
-                    url = p
+                    url = p[p.find('http'), :]
+                    if '\"' in url:
+                        url = url[0, url.find('\"')]
             if url is not None:
                 try:
-                    resp = urllib2.urlopen(url,timeout=5)
+                    resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
                     if 'http://instagram' in resp.url:
-
                         print cnt, time.ctime(int(t['time']),)
                         print t['tweet']
                         #print resp.url
@@ -149,12 +150,12 @@ def do_the_job(ltwid):
                             time.sleep(5)
 
 
-                except IOError:
-                    pass
-                except UnicodeError:
-                    pass
-                except ValueError:
-                    pass
+                except IOError as e:
+                    print 'IO Error', e
+                except UnicodeError as e:
+                    print 'Unicode Error', e
+                except ValueError as e:
+                    print 'Value Error', e
                 except urllib2.httplib.BadStatusLine:
                     pass
     col = db['Params']
