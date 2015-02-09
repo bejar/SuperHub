@@ -31,9 +31,9 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-c', "--city", help="city to process")
-parser.add_argument('-v', "--verbose", help="verbosity", default=0, type=int)
-parser.add_argument('-m', "--mongo", help="mongo active", default=0, type=int)
-parser.add_argument('-w', "--webservice", help="webservice info", default=0, type=int)
+parser.add_argument('-v', "--verbose", help="verbosity", action='store_true', default=False)
+parser.add_argument('-m', "--mongo", help="mongo active", action='store_true', default=False)
+parser.add_argument('-w', "--webservice", help="webservice info", action='store_true', default=False)
 
 args = parser.parse_args()
 

@@ -30,20 +30,22 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-c', "--city", help="city to process")
-parser.add_argument('-v', "--verbose", help="verbosity", default=0, type=int)
-parser.add_argument('-m', "--mongo", help="mongo active", default=0, type=int)
-parser.add_argument('-w', "--webservice", help="webservice info", default=0, type=int)
+parser.add_argument('-v', "--verbose", help="verbosity", action='store_true', default=False)
+parser.add_argument('-m', "--mongo", help="mongo active", action='store_true', default=False)
+parser.add_argument('-w', "--webservice", help="webservice info", action='store_true', default=False)
 
 args = parser.parse_args()
 
+print args
+
 if args.city:
     city = args.city
-    if args.verbose == 1:
+    if args.verbose:
         logger = config_logger(silent=False)
     else:
         logger = config_logger(silent=True)
 
-    if args.mongo == 1:
+    if args.mongo:
         mgdb = mongodata.db
         client = MongoClient(mgdb)
         db = client.local
@@ -52,11 +54,11 @@ if args.city:
     else:
         col = None
 
-    wsinf = (args.webservice == 1)
+    wsinf = args.webservice
 
 
     while True:
         get_tweets(city, logger, col, inform=50, wsinf=wsinf)
         sleep(5)
-        if args.mongo == 1 and not client.alive():
+        if args.mongo and not client.alive():
             col = None
