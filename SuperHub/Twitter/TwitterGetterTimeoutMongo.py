@@ -107,6 +107,8 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
     initime = int(time.time())
     if col is None:
         wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
+    else:
+        wfile = None
 
     # Set the handler for the SIGALRM signal:
     signal.signal(signal.SIGALRM, _timeout)
@@ -162,6 +164,8 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                         except DuplicateKeyError:
                             logger.info('Duplicate: %s',  tomongo['twid'])
                     else:
+                        if wfile is None:
+                            wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
                         cnt = 0
                         for v in vals:
                             if type(v) is float:

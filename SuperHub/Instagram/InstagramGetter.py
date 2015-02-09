@@ -103,6 +103,8 @@ def get_instagram(city, logger, col, wsinf=True):
     itime = int(time.time())
     if col is None:
         wfile = open(homepath + cityparams[city][2] + '-instagram-py-%d.csv' % itime, 'w')
+    else:
+        wfile = None
 
     iphotos = {}
     for circ in lcircles:
@@ -148,6 +150,9 @@ def get_instagram(city, logger, col, wsinf=True):
             except DuplicateKeyError:
                 logger.info('Duplicate: %s',  v)
         else:
+            if wfile is None:
+                wfile = open(homepath + cityparams[city][2] + '-instagram-py-%d.csv' % itime, 'w')
+
             cnt = 0
             for att in lattr:
 
