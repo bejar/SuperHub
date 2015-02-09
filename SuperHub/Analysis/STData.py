@@ -147,7 +147,7 @@ class STData:
                                usecols=(0, 4, 3, 5, 2, 1, 6), delimiter=';', comments='*')
 
 
-    def read_py_instagram_data_full(self, date = None):
+    def read_py_instagram_data_full(self, date=None):
         """
         Loads the data from the csv file
 

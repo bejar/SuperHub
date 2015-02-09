@@ -69,13 +69,6 @@ def _timeout(signum, frame):
 
 def config_logger(silent=False):
 
-    mgdb = mglocal[0]
-    client = MongoClient(mgdb)
-    db = client.local
-    db.authenticate(mglocal[2], password=mglocal[3])
-    col = db[mglocal[1]]
-
-
     # Logging configuration
     logger = logging.getLogger('log')
     if silent:

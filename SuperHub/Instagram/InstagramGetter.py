@@ -179,4 +179,4 @@ def get_instagram(city, logger, col, wsinf=True):
 
 
 
-lattr = ['city', 'igid', 'uid', 'lat', 'lon', 'time', 'text', 'name']
+lattr = ['city', 'igid', 'user', 'lat', 'lng', 'time', 'text', 'name']
