@@ -32,8 +32,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from Parameters.Constants import homepath
-from Transactions import DailyDiscretizedTransactions, DailyClusteredTransactions
-from Util import item_key_sort, diff_items
+from Analysis.Transactions import DailyDiscretizedTransactions, DailyClusteredTransactions
+from Analysis.Util import item_key_sort, diff_items
 
 
 
@@ -42,7 +42,7 @@ from Util import item_key_sort, diff_items
 import folium
 from geojson import LineString, FeatureCollection, Feature
 import geojson
-from Analysis import TimeDiscretizer
+from Analysis.TimeDiscretizer import TimeDiscretizer
 
 
 def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4, colapsed=False):

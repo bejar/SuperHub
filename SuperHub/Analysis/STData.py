@@ -43,7 +43,7 @@ from Parameters.Constants import homepath
 import folium
 from geojson import FeatureCollection, Feature, Polygon
 import geojson
-from Parameters.Pconstants import mglocal
+from Parameters.Pconstants import mongodata
 from pymongo import MongoClient
 
 pltcolors = ['#F00000', '#00F000', '#0000F0', '#0F0000', '#000F00', '#00000F']
@@ -85,22 +85,22 @@ class STData:
         Loads the data from a mongo DB
 
         """
-        mgdb = mglocal[0]
+        mgdb = mongodata.db
         client = MongoClient(mgdb)
         db = client.local
-        db.authenticate(mglocal[2], password=mglocal[3])
-        col = db[mglocal[1]]
+        db.authenticate(mongodata.user, mongodata.passwd)
+        col = db[mongodata.collection[self.application]]
         minLat, maxLat, minLon, maxLon = self.city[1]
         cityname = self.city[2]
 
         c = col.find({'city': cityname,
-                     'lat': {'$gt': minLat, '$lt': maxLat},
-                     'lng': {'$gt': minLon, '$lt': maxLon},
-                          #'time': {'$gt': intinit, '$lt': intend}
-                    }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+                      'lat': {'$gt': minLat, '$lt': maxLat},
+                      'lng': {'$gt': minLon, '$lt': maxLon},
+                      # 'time': {'$gt': intinit, '$lt': intend}
+                      }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
 
         qsize = c.count()
-        self.dataset =  np.zeros((qsize,), dtype=('f8,f8,i32,S20'))
+        self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
         cnt = 0
         for val in c:
             self.dataset[cnt][0] = val['lat']

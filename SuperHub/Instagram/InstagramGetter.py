@@ -118,9 +118,9 @@ def get_instagram(city, logger, col, wsinf=True):
                 if media['user'] is not None:
                     iphotos[mid] = {'city': city,
                                     'igid': mid,
-                                    'uid': media['user']['id'],
+                                    'user': media['user']['id'],
                                     'lat': media['location']['latitude'],
-                                    'lon': media['location']['longitude'],
+                                    'lng': media['location']['longitude'],
                                     'time': media['created_time'],
                                     'text': capt
                     }
@@ -135,7 +135,7 @@ def get_instagram(city, logger, col, wsinf=True):
         except ConnectionError:
             logger.info('Connection Error')
 
-    lcoord = [(iphotos[v]['lat'], iphotos[v]['lon']) for v in iphotos]
+    lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
     logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
     #MapThis(cityparams[city], lcoord, lcircles, city)
 

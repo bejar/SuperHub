@@ -10,7 +10,7 @@
 
 """
 from Parameters.Constants import homepath, cityparams
-from Analysis import STData
+from Analysis.STData import STData
 from Analysis.Routes import transaction_routes_clustering, transaction_routes
 # from Clustering import cluster_colapsed_events
 # from Transactions import DailyDiscretizedTransactions
@@ -26,6 +26,7 @@ def generate_routes(routes):
         data = STData(homepath, param, datafile)
         #data.read_py_data()
         data.read_DB()
+        print data.info()
         print 'Data loaded.'
         datahh = data.select_heavy_hitters(mxhh, mnhh)
         if alg == 'Leader':
@@ -100,14 +101,22 @@ def generate_routes_hours(routes,lhours):
 #                 ], [(6, 22)],
 #     )
 
-generate_routes([
-                [cityparams['bcn'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['london'], 'twitter', 100, 70000, 'Leader', 0.001, 20, [6, 18]],
-                [cityparams['paris'], 'twitter', 50, 70000, 'Leader', 0.001, 20, [6, 18]],
-                [cityparams['rome'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['berlin'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['milan'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-                ])
+# generate_routes([
+#                 [cityparams['bcn'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
+#                 [cityparams['london'], 'twitter', 100, 70000, 'Leader', 0.001, 20, [6, 18]],
+#                 [cityparams['paris'], 'twitter', 50, 70000, 'Leader', 0.001, 20, [6, 18]],
+#                 [cityparams['rome'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
+#                 [cityparams['berlin'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
+#                 [cityparams['milan'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
+#                 ])
 
+generate_routes([
+                [cityparams['bcn'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                [cityparams['london'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                [cityparams['paris'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                [cityparams['rome'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                [cityparams['berlin'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                [cityparams['milan'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                ])
 
 print 'Done.'
