@@ -8,7 +8,6 @@ Get-Instagram-BCN
 
 
 :Authors: bejar
-    
 
 :Version: 
 
