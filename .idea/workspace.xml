@@ -648,12 +648,6 @@
       <option name="number" value="Default" />
       <updated>1389697401292</updated>
     </task>
-    <task id="LOCAL-00059" summary="More mongo stuff">
-      <created>1422367732689</created>
-      <option name="number" value="00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1422367732689</updated>
-    </task>
     <task id="LOCAL-00060" summary="More mongo stuff">
       <created>1422367766712</created>
       <option name="number" value="00060" />
@@ -942,7 +936,13 @@
       <option name="project" value="LOCAL" />
       <updated>1423753615601</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Fixing things">
+      <created>1423753791190</created>
+      <option name="number" value="00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1423753791190</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
