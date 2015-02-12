@@ -10,7 +10,6 @@ gettweets
 
 :Authors: bejar
 
-
 :Version:
 
 :Created on: 01/12/2014 7:38
