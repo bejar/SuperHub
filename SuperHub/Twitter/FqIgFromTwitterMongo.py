@@ -213,7 +213,7 @@ def do_the_job(ltwid):
     db.authenticate(mglocal[2], password=mglocal[3])
     col = db[mglocal[1]]
 
-    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1}, timeout=False)
+    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, timeout=False)
     cnt = 0
     lasttwid = ''
     for t in cursor:
@@ -224,14 +224,15 @@ def do_the_job(ltwid):
             url = None
             for p in text:
                 if 'http' in p:
-                    url = p[p.find('http'), :]
+                    url = p[p.find('http'):]
                     if '\"' in url:
-                        url = url[0, url.find('\"')]
+                        url = url[0: url.find('\"')]
             if url is not None:
                 try:
+                    cnt += 1
                     resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
                     if 'foursquare' in resp.url or 'swarmapp' in resp.url:
-                        print cnt, time.ctime(int(t['time'])),
+                        print 'FQ:', cnt, time.ctime(int(t['time'])),
                         print t['tweet']
                         print resp.url
                         vals = [str(t['twid']), resp.url.rstrip()]
@@ -251,13 +252,11 @@ def do_the_job(ltwid):
                                     print 'TWID FQ:', vals[0]
                         else: # If not successful go to next
                             print 'Unsuccessfully'
-                        cnt += 1
 
                     elif 'http://instagram' in resp.url:
-                        print cnt, time.ctime(int(t['time']),)
+                        print 'IG:', cnt, time.ctime(int(t['time']),)
                         print t['tweet']
                         #print resp.url
-                        cnt += 1
                         vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
                         url = vals[3]
                         val = chop_ig(url)
@@ -313,4 +312,6 @@ for t in cursor:
 print ltw
 
 do_the_job(ltw)
+
+print "The End"
 
