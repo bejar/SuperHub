@@ -27,7 +27,6 @@ from InstagramGetter import get_instagram, config_logger
 from Parameters.Constants import cityparams
 from Parameters.Pconstants import mglocal
 
-
 # City parameter
 city = 'berlin'
 
