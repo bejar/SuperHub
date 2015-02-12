@@ -184,7 +184,6 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                 if deltatime != 0:
                     logger.info('---- %2.3f tweets/minute', i/deltatime)
 
-
                 i += 1
                 if wsinf and inform != 0 and i%inform == 0:
                     try:
