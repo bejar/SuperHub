@@ -201,6 +201,5 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
         logger.info('##########################  ERROR ###############################')
         wsinf = False
 
-
     if col is None:
         wfile.close()
