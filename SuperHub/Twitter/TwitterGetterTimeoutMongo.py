@@ -8,8 +8,6 @@ gettweets
 
  Function to get tweets from a city
 
-
-
 :Authors: bejar
 
 
