@@ -181,7 +181,9 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
 
                 currtime = int(time.time())
                 deltatime = (currtime - initime) / 60.0
-                logger.info('---- %2.3f tweets/minute', i/deltatime)
+
+                if deltatime != 0:
+                    logger.info('---- %2.3f tweets/minute', i/deltatime)
 
 
                 i += 1
