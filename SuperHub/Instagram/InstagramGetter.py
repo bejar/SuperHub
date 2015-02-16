@@ -117,21 +117,24 @@ def get_instagram(city, logger, col, wsinf=True):
                 mid = media['id']
                 capt = ''
 
-                if media['user'] is not None:
-                    iphotos[mid] = {'city': city,
-                                    'igid': mid,
-                                    'user': media['user']['id'],
-                                    'lat': media['location']['latitude'],
-                                    'lng': media['location']['longitude'],
-                                    'time': media['created_time'],
-                                    'text': capt
-                    }
-                    if 'caption' in media:
-                        v = media['caption']
-                        if v is not None and 'text' in v:
-                            iphotos[mid]['text'] = v['text']
-                    if 'name' in media['location']:
-                        iphotos[mid]['name'] = media['location']['name']
+                try:
+                    if media['user'] is not None:
+                        iphotos[mid] = {'city': city,
+                                        'igid': mid,
+                                        'user': media['user']['id'],
+                                        'lat': media['location']['latitude'],
+                                        'lng': media['location']['longitude'],
+                                        'time': media['created_time'],
+                                        'text': capt
+                        }
+                        if 'caption' in media:
+                            v = media['caption']
+                            if v is not None and 'text' in v:
+                                iphotos[mid]['text'] = v['text']
+                        if 'name' in media['location']:
+                            iphotos[mid]['name'] = media['location']['name']
+                except TypeError:
+                    pass
         except JSONDecodeError:
             logger.info('EMPTY')
         except ConnectionError:
