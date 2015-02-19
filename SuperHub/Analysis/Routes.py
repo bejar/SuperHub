@@ -90,7 +90,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
     minLat, maxLat, minLon, maxLon = data.city[1]
 
     dataset = data.dataset
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
 
     lgeo=[]
     for t in ltrans:
@@ -165,7 +165,7 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
     dataset = data.dataset
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
 
 #    mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0,10)
     #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)

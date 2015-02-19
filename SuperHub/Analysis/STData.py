@@ -66,6 +66,15 @@ class STData:
     datasethh = None
     city = None
 
+    def get_app_name(self):
+        if type(self.application) == list:
+            nm= ''
+            for ap in self.application:
+                nm += ap
+        else:
+            nm = self.application
+        return nm
+
     def __init__(self, path, city, application):
         """
         Just sets the path and application for the dataset
@@ -89,25 +98,53 @@ class STData:
         client = MongoClient(mgdb)
         db = client.local
         db.authenticate(mongodata.user, mongodata.passwd)
-        col = db[mongodata.collection[self.application]]
         minLat, maxLat, minLon, maxLon = self.city[1]
         cityname = self.city[2]
+        if type(self.application) != list:
+            col = db[mongodata.collection[self.application]]
 
-        c = col.find({'city': cityname,
-                      'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                      # 'time': {'$gt': intinit, '$lt': intend}
-                      }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+            c = col.find({'city': cityname,
+                          'lat': {'$gt': minLat, '$lt': maxLat},
+                          'lng': {'$gt': minLon, '$lt': maxLon},
+                          # 'time': {'$gt': intinit, '$lt': intend}
+                          }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
 
-        qsize = c.count()
-        self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
-        cnt = 0
-        for val in c:
-            self.dataset[cnt][0] = val['lat']
-            self.dataset[cnt][1] = val['lng']
-            self.dataset[cnt][2] = val['time']
-            self.dataset[cnt][3] = val['user']
-            cnt += 1
+            qsize = c.count()
+            self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
+            cnt = 0
+            for val in c:
+                if cnt < qsize:
+                    self.dataset[cnt][0] = val['lat']
+                    self.dataset[cnt][1] = val['lng']
+                    self.dataset[cnt][2] = val['time']
+                    self.dataset[cnt][3] = val['user']
+                    cnt += 1
+        else:
+            lcol = []
+            lcount = []
+            for app in self.application:
+                col = db[mongodata.collection[app]]
+
+                c = col.find({'city': cityname,
+                              'lat': {'$gt': minLat, '$lt': maxLat},
+                              'lng': {'$gt': minLon, '$lt': maxLon},
+                              # 'time': {'$gt': intinit, '$lt': intend}
+                              }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+
+                lcount.append(c.count())
+                lcol.append(c)
+
+            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i32,S20')
+            for c, qsize in zip(lcol, lcount):
+                cnt = 0
+                for val in c:
+                    if cnt < qsize:
+                        self.dataset[cnt][0] = val['lat']
+                        self.dataset[cnt][1] = val['lng']
+                        self.dataset[cnt][2] = val['time']
+                        self.dataset[cnt][3] = val['user']
+                        cnt += 1
+
 
     def read_data(self):
         """

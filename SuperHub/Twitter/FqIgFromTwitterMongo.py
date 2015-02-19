@@ -227,6 +227,8 @@ def do_the_job(ltwid):
                     url = p[p.find('http'):]
                     if '\"' in url:
                         url = url[0: url.find('\"')]
+                    # if '\xe2' in url:
+                    #     url = url[0: url.find('\xe2')]
             if url is not None:
                 try:
                     cnt += 1

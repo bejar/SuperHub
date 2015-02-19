@@ -39,12 +39,12 @@ def generate_routes(routes):
             print 'Clustering Done.'
             now()
             transaction_routes_clustering(datahh,data.city[2] +
-                                          data.application + '-Leader' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
+                                          data.get_app_name() + '-Leader' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
                                           cluster=clust, supp=mins, timeres=time)
             now()
         else:
             now()
-            transaction_routes(datahh, data.city[2] + data.application + '-Grid' + str(radius) + '-nusr' + str(mxhh)
+            transaction_routes(datahh, data.city[2] + data.get_app_name() + '-Grid' + str(radius) + '-nusr' + str(mxhh)
                                + '+' + str(mnhh), scale=radius, supp=mins, timeres=time)
             now()
             print 'Discretized routes.'
@@ -72,13 +72,13 @@ def generate_routes_hours(routes,lhours):
             print 'Clustering Done.'
             now()
             transaction_routes_clustering(datahh, data.city[2] +
-                                          data.application + '-H' + str(lhours) + '-Leader' + str(radius)
+                                          data.get_app_name() + '-H' + str(lhours) + '-Leader' + str(radius)
                                           + '-nusr' + str(mxhh) + '+' + str(mnhh),
                                           cluster=clust, supp=mins, timeres=time)
             now()
         else:
             now()
-            transaction_routes(datahh, data.city[2] + data.application + '-Grid' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
+            transaction_routes(datahh, data.city[2] + data.get_app_name() + '-Grid' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
                                scale=radius,supp=mins, timeres=time)
             now()
             print 'Discretized routes.'
@@ -102,21 +102,30 @@ def generate_routes_hours(routes,lhours):
 #     )
 
 # generate_routes([
-#                 [cityparams['bcn'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-#                 [cityparams['london'], 'twitter', 100, 70000, 'Leader', 0.001, 20, [6, 18]],
-#                 [cityparams['paris'], 'twitter', 50, 70000, 'Leader', 0.001, 20, [6, 18]],
-#                 [cityparams['rome'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-#                 [cityparams['berlin'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
-#                 [cityparams['milan'], 'twitter', 50, 70000, 'Leader', 0.001, 10, [6, 18]],
+#                 [cityparams['bcn'], 'twitter', 50, 70000, 'Leader', 0.005, 20, [6, 18]],
+#                 [cityparams['london'], 'twitter', 100, 70000, 'Leader', 0.005, 20, [6, 18]],
+#                 [cityparams['paris'], 'twitter', 50, 70000, 'Leader', 0.005, 20, [6, 18]],
+#                 [cityparams['rome'], 'twitter', 50, 70000, 'Leader', 0.005, 20, [6, 18]],
+#                 [cityparams['berlin'], 'twitter', 50, 70000, 'Leader', 0.005, 20, [6, 18]],
+#                 [cityparams['milan'], 'twitter', 50, 70000, 'Leader', 0.005, 20, [6, 18]],
+#                 ])
+
+# generate_routes([
+#                 [cityparams['bcn'], 'instagram', 5, 70000, 'Leader', 0.005, 20, [6, 12, 18]],
+#                 [cityparams['london'], 'instagram', 5, 70000, 'Leader', 0.005, 20, [6, 12, 18]],
+#                 [cityparams['paris'], 'instagram', 5, 70000, 'Leader', 0.005, 20, [6, 12, 18]],
+#                 [cityparams['rome'], 'instagram', 5, 70000, 'Leader', 0.005, 20, [6, 12, 18]],
+#                 [cityparams['berlin'], 'instagram', 5, 70000, 'Leader', 0.005, 20, [6, 12, 18]],
+#                 [cityparams['milan'], 'instagram', 5, 70000, 'Leader', 0.005, 20, [6, 12, 18]],
 #                 ])
 
 generate_routes([
-                [cityparams['bcn'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['london'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['paris'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['rome'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['berlin'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
-                [cityparams['milan'], 'instagram', 5, 70000, 'Leader', 0.001, 10, [6, 18]],
+                [cityparams['bcn'], ['twitter', 'instagram'], 50, 70000, 'Leader', 0.005, 30, [6, 18]],
+                [cityparams['london'], ['twitter', 'instagram'], 50, 70000, 'Leader', 0.005, 30, [6, 18]],
+                [cityparams['paris'], ['twitter', 'instagram'], 50, 70000, 'Leader', 0.005, 30, [6, 18]],
+                [cityparams['rome'], ['twitter', 'instagram'], 50, 70000, 'Leader', 0.005, 30, [6, 18]],
+                [cityparams['berlin'], ['twitter', 'instagram'], 50, 70000, 'Leader', 0.005, 30, [6, 18]],
+                [cityparams['milan'], ['twitter', 'instagram'], 50, 70000, 'Leader', 0.005, 30, [6, 18]]
                 ])
 
 print 'Done.'

@@ -169,10 +169,10 @@ def cluster_colapsed_events_simple(trans, minloc=20, nclust=10, mode='nf', alg='
 
 def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', lhours=None):
     if alg == 'Leader':
-        nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+        nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
             + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
     elif alg == 'DBSCAN':
-        nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+        nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
             + '-' + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size)
     if lhours is not None:
         nfile += '-hrs' + str(lhours)
@@ -213,13 +213,13 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
                       sizes[sizes > size],
                       sizeprop=250,
                       dataname='leader-crd'+ str(radius) + '-mex' + str(size) + shrs)
-        nfile = homepath + 'Results/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+        nfile = homepath + 'Results/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
                 + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
         if lhours is not None:
             nfile += '-hrs' + str(lhours)
 
         savetxt(nfile + '.csv', dbs.cluster_centers_[sizes > size],delimiter=';')
-        nfile = homepath + 'Clusters/' + data.city[2] + data.application + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
+        nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
                 + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
         if lhours is not None:
             nfile += '-hrs' + str(lhours)
@@ -250,8 +250,9 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
             centers[i][0] /= sizes[i]
             centers[i][1] /= sizes[i]
             print sizes[i]
-        nfile = homepath + 'Results/' + data.city[2] + data.application + '-'
-        savetxt(nfile + 'DBSCAN-crd' +str(radius) + '-mins'+ str(mins) + '-mex'+ str(size) + '.csv', clres, delimiter=';')
+        nfile = homepath + 'Results/' + data.city[2] + data.get_app_name() + '-'
+        savetxt(nfile + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size) + '.csv',
+                clres, delimiter=';')
         plot_clusters(data, centers[sizes > size], sizes[sizes > size], dataname='dbscan-crd'+str(radius)
                       + '-mins'+ str(mins) + '-mex'+str(size), sizeprop=sizeprop)
 
@@ -295,7 +296,7 @@ def plot_clusters(data, centroids, csizes, sizeprop=1000, dataname=''):
                                 line_color='#FF0000',
                                 fill_color='#110000')
 
-    nfile = data.application + '-' + dataname
+    nfile = data.get_app_name() + '-' + dataname
 
     mymap.create_map(path=homepath + 'Results/' + data.city[2] + nfile + '-ts' + today + '.html')
 
