@@ -26,6 +26,7 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 
 from Parameters.Pconstants import mglocal
+import logging
 
 
 
@@ -234,30 +235,29 @@ def do_the_job(ltwid):
                     cnt += 1
                     resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
                     if 'foursquare' in resp.url or 'swarmapp' in resp.url:
-                        print 'FQ:', cnt, time.ctime(int(t['time'])),
-                        print t['tweet']
-                        print resp.url
+                        logger.info('FQ: %d %s', cnt, time.ctime(int(t['time'])))
+                        logger.info('%s', t['tweet'])
+                        logger.info('%s', resp.url)
                         vals = [str(t['twid']), resp.url.rstrip()]
                         url = vals[1]
                         val = chop_fsq(url)
                         if val is None: # Try a second time
                             time.sleep(2)
                             val = chop_fsq(url)
-                            print 'Trying a second time ...'
+                            logger.info('Trying a second time ...')
                         if val is not None:
                             vals.extend(val)
-                            #print 'VALS:', vals
                             if len(vals) == 14:
                                 upd = transform_fqr(vals)
                                 if upd is not None:
                                     col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
-                                    print 'TWID FQ:', vals[0]
+                                    logger.info('TWID FQ: %s', vals[0])
                         else: # If not successful go to next
-                            print 'Unsuccessfully'
+                            logger.info('Unsuccessfully')
 
                     elif 'http://instagram' in resp.url:
-                        print 'IG:', cnt, time.ctime(int(t['time']),)
-                        print t['tweet']
+                        logger.info('IG: %d %s', cnt, time.ctime(int(t['time']),))
+                        logger.info("%s ", t['tweet'])
                         #print resp.url
                         vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
                         url = vals[3]
@@ -265,39 +265,58 @@ def do_the_job(ltwid):
                         if val is None: # Try a second time
                             time.sleep(2)
                             val = chop_ig(url)
-                            #print 'Trying a second time ...'
                         if val is not None:
                             vals.extend(val)
                             #print vals
                             upd = transform_igr(vals)
                             if upd is not None:
                                 col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
-                                print 'TWID IG:', vals[0]
+                                logger.info('TWID IG: %s', vals[0])
 
                     if cnt % 100 == 0:
                         time.sleep(5)
-                        print 'Sleeping ...'
+                        logger.info('Sleeping ...')
 
 
                 except ValueError as e:
-                    print 'ValueError:', e
+                    logger.info( 'ValueError: %s', e)
                 except IOError as e:
-                    print 'IOError', e, url
+                    logger.info('IOError %s %s', e, url)
                 except UnicodeError as e:
-                    print 'UnicodeError', e
+                    logger.info('UnicodeError %s', e)
                 except urllib2.httplib.BadStatusLine:
                     pass
                 except urllib2.HTTPError:
-                    print 'HTTPError'
+                    logger.info('HTTPError')
 
     col = db['Params']
     col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
+
+# ----------------------------------------------------------------------------------------------------
 
 chkinvals_fq = ['createdAt', 'type']
 uservals_fq = ['id','gender']
 venuevals_fq = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
 uservals_ig = ['id','username']
+
+silent = True
+
+# Logging configuration
+logger = logging.getLogger('log')
+if silent:
+    logger.setLevel(logging.ERROR)
+else:
+    logger.setLevel(logging.INFO)
+
+console = logging.StreamHandler()
+if silent:
+    console.setLevel(logging.ERROR)
+else:
+    console.setLevel(logging.INFO)
+formatter = logging.Formatter('%(message)s')
+console.setFormatter(formatter)
+logging.getLogger('log').addHandler(console)
 
 
 mgdb = mglocal[0]
