@@ -42,9 +42,9 @@ args = parser.parse_args()
 if args.city:
     city = args.city
     if args.verbose == 1:
-        logger = config_logger(silent=False)
+        logger = config_logger(silent=False, file='ig-' + city)
     else:
-        logger = config_logger(silent=True)
+        logger = config_logger(silent=True, file='ig-' + city)
 
     if args.mongo == 1:
         mgdb = mongodata.db

@@ -67,7 +67,9 @@ def _timeout(signum, frame):
     raise TimeoutException()
 
 
-def config_logger(silent=False):
+def config_logger(silent=False, file=None):
+    if file is not None:
+        logging.basicConfig(filename=homepath+'/' + file + '.log', filemode='w')
 
     # Logging configuration
     logger = logging.getLogger('log')
@@ -196,11 +198,11 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
             j += 1
 
     except TimeoutException:
-        logger.info('##########################  It timed out! ###############################')
+        logger.error('##########################  It timed out! ###############################')
     except ReadTimeoutError:
-        logger.info('##########################  It timed out! ###############################')
+        logger.error('##########################  It timed out! ###############################')
     except RequestException:
-        logger.info('##########################  ERROR ###############################')
+        logger.error('##########################  ERROR ###############################')
         wsinf = False
 
 

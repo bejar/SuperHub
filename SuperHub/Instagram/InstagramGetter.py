@@ -68,7 +68,9 @@ def MapThis(city, coords, cent, nfile):
 
     mymap.create_map(path=homepath + 'Results/Maps/' + city[2] + '-' + nfile + '.html')
 
-def config_logger(silent=False):
+def config_logger(silent=False, file=None):
+    if file is not None:
+        logging.basicConfig(filename=homepath+'/' + file + '.log', filemode='w')
     # Logging configuration
     logger = logging.getLogger('log')
     if silent:
@@ -130,15 +132,21 @@ def get_instagram(city, logger, col, wsinf=True):
                         if 'caption' in media:
                             v = media['caption']
                             if v is not None and 'text' in v:
-                                iphotos[mid]['text'] = v['text']
+                                iphotos[mid]['text'] = v['text'].strip()
+                            else:
+                                iphotos[mid]['text'] = ''
+                        else:
+                            iphotos[mid]['text'] = ''
                         if 'name' in media['location']:
-                            iphotos[mid]['name'] = media['location']['name']
+                            iphotos[mid]['name'] = media['location']['name'].strip()
+                        else:
+                            iphotos[mid]['name'] = ''
                 except TypeError:
-                    pass
+                    logger.error('TypeError')
         except JSONDecodeError:
-            logger.info('EMPTY')
+            logger.error('EMPTY')
         except ConnectionError:
-            logger.info('Connection Error')
+            logger.error('Connection Error')
 
     lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
     logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))

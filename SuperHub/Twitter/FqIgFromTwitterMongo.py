@@ -279,15 +279,15 @@ def do_the_job(ltwid):
 
 
                 except ValueError as e:
-                    logger.info( 'ValueError: %s', e)
+                    logger.error('ValueError: %s', e)
                 except IOError as e:
-                    logger.info('IOError %s %s', e, url)
+                    logger.error('IOError %s %s', e, url)
                 except UnicodeError as e:
-                    logger.info('UnicodeError %s', e)
+                    logger.error('UnicodeError %s', e)
                 except urllib2.httplib.BadStatusLine:
                     pass
                 except urllib2.HTTPError:
-                    logger.info('HTTPError')
+                    logger.error('HTTPError')
 
     col = db['Params']
     col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
@@ -300,7 +300,7 @@ venuevals_fq = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortNa
 
 uservals_ig = ['id','username']
 
-silent = True
+silent = False
 
 # Logging configuration
 logger = logging.getLogger('log')

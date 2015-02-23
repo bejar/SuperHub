@@ -181,8 +181,7 @@ class STData:
             fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py-'+ date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
                                dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20'), ('uname', 'S20'), ('tweet', 'S250')],
-                               usecols=(0, 4, 3, 5, 2, 1, 6), delimiter=';', comments='*')
-
+                               delimiter=';', comments='*')
 
     def read_py_instagram_data_full(self, date=None):
         """
@@ -193,7 +192,7 @@ class STData:
         if date is None:
             fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter.data.bz2'
         else:
-            fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter-'+ date + '.data'
+            fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter-' + date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
                                dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('igurl', 'S100'), ('igid', 'S20'), ('iguname', 'S20')],
                                usecols=(0, 1, 2, 5, 6, 7), delimiter=';', comments='*')

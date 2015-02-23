@@ -30,13 +30,13 @@ from Parameters.Pconstants import mglocal
 
 def transform(tdata, city):
    return {'city': city,
-        'twid': tdata[0],
+        'twid': tdata[0].strip(),
         'lat': tdata[1],
         'lng': tdata[2],
         'time': str(tdata[3]),
-        'user': tdata[4],
-        'uname': tdata[5],
-        'tweet': tdata[6]
+        'user': tdata[4].strip(),
+        'uname': tdata[5].strip(),
+        'tweet': tdata[6].decode('ascii', 'ignore').strip()
       }
 
 
@@ -46,7 +46,7 @@ db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db[mglocal[1]]
 
-cdate = '20150202'
+cdate = '20150223'
 
 
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:

@@ -41,9 +41,9 @@ print args
 if args.city:
     city = args.city
     if args.verbose:
-        logger = config_logger(silent=False)
+        logger = config_logger(silent=False, file='tw-' + city)
     else:
-        logger = config_logger(silent=True)
+        logger = config_logger(silent=True, file='tw-' + city)
 
     if args.mongo:
         mgdb = mongodata.db
