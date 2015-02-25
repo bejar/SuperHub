@@ -34,31 +34,38 @@ def transform_fqr(tdata):
     if tdata[8] == ' ' or tdata[9] == ' ':
         return None
     else:
-        return {
-                  'fqurl': tdata[1],
-                  'fqtime': tdata[2],
-                  'fqid': tdata[4],
-                  'gender': tdata[5].replace('\"','').replace('{','').replace('[','').replace(']','').replace('}',''),
-                  'venueid': tdata[6],
-                  'venuename': tdata[7],
-                  'venuelat': float(tdata[8]),
-                  'venuelng': float(tdata[9]),
-                  'venuecat': tdata[10],
-                  'venuepluralname': tdata[11],
-                  'venueshortname': tdata[12],
-                  'venueurl': tdata[13]
+        return {'fqurl': tdata[1],
+                'fqtime': tdata[2],
+                'fqid': tdata[4],
+                'gender': tdata[5].replace('\"', '').replace('{', '').replace('[', '').replace(']', '').replace('}', ''),
+                'venueid': tdata[6],
+                'venuename': tdata[7].strip(),
+                'venuelat': float(tdata[8]),
+                'venuelng': float(tdata[9]),
+                'venuecat': tdata[10].strip(),
+                'venuepluralname': tdata[11].strip(),
+                'venueshortname': tdata[12].strip(),
+                'venueurl': tdata[13]
               }
 
 
 
 def transform_igr(tdata):
-   return {
-        'lat': tdata[1],
-        'lng': tdata[2],
-        'igurl': tdata[3],
-        'igid': tdata[4],
-        'iguname': str(tdata[5])
-      }
+   if len(tdata) < 6:
+       return None
+   else:
+        res = {'lat': tdata[1],
+               'lng': tdata[2],
+               'igurl': tdata[3],
+               'igid': tdata[4],
+               'iguname': str(tdata[5]).strip()}
+        if len(tdata) > 6:
+            res['iglocid'] = tdata[6].strip()
+        if len(tdata) > 7:
+            res['iglocname'] = tdata[7].strip()
+
+        return res
+
 
 
 def fix_bval(bval, gval, lval):
@@ -234,6 +241,7 @@ def do_the_job(ltwid):
                 try:
                     cnt += 1
                     resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
+                    #print resp.url
                     if 'foursquare' in resp.url or 'swarmapp' in resp.url:
                         logger.info('FQ: %d %s', cnt, time.ctime(int(t['time'])))
                         logger.info('%s', t['tweet'])
@@ -241,7 +249,7 @@ def do_the_job(ltwid):
                         vals = [str(t['twid']), resp.url.rstrip()]
                         url = vals[1]
                         val = chop_fsq(url)
-                        if val is None: # Try a second time
+                        if val is None:  # Try a second time
                             time.sleep(2)
                             val = chop_fsq(url)
                             logger.info('Trying a second time ...')
@@ -252,30 +260,30 @@ def do_the_job(ltwid):
                                 if upd is not None:
                                     col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
                                     logger.info('TWID FQ: %s', vals[0])
-                        else: # If not successful go to next
+                        else:  # If not successful go to next
                             logger.info('Unsuccessfully')
 
-                    elif 'http://instagram' in resp.url:
+                    elif 'instagram' in resp.url:
                         logger.info('IG: %d %s', cnt, time.ctime(int(t['time']),))
                         logger.info("%s ", t['tweet'])
                         #print resp.url
                         vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
                         url = vals[3]
                         val = chop_ig(url)
-                        if val is None: # Try a second time
+                        if val is None:  # Try a second time
                             time.sleep(2)
                             val = chop_ig(url)
                         if val is not None:
                             vals.extend(val)
-                            #print vals
+                            print vals
                             upd = transform_igr(vals)
                             if upd is not None:
                                 col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
                                 logger.info('TWID IG: %s', vals[0])
 
-                    if cnt % 100 == 0:
-                        time.sleep(5)
-                        logger.info('Sleeping ...')
+                    # if cnt % 100 == 0:
+                    #     time.sleep(5)
+                    #     logger.info('Sleeping ...')
 
 
                 except ValueError as e:
@@ -295,10 +303,10 @@ def do_the_job(ltwid):
 # ----------------------------------------------------------------------------------------------------
 
 chkinvals_fq = ['createdAt', 'type']
-uservals_fq = ['id','gender']
+uservals_fq = ['id', 'gender']
 venuevals_fq = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
-uservals_ig = ['id','username']
+uservals_ig = ['id', 'username', 'location', 'name']
 
 silent = False
 

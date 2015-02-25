@@ -117,7 +117,7 @@ def do_the_job(city, date):
             if url is not None:
                 try:
                     resp = urllib2.urlopen(url,timeout=5)
-                    if 'http://instagram' in resp.url:
+                    if 'instagram' in resp.url:
 
                         if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
                             print cnt, time.ctime(int(t['interval']),)

@@ -29,13 +29,21 @@ from Parameters.Pconstants import mglocal
 
 
 def transform(tdata):
-   return {
-        'lat': tdata[1],
-        'lng': tdata[2],
-        'igurl': tdata[3],
-        'igid': tdata[4],
-        'iguname': str(tdata[5])
-      }
+   if len(tdata) < 6:
+       return None
+   else:
+       res = {
+            'lat': tdata[1],
+            'lng': tdata[2],
+            'igurl': tdata[3],
+            'igid': tdata[4],
+            'iguname': str(tdata[5]).strip()}
+       if len(tdata) > 6:
+           res['iglocid'] = tdata[6].strip()
+       if len(tdata) > 7:
+           res['iglocname'] = tdata[7].strip()
+
+       return res
 
 def fix_bval(bval, gval, lval):
     rval = []
@@ -53,7 +61,7 @@ def find_first(val, list):
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -71,7 +79,7 @@ def hack_val(val):
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        val = find_first(p,vals)
+        val = find_first(p, vals)
         if val is not None:
             res.append(val)
         else:
@@ -99,6 +107,7 @@ def chop_fsq(url):
                 pfowner = z.find(',\"__get_params')
                 chk = z[powner+8:pfowner-2]
                 res.extend(extract_vals(hack_val(chk),uservals))
+
         return res
     else:
         return None
@@ -120,13 +129,13 @@ def do_the_job(ltwid):
             url = None
             for p in text:
                 if 'http' in p:
-                    url = p[p.find('http'), :]
+                    url = p[p.find('http'):]
                     if '\"' in url:
-                        url = url[0, url.find('\"')]
+                        url = url[0: url.find('\"')]
             if url is not None:
                 try:
                     resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
-                    if 'http://instagram' in resp.url:
+                    if 'instagram' in resp.url:
                         print cnt, time.ctime(int(t['time']),)
                         print t['tweet']
                         #print resp.url
@@ -162,7 +171,7 @@ def do_the_job(ltwid):
     col.update({'update': 'instagram'}, {'$set': {"ltwid": lasttwid}})
 
 
-uservals = ['id','username']
+uservals = ['id', 'username', 'location', 'name']
 
 mgdb = mglocal[0]
 client = MongoClient(mgdb)
