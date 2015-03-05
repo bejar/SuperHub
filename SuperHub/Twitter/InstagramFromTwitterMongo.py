@@ -155,8 +155,8 @@ def do_the_job(ltwid):
                                 col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
                                 print 'TWID:', vals[0]
 
-                        if cnt % 100 == 0:
-                            time.sleep(5)
+                        # if cnt % 100 == 0:
+                        #     time.sleep(5)
 
 
                 except IOError as e:
@@ -173,20 +173,20 @@ def do_the_job(ltwid):
 
 uservals = ['id', 'username', 'location', 'name']
 
-mgdb = mglocal[0]
-client = MongoClient(mgdb)
-db = client.local
-db.authenticate(mglocal[2], password=mglocal[3])
-col = db['Params']
+# mgdb = mglocal[0]
+# client = MongoClient(mgdb)
+# db = client.local
+# db.authenticate(mglocal[2], password=mglocal[3])
+# col = db['Params']
+#
+# cursor = col.find({'update': 'instagram'}, {'ltwid': 1}, timeout=False)
+# ltw = None
+# for t in cursor:
+#     ltw = t['ltwid']
+#
+# print ltw
 
-cursor = col.find({'update': 'instagram'}, {'ltwid': 1}, timeout=False)
-ltw = None
-for t in cursor:
-    ltw = t['ltwid']
-
-print ltw
 
 
-
-do_the_job(ltw)
+do_the_job('560000000000000000')
 
