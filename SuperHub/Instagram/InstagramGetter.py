@@ -141,6 +141,9 @@ def get_instagram(city, logger, col, wsinf=True):
                             iphotos[mid]['name'] = media['location']['name'].strip()
                         else:
                             iphotos[mid]['name'] = ''
+                        if 'id' in media['location']:
+                            iphotos[mid]['iglocid'] = str(media['location']['id'])
+
                 except TypeError:
                     logger.error('TypeError')
         except JSONDecodeError:
@@ -171,6 +174,7 @@ def get_instagram(city, logger, col, wsinf=True):
                     try:
                         wfile.write(str(iphotos[v][att]).encode('utf8', 'replace').rstrip())
                     except UnicodeEncodeError:
+                        logger.error('Unicode Encode Error')
                         wfile.write('')
                 else:
                     wfile.write('')
@@ -184,8 +188,10 @@ def get_instagram(city, logger, col, wsinf=True):
         try:
             requests.get(Webservice, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
         except Timeout:
+            logger.error('Webservice Timeout')
             wsinf = False
         except RequestException:
+            logger.error('Webservice Request Exception')
             wsinf = False
 
 
