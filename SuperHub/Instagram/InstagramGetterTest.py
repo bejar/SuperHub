@@ -29,7 +29,7 @@ from Parameters.Private import ig_credentials
 
 
 def MapThis(city, coords, cent, nfile):
-
+    print city
     minLat, maxLat, minLon, maxLon = city[1]
     mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
 
@@ -81,7 +81,7 @@ for circ in lcircles:
 
 lcoord = [(iphotos[v]['lat'], iphotos[v]['lon']) for v in iphotos]
 print len(iphotos)
-#MapThis(cityparams[city], lcoord, lcircles, city)
+MapThis(cityparams[city], lcoord, lcircles, city)
 
 #i = 0
 # api = requests.get('https://api.instagram.com/v1/media/search?lat=41.23&lng=2.09&min_timestamp=1422879173&distance=2000&access_token=%s' %access_token[0])
