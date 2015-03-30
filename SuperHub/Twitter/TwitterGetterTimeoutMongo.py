@@ -27,6 +27,7 @@ import signal
 import socket
 
 from TwitterAPI import TwitterAPI
+from TwitterAPI.TwitterError import TwitterConnectionError, TwitterError, TwitterRequestError
 from requests import RequestException
 from requests.exceptions import Timeout
 
@@ -204,6 +205,12 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
     except RequestException:
         logger.error('##########################  ERROR ###############################')
         wsinf = False
+    except TwitterError:
+        logger.error('##########################  Twitter ERROR ###############################')
+    except TwitterConnectionError:
+        logger.error('##########################  Twitter Connection ERROR ###############################')
+    except TwitterRequestError:
+        logger.error('##########################  Twitter Request ERROR ###############################')
 
 
     if col is None:
