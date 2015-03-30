@@ -52,7 +52,7 @@ cdate = '20150223'
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     print city
     data = STData(homepath, cityparams[city], 'twitter')
-    data.read_py_data_full(date=cdate)
+    data.read_py_data_full()
 
     for d in data.dataset:
         #print 'TWID= ', d[0]

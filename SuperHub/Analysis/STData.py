@@ -176,9 +176,9 @@ class STData:
         """
         print 'Reading Data ...'
         if date is None:
-            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-twitter-py.data.bz2'
         else:
-            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py-'+ date + '.data'
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-twitter-py-'+ date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
                                dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20'), ('uname', 'S20'), ('tweet', 'S250')],
                                delimiter=';', comments='*')

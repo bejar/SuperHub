@@ -57,7 +57,7 @@ cdate = '20150223'
 
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     print city
-    fname = homepath + 'Data-py/instagram/' + city + '-instagram-' + cdate + '.data'
+    fname = homepath + 'Data-py/instagram/' + city + '-instagram.data'
     rfile = open(fname, 'r')
 
     for lines in rfile:

@@ -172,7 +172,14 @@ def get_instagram(city, logger, col, wsinf=True):
 
                 if att in iphotos[v]:
                     try:
-                        wfile.write(str(iphotos[v][att]).encode('utf8', 'replace').rstrip())
+                        if type(iphotos[v][att]) is float:
+                            wfile.write(str(iphotos[v][att]))
+                        elif type(iphotos[v][att]) is unicode:
+                            #wfile.write(str(iphotos[v][att]).encode('utf8', 'replace').rstrip())
+                            wfile.write(iphotos[v][att].encode('utf8', 'replace').replace('\n', ' ').replace('\r', '').rstrip())
+                        else:
+                            wfile.write(iphotos[v][att])
+
                     except UnicodeEncodeError:
                         logger.error('Unicode Encode Error')
                         wfile.write('')
