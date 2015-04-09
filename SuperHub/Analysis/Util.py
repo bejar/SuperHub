@@ -25,7 +25,7 @@ import time
 
 
 def now():
-    print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
+    print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 
 
 def item_key_sort(v):
@@ -73,4 +73,4 @@ def strip_nl(val):
     @param val:
     @return:
     """
-    return (string.lstrip(string.rstrip(val[:len(val)-1])))
+    return (string.lstrip(string.rstrip(val[:len(val) - 1])))

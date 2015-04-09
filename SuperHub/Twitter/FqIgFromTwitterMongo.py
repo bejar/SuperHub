@@ -21,13 +21,12 @@ __author__ = 'bejar'
 
 import urllib2
 import time
+import logging
 
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 
 from Parameters.Pconstants import mglocal
-import logging
-
 
 
 def transform_fqr(tdata):
@@ -37,7 +36,8 @@ def transform_fqr(tdata):
         return {'fqurl': tdata[1],
                 'fqtime': tdata[2],
                 'fqid': tdata[4],
-                'gender': tdata[5].replace('\"', '').replace('{', '').replace('[', '').replace(']', '').replace('}', ''),
+                'gender': tdata[5].replace('\"', '').replace('{', '').replace('[', '').replace(']', '').replace('}',
+                                                                                                                ''),
                 'venueid': tdata[6],
                 'venuename': tdata[7].strip(),
                 'venuelat': float(tdata[8]),
@@ -46,14 +46,13 @@ def transform_fqr(tdata):
                 'venuepluralname': tdata[11].strip(),
                 'venueshortname': tdata[12].strip(),
                 'venueurl': tdata[13]
-              }
-
+                }
 
 
 def transform_igr(tdata):
-   if len(tdata) < 6:
-       return None
-   else:
+    if len(tdata) < 6:
+        return None
+    else:
         res = {'lat': tdata[1],
                'lng': tdata[2],
                'igurl': tdata[3],
@@ -67,7 +66,6 @@ def transform_igr(tdata):
         return res
 
 
-
 def fix_bval(bval, gval, lval):
     rval = []
     for v in lval:
@@ -79,12 +77,12 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first_second_fq(val,list):
+def find_first_second_fq(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if len(list[pos]) > 1 and val == list[pos][1]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -96,25 +94,26 @@ def find_first_second_fq(val,list):
             return None
 
 
-def find_first_fq(val,list):
+def find_first_fq(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
-        return find_first_second_fq(val,list)
+        return find_first_second_fq(val, list)
     else:
         return list[pos][-1]
+
 
 def find_first_ig(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -123,29 +122,28 @@ def find_first_ig(val, list):
         return list[pos][-1]
 
 
-
 def hack_val_fq(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','').replace('{','').replace('[','')
-        vals.append( vr.split(':'))
-    #print vals
+        vr = v.replace('\"', '').replace('{', '').replace('[', '')
+        vals.append(vr.split(':'))
+    # print vals
     return vals
 
 
 def hack_val_ig(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','')
-        vals.append( vr.split(':'))
+        vr = v.replace('\"', '')
+        vals.append(vr.split(':'))
     return vals
 
 
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        #print p
-        val = find_first_fq(p,vals)
+        # print p
+        val = find_first_fq(p, vals)
         if val is not None:
             res.append(val)
             #print val
@@ -166,7 +164,7 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if 'Checkin' in z:
@@ -174,14 +172,14 @@ def chop_fsq(url):
                 puser = z.find('user')
                 pvenue = z.find('venue\"')
                 pfvenue = z.find('fullVenue')
-                chk = z[pchk+11:puser-2]
-                res.extend(extract_vals(hack_val_fq(chk),chkinvals_fq))
-                user = z[puser+7:pvenue-2]
-                user = user.replace('}','')
+                chk = z[pchk + 11:puser - 2]
+                res.extend(extract_vals(hack_val_fq(chk), chkinvals_fq))
+                user = z[puser + 7:pvenue - 2]
+                user = user.replace('}', '')
                 res.extend(extract_vals(fix_bval(['user', '{id'], 'id', hack_val_fq(user)), uservals_fq))
-                venue = z[pvenue+9:pfvenue-1].replace('{\"id\"', 'id')
+                venue = z[pvenue + 9:pfvenue - 1].replace('{\"id\"', 'id')
                 venue = venue.replace('}', '')
-                #print venue
+                # print venue
                 res.extend(extract_vals(hack_val_fq(venue), venuevals_fq))
         return res
     else:
@@ -200,21 +198,20 @@ def chop_ig(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if '_sharedData' in z:
                 powner = z.find('owner')
                 pfowner = z.find(',\"__get_params')
-                chk = z[powner+8:pfowner-2]
-                res.extend(extract_vals(hack_val_ig(chk),uservals_ig))
+                chk = z[powner + 8:pfowner - 2]
+                res.extend(extract_vals(hack_val_ig(chk), uservals_ig))
         return res
     else:
         return None
 
 
 def do_the_job(ltwid):
-
     mgdb = mglocal[0]
     client = MongoClient(mgdb)
     db = client.local
@@ -235,13 +232,13 @@ def do_the_job(ltwid):
                     url = p[p.find('http'):]
                     if '\"' in url:
                         url = url[0: url.find('\"')]
-                    # if '\xe2' in url:
-                    #     url = url[0: url.find('\xe2')]
+                        # if '\xe2' in url:
+                        # url = url[0: url.find('\xe2')]
             if url is not None:
                 try:
                     cnt += 1
                     resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
-                    #print resp.url
+                    # print resp.url
                     if 'foursquare' in resp.url or 'swarmapp' in resp.url:
                         logger.info('FQ: %d %s', cnt, time.ctime(int(t['time'])))
                         logger.info('%s', t['tweet'])
@@ -264,7 +261,7 @@ def do_the_job(ltwid):
                             logger.info('Unsuccessfully')
 
                     elif 'instagram' in resp.url:
-                        logger.info('IG: %d %s', cnt, time.ctime(int(t['time']),))
+                        logger.info('IG: %d %s', cnt, time.ctime(int(t['time']), ))
                         logger.info("%s ", t['tweet'])
                         #print resp.url
                         vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
@@ -281,9 +278,9 @@ def do_the_job(ltwid):
                                 col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
                                 logger.info('TWID IG: %s', vals[0])
 
-                    # if cnt % 100 == 0:
-                    #     time.sleep(5)
-                    #     logger.info('Sleeping ...')
+                                # if cnt % 100 == 0:
+                                #     time.sleep(5)
+                                #     logger.info('Sleeping ...')
 
 
                 except ValueError as e:
@@ -325,7 +322,6 @@ else:
 formatter = logging.Formatter('%(message)s')
 console.setFormatter(formatter)
 logging.getLogger('log').addHandler(console)
-
 
 mgdb = mglocal[0]
 client = MongoClient(mgdb)

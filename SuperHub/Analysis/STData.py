@@ -39,7 +39,8 @@ from Parameters.Constants import homepath
 
 
 
-#import pygmaps
+
+# import pygmaps
 import folium
 from geojson import FeatureCollection, Feature, Polygon
 import geojson
@@ -68,7 +69,7 @@ class STData:
 
     def get_app_name(self):
         if type(self.application) == list:
-            nm= ''
+            nm = ''
             for ap in self.application:
                 nm += ap
         else:
@@ -165,7 +166,7 @@ class STData:
         print 'Reading Data ...'
         fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
         self.dataset = loadtxt(fname, skiprows=0,
-                               dtype=[('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20')],
+                               dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
                                usecols=(4, 3, 5, 2), delimiter=';', comments='*')
 
 
@@ -178,9 +179,10 @@ class STData:
         if date is None:
             fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-twitter-py.data.bz2'
         else:
-            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-twitter-py-'+ date + '.data'
+            fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-twitter-py-' + date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
-                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'),  ('time', 'i32'), ('user', 'S20'), ('uname', 'S20'), ('tweet', 'S250')],
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20'),
+                                      ('uname', 'S20'), ('tweet', 'S250')],
                                delimiter=';', comments='*')
 
     def read_py_instagram_data_full(self, date=None):
@@ -194,10 +196,11 @@ class STData:
         else:
             fname = self.wpath + 'Data-py/instagram/' + self.city[2] + '-instg-f-twitter-' + date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
-                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('igurl', 'S100'), ('igid', 'S20'), ('iguname', 'S20')],
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('igurl', 'S100'), ('igid', 'S20'),
+                                      ('iguname', 'S20')],
                                usecols=(0, 1, 2, 5, 6, 7), delimiter=';', comments='*')
 
-    def read_py_foursquare_data_full(self, date = None):
+    def read_py_foursquare_data_full(self, date=None):
         """
         Loads the data from the csv file
 
@@ -206,7 +209,7 @@ class STData:
         if date is None:
             fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter.data.bz2'
         else:
-            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-'+ date + '.data'
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-' + date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
                                dtype=[('twid', 'S25'),
                                       ('fqurl', 'S50'),
@@ -224,7 +227,7 @@ class STData:
                                usecols=(0, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17), delimiter=';', comments='*')
 
 
-    def read_py_foursquare_data_full2(self, date = None):
+    def read_py_foursquare_data_full2(self, date=None):
         """
         Loads the data from the csv file
 
@@ -233,21 +236,20 @@ class STData:
         if date is None:
             fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter.data.bz2'
         else:
-            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-'+ date + '.data'
+            fname = self.wpath + 'Data-py/foursquare/' + self.city[2] + '-fsq-f-twitter-' + date + '.data'
         self.dataset = loadtxt(fname, skiprows=0, dtype=[('twid', 'S25'),
-                                      ('fqurl', 'S50'),
-                                      ('fqtime', 'S20'),
-                                      ('fqid', 'S20'),
-                                      ('gender', 'S8'),
-                                      ('venueid', 'S20'),
-                                      ('venuename', 'S50'),
-                                      ('venuelat', 'S10'),
-                                      ('venuelng', 'S10'),
-                                      ('venuecat', 'S50'),
-                                      ('venuepluralname', 'S20'),
-                                      ('venueshortname', 'S20'),
-                                      ('venueurl', 'S100')], delimiter=';', comments='*')
-
+                                                         ('fqurl', 'S50'),
+                                                         ('fqtime', 'S20'),
+                                                         ('fqid', 'S20'),
+                                                         ('gender', 'S8'),
+                                                         ('venueid', 'S20'),
+                                                         ('venuename', 'S50'),
+                                                         ('venuelat', 'S10'),
+                                                         ('venuelng', 'S10'),
+                                                         ('venuecat', 'S50'),
+                                                         ('venuepluralname', 'S20'),
+                                                         ('venueshortname', 'S20'),
+                                                         ('venueurl', 'S100')], delimiter=';', comments='*')
 
 
     def info(self):
@@ -301,7 +303,7 @@ class STData:
             self.lhh = sorted_x
             mnhht = min(mnhh, len(sorted_x))
             hhitters = [x for x, y in sorted_x[mxhh:mnhht]]
-            #print usercount[hhitters[0]], usercount[hhitters[-1]]
+            # print usercount[hhitters[0]], usercount[hhitters[-1]]
         return hhitters
 
     def select_heavy_hitters(self, mxhh, mnhh):
@@ -441,7 +443,7 @@ class STData:
         for i in range(self.dataset.shape[0]):
             posy = int(((self.dataset[i][0] - minLat) * normLat))
             posx = int(((self.dataset[i][1] - minLon) * normLon))
-    #        print posx,posy,data[i][0],data[i][1], normLat, normLon
+            #        print posx,posy,data[i][0],data[i][1], normLat, normLon
             try:
                 if distrib:
                     cont[scale - posy - 1, posx - 1] += 1
@@ -466,7 +468,7 @@ class STData:
                          orientation='vertical')
         nfile = self.application + '-' + dataname
 
-        fig.savefig(homepath + 'Results/' + self.city[2] + '-'+ nfile + '.pdf', orientation='landscape',format='pdf')
+        fig.savefig(homepath + 'Results/' + self.city[2] + '-' + nfile + '.pdf', orientation='landscape', format='pdf')
 
         #plt.show()
 
@@ -480,6 +482,7 @@ class STData:
         :param bool distrib: If returns the frequency or the accumulated events
         :param string dataname: Name to append to the filename
         """
+
         def plot_notimeres():
             """
             All time colapsed
@@ -500,10 +503,11 @@ class STData:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] > 0.01:
-                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                radius=cont[i,j]*(circlesize/scale),
-                                                line_color='#000000',
-                                                fill_color='#110000')
+                            mymap.circle_marker(
+                                location=[minLat + (((scale - i) - 0.5) / normLat), minLon + ((j + 1.5) / normLon)],
+                                radius=cont[i, j] * (circlesize / scale),
+                                line_color='#000000',
+                                fill_color='#110000')
                             # mymap.addradpoint(minLat+(((scale - i)+0.5)/normLat), minLon+((j+0.5)/normLon),
                             #                   cont[i,j]*(circlesize/scale), "#FF0000")
             else:
@@ -511,10 +515,11 @@ class STData:
                     for j in range(cont.shape[1]):
                         if cont[i, j] > 0.01:
                             plt.plot(j, scale - i, 'k.')
-                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                radius=30,
-                                                line_color='#000000',
-                                                fill_color='#110000')
+                            mymap.circle_marker(
+                                location=[minLat + (((scale - i) - 0.5) / normLat), minLon + ((j + 1.5) / normLon)],
+                                radius=30,
+                                line_color='#000000',
+                                fill_color='#110000')
                             # mymap.addradpoint(minLat+(((scale - i )+0.5)/normLat),
                             #                  minLon+((j+0.5)/normLon), 30, "#FF0000")
 
@@ -523,8 +528,8 @@ class STData:
             Geo points separated by the time resolution zones
             @return:
             """
-            tint = 24/timeres
-            step = 255/(tint+1)
+            tint = 24 / timeres
+            step = 255 / (tint + 1)
 
             cont = np.zeros((scale, scale))
             for i in range(self.dataset.shape[0]):
@@ -541,31 +546,34 @@ class STData:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] > 0.01:
-                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                radius=cont[i,j]*(circlesize/scale),
-                                                line_color='#000000',
-                                                fill_color='#110000', fill_opacity=0.3)
-                            #mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
+                            mymap.circle_marker(
+                                location=[minLat + (((scale - i) - 0.5) / normLat), minLon + ((j + 1.5) / normLon)],
+                                radius=cont[i, j] * (circlesize / scale),
+                                line_color='#000000',
+                                fill_color='#110000', fill_opacity=0.3)
+                            # mymap.addradpoint(minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon),
                             #                  cont[i,j]*(circlesize/scale), "#FF0000")
             else:
                 for i in range(cont.shape[0]):
                     for j in range(cont.shape[1]):
                         if cont[i, j] > 0.01:
-                            mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                radius=30,
-                                                line_color='#000000',
-                                                fill_color='#110000', fill_opacity=0.3)
-                            #mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
+                            mymap.circle_marker(
+                                location=[minLat + (((scale - i) - 0.5) / normLat), minLon + ((j + 1.5) / normLon)],
+                                radius=30,
+                                line_color='#000000',
+                                fill_color='#110000', fill_opacity=0.3)
+                            # mymap.addradpoint(minLat+(((scale - i )-0.5)/normLat),
                             #                   minLon+((j+1.5)/normLon), 30, "#FF0000")
             for t in range(tint):
-                color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1)*step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
+                color = '#' + (str(hex((t + 1) * step))[2:]) + (
+                str(hex((t + 1) * step))[2:]) + 'FF'  # (str(hex((t+1)*step))[2:])
                 cont = np.zeros((scale, scale))
                 for i in range(self.dataset.shape[0]):
                     posy = int(((self.dataset[i][0] - minLat) * normLat))
                     posx = int(((self.dataset[i][1] - minLon) * normLon))
                     stime = time.localtime(np.int32(self.dataset[i][2]))
                     evtime = stime[3]
-                    if (evtime/timeres) == t:
+                    if (evtime / timeres) == t:
                         if distrib:
                             cont[scale - posy - 1, posx - 1] += 1
                         else:
@@ -575,18 +583,20 @@ class STData:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
                             if cont[i, j] > 0.01:
-                                mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                   radius=cont[i,j]*(circlesize/scale),
-                                                line_color=color,
-                                                fill_color='#110000', fill_opacity=0.2)
+                                mymap.circle_marker(
+                                    location=[minLat + (((scale - i) - 0.5) / normLat), minLon + ((j + 1.5) / normLon)],
+                                    radius=cont[i, j] * (circlesize / scale),
+                                    line_color=color,
+                                    fill_color='#110000', fill_opacity=0.2)
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
                             if cont[i, j] > 0.01:
-                                mymap.circle_marker(location=[minLat+(((scale - i)-0.5)/normLat), minLon+((j+1.5)/normLon)],
-                                                    radius=30,
-                                                    line_color=color,
-                                                    fill_color='#110000', fill_opacity=0.2)
+                                mymap.circle_marker(
+                                    location=[minLat + (((scale - i) - 0.5) / normLat), minLon + ((j + 1.5) / normLon)],
+                                    radius=30,
+                                    line_color=color,
+                                    fill_color='#110000', fill_opacity=0.2)
 
         print 'Generating the events plot ...'
         circlesize = 15000
@@ -598,16 +608,17 @@ class STData:
         minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
-        mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
+        mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1200,
+                           height=1000)
 
-#        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
-        #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
+        #        mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0, 10)
+        # mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
         if timeres is None:
             plot_notimeres()
         else:
             plot_timeres(timeres)
 
-        #today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+        # today = time.strftime('%Y%m%d%H%M%S', time.localtime())
         nfile = self.application + '-' + dataname + '-Grid'
         if self.mnhh is not None and self.mnhh is not None:
             nfile += '-nusr' + str(self.mxhh) + '#' + str(self.mnhh)
@@ -621,7 +632,7 @@ class STData:
         #                 nfile + '.pdf', orientation='landscape', format='pdf')
         #     plt.close()
         mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
-        #mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
+        # mymap.draw(homepath + 'Results/' + self.city[2] + nfile + '.html')
 
 
     def plot_events_cluster(self, cluster, distrib=True, dataname='', timeres=None):
@@ -634,6 +645,7 @@ class STData:
         :param bool distrib: If returns the frequency or the accumulated events
         :param string dataname: Name to append to the filename
         """
+
         def plot_notimeres():
             """
             All time colapsed
@@ -643,7 +655,7 @@ class STData:
             for i in range(self.dataset.shape[0]):
                 posy = self.dataset[i][0]
                 posx = self.dataset[i][1]
-                ejem = np.array([[posy,posx]])
+                ejem = np.array([[posy, posx]])
                 ncl = cluster.predict(ejem)
                 ncl = ncl[0]
 
@@ -655,33 +667,33 @@ class STData:
             if distrib:
                 cont = cont / np.max(cont)
                 for i in range(cont.shape[0]):
-                        if cont[i] > 0.01:
-                            cx = cluster.cluster_centers_[i][0]
-                            cy = cluster.cluster_centers_[i][1]
-                            mymap.circle_marker(location=[cx, cy],
-                                                radius=cont[i] * circlesize,
-                                                line_color='#000000',
-                                                fill_color='#110000',
-                                                popup=str(cont[i]), fill_opacity=0.4)
+                    if cont[i] > 0.01:
+                        cx = cluster.cluster_centers_[i][0]
+                        cy = cluster.cluster_centers_[i][1]
+                        mymap.circle_marker(location=[cx, cy],
+                                            radius=cont[i] * circlesize,
+                                            line_color='#000000',
+                                            fill_color='#110000',
+                                            popup=str(cont[i]), fill_opacity=0.4)
             else:
                 for i in range(cont.shape[0]):
-                        if cont[i] > 0.01:
-                            cx = cluster.cluster_centers_[i][0]
-                            cy = cluster.cluster_centers_[i][1]
+                    if cont[i] > 0.01:
+                        cx = cluster.cluster_centers_[i][0]
+                        cy = cluster.cluster_centers_[i][1]
 
-                            mymap.circle_marker(location=[cx,cy],
-                                                radius=30,
-                                                line_color='#000000',
-                                                fill_color='#110000',
-                                                popup=str(cont[i]), fill_opacity=0.4)
+                        mymap.circle_marker(location=[cx, cy],
+                                            radius=30,
+                                            line_color='#000000',
+                                            fill_color='#110000',
+                                            popup=str(cont[i]), fill_opacity=0.4)
 
         def plot_timeres(timeres):
             """
             Geo points separated by the time resolution zones
             @return:
             """
-            tint = 24/len(timeres.intervals)
-            step = 255/(tint+1)
+            tint = 24 / len(timeres.intervals)
+            step = 255 / (tint + 1)
 
             cont = np.zeros(cluster.num_clusters())
             for i in range(self.dataset.shape[0]):
@@ -716,12 +728,13 @@ class STData:
             #                                 line_color='#FF0000',
             #                                 fill_color='#110000')
             for t in range(tint):
-                color = '#'+(str(hex((t+1)*step))[2:])+(str(hex((t+1) * step))[2:])+'FF'  # (str(hex((t+1)*step))[2:])
+                color = '#' + (str(hex((t + 1) * step))[2:]) + \
+                        (str(hex((t + 1) * step))[2:]) + 'FF'  # (str(hex((t+1)*step))[2:])
                 cont = np.zeros(cluster.num_clusters())
                 for i in range(self.dataset.shape[0]):
                     posy = self.dataset[i][0]
                     posx = self.dataset[i][1]
-                    ejem = np.array([[posy,posx]])
+                    ejem = np.array([[posy, posx]])
                     ncl = cluster.predict(ejem)
                     ncl = ncl[0]
 
@@ -735,14 +748,14 @@ class STData:
                 if distrib:
                     cont = cont / np.max(cont)
                     for i in range(cont.shape[0]):
-                            if cont[i] > 0.01:
-                                cx = cluster.cluster_centers_[i][0]
-                                cy = cluster.cluster_centers_[i][1]
-                                mymap.circle_marker(location=[cx, cy],
-                                                    radius=cont[i] * circlesize,
-                                                    line_color=pltcolors[t],
-                                                    fill_color=pltcolors[t],#'#110000',
-                                                    popup=str(t) + '-' + str(cont[i]), fill_opacity=0.2)
+                        if cont[i] > 0.01:
+                            cx = cluster.cluster_centers_[i][0]
+                            cy = cluster.cluster_centers_[i][1]
+                            mymap.circle_marker(location=[cx, cy],
+                                                radius=cont[i] * circlesize,
+                                                line_color=pltcolors[t],
+                                                fill_color=pltcolors[t],  #'#110000',
+                                                popup=str(t) + '-' + str(cont[i]), fill_opacity=0.2)
                 else:
                     for i in range(cont.shape[0]):
                         for j in range(cont.shape[1]):
@@ -752,7 +765,7 @@ class STData:
                                 mymap.circle_marker(location=[cx, cy],
                                                     radius=30,
                                                     line_color=pltcolors[t],
-                                                    fill_color=pltcolors[t],#'#110000',
+                                                    fill_color=pltcolors[t],  #'#110000',
                                                     popup=str(t) + '-' + str(cont[i]), fill_opacity=0.2)
 
         print 'Generating the events plot ...'
@@ -765,7 +778,8 @@ class STData:
         minLat, maxLat, minLon, maxLon = self.city[1]
         # normLat = scale / (maxLat - minLat)
         # normLon = scale / (maxLon - minLon)
-        mymap = folium.Map(location=[(minLat+maxLat)/2.0, (minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
+        mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1200,
+                           height=1000)
 
         if timeres is None:
             plot_notimeres()
@@ -796,6 +810,7 @@ class STData:
         @param dataname:
         @return:
         """
+
         def plot_notimeres(thres):
             """
             All time colapsed
@@ -813,18 +828,20 @@ class STData:
             for i in range(cont.shape[0]):
                 for j in range(cont.shape[1]):
                     if cont[i, j] >= thres:
-                        path = [(minLon + (i+0.5)/normLon, maxLat - (scale-j-1.5)/normLat),
-                                (minLon + (i+0.5)/normLon, maxLat - (scale-j-0.5)/normLat),
-                                (minLon + (i+1.5)/normLon, maxLat - (scale-j-0.5)/normLat),
-                                (minLon + (i+1.5)/normLon, maxLat - (scale-j-1.5)/normLat)
-                               ]
+                        path = [(minLon + (i + 0.5) / normLon, maxLat - (scale - j - 1.5) / normLat),
+                                (minLon + (i + 0.5) / normLon, maxLat - (scale - j - 0.5) / normLat),
+                                (minLon + (i + 1.5) / normLon, maxLat - (scale - j - 0.5) / normLat),
+                                (minLon + (i + 1.5) / normLon, maxLat - (scale - j - 1.5) / normLat)
+                                ]
                         lgeo.append(Feature(geometry=Polygon([path])))
 
             return lgeo
+
         minLat, maxLat, minLon, maxLon = self.city[1]
         normLat = scale / (maxLat - minLat)
         normLon = scale / (maxLon - minLon)
-        mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=1000)
+        mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1400,
+                           height=1000)
         lgeog = plot_notimeres(threshold)
 
         nfile = self.application + '-' + dataname
@@ -838,12 +855,12 @@ class STData:
         jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
         jsfile.write(dump)
         jsfile.close()
-        mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_opacity=0.2)
+        mymap.geo_json(geo_path=homepath + 'Results/' + nfile + '.json', fill_opacity=0.2)
 
         mymap.create_map(path=homepath + 'Results/' + self.city[2] + nfile + '.html')
 
     def generate_user_dict(self):
-        res={}
+        res = {}
         for i in range(self.dataset.shape[0]):
             if self.dataset[i][3].strip() not in res:
                 res[self.dataset[i][3].strip()] = 1

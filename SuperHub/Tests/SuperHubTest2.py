@@ -24,7 +24,7 @@ import urllib
 from Analysis.DB import getTweets
 
 
-#rfile = open(homepath + 'twitter+fsq.csv', 'w')
+# rfile = open(homepath + 'twitter+fsq.csv', 'w')
 #rfile.write('#lat; lng; time; user; geohash; url\n')
 
 
@@ -46,12 +46,12 @@ for t in tw:
                     print i, t['interval'],
                     print t['text']
                     print resp.url
-#                    if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
-#                        rfile.write(str(t['lat']) + '; ' + str(t['lng']) + '; '
-#                                    + str(t['interval']) + ';' + str(t['user'])
-#                                    + '; ' + t['geohash']
-#                                    + '; ' + resp.url.rstrip() + '\n')
-#                        rfile.flush()
+                #                    if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
+                #                        rfile.write(str(t['lat']) + '; ' + str(t['lng']) + '; '
+                #                                    + str(t['interval']) + ';' + str(t['user'])
+                #                                    + '; ' + t['geohash']
+                #                                    + '; ' + resp.url.rstrip() + '\n')
+                #                        rfile.flush()
 
             except IOError:
                 pass

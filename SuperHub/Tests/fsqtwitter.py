@@ -29,7 +29,7 @@ def find_first(val, list):
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -37,18 +37,20 @@ def find_first(val, list):
     else:
         return list[pos][-1]
 
+
 def hack_val(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','')
-        vals.append( vr.split(':'))
+        vr = v.replace('\"', '')
+        vals.append(vr.split(':'))
     print vals
     return vals
-    
+
+
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        val = find_first(p,vals)
+        val = find_first(p, vals)
         if val is not None:
             res.append(val)
         else:
@@ -68,7 +70,7 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if 'Checkin' in z:
@@ -76,18 +78,19 @@ def chop_fsq(url):
                 puser = z.find('user')
                 pvenue = z.find('venue')
                 pfvenue = z.find('fullVenue')
-                chk = z[pchk+11:puser-2]
-                res.extend(extract_vals(hack_val(chk),chkinvals))
-                user = z[puser+7:pvenue-2]
-                res.extend(extract_vals(fix_bval(['user', '{id'], 'id',hack_val(user)),uservals))
-                print z[pvenue+7:pfvenue-1]
-                venue = z[pvenue+7:pfvenue-1].replace('{\"id\"','id')
+                chk = z[pchk + 11:puser - 2]
+                res.extend(extract_vals(hack_val(chk), chkinvals))
+                user = z[puser + 7:pvenue - 2]
+                res.extend(extract_vals(fix_bval(['user', '{id'], 'id', hack_val(user)), uservals))
+                print z[pvenue + 7:pfvenue - 1]
+                venue = z[pvenue + 7:pfvenue - 1].replace('{\"id\"', 'id')
                 res.extend(extract_vals(fix_bval(['location', '{lat'], 'lat', hack_val(venue)), venuevals))
         return res
     else:
         return None
 
-uservals = ['id','gender']
+
+uservals = ['id', 'gender']
 chkinvals = ['createdAt', 'type']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
@@ -103,7 +106,7 @@ for nfile in ['']:
         vals = lines.split(';')
         url = vals[5]
         val = chop_fsq(url)
-        if val is None: # Try a second time
+        if val is None:  # Try a second time
             val = chop_fsq(url)
             print 'Trying a second time ...'
         if val is not None:
@@ -119,9 +122,9 @@ for nfile in ['']:
 
             wfile.write('\n')
             wfile.flush()
-        else: # If not successful go to next
+        else:  # If not successful go to next
             print 'Unsuccessfully'
-        cnt +=1
+        cnt += 1
         if cnt % 100 == 0:
             time.sleep(180)
             print 'Sleeping ...'

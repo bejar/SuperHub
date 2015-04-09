@@ -28,8 +28,8 @@ from sklearn.cluster import KMeans, AffinityPropagation, DBSCAN, SpectralCluster
 from numpy import savetxt
 import folium
 from sklearn.metrics import silhouette_score
-
 from kemlglearn.cluster.Leader import Leader
+
 from Analysis.Util import now
 from Parameters.Constants import homepath
 
@@ -53,7 +53,7 @@ def cluster_colapsed_events(data, users, minloc=20, nclust=10, mode='nf', alg='a
 
     """
     # Generates a sparse matrix for the transactions and a list of users
-    #data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
+    # data, users = trans.generate_data_matrix(minloc=minloc, mode=mode)
 
     print "Clustering Transactions ... ", alg
 
@@ -71,11 +71,11 @@ def cluster_colapsed_events(data, users, minloc=20, nclust=10, mode='nf', alg='a
 
         for v in range(cclass.shape[0]):
             if cclass[v] > minsize:
-                clusters['c'+str(v)] = []
+                clusters['c' + str(v)] = []
 
-        for v,u in zip(ap_labels,users):
+        for v, u in zip(ap_labels, users):
             if cclass[v] > minsize:
-                clusters['c'+str(v)].append(u)
+                clusters['c' + str(v)].append(u)
         print len(clusters)
 
         for c in clusters:
@@ -93,11 +93,11 @@ def cluster_colapsed_events(data, users, minloc=20, nclust=10, mode='nf', alg='a
             cclass[v] += 1
         for v in range(cclass.shape[0]):
             if cclass[v] > minsize:
-                clusters['c'+str(v)] = []
+                clusters['c' + str(v)] = []
 
-        for v,u in zip(k_means_labels,users):
+        for v, u in zip(k_means_labels, users):
             if cclass[v] > minsize:
-                clusters['c'+str(v)].append(u)
+                clusters['c' + str(v)].append(u)
 
         print len(clusters)
         for c in clusters:
@@ -115,16 +115,15 @@ def cluster_colapsed_events(data, users, minloc=20, nclust=10, mode='nf', alg='a
             cclass[v] += 1
         for v in range(cclass.shape[0]):
             if cclass[v] > minsize:
-                clusters['c'+str(v)] = []
+                clusters['c' + str(v)] = []
 
-        for v,u in zip(spectral_labels, users):
+        for v, u in zip(spectral_labels, users):
             if cclass[v] > minsize:
-                clusters['c'+str(v)].append(u)
+                clusters['c' + str(v)].append(u)
 
-        # print len(clusters)
-        # for c in clusters:
-        #     print c, len(clusters[c])
-
+                # print len(clusters)
+                # for c in clusters:
+                #     print c, len(clusters[c])
 
     return clusters
 
@@ -156,8 +155,8 @@ def cluster_colapsed_events_simple(trans, minloc=20, nclust=10, mode='nf', alg='
         return []
     elif alg == 'kmeans':
         lvals = []
-        ic,fc = nclust
-        for i in range (ic, fc):
+        ic, fc = nclust
+        for i in range(ic, fc):
             k_means = KMeans(init='k-means++', n_clusters=i, n_init=10, n_jobs=-1)
             k_means.fit(data)
             labels = k_means.labels_
@@ -170,10 +169,10 @@ def cluster_colapsed_events_simple(trans, minloc=20, nclust=10, mode='nf', alg='
 def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', lhours=None):
     if alg == 'Leader':
         nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-            + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
+                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
     elif alg == 'DBSCAN':
         nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-            + '-' + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size)
+                + '-' + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size)
     if lhours is not None:
         nfile += '-hrs' + str(lhours)
     if os.path.isfile(nfile + '.pkl'):
@@ -183,7 +182,8 @@ def cluster_cache(data, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Le
         return None
 
 
-def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0, lhours=None):
+def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=100, alg='Leader', sizeprop=0,
+                   lhours=None):
     """
     Cluster geographical events and returns the clusters
 
@@ -212,13 +212,13 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
         plot_clusters(data, dbs.cluster_centers_[sizes > size],
                       sizes[sizes > size],
                       sizeprop=250,
-                      dataname='leader-crd'+ str(radius) + '-mex' + str(size) + shrs)
+                      dataname='leader-crd' + str(radius) + '-mex' + str(size) + shrs)
         nfile = homepath + 'Results/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
                 + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
         if lhours is not None:
             nfile += '-hrs' + str(lhours)
 
-        savetxt(nfile + '.csv', dbs.cluster_centers_[sizes > size],delimiter=';')
+        savetxt(nfile + '.csv', dbs.cluster_centers_[sizes > size], delimiter=';')
         nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
                 + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
         if lhours is not None:
@@ -230,13 +230,13 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
     elif alg == 'DBSCAN':
         labset = set(dbs.labels_)
         if -1 in labset:
-            dim = len(labset) -1
+            dim = len(labset) - 1
         else:
             dim = len(set)
-        centers = np.zeros((dim,2))
+        centers = np.zeros((dim, 2))
         sizes = np.zeros(dim)
         dataset = data.dataset
-        clres = np.zeros((dataset.shape[0],3))
+        clres = np.zeros((dataset.shape[0], 3))
         for i in range(dataset.shape[0]):
             clres[i][0] = dataset[i][0]
             clres[i][1] = dataset[i][1]
@@ -253,8 +253,9 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
         nfile = homepath + 'Results/' + data.city[2] + data.get_app_name() + '-'
         savetxt(nfile + 'DBSCAN-crd' + str(radius) + '-mins' + str(mins) + '-mex' + str(size) + '.csv',
                 clres, delimiter=';')
-        plot_clusters(data, centers[sizes > size], sizes[sizes > size], dataname='dbscan-crd'+str(radius)
-                      + '-mins'+ str(mins) + '-mex'+str(size), sizeprop=sizeprop)
+        plot_clusters(data, centers[sizes > size], sizes[sizes > size], dataname='dbscan-crd' + str(radius)
+                                                                                 + '-mins' + str(mins) + '-mex' + str(
+            size), sizeprop=sizeprop)
 
     return dbs
 
@@ -272,10 +273,11 @@ def plot_clusters(data, centroids, csizes, sizeprop=1000, dataname=''):
 
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     minLat, maxLat, minLon, maxLon = data.city[1]
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1400, height=1400)
+    mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1400,
+                       height=1400)
 
     # if distrib:
-    #     cont = cont / np.max(cont)
+    # cont = cont / np.max(cont)
     #     plt.imshow(cont, interpolation='bicubic', cmap=cm.gist_yarg)
     #     for i in range(cont.shape[0]):
     #         for j in range(cont.shape[1]):
@@ -284,17 +286,17 @@ def plot_clusters(data, centroids, csizes, sizeprop=1000, dataname=''):
     #                                     radius=cont[i,j]*(circlesize/scale),
     #                                     line_color='#FF0000',
     #                                     fill_color='#110000')
-    maxsize = np.max(csizes)/sizeprop
+    maxsize = np.max(csizes) / sizeprop
 
     for i in range(centroids.shape[0]):
-            if sizeprop != 0:
-                plotsize = csizes[i]/maxsize
-            else:
-                plotsize = 10
-            mymap.circle_marker(location=[centroids[i][0], centroids[i][1]],
-                                radius=plotsize,
-                                line_color='#FF0000',
-                                fill_color='#110000')
+        if sizeprop != 0:
+            plotsize = csizes[i] / maxsize
+        else:
+            plotsize = 10
+        mymap.circle_marker(location=[centroids[i][0], centroids[i][1]],
+                            radius=plotsize,
+                            line_color='#FF0000',
+                            fill_color='#110000')
 
     nfile = data.get_app_name() + '-' + dataname
 

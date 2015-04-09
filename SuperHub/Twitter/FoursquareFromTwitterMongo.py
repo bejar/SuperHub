@@ -28,25 +28,25 @@ from pymongo import MongoClient
 from Parameters.Pconstants import mglocal
 
 
-
 def transform(tdata):
     if tdata[8] == ' ' or tdata[9] == ' ':
         return None
     else:
         return {
-                  'fqurl': tdata[1],
-                  'fqtime': tdata[2],
-                  'fqid': tdata[4],
-                  'gender': tdata[5].replace('\"','').replace('{','').replace('[','').replace(']','').replace('}',''),
-                  'venueid': tdata[6],
-                  'venuename': tdata[7],
-                  'venuelat': float(tdata[8]),
-                  'venuelng': float(tdata[9]),
-                  'venuecat': tdata[10],
-                  'venuepluralname': tdata[11],
-                  'venueshortname': tdata[12],
-                  'venueurl': tdata[13]
-              }
+            'fqurl': tdata[1],
+            'fqtime': tdata[2],
+            'fqid': tdata[4],
+            'gender': tdata[5].replace('\"', '').replace('{', '').replace('[', '').replace(']', '').replace('}', ''),
+            'venueid': tdata[6],
+            'venuename': tdata[7],
+            'venuelat': float(tdata[8]),
+            'venuelng': float(tdata[9]),
+            'venuecat': tdata[10],
+            'venuepluralname': tdata[11],
+            'venueshortname': tdata[12],
+            'venueurl': tdata[13]
+        }
+
 
 def fix_bval(bval, gval, lval):
     rval = []
@@ -59,12 +59,12 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first_second(val,list):
+def find_first_second(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if len(list[pos]) > 1 and val == list[pos][1]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -76,32 +76,34 @@ def find_first_second(val,list):
             return None
 
 
-def find_first(val,list):
+def find_first(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
-        return find_first_second(val,list)
+        return find_first_second(val, list)
     else:
         return list[pos][-1]
+
 
 def hack_val(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','').replace('{','').replace('[','')
-        vals.append( vr.split(':'))
-    #print vals
+        vr = v.replace('\"', '').replace('{', '').replace('[', '')
+        vals.append(vr.split(':'))
+    # print vals
     return vals
+
 
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        #print p
-        val = find_first(p,vals)
+        # print p
+        val = find_first(p, vals)
         if val is not None:
             res.append(val)
             #print val
@@ -122,7 +124,7 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if 'Checkin' in z:
@@ -130,14 +132,14 @@ def chop_fsq(url):
                 puser = z.find('user')
                 pvenue = z.find('venue\"')
                 pfvenue = z.find('fullVenue')
-                chk = z[pchk+11:puser-2]
-                res.extend(extract_vals(hack_val(chk),chkinvals))
-                user = z[puser+7:pvenue-2]
-                user = user.replace('}','')
+                chk = z[pchk + 11:puser - 2]
+                res.extend(extract_vals(hack_val(chk), chkinvals))
+                user = z[puser + 7:pvenue - 2]
+                user = user.replace('}', '')
                 res.extend(extract_vals(fix_bval(['user', '{id'], 'id', hack_val(user)), uservals))
-                venue = z[pvenue+9:pfvenue-1].replace('{\"id\"', 'id')
+                venue = z[pvenue + 9:pfvenue - 1].replace('{\"id\"', 'id')
                 venue = venue.replace('}', '')
-                #print venue
+                # print venue
                 res.extend(extract_vals(hack_val(venue), venuevals))
         return res
     else:
@@ -145,7 +147,6 @@ def chop_fsq(url):
 
 
 def do_the_job(ltwid):
-
     mgdb = mglocal[0]
     client = MongoClient(mgdb)
     db = client.local
@@ -176,7 +177,7 @@ def do_the_job(ltwid):
                         vals = [str(t['twid']), resp.url.rstrip()]
                         url = vals[1]
                         val = chop_fsq(url)
-                        if val is None: # Try a second time
+                        if val is None:  # Try a second time
                             time.sleep(2)
                             val = chop_fsq(url)
                             print 'Trying a second time ...'
@@ -188,7 +189,7 @@ def do_the_job(ltwid):
                                 if upd is not None:
                                     col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
                                     print 'TWID:', vals[0]
-                        else: # If not successful go to next
+                        else:  # If not successful go to next
                             print 'Unsuccessfully'
                         cnt += 1
                         if cnt % 100 == 0:
@@ -210,8 +211,9 @@ def do_the_job(ltwid):
     col = db['Params']
     col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
 
+
 chkinvals = ['createdAt', 'type']
-uservals = ['id','gender']
+uservals = ['id', 'gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
 mgdb = mglocal[0]

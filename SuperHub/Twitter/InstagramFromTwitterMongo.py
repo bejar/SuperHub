@@ -29,21 +29,22 @@ from Parameters.Pconstants import mglocal
 
 
 def transform(tdata):
-   if len(tdata) < 6:
-       return None
-   else:
-       res = {
+    if len(tdata) < 6:
+        return None
+    else:
+        res = {
             'lat': tdata[1],
             'lng': tdata[2],
             'igurl': tdata[3],
             'igid': tdata[4],
             'iguname': str(tdata[5]).strip()}
-       if len(tdata) > 6:
-           res['iglocid'] = tdata[6].strip()
-       if len(tdata) > 7:
-           res['iglocname'] = tdata[7].strip()
+        if len(tdata) > 6:
+            res['iglocid'] = tdata[6].strip()
+        if len(tdata) > 7:
+            res['iglocname'] = tdata[7].strip()
 
-       return res
+        return res
+
 
 def fix_bval(bval, gval, lval):
     rval = []
@@ -69,12 +70,14 @@ def find_first(val, list):
     else:
         return list[pos][-1]
 
+
 def hack_val(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','')
-        vals.append( vr.split(':'))
+        vr = v.replace('\"', '')
+        vals.append(vr.split(':'))
     return vals
+
 
 def extract_vals(vals, patt):
     res = []
@@ -99,18 +102,19 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if '_sharedData' in z:
                 powner = z.find('owner')
                 pfowner = z.find(',\"__get_params')
-                chk = z[powner+8:pfowner-2]
-                res.extend(extract_vals(hack_val(chk),uservals))
+                chk = z[powner + 8:pfowner - 2]
+                res.extend(extract_vals(hack_val(chk), uservals))
 
         return res
     else:
         return None
+
 
 def do_the_job(ltwid):
     mgdb = mglocal[0]
@@ -136,14 +140,14 @@ def do_the_job(ltwid):
                 try:
                     resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
                     if 'instagram' in resp.url:
-                        print cnt, time.ctime(int(t['time']),)
+                        print cnt, time.ctime(int(t['time']), )
                         print t['tweet']
-                        #print resp.url
+                        # print resp.url
                         cnt += 1
                         vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
                         url = vals[3]
                         val = chop_fsq(url)
-                        if val is None: # Try a second time
+                        if val is None:  # Try a second time
                             time.sleep(2)
                             val = chop_fsq(url)
                             #print 'Trying a second time ...'
@@ -155,8 +159,8 @@ def do_the_job(ltwid):
                                 col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
                                 print 'TWID:', vals[0]
 
-                        # if cnt % 100 == 0:
-                        #     time.sleep(5)
+                                # if cnt % 100 == 0:
+                                #     time.sleep(5)
 
 
                 except IOError as e:
@@ -182,7 +186,7 @@ uservals = ['id', 'username', 'location', 'name']
 # cursor = col.find({'update': 'instagram'}, {'ltwid': 1}, timeout=False)
 # ltw = None
 # for t in cursor:
-#     ltw = t['ltwid']
+# ltw = t['ltwid']
 #
 # print ltw
 

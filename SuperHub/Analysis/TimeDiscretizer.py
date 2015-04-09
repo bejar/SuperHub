@@ -22,6 +22,7 @@ __author__ = 'bejar'
 from datetime import date, timedelta
 import time
 
+
 class TimeDiscretizer():
     intervals = None
 
@@ -37,7 +38,7 @@ class TimeDiscretizer():
         else:
             self.intervals = intervals
 
-    def discretize(self,timestamp):
+    def discretize(self, timestamp):
         stime = date.fromtimestamp(timestamp)
         htime = time.localtime(timestamp)
         hour = htime[3]
@@ -46,7 +47,7 @@ class TimeDiscretizer():
             disc = len(self.intervals) - 1
             stime = stime - timedelta(1)
         for i in range(len(self.intervals) - 1):
-            if self.intervals[i] <= hour < self.intervals[i+1]:
+            if self.intervals[i] <= hour < self.intervals[i + 1]:
                 disc = i
         if hour >= self.intervals[-1]:
             disc = len(self.intervals) - 1

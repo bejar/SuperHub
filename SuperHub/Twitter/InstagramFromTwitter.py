@@ -39,12 +39,12 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first(val,list):
+def find_first(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -52,17 +52,19 @@ def find_first(val,list):
     else:
         return list[pos][-1]
 
+
 def hack_val(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','')
-        vals.append( vr.split(':'))
+        vr = v.replace('\"', '')
+        vals.append(vr.split(':'))
     return vals
+
 
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        val = find_first(p,vals)
+        val = find_first(p, vals)
         if val is not None:
             res.append(val)
         else:
@@ -82,27 +84,28 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if '_sharedData' in z:
                 powner = z.find('owner')
                 pfowner = z.find(',\"__get_params')
-                chk = z[powner+8:pfowner-2]
-                res.extend(extract_vals(hack_val(chk),uservals))
+                chk = z[powner + 8:pfowner - 2]
+                res.extend(extract_vals(hack_val(chk), uservals))
         return res
     else:
         return None
+
 
 def do_the_job(city, date):
     params = cityparams[city]
     minLat, maxLat, minLon, maxLon = params[1]
     intend = int(time.time())
 
-    rfile = open(homepath + 'Data-py/Data/' + city + '-py-' + date +'.data', 'r')
-    wfile = open(homepath + 'Data-py/instagram/' + city + '-instg-f-twitter-'+date+'.data', 'w')
+    rfile = open(homepath + 'Data-py/Data/' + city + '-py-' + date + '.data', 'r')
+    wfile = open(homepath + 'Data-py/instagram/' + city + '-instg-f-twitter-' + date + '.data', 'w')
 
-    #wfile.write('#lat; lng; time; user; geohash; url; instaid; instauser\n')
+    # wfile.write('#lat; lng; time; user; geohash; url; instaid; instauser\n')
 
 
     cnt = 0
@@ -116,11 +119,11 @@ def do_the_job(city, date):
                     url = p
             if url is not None:
                 try:
-                    resp = urllib2.urlopen(url,timeout=5)
+                    resp = urllib2.urlopen(url, timeout=5)
                     if 'instagram' in resp.url:
 
                         if (minLat <= float(t['lat']) < maxLat) and (minLon <= float(t['lng']) < maxLon):
-                            print cnt, time.ctime(int(t['interval']),)
+                            print cnt, time.ctime(int(t['interval']), )
                             print t['text']
                             #print resp.url
                             cnt += 1
@@ -128,7 +131,7 @@ def do_the_job(city, date):
                                     resp.url.rstrip()]
                             url = vals[5]
                             val = chop_fsq(url)
-                            if val is None: # Try a second time
+                            if val is None:  # Try a second time
                                 val = chop_fsq(url)
                                 #print 'Trying a second time ...'
                             if val is not None:
@@ -161,8 +164,8 @@ def do_the_job(city, date):
                     pass
 
 
-uservals = ['id','username']
-#['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
+uservals = ['id', 'username']
+# ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     do_the_job(city, '20150202')
 

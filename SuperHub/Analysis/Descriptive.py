@@ -90,24 +90,24 @@ def data_histograms(data, lhh=None):
 
         savePlot(range(24), ht, homepathr + city + '-' + application + '-hourly' + nfile + '.pdf')
         np.savetxt(homepathr + city + '-' + application + '-hourly' + nfile + '.csv',
-                   np.array([range(1,25), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
+                   np.array([range(1, 25), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
         print 'Computing daily histogram'
         ht = data.daily_table()
 
         savePlot(range(7), ht, homepathr + city + '-' + application + '-daily' + nfile + '.pdf')
         np.savetxt(homepathr + city + '-' + application + '-daily' + nfile + '.csv',
-                   np.array([range(1,8), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
+                   np.array([range(1, 8), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
         print 'Computing montly histogram'
         ht = data.monthly_table()
 
         savePlot(range(12), ht, homepathr + city + '-' + application + '-monthy' + nfile + '.pdf')
         np.savetxt(homepathr + city + '-' + application + '-monthly' + nfile + '.csv',
-                   np.array([range(1,13), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
+                   np.array([range(1, 13), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
 
-def user_events_histogram(data,  lhh=[0,20000], scale=100, timeres=4):
+def user_events_histogram(data, lhh=[0, 20000], scale=100, timeres=4):
     """
     Histogram of the number of places-time a user has been
 
@@ -116,8 +116,8 @@ def user_events_histogram(data,  lhh=[0,20000], scale=100, timeres=4):
     :param: timeres: Time resolution in number of segments from the 24h period
     """
     application = data.application
-    mxhh=lhh[0]
-    mnhh=lhh[1]
+    mxhh = lhh[0]
+    mnhh = lhh[1]
     data.select_heavy_hitters(mxhh, mnhh)
     today = time.strftime('%Y%m%d%H%M%S', time.localtime())
     nfile = application + '-allgeotime' + '-nusr' + str(mxhh) + '#' + str(mnhh) + '-s' + str(scale) \

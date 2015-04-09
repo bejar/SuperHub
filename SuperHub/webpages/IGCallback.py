@@ -19,18 +19,17 @@ IGCallback
 
 __author__ = 'bejar'
 
-
-from flask import Flask, request, render_template
 import socket
-import time
-from instagram.client import InstagramAPI
-from httplib import HTTPResponse
+
+from flask import Flask, request
+
 
 hostname = socket.gethostname()
 port = 9999
 
 app = Flask(__name__)
 city_status = {}
+
 
 @app.route("/Instagram", methods=['GET', 'POST'])
 def callback():
@@ -39,8 +38,7 @@ def callback():
 
     @return:
     """
-    #global city_status
-    from instagram import client, subscriptions
+    # global city_status
 
     if request.method == 'GET':
 
@@ -55,6 +53,7 @@ def callback():
         print request.args
         return ''
 
+
 @app.route('/Status')
 def info():
     """
@@ -64,7 +63,7 @@ def info():
 
     return 'Ok'
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     # Ponemos en marcha el servidor Flask
     app.run(host='0.0.0.0', port=9999, debug=True)

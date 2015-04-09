@@ -44,7 +44,7 @@ def getApplicationData2(cityparam):
 
     db.authenticate(mguser, password=mgpass)
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     print 'Retrieving Data ...'
     col = db['sndata']
     print col.distinct('app')
@@ -78,7 +78,7 @@ def getApplicationDataInterval(cityparam, application, intinit, intend=None):
     print intend
 
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     print 'Retrieving Data ...'
     rfile = open(homepath + 'Data/' + cityname + '-' + application + '-' + str(intinit) + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
@@ -91,10 +91,10 @@ def getApplicationDataInterval(cityparam, application, intinit, intend=None):
     #              }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
 
     c = col.find({'app': application,
-                      'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                      'interval': {'$gt': intinit, '$lt': intend}
-                     }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
+                  'lat': {'$gt': minLat, '$lt': maxLat},
+                  'lng': {'$gt': minLon, '$lt': maxLon},
+                  'interval': {'$gt': intinit, '$lt': intend}
+                  }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
 
     #c = col.find({'app': application}, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
 
@@ -132,9 +132,9 @@ def getApplicationData(cityparam, application):
 
     db.authenticate(mguser, password=mgpass)
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     print 'Retrieving Data ...'
-    rfile = open(homepath + 'Data/' + cityname +'-'+ application  + '.csv', 'w')
+    rfile = open(homepath + 'Data/' + cityname + '-' + application + '.csv', 'w')
     #    rfile.write('#lat; lng; time; user\n')
     rfile.write('#lat; lng; time; user; geohash\n')
     col = db['sndata']
@@ -179,7 +179,7 @@ def getLApplicationData(cityparam, lapplication):
 
     db.authenticate(mguser, password=mgpass)
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     appname = ''
     apfiles = []
     apnames = []
@@ -285,7 +285,7 @@ def getApplicationDataOne(cityparam, application):
     db.authenticate(mguser, password=mgpass)
 
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     col = db['sndata']
     # c = col.find_one({'app': application,
     #                   'lat': {'$gt': minLat, '$lt': maxLat},
@@ -314,12 +314,12 @@ def getTweets(cityparam, intinit=None):
     intend = int(time.time())
     print intend
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     col = db['sndata']
     c = col.find({'app': 'twitter',
-                 'lat': {'$gt': minLat, '$lt': maxLat},
-                 'lng': {'$gt': minLon, '$lt': maxLon},
-                 'interval': {'$gt': intinit, '$lt': intend}
+                  'lat': {'$gt': minLat, '$lt': maxLat},
+                  'lng': {'$gt': minLon, '$lt': maxLon},
+                  'interval': {'$gt': intinit, '$lt': intend}
                   }, {'text': 1, 'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1}, timeout=False)
     return c
 

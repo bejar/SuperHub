@@ -19,10 +19,13 @@ gettweets
 
 __author__ = 'bejar'
 
-from TwitterGetterTimeoutMongo import get_tweets, config_logger
 from time import sleep
-from Parameters.Pconstants import mglocal
+
 from pymongo import MongoClient
+
+from TwitterGetterTimeoutMongo import get_tweets, config_logger
+from Parameters.Pconstants import mglocal
+
 
 
 
@@ -35,7 +38,6 @@ client = MongoClient(mgdb)
 db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
 col = db['Twitter']
-
 
 while True:
     get_tweets(city, logger, col, inform=100, wsinf=True)

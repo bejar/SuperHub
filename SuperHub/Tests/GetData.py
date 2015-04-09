@@ -19,7 +19,6 @@ GetData
 
 __author__ = 'bejar'
 
-
 from Parameters.Constants import bcnparam
 from Analysis import DB
 
@@ -31,5 +30,5 @@ DB.getApplicationDataInterval(bcnparam, 'twitter', 1412114400)
 DB.getApplicationDataInterval(bcnparam, 'instagram', 1412114400)
 # DB.getApplicationDataInterval(hlsnkparam, 'twitter', 1409729400)
 # DB.getApplicationDataInterval(hlsnkparam, 'instagram', 1408659300)
-#DB.getApplicationDataInterval(hlsnkparam, 'twitter', 1380578300, 1409800000)
+# DB.getApplicationDataInterval(hlsnkparam, 'twitter', 1380578300, 1409800000)
 #DB.getApplicationDataOne(hlsnkparam, 'twitter')

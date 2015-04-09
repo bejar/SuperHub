@@ -15,7 +15,7 @@ import pylab as pl
 from pylab import *
 from pymongo import MongoClient
 
-from src.Parameters.Constants import  mgpass, mguser, homepath, bcnparam
+from src.Parameters.Constants import mgpass, mguser, homepath, bcnparam
 from STData import STData
 from Routes import transaction_routes_many
 from Analysis.Clustering import cluster_colapsed_events
@@ -37,7 +37,7 @@ def compute_transactions_routes(data):
     @param data:
     @return:
     """
-    transaction_routes_many(data,lhh=[(0, 40000)], lscale=[150], supp=10, ltimeres=[8])
+    transaction_routes_many(data, lhh=[(0, 40000)], lscale=[150], supp=10, ltimeres=[8])
 
 
 def compute_transactions_clusters(data, alg='affinity', mode='binidf', scale=100, timeres=4, nclust=10,
@@ -59,8 +59,9 @@ def compute_transactions_clusters(data, alg='affinity', mode='binidf', scale=100
 
     for c in cls:
         dataclus = data.select_data_users(cls[c])
-        dataclus.plot_events_grid(scale=scale, dataname=mode+'-'+alg+'-'+str(minloc)+'-ts' + today + '-cluster-'+c,
-                             distrib=True, timeres=0)
+        dataclus.plot_events_grid(scale=scale,
+                                  dataname=mode + '-' + alg + '-' + str(minloc) + '-ts' + today + '-cluster-' + c,
+                                  distrib=True, timeres=0)
 
 
 def ReviewUsers(cityparam, application, lusers, intinit, intend=None):
@@ -75,7 +76,6 @@ def ReviewUsers(cityparam, application, lusers, intinit, intend=None):
         intend = int(time.time())
     print intend
 
-
     client = MongoClient(mgdb)
 
     db = client.superhub
@@ -85,17 +85,17 @@ def ReviewUsers(cityparam, application, lusers, intinit, intend=None):
     dusers = {}
 
 
-    #    names= db.collection_names()
+    # names= db.collection_names()
     col = db['sndata']
     # c = col.find_one({'app': application,
     #                   'lat': {'$gt': minLat, '$lt': maxLat},
     #                   'lng': {'$gt': minLon, '$lt': maxLon},
     #                  }, {'lat': 1, 'lng': 1, 'interval': 1, 'user': 1, 'geohash': 1})
     c = col.find({'app': application,
-                      'lat': {'$gt': minLat, '$lt': maxLat},
-                      'lng': {'$gt': minLon, '$lt': maxLon},
-                      'interval': {'$gt': intinit, '$lt': intend}
-                     },timeout=False)
+                  'lat': {'$gt': minLat, '$lt': maxLat},
+                  'lng': {'$gt': minLon, '$lt': maxLon},
+                  'interval': {'$gt': intinit, '$lt': intend}
+                  }, timeout=False)
 
     for t in c:
         #        stime=time.localtime(t['interval'])
@@ -115,7 +115,7 @@ def ReviewUsers(cityparam, application, lusers, intinit, intend=None):
     return dusers
 
 # Load the data from the DB to a file
-#getApplicationData('twitter')
+# getApplicationData('twitter')
 #getApplicationData('instagram')
 #getLApplicationData(['twitter','instagram'])
 

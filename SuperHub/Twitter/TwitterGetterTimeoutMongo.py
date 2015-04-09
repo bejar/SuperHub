@@ -24,21 +24,17 @@ __author__ = 'bejar'
 import time
 import logging
 import signal
-import socket
 
 from TwitterAPI import TwitterAPI
 from TwitterAPI.TwitterError import TwitterConnectionError, TwitterError, TwitterRequestError
 from requests import RequestException
 from requests.exceptions import Timeout
-
 from requests.packages.urllib3.exceptions import ReadTimeoutError
-from pymongo import MongoClient
 import requests
 from pymongo.errors import DuplicateKeyError
 
 from Parameters.Constants import cityparams, TW_TIMEOUT, homepath
 from Parameters.Private import credentials, Webservice
-from Parameters.Pconstants import mglocal
 
 
 class TimeoutException(Exception):
@@ -47,15 +43,16 @@ class TimeoutException(Exception):
 
 
 def transform(tdata, city):
-   return {'city': city,
-           'twid': tdata[0],
-           'lat': tdata[2],
-           'lng': tdata[1],
-           'time': str(tdata[3]),
-           'user': tdata[4],
-           'uname': tdata[5],
-           'tweet': tdata[6]
-      }
+    return {'city': city,
+            'twid': tdata[0],
+            'lat': tdata[2],
+            'lng': tdata[1],
+            'time': str(tdata[3]),
+            'user': tdata[4],
+            'uname': tdata[5],
+            'tweet': tdata[6]
+            }
+
 
 def _timeout(signum, frame):
     """ Raise an TimeoutException.
@@ -70,7 +67,7 @@ def _timeout(signum, frame):
 
 def config_logger(silent=False, file=None):
     if file is not None:
-        logging.basicConfig(filename=homepath+'/' + file + '.log', filemode='w')
+        logging.basicConfig(filename=homepath + '/' + file + '.log', filemode='w')
 
     # Logging configuration
     logger = logging.getLogger('log')
@@ -117,9 +114,10 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
 
     try:
         api = TwitterAPI(
-            credentials[city][0],credentials[city][1],credentials[city][2],credentials[city][3])
+            credentials[city][0], credentials[city][1], credentials[city][2], credentials[city][3])
 
-        locstr = '%s,%s,%s,%s' % (str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]), str(cityparams[city][1][1]))
+        locstr = '%s,%s,%s,%s' % (str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]),
+                                  str(cityparams[city][1][1]))
 
         r = api.request('statuses/filter', {'locations': locstr})
 
@@ -158,7 +156,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                             col.insert(tomongo)
                             logger.info('TWID: %s', tomongo['twid'])
                         except DuplicateKeyError:
-                            logger.info('Duplicate: %s',  tomongo['twid'])
+                            logger.info('Duplicate: %s', tomongo['twid'])
                     else:
                         if wfile is None:
                             wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
@@ -178,7 +176,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                         wfile.flush()
 
                 # else:
-                #     print 'Outside Bounding Box'
+                # print 'Outside Bounding Box'
                 #     print minLat, vals[2], maxLat
                 #     print minLon, vals[1], maxLon
 
@@ -186,13 +184,12 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                 deltatime = (currtime - initime) / 60.0
 
                 if deltatime != 0:
-                    logger.info('---- %2.3f tweets/minute', i/deltatime)
-
+                    logger.info('---- %2.3f tweets/minute', i / deltatime)
 
                 i += 1
-                if wsinf and inform != 0 and i%inform == 0:
+                if wsinf and inform != 0 and i % inform == 0:
                     try:
-                        requests.get(Webservice, params={'content': city+'-twt', 'count': i, 'delta': i/deltatime})
+                        requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
                     except Timeout:
                         wsinf = False
 
@@ -211,7 +208,6 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
         logger.error('##########################  Twitter Connection ERROR ###############################')
     except TwitterRequestError:
         logger.error('##########################  Twitter Request ERROR ###############################')
-
 
     if col is None:
         wfile.close()

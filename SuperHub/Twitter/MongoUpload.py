@@ -29,15 +29,15 @@ from Parameters.Pconstants import mglocal
 
 
 def transform(tdata, city):
-   return {'city': city,
-        'twid': tdata[0].strip(),
-        'lat': tdata[1],
-        'lng': tdata[2],
-        'time': str(tdata[3]),
-        'user': tdata[4].strip(),
-        'uname': tdata[5].strip(),
-        'tweet': tdata[6].decode('ascii', 'ignore').strip()
-      }
+    return {'city': city,
+            'twid': tdata[0].strip(),
+            'lat': tdata[1],
+            'lng': tdata[2],
+            'time': str(tdata[3]),
+            'user': tdata[4].strip(),
+            'uname': tdata[5].strip(),
+            'tweet': tdata[6].decode('ascii', 'ignore').strip()
+            }
 
 
 mgdb = mglocal[0]
@@ -48,18 +48,17 @@ col = db[mglocal[1]]
 
 cdate = '20150223'
 
-
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     print city
     data = STData(homepath, cityparams[city], 'twitter')
     data.read_py_data_full()
 
     for d in data.dataset:
-        #print 'TWID= ', d[0]
+        # print 'TWID= ', d[0]
         try:
             col.insert(transform(d, city))
         except DuplicateKeyError:
-            print 'Duplicate: ',  d[0]
+            print 'Duplicate: ', d[0]
 
     c = col.find({'city': city})
     print c.count()

@@ -39,12 +39,12 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first_second(val,list):
+def find_first_second(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if len(list[pos]) > 1 and val == list[pos][1]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -56,32 +56,34 @@ def find_first_second(val,list):
             return None
 
 
-def find_first(val,list):
+def find_first(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
-        return find_first_second(val,list)
+        return find_first_second(val, list)
     else:
         return list[pos][-1]
+
 
 def hack_val(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','').replace('{','').replace('[','')
-        vals.append( vr.split(':'))
-    #print vals
+        vr = v.replace('\"', '').replace('{', '').replace('[', '')
+        vals.append(vr.split(':'))
+    # print vals
     return vals
+
 
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        #print p
-        val = find_first(p,vals)
+        # print p
+        val = find_first(p, vals)
         if val is not None:
             res.append(val)
             #print val
@@ -102,7 +104,7 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if 'Checkin' in z:
@@ -110,21 +112,22 @@ def chop_fsq(url):
                 puser = z.find('user')
                 pvenue = z.find('venue\"')
                 pfvenue = z.find('fullVenue')
-                chk = z[pchk+11:puser-2]
-                res.extend(extract_vals(hack_val(chk),chkinvals))
-                user = z[puser+7:pvenue-2]
-                user = user.replace('}','')
-                res.extend(extract_vals(fix_bval(['user', '{id'], 'id',hack_val(user)),uservals))
-                venue = z[pvenue+9:pfvenue-1].replace('{\"id\"', 'id')
+                chk = z[pchk + 11:puser - 2]
+                res.extend(extract_vals(hack_val(chk), chkinvals))
+                user = z[puser + 7:pvenue - 2]
+                user = user.replace('}', '')
+                res.extend(extract_vals(fix_bval(['user', '{id'], 'id', hack_val(user)), uservals))
+                venue = z[pvenue + 9:pfvenue - 1].replace('{\"id\"', 'id')
                 venue = venue.replace('}', '')
-                #print venue
+                # print venue
                 res.extend(extract_vals(hack_val(venue), venuevals))
         return res
     else:
         return None
 
+
 chkinvals = ['createdAt', 'type']
-uservals = ['id','gender']
+uservals = ['id', 'gender']
 venuevals = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
 city = bcnparam[2]
@@ -132,7 +135,7 @@ minLat, maxLat, minLon, maxLon = bcnparam[1]
 
 # rfile = open(homepath + 'twitter+fsq-12.csv', 'r')
 wfile = open(homepath + city + '-twitter+fsq-1416899700.pr.csv', 'w')
-#wfile.write('#lat; lng; time; user; geohash, url; fsqtime; fsqact; fsqusr; gender; place; fsqlat; fsqlng; vntypeid; vntname; vntshtname\n')
+# wfile.write('#lat; lng; time; user; geohash, url; fsqtime; fsqact; fsqusr; gender; place; fsqlat; fsqlng; vntypeid; vntname; vntshtname\n')
 
 
 tw = getTweets(bcnparam, intinit=1416899700)
@@ -147,7 +150,7 @@ for t in tw:
                 url = p
         if url is not None:
             try:
-                resp = urllib2.urlopen(url,timeout=5)
+                resp = urllib2.urlopen(url, timeout=5)
                 if 'foursquare' in resp.url or 'swarmapp' in resp.url:
 
                     if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
@@ -158,7 +161,7 @@ for t in tw:
                                 resp.url.rstrip()]
                         url = vals[5]
                         val = chop_fsq(url)
-                        if val is None: # Try a second time
+                        if val is None:  # Try a second time
                             val = chop_fsq(url)
                             print 'Trying a second time ...'
                         if val is not None:
@@ -167,16 +170,16 @@ for t in tw:
                             print vals
                             i = 0
                             for v in vals:
-                                wfile.write(v.encode('ascii', 'ignore').rstrip().replace(']',''))
+                                wfile.write(v.encode('ascii', 'ignore').rstrip().replace(']', ''))
                                 i += 1
                                 if i < len(vals):
                                     wfile.write('; ')
 
                             wfile.write('\n')
                             wfile.flush()
-                        else: # If not successful go to next
+                        else:  # If not successful go to next
                             print 'Unsuccessfully'
-                        cnt +=1
+                        cnt += 1
                         if cnt % 100 == 0:
                             time.sleep(5)
                             print 'Sleeping ...'

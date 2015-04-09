@@ -23,19 +23,18 @@ import os
 
 from Parameters.Constants import homepath
 
-for nfile in os.listdir(homepath+'Data-py/'):
+for nfile in os.listdir(homepath + 'Data-py/'):
 
     print nfile
     if 'csv' in nfile:
-        rfile = open(homepath+'Data-py/'+ nfile, 'r')
+        rfile = open(homepath + 'Data-py/' + nfile, 'r')
         wfile = open(homepath + 'Data-py/' + nfile.replace('.csv', '.proc.csv'), 'w')
-
 
         ln = ''
         for lines in rfile:
             if lines[-5:-1] == '###)':
                 ln += lines
-                wfile.write(ln.replace('\n', ' ').replace('\r', '')+'\n')
+                wfile.write(ln.replace('\n', ' ').replace('\r', '') + '\n')
                 ln = ''
             else:
                 ln += lines

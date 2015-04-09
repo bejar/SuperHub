@@ -20,13 +20,13 @@ Get-Instagram-BCN
 __author__ = 'bejar'
 
 from time import sleep
+import argparse
 
 from pymongo import MongoClient
 
 from InstagramGetter import get_instagram, config_logger
 from Parameters.Constants import cityparams
 from Parameters.Pconstants import mongodata
-import argparse
 
 parser = argparse.ArgumentParser()
 

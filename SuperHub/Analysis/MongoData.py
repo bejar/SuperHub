@@ -19,10 +19,11 @@ MongoData
 
 __author__ = 'bejar'
 
+
 class MongoData:
     def __init__(self, db, user, passwd, collect):
         self.db = db
         self.user = user
         self.passwd = passwd
-        self.collection= collect
+        self.collection = collect
 

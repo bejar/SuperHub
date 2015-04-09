@@ -19,13 +19,11 @@ gettweets
 
 __author__ = 'bejar'
 
-
 from Twitter.TwitterGetter import get_tweets
 
 # City parameter
 
 city = 'rome'
-
 
 while True:
     get_tweets(city)

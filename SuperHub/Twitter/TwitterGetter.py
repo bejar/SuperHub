@@ -31,7 +31,6 @@ from Parameters.Private import credentials
 
 
 def get_tweets(city, silent=False):
-
     # Logging configuration
     logger = logging.getLogger('log')
     if silent:
@@ -50,12 +49,13 @@ def get_tweets(city, silent=False):
     logging.getLogger('log').addHandler(console)
 
     api = TwitterAPI(
-        credentials[city][0],credentials[city][1],credentials[city][2],credentials[city][3])
+        credentials[city][0], credentials[city][1], credentials[city][2], credentials[city][3])
 
     initime = int(time.time())
 
-    wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv'%initime, 'w')
-    locstr = '%s,%s,%s,%s' % (str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]), str(cityparams[city][1][1]))
+    wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
+    locstr = '%s,%s,%s,%s' % (
+    str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]), str(cityparams[city][1][1]))
 
     r = api.request('statuses/filter', {'locations': locstr})
 
@@ -83,7 +83,7 @@ def get_tweets(city, silent=False):
             vals.append(str(item['coordinates']['coordinates'][1]))
             vals.append(str(int(item['timestamp_ms'][0:-3])))
             if 'text' in item:
-                vals.append('(### %s ###)'%item['text'].replace('\n', ' ').replace('\r', ''))
+                vals.append('(### %s ###)' % item['text'].replace('\n', ' ').replace('\r', ''))
             else:
                 vals.append('(## ##)')
 
@@ -99,8 +99,7 @@ def get_tweets(city, silent=False):
 
             currtime = int(time.time())
             deltatime = (currtime - initime) / 60.0
-            logger.info('---- %2.3f tweets/minute', i/deltatime)
-
+            logger.info('---- %2.3f tweets/minute', i / deltatime)
 
             i += 1
         j += 1

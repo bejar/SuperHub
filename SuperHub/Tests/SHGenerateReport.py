@@ -19,7 +19,6 @@ SHGenerateReport
 
 __author__ = 'bejar'
 
-
 from Parameters.Constants import homepath, cityparams
 from Analysis import STData
 
@@ -30,7 +29,7 @@ data.info()
 print data.dataset[0]
 print data.dataset[1]
 
-#data_histograms(data,lhh=[(0, 70000)])
+# data_histograms(data,lhh=[(0, 70000)])
 
 
 #data.select_heavy_hitters(100, 20000)

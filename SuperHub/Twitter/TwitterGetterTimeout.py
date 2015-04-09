@@ -39,6 +39,7 @@ class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
     pass
 
+
 def _timeout(signum, frame):
     """ Raise an TimeoutException.
 
@@ -80,7 +81,7 @@ def get_tweets(city, logger, inform=50):
     """
 
     initime = int(time.time())
-    wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv'%initime, 'w')
+    wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
     hostname = socket.gethostname()
     address = "http://" + hostname + ":8890/Update"
 
@@ -93,7 +94,8 @@ def get_tweets(city, logger, inform=50):
         api = TwitterAPI(
             credentials[city][0], credentials[city][1], credentials[city][2], credentials[city][3])
 
-        locstr = '%s,%s,%s,%s' % (str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]), str(cityparams[city][1][1]))
+        locstr = '%s,%s,%s,%s' % (str(cityparams[city][1][2]), str(cityparams[city][1][0]), str(cityparams[city][1][3]),
+                                  str(cityparams[city][1][1]))
 
         r = api.request('statuses/filter', {'locations': locstr})
 
@@ -121,7 +123,7 @@ def get_tweets(city, logger, inform=50):
                 vals.append(str(item['coordinates']['coordinates'][1]))
                 vals.append(str(int(item['timestamp_ms'][0:-3])))
                 if 'text' in item:
-                    vals.append('(### %s ###)'%item['text'].replace('\n', ' ').replace('\r', ''))
+                    vals.append('(### %s ###)' % item['text'].replace('\n', ' ').replace('\r', ''))
                 else:
                     vals.append('(## ##)')
 
@@ -138,9 +140,9 @@ def get_tweets(city, logger, inform=50):
                 currtime = int(time.time())
                 deltatime = (currtime - initime) / 60.0
                 if deltatime != 0:
-                    logger.info('---- %2.3f tweets/minute', i/deltatime)
+                    logger.info('---- %2.3f tweets/minute', i / deltatime)
                 i += 1
-                if inform != 0 and i%inform == 0:
+                if inform != 0 and i % inform == 0:
                     requests.get(address, params={'content': city, 'count': i})
             j += 1
 
@@ -150,6 +152,5 @@ def get_tweets(city, logger, inform=50):
         logger.error('##########################  It timed out! ###############################')
     except RequestException:
         logger.error('##########################  ERROR ###############################')
-
 
     wfile.close()

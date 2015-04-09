@@ -19,13 +19,14 @@ gettweets
 
 __author__ = 'bejar'
 
-
-from TwitterGetterTimeoutMongo import get_tweets, config_logger
 from time import sleep
-from Parameters.Pconstants import mongodata
+import argparse
+
 from pymongo import MongoClient
 
-import argparse
+from TwitterGetterTimeoutMongo import get_tweets, config_logger
+from Parameters.Pconstants import mongodata
+
 
 parser = argparse.ArgumentParser()
 
@@ -55,7 +56,6 @@ if args.city:
         col = None
 
     wsinf = args.webservice
-
 
     while True:
         get_tweets(city, logger, col, inform=50, wsinf=wsinf)

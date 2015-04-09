@@ -33,15 +33,12 @@ api = TwitterAPI(
     ACCESS_TOKEN_KEY,
     ACCESS_TOKEN_SECRET)
 
-
 city = bcnparam[2]
 initime = int(time.time())
-
 
 locstr = '%s,%s,%s,%s' % (str(bcnparam[1][2]), str(bcnparam[1][0]), str(bcnparam[1][3]), str(bcnparam[1][1]))
 
 r = api.request('statuses/filter', {'locations': locstr})
-
 
 i = 0
 j = 0

@@ -1,14 +1,14 @@
 __author__ = 'bejar'
 
-
-from flask import Flask, request, render_template
 import socket
 import time
+
+from flask import Flask, request, render_template
+
 
 # Configuration stuff
 hostname = socket.gethostname()
 port = 9000
-
 
 app = Flask(__name__)
 city_status = {}
@@ -25,7 +25,6 @@ def update():
 
     global city_status
     global city_count
-
 
     city = request.args['content']
     citycount = request.args['count']
@@ -51,7 +50,7 @@ def info():
 
     return render_template('Status.html', cities=city_status, counts=city_count, delta=city_delta)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     # Ponemos en marcha el servidor Flask
     app.run(host='0.0.0.0', port=8870, debug=False)

@@ -39,12 +39,12 @@ def fix_bval(bval, gval, lval):
     return rval
 
 
-def find_first(val,list):
+def find_first(val, list):
     found = False
     pos = 0
     while not found and pos < (len(list)):
         if val == list[pos][0]:
-            found= True
+            found = True
         else:
             pos += 1
     if not found:
@@ -52,17 +52,19 @@ def find_first(val,list):
     else:
         return list[pos][-1]
 
+
 def hack_val(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"','')
-        vals.append( vr.split(':'))
+        vr = v.replace('\"', '')
+        vals.append(vr.split(':'))
     return vals
+
 
 def extract_vals(vals, patt):
     res = []
     for p in patt:
-        val = find_first(p,vals)
+        val = find_first(p, vals)
         if val is not None:
             res.append(val)
         else:
@@ -82,24 +84,25 @@ def chop_fsq(url):
 
     if not error:
         soup = BeautifulSoup(data)
-        res=[]
+        res = []
         for link in soup.find_all('script'):
             z = link.get_text()
             if '_sharedData' in z:
                 powner = z.find('owner')
                 pfowner = z.find(',\"__get_params')
-                chk = z[powner+8:pfowner-2]
-                res.extend(extract_vals(hack_val(chk),uservals))
+                chk = z[powner + 8:pfowner - 2]
+                res.extend(extract_vals(hack_val(chk), uservals))
         return res
     else:
         return None
 
-uservals = ['id','username']
+
+uservals = ['id', 'username']
 
 city = bcnparam[2]
 minLat, maxLat, minLon, maxLon = bcnparam[1]
 
-#rfile = open(homepath + 'twitter+fsq-12.csv', 'r')
+# rfile = open(homepath + 'twitter+fsq-12.csv', 'r')
 wfile = open(homepath + city + '-twitter+instagram-1415603700.pr.csv', 'w')
 #wfile.write('#lat; lng; time; user; geohash; url; instaid; instauser\n')
 
@@ -116,7 +119,7 @@ for t in tw:
                 url = p
         if url is not None:
             try:
-                resp = urllib2.urlopen(url,timeout=5)
+                resp = urllib2.urlopen(url, timeout=5)
                 if 'http://instagram' in resp.url:
 
                     if (minLat <= t['lat'] < maxLat) and (minLon <= t['lng'] < maxLon):
@@ -128,7 +131,7 @@ for t in tw:
                                 resp.url.rstrip()]
                         url = vals[5]
                         val = chop_fsq(url)
-                        if val is None: # Try a second time
+                        if val is None:  # Try a second time
                             val = chop_fsq(url)
                             #print 'Trying a second time ...'
                         if val is not None:
@@ -144,7 +147,7 @@ for t in tw:
 
                             wfile.write('\n')
                             wfile.flush()
-                        #else: # If not successful go to next
+                            #else: # If not successful go to next
                             #print 'Unsuccessfully'
                         if cnt % 100 == 0:
                             time.sleep(20)

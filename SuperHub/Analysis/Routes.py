@@ -23,7 +23,7 @@ r
 
 __author__ = 'bejar'
 
-#from fp_growth import find_frequent_itemsets
+# from fp_growth import find_frequent_itemsets
 from fim import fpgrowth
 import time
 import operator
@@ -34,6 +34,7 @@ import matplotlib.pyplot as plt
 from Parameters.Constants import homepath
 from Analysis.Transactions import DailyDiscretizedTransactions, DailyClusteredTransactions
 from Analysis.Util import item_key_sort, diff_items
+
 
 
 
@@ -85,14 +86,14 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
 
     ax = fig.add_subplot(111)
 
-
     print 'Generating plot'
     minLat, maxLat, minLon, maxLon = data.city[1]
 
     dataset = data.dataset
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
+    mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1200,
+                       height=1000)
 
-    lgeo=[]
+    lgeo = []
     for t in ltrans:
         seq = []
         for i in t:
@@ -106,7 +107,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
             y1 = float(y1)
             x2 = float(x2)
             y2 = float(y2)
-            lgeo.append(Feature(geometry=LineString([(y1,x1), (y2, x2)])))
+            lgeo.append(Feature(geometry=LineString([(y1, x1), (y2, x2)])))
 
     # Saving the plot
     geoc = FeatureCollection(lgeo)
@@ -114,7 +115,8 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
     jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
     jsfile.write(dump)
     jsfile.close()
-    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_color='Black', line_color='Black', line_weight=2)
+    mymap.geo_json(geo_path=homepath + 'Results/' + nfile + '.json', fill_color='Black', line_color='Black',
+                   line_weight=2)
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
 
 
@@ -165,9 +167,10 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
     normLat = scale / (maxLat - minLat)
     normLon = scale / (maxLon - minLon)
     dataset = data.dataset
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=1000)
+    mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1200,
+                       height=1000)
 
-#    mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0,10)
+    #    mymap = pygmaps.maps((minLat+maxLat)/2,(minLon + maxLon)/2.0,10)
     #mymap.setgrids(minLat, maxLat, 0.01, minLon, maxLon, 0.01)
 
     for i in range(dataset.shape[0]):
@@ -180,7 +183,7 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
                 plt.plot(j, i, 'k.')
 
     col = ['r-', 'g-', 'b-', 'y-', 'r-', 'g-', 'b-', 'y-']
-    lgeo=[]
+    lgeo = []
     for t in ltrans:
         seq = []
         for i in t:
@@ -197,8 +200,9 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
             y2 = int(y2)
             plt.plot([x1, x2], [y1, y2], col[p1])
 
-            lgeo.append(Feature(geometry=LineString([(minLon+((x1+1.5)/normLon),minLat+((y1+1.5)/normLat)),
-                                    (minLon+((x2+1.5)/normLon), minLat+((y2+1.5)/normLat))])))
+            lgeo.append(Feature(geometry=LineString([(minLon + ((x1 + 1.5) / normLon), minLat + ((y1 + 1.5) / normLat)),
+                                                     (minLon + ((x2 + 1.5) / normLon),
+                                                      minLat + ((y2 + 1.5) / normLat))])))
 
 
     # Saving the plot
@@ -209,7 +213,8 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
     jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
     jsfile.write(dump)
     jsfile.close()
-    mymap.geo_json(geo_path=homepath + 'Results/'+ nfile + '.json', fill_color='Black', line_color='Black', line_weight=2)
+    mymap.geo_json(geo_path=homepath + 'Results/' + nfile + '.json', fill_color='Black', line_color='Black',
+                   line_weight=2)
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
     #mymap.draw(homepath + 'Results/' + nfile + '.html')
 
@@ -233,6 +238,7 @@ def transaction_routes_many(data, lhh=None, lscale=None, supp=30, ltimeres=None,
         hhdata = data.select_heavy_hitters(mxhh, mnhh)
         for scale in lscale:
             for timeres in ltimeres:
-                transaction_routes(hhdata, nfile, scale=scale, supp=supp, timeres=TimeDiscretizer(timeres), colapsed=colapsed)
+                transaction_routes(hhdata, nfile, scale=scale, supp=supp, timeres=TimeDiscretizer(timeres),
+                                   colapsed=colapsed)
     print 'Done.'
 

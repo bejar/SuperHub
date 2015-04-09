@@ -32,7 +32,7 @@ def plotHisto(data, bins):
                                normed=True, facecolor='green', alpha=0.75)
 
     ax.set_xlabel('Freqs')
-    #    ax.set_xlim(min(data), 1500)
+    # ax.set_xlim(min(data), 1500)
     #    ax.set_ylim(0, 0.1)
     ax.grid(True)
     plt.show()
@@ -53,7 +53,7 @@ def saveHisto(data, bins, fname):
                                normed=True, facecolor='green', alpha=0.75)
 
     ax.set_xlabel('Freqs')
-    #    ax.set_xlim(min(data), 1500)
+    # ax.set_xlim(min(data), 1500)
     #    ax.set_ylim(0, 0.1)
     ax.grid(True)
     title = fname.split('/')

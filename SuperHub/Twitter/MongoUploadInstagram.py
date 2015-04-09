@@ -28,13 +28,13 @@ from Parameters.Pconstants import mglocal
 
 
 def transform(tdata):
-   return {
+    return {
         'lat': tdata[1],
         'lng': tdata[2],
         'igurl': tdata[3],
         'igid': tdata[4],
         'iguname': str(tdata[5])
-      }
+    }
 
 
 mgdb = mglocal[0]
@@ -45,15 +45,13 @@ col = db[mglocal[1]]
 
 cdate = '20150130'
 
-
 for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     print city
     data = STData(homepath, cityparams[city], 'twitter')
     data.read_py_instagram_data_full(date=cdate)
 
-
     for d in data.dataset:
-        #print 'UPD', d[0]
+        # print 'UPD', d[0]
         upd = transform(d)
         col.update({'twid': d[0]}, {'$set': {"instagram": upd}})
 

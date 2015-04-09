@@ -31,20 +31,20 @@ def transform(tdata):
     if tdata[8] == ' ' or tdata[7] == ' ':
         return None
     else:
-       return {
-                  'fqurl': tdata[1],
-                  'fqtime': tdata[2],
-                  'fqid': tdata[3],
-                  'gender': tdata[4],
-                  'venueid': tdata[5],
-                  'venuename': tdata[6],
-                  'venuelat': float(tdata[7]),
-                  'venuelng': float(tdata[8]),
-                  'venuecat': tdata[9],
-                  'venuepluralname': tdata[10],
-                  'venueshortname': tdata[11],
-                  'venueurl': tdata[12]
-              }
+        return {
+            'fqurl': tdata[1],
+            'fqtime': tdata[2],
+            'fqid': tdata[3],
+            'gender': tdata[4],
+            'venueid': tdata[5],
+            'venuename': tdata[6],
+            'venuelat': float(tdata[7]),
+            'venuelng': float(tdata[8]),
+            'venuecat': tdata[9],
+            'venuepluralname': tdata[10],
+            'venueshortname': tdata[11],
+            'venueurl': tdata[12]
+        }
 
 
 mgdb = mglocal[0]
@@ -62,14 +62,13 @@ for city in ['bcn', 'milan', 'paris', 'rome', 'london', 'berlin']:
     data = STData(homepath, cityparams[city], 'twitter')
     data.read_py_foursquare_data_full(date=cdate)
 
-
     for d in data.dataset:
-        #print 'UPD', d[0]
+        # print 'UPD', d[0]
         upd = transform(d)
         if upd is not None:
             col.update({'twid': d[0]}, {'$set': {"foursquare": upd}})
-        #else:
-        #    print 'vacio'
+            #else:
+            #    print 'vacio'
 
 
 

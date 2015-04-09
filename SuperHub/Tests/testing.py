@@ -24,7 +24,7 @@ import time
 from Analysis import TimeDiscretizer
 
 
-d = TimeDiscretizer([6,14,22])
+d = TimeDiscretizer([6, 14, 22])
 
 print d.intervals
 

@@ -36,18 +36,20 @@ def generate_routes(routes):
             print 'Clustering Done.'
             now()
             transaction_routes_clustering(datahh, data.city[2] +
-                                          data.application + '-Leader' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
+                                          data.application + '-Leader' + str(radius) + '-nusr' + str(mxhh) + '+' + str(
+                mnhh),
                                           cluster=clust, supp=mins, timeres=time)
             now()
         else:
             now()
-            transaction_routes(datahh, data.city[2] + data.application + '-Grid' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
-                               scale=radius,supp=mins, timeres=time)
+            transaction_routes(datahh, data.city[2] + data.application + '-Grid' + str(radius) + '-nusr' + str(
+                mxhh) + '+' + str(mnhh),
+                               scale=radius, supp=mins, timeres=time)
             now()
             print 'Discretized routes.'
 
 
-def generate_routes_hours(routes,lhours):
+def generate_routes_hours(routes, lhours):
     for r in routes:
         param, datafile, mxhh, mnhh, alg, radius, mins, time = r
         data = STData(homepath, param, datafile)
@@ -62,7 +64,7 @@ def generate_routes_hours(routes,lhours):
             clust = cluster_cache(datahh, alg=alg, mxhh=mxhh, mnhh=mnhh, radius=radius, size=mins, lhours=lhours)
             if clust is None:
                 print 'Computing Clustering'
-                clust = cluster_events(datahh, alg=alg,  mxhh=mxhh, mnhh=mnhh,radius=radius, size=mins, lhours=lhours)
+                clust = cluster_events(datahh, alg=alg, mxhh=mxhh, mnhh=mnhh, radius=radius, size=mins, lhours=lhours)
             else:
                 print 'Clustering in Cache'
             print 'Clustering Done.'
@@ -74,8 +76,9 @@ def generate_routes_hours(routes,lhours):
             now()
         else:
             now()
-            transaction_routes(datahh, data.city[2] + data.application + '-Grid' + str(radius) + '-nusr' + str(mxhh) + '+' + str(mnhh),
-                               scale=radius,supp=mins, timeres=time)
+            transaction_routes(datahh, data.city[2] + data.application + '-Grid' + str(radius) + '-nusr' + str(
+                mxhh) + '+' + str(mnhh),
+                               scale=radius, supp=mins, timeres=time)
             now()
             print 'Discretized routes.'
 
@@ -84,14 +87,12 @@ def generate_routes_hours(routes,lhours):
 
 
 generate_routes_hours([
-                [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.001, 25, [5,14,17,22]],
-                [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.002, 25, [5,14,17,22]],
-                [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.003, 25, [5,14,17,22]],
-                [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.004, 25, [5,14,17,22]],
-                [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.005, 25, [5,14,17,22]]
-                ], [(22, 24), (0, 6)],
-    )
-
-
+    [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.001, 25, [5, 14, 17, 22]],
+    [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.002, 25, [5, 14, 17, 22]],
+    [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.003, 25, [5, 14, 17, 22]],
+    [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.004, 25, [5, 14, 17, 22]],
+    [bcnparam, 'twitter-august', 75, 70000, 'Leader', 0.005, 25, [5, 14, 17, 22]]
+], [(22, 24), (0, 6)],
+)
 
 print 'Done.'

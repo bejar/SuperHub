@@ -22,7 +22,7 @@ __author__ = 'bejar'
 import pygmaps
 ########## CONSTRUCTOR: pygmaps.maps(latitude, longitude, zoom) ##############################
 # DESC:         initialize a map  with latitude and longitude of center point
-#               and map zoom level "15"
+# and map zoom level "15"
 # PARAMETER1:   latitude (float) latittude of map center point
 # PARAMETER2:   longitude (float) latittude of map center point
 # PARAMETER3:   zoom (int)  map zoom level 0~20

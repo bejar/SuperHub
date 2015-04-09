@@ -25,19 +25,20 @@ import logging
 import requests
 from requests.exceptions import Timeout
 from requests import RequestException
-
 import folium
 from pymongo.errors import DuplicateKeyError
 from simplejson.scanner import JSONDecodeError
+from requests.exceptions import ConnectionError
 
 from Parameters.Constants import homepath, cityparams
 from Parameters.Private import ig_credentials
-from requests.exceptions import ConnectionError
 from Parameters.Private import Webservice
+
 
 class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
     pass
+
 
 def _timeout(signum, frame):
     """ Raise an TimeoutException.
@@ -49,28 +50,30 @@ def _timeout(signum, frame):
     # Raise TimeoutException with system default timeout message
     raise TimeoutException()
 
-def MapThis(city, coords, cent, nfile):
 
+def MapThis(city, coords, cent, nfile):
     minLat, maxLat, minLon, maxLon = city[1]
-    mymap = folium.Map(location=[(minLat+maxLat)/2.0,(minLon + maxLon)/2.0], zoom_start=12, width=1200, height=800)
+    mymap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1200,
+                       height=800)
 
     for i, j in coords:
         mymap.circle_marker(location=[i, j],
-                            radius=10, popup=str(i)+' '+str(j),
+                            radius=10, popup=str(i) + ' ' + str(j),
                             line_color='#FF0000',
                             fill_color='#110000')
 
     for i, j in cent:
         mymap.circle_marker(location=[i, j],
-                            radius=6000, popup=str(i)+' '+str(j),
+                            radius=6000, popup=str(i) + ' ' + str(j),
                             line_color='#0000FF',
                             fill_color='#000011')
 
     mymap.create_map(path=homepath + 'Results/Maps/' + city[2] + '-' + nfile + '.html')
 
+
 def config_logger(silent=False, file=None):
     if file is not None:
-        logging.basicConfig(filename=homepath+'/' + file + '.log', filemode='w')
+        logging.basicConfig(filename=homepath + '/' + file + '.log', filemode='w')
     # Logging configuration
     logger = logging.getLogger('log')
     if silent:
@@ -111,8 +114,9 @@ def get_instagram(city, logger, col, wsinf=True):
     iphotos = {}
     for circ in lcircles:
         try:
-            api = requests.get('https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
-                               (circ[0], circ[1], itime - timeout, itime, access_token))
+            api = requests.get(
+                'https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
+                (circ[0], circ[1], itime - timeout, itime, access_token))
             res = api.json()
 
             for media in res['data']:
@@ -128,7 +132,7 @@ def get_instagram(city, logger, col, wsinf=True):
                                         'lng': media['location']['longitude'],
                                         'time': media['created_time'],
                                         'text': capt
-                        }
+                                        }
                         if 'caption' in media:
                             v = media['caption']
                             if v is not None and 'text' in v:
@@ -153,7 +157,7 @@ def get_instagram(city, logger, col, wsinf=True):
 
     lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
     logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
-    #MapThis(cityparams[city], lcoord, lcircles, city)
+    # MapThis(cityparams[city], lcoord, lcircles, city)
 
     i = 0
     for v in iphotos:
@@ -162,7 +166,7 @@ def get_instagram(city, logger, col, wsinf=True):
                 col.insert(iphotos[v])
                 i += 1
             except DuplicateKeyError:
-                logger.info('Duplicate: %s',  v)
+                logger.info('Duplicate: %s', v)
         else:
             if wfile is None:
                 wfile = open(homepath + cityparams[city][2] + '-instagram-py-%d.csv' % itime, 'w')
@@ -176,7 +180,8 @@ def get_instagram(city, logger, col, wsinf=True):
                             wfile.write(str(iphotos[v][att]))
                         elif type(iphotos[v][att]) is unicode:
                             #wfile.write(str(iphotos[v][att]).encode('utf8', 'replace').rstrip())
-                            wfile.write(iphotos[v][att].encode('utf8', 'replace').replace('\n', ' ').replace('\r', '').rstrip())
+                            wfile.write(
+                                iphotos[v][att].encode('utf8', 'replace').replace('\n', ' ').replace('\r', '').rstrip())
                         else:
                             wfile.write(iphotos[v][att])
 
@@ -193,14 +198,13 @@ def get_instagram(city, logger, col, wsinf=True):
             wfile.flush()
     if wsinf:
         try:
-            requests.get(Webservice, params={'content': city+'-ig', 'count': i, 'delta': i/(timeout/60)})
+            requests.get(Webservice, params={'content': city + '-ig', 'count': i, 'delta': i / (timeout / 60)})
         except Timeout:
             logger.error('Webservice Timeout')
             wsinf = False
         except RequestException:
             logger.error('Webservice Request Exception')
             wsinf = False
-
 
 
 lattr = ['city', 'igid', 'user', 'lat', 'lng', 'time', 'text', 'name']

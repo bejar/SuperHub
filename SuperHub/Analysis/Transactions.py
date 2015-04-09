@@ -23,7 +23,7 @@ __author__ = 'bejar'
 import time
 
 import numpy as np
-#from Constants import minLat, maxLat, minLon, maxLon
+# from Constants import minLat, maxLat, minLon, maxLon
 from scipy.sparse import coo_matrix
 from math import log
 
@@ -185,6 +185,7 @@ class DailyTransactions(Transactions):
             fr.append(len(transactions[user]))
         return fr
 
+
 class DailyClusteredTransactions(DailyTransactions):
     """
     Class for the daily clustered transactions
@@ -209,7 +210,7 @@ class DailyClusteredTransactions(DailyTransactions):
             user = str(int(data[i][3]))
             posy = data[i][0]
             posx = data[i][1]
-            ejem = np.array([[posy,posx]])
+            ejem = np.array([[posy, posx]])
             ncl = cluster.predict(ejem)
             ncl = ncl[0]
             if ncl != -1:
@@ -248,6 +249,7 @@ class DailyClusteredTransactions(DailyTransactions):
              and a list of the selected users
         :rtype: csc sparse matrix, list
         """
+
         def item_to_column(item, cluster):
             x, y, t = item.split('#')
             x = float(x)
@@ -274,7 +276,7 @@ class DailyClusteredTransactions(DailyTransactions):
                         if tr in idf:
                             idf[tr] += 1
                         else:
-                          idf[tr] = 1
+                            idf[tr] = 1
                 nd += 1
         for tr in idf:
             idf[tr] = log(nd / idf[tr])
@@ -294,9 +296,9 @@ class DailyClusteredTransactions(DailyTransactions):
                         lcol.append(item_to_column(tr, self.cluster))
                         lrow.append(i)
                         if 'idf' in mode:
-                            lval.append(lplaces[tr]/float(usum) * idf[tr])
+                            lval.append(lplaces[tr] / float(usum) * idf[tr])
                         else:
-                            lval.append(lplaces[tr]/float(usum))
+                            lval.append(lplaces[tr] / float(usum))
                 if 'af' in mode:
                     for tr in lplaces:
                         lcol.append(item_to_column(tr, self.cluster))
@@ -319,6 +321,7 @@ class DailyClusteredTransactions(DailyTransactions):
                              shape=(i, self.cluster.num_clusters() * len(self.timeres.intervals)))
         print datamat.shape
         return datamat.tocsc(), lusers
+
 
 class DailyDiscretizedTransactions(DailyTransactions):
     """
@@ -387,6 +390,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
              and a list of the selected users
         :rtype: csc sparse matrix, list
         """
+
         def item_to_column(item, scale):
             """
             Transforms an item to a column number given the scale of the discretization
@@ -432,9 +436,9 @@ class DailyDiscretizedTransactions(DailyTransactions):
                         lcol.append(item_to_column(tr, self.scale))
                         lrow.append(i)
                         if 'idf' in mode:
-                            lval.append(lplaces[tr]/float(usum) * idf[tr])
+                            lval.append(lplaces[tr] / float(usum) * idf[tr])
                         else:
-                            lval.append(lplaces[tr]/float(usum))
+                            lval.append(lplaces[tr] / float(usum))
                 if 'af' in mode:
                     for tr in lplaces:
                         lcol.append(item_to_column(tr, self.scale))
@@ -454,7 +458,7 @@ class DailyDiscretizedTransactions(DailyTransactions):
 
                 i += 1
         datamat = coo_matrix((np.array(lval), (np.array(lrow), np.array(lcol))),
-                             shape=(i, self.scale*self.scale*len(self.timeres)))
+                             shape=(i, self.scale * self.scale * len(self.timeres)))
         print datamat.shape
         return datamat.tocsc(), lusers
 
