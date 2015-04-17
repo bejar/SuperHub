@@ -60,5 +60,5 @@ if args.city:
     while True:
         get_tweets(city, logger, col, inform=50, wsinf=wsinf)
         sleep(5)
-        if args.mongo and not client.alive():
-            col = None
+        # if args.mongo and not client.alive():
+        #     col = None

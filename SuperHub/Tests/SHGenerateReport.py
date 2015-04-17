@@ -20,16 +20,17 @@ SHGenerateReport
 __author__ = 'bejar'
 
 from Parameters.Constants import homepath, cityparams
-from Analysis import STData
+from Analysis.STData import STData
+from Analysis.Descriptive import data_histograms
 
-data = STData(homepath, cityparams['bcn'], 'twitter')
+data = STData(homepath, cityparams['bcn'], 'instagram')
 data.read_DB()
 data.info()
 
 print data.dataset[0]
 print data.dataset[1]
 
-# data_histograms(data,lhh=[(0, 70000)])
+data_histograms(data,lhh=[(0, 70000)])
 
 
 #data.select_heavy_hitters(100, 20000)

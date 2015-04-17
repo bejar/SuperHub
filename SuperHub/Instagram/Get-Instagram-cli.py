@@ -63,5 +63,5 @@ if args.city:
     while True:
         get_instagram(city, logger, col, wsinf=wsinf)
         sleep(timeout)
-        if args.mongo == 1 and not client.alive():
-            col = None
+        # if args.mongo == 1 and not client.alive():
+        #     col = None
