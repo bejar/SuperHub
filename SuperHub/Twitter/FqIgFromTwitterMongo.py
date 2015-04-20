@@ -218,7 +218,7 @@ def do_the_job(ltwid):
     db.authenticate(mglocal[2], password=mglocal[3])
     col = db[mglocal[1]]
 
-    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1})
+    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, no_cursor_timeout=True)
     cnt = 0
     lasttwid = ''
     for t in cursor:

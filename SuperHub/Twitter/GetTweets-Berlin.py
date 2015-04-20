@@ -21,11 +21,10 @@ __author__ = 'bejar'
 
 from time import sleep
 
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
 
 from TwitterGetterTimeoutMongo import get_tweets, config_logger
 from Parameters.Pconstants import mglocal
-
 
 
 # City parameter
