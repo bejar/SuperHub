@@ -20,6 +20,7 @@ fsqtwitter2
 __author__ = 'bejar'
 
 import urllib2
+import httplib
 import time
 import logging
 
@@ -292,6 +293,8 @@ def do_the_job(ltwid):
                 except urllib2.httplib.BadStatusLine:
                     pass
                 except urllib2.HTTPError:
+                    logger.error('HTTPError')
+                except  httplib.IncompleteRead:
                     logger.error('HTTPError')
 
     col = db['Params']

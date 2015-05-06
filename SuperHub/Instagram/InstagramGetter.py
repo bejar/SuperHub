@@ -29,6 +29,7 @@ import folium
 from pymongo.errors import DuplicateKeyError
 from simplejson.scanner import JSONDecodeError
 from requests.exceptions import ConnectionError
+import OpenSSL
 
 from Parameters.Constants import homepath, cityparams
 from Parameters.Private import ig_credentials
@@ -150,10 +151,14 @@ def get_instagram(city, logger, col, wsinf=True):
 
                 except TypeError:
                     logger.error('TypeError')
+                except KeyError:
+                    logger.error('KeyError')
         except JSONDecodeError:
             logger.error('EMPTY')
         except ConnectionError:
             logger.error('Connection Error')
+        except OpenSSL.SSL.SysCallError:
+            logger.error('SSL Error')
 
     lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
     logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))

@@ -33,19 +33,13 @@ from numpy import loadtxt
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-
 from Parameters.Constants import homepath
-
-
-
-
-
-# import pygmaps
 import folium
 from geojson import FeatureCollection, Feature, Polygon
 import geojson
 from Parameters.Pconstants import mongodata
 from pymongo import MongoClient
+# import pygmaps
 
 pltcolors = ['#F00000', '#00F000', '#0000F0', '#0F0000', '#000F00', '#00000F']
 
