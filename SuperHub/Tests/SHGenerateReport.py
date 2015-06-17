@@ -23,14 +23,16 @@ from Parameters.Constants import homepath, cityparams
 from Analysis.STData import STData
 from Analysis.Descriptive import data_histograms
 
-data = STData(homepath, cityparams['bcn'], 'instagram')
-data.read_DB()
-data.info()
+for net in ['instagram', 'twitter']:
+    for city in ['bcn', 'london', 'paris', 'milan', 'rome', 'berlin']:
+        data = STData(homepath, cityparams[city], net)
+        data.read_DB()
+        data.info()
 
-print data.dataset[0]
-print data.dataset[1]
+        print data.dataset[0]
+        print data.dataset[1]
 
-data_histograms(data,lhh=[(0, 70000)])
+        data_histograms(data,lhh=[(100, 100000)])
 
 
 #data.select_heavy_hitters(100, 20000)

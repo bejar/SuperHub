@@ -192,15 +192,20 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                         requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
                     except Timeout:
                         wsinf = False
+                        logger.error('##########################  WS timed out! ###############################')
+            # else:
+            #     if item['place'] is not None:
+            #         logger.error(item['place'])
+            #     logger.error('### Something Else ###')
 
             j += 1
 
     except TimeoutException:
         logger.error('##########################  It timed out! ###############################')
     except ReadTimeoutError:
-        logger.error('##########################  It timed out! ###############################')
+        logger.error('##########################  READ timed out! ###############################')
     except RequestException:
-        logger.error('##########################  ERROR ###############################')
+        logger.error('##########################  REQUEST ERROR ###############################')
         wsinf = False
     except TwitterError:
         logger.error('##########################  Twitter ERROR ###############################')

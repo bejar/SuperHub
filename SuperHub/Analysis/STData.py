@@ -102,7 +102,7 @@ class STData:
                           'lat': {'$gt': minLat, '$lt': maxLat},
                           'lng': {'$gt': minLon, '$lt': maxLon},
                           # 'time': {'$gt': intinit, '$lt': intend}
-                          }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+                          }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1})
 
             qsize = c.count()
             self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
@@ -124,7 +124,7 @@ class STData:
                               'lat': {'$gt': minLat, '$lt': maxLat},
                               'lng': {'$gt': minLon, '$lt': maxLon},
                               # 'time': {'$gt': intinit, '$lt': intend}
-                              }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1}, timeout=False)
+                              }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1})
 
                 lcount.append(c.count())
                 lcol.append(c)
