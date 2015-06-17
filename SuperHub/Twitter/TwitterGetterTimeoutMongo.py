@@ -24,6 +24,7 @@ __author__ = 'bejar'
 import time
 import logging
 import signal
+import urllib2
 
 from TwitterAPI import TwitterAPI
 from TwitterAPI.TwitterError import TwitterConnectionError, TwitterError, TwitterRequestError
@@ -41,6 +42,69 @@ class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
     pass
 
+
+def ig_fq_tweet(item, city, logger, col, i, initime):
+    """
+    Item sin geotagging pero con posibilemente con FQ o IG info
+    @param item:
+    @return:
+    """
+
+    text = item['text'].split()
+    url = None
+    for p in text:
+        if 'http' in p:
+            url = p[p.find('http'):]
+            if '\"' in url:
+                url = url[0, url.find('\"')]
+    if url is not None:
+        try:
+            resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=3)
+            if 'foursquare' in resp.url or 'swarmapp' in resp.url or 'instagram' in resp.url:
+                logger.error(' *** IG or FQ tweet ***')
+
+                vals = []
+                logger.info('TW: %d', i)
+                if 'text' in item:
+                    logger.info('Text: %s', item['text'].replace('\n', ' ').replace('\r', ''))
+                logger.info('Time: %s', time.ctime(int(item['timestamp_ms'][0:-3])))
+                logger.info('ID: %s', str(item['user']['id']))
+
+                vals.append(str(item['id']))
+                vals.append(0.0)
+                vals.append(0.0)
+                vals.append(str(int(item['timestamp_ms'][0:-3])))
+                vals.append(str(item['user']['id']))
+                vals.append(str(item['user']['screen_name']))
+
+                if 'text' in item:
+                    vals.append('(### %s ###)' % item['text'].replace('\n', ' ').replace('\r', ''))
+                else:
+                    vals.append('(## ##)')
+
+                if col is not None:
+                    tomongo = transform(vals, city)
+                    try:
+                        col.insert(tomongo)
+                        logger.info('TWID: %s', tomongo['twid'])
+                    except DuplicateKeyError:
+                        logger.info('Duplicate: %s', tomongo['twid'])
+                currtime = int(time.time())
+                deltatime = (currtime - initime) / 60.0
+
+                if deltatime != 0:
+                    logger.info('---- %2.3f tweets/minute', i / deltatime)
+
+        except ValueError as e:
+            print 'ValueError:', e
+        except IOError as e:
+            print 'IOError', e, url
+        except UnicodeError as e:
+            print 'UnicodeError', e
+        except urllib2.httplib.BadStatusLine:
+            pass
+        except urllib2.HTTPError:
+            print 'HTTPError'
 
 def transform(tdata, city):
     return {'city': city,
@@ -131,12 +195,6 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                 return 0
             elif item['coordinates'] is not None:
                 vals = []
-                logger.info('TW: %d', i)
-                if 'text' in item:
-                    logger.info('Text: %s', item['text'].replace('\n', ' ').replace('\r', ''))
-                logger.info('Time: %s', time.ctime(int(item['timestamp_ms'][0:-3])))
-                logger.info('ID: %s', str(item['user']['id']))
-
                 vals.append(str(item['id']))
                 vals.append(float(item['coordinates']['coordinates'][0]))
                 vals.append(float(item['coordinates']['coordinates'][1]))
@@ -150,11 +208,16 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                     vals.append('(## ##)')
 
                 if (minLat <= vals[2] < maxLat) and (minLon <= vals[1] < maxLon):
+                    logger.info('Time: %s', time.ctime(int(item['timestamp_ms'][0:-3])))
+                    logger.info('ID: %s', str(item['user']['id']))
+                    logger.info('TW: %d', i)
                     if col is not None:
                         tomongo = transform(vals, city)
                         try:
                             col.insert(tomongo)
-                            logger.info('TWID: %s', tomongo['twid'])
+                            if 'text' in item:
+                                logger.info('Text: %s', item['text'].replace('\n', ' ').replace('\r', ''))
+                            logger.info('TWID: %s %s %s', tomongo['twid'], tomongo['uname'], tomongo['user'])
                         except DuplicateKeyError:
                             logger.info('Duplicate: %s', tomongo['twid'])
                     else:
@@ -175,28 +238,24 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                         wfile.write('\n')
                         wfile.flush()
 
-                # else:
-                # print 'Outside Bounding Box'
-                #     print minLat, vals[2], maxLat
-                #     print minLon, vals[1], maxLon
+                    currtime = int(time.time())
+                    deltatime = (currtime - initime) / 60.0
 
-                currtime = int(time.time())
-                deltatime = (currtime - initime) / 60.0
+                    if deltatime != 0:
+                        logger.info('---- %2.3f tweets/minute', i / deltatime)
 
-                if deltatime != 0:
-                    logger.info('---- %2.3f tweets/minute', i / deltatime)
+                    i += 1
+                    if wsinf and inform != 0 and i % inform == 0:
+                        try:
+                            requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
+                        except Timeout:
+                            wsinf = False
+                            logger.error('##########################  WS timed out! ###############################')
+            else:
+                if 'text' in item:
+                    if 'I\'m at' in item['text'] or 'http' in item['text']:
+                        ig_fq_tweet(item, city, logger, col, i, initime)
 
-                i += 1
-                if wsinf and inform != 0 and i % inform == 0:
-                    try:
-                        requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
-                    except Timeout:
-                        wsinf = False
-                        logger.error('##########################  WS timed out! ###############################')
-            # else:
-            #     if item['place'] is not None:
-            #         logger.error(item['place'])
-            #     logger.error('### Something Else ###')
 
             j += 1
 
