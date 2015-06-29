@@ -15,7 +15,7 @@ import pylab as pl
 from pylab import *
 from pymongo import MongoClient
 
-from src.Parameters.Constants import mgpass, mguser, homepath, bcnparam
+from Parameters.Constants import mgpass, mguser, homepath, bcnparam
 from STData import STData
 from Routes import transaction_routes_many
 from Analysis.Clustering import cluster_colapsed_events

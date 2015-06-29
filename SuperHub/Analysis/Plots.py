@@ -60,6 +60,7 @@ def saveHisto(data, bins, fname):
     plt.title(title[-1])
 
     fig.savefig(fname, orientation='landscape', format='pdf')
+    plt.close()
 
 
 def savePlot(axis, data, fname):

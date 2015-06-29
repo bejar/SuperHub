@@ -56,7 +56,7 @@ def ig_fq_tweet(item, city, logger, col, i, initime):
         if 'http' in p:
             url = p[p.find('http'):]
             if '\"' in url:
-                url = url[0, url.find('\"')]
+                url = url[0:url.find('\"')]
     if url is not None:
         try:
             resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=3)
@@ -113,7 +113,7 @@ def transform(tdata, city):
             'lng': tdata[1],
             'time': str(tdata[3]),
             'user': tdata[4],
-            'uname': tdata[5],
+            'uname': tdata[5].strip(),
             'tweet': tdata[6]
             }
 
@@ -175,6 +175,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
     maxLat = cityparams[city][1][1]
     minLon = cityparams[city][1][2]
     maxLon = cityparams[city][1][3]
+    blacklist = cityparams[city][5]
 
     try:
         api = TwitterAPI(
@@ -193,6 +194,8 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
             elif 'disconnect' in item:
                 logger.error('disconnecting because %s', item['disconnect'].get('reason'))
                 return 0
+            elif item['user']['screen_name'] in blacklist:
+                logger.error('@@@@@@@@@@@@@@@@ Blacklisted @@@@@@@@@@@@@@@@@@')
             elif item['coordinates'] is not None:
                 vals = []
                 vals.append(str(item['id']))

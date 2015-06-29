@@ -32,6 +32,8 @@ pariscoord = (48.52, 49.05, 1.97, 2.68)
 londoncoord = (51.23, 51.8, -0.50, 0.37)
 berlincoord = (52.32, 52.62, 13.11, 13.60)
 romecoord = (41.78, 42.0, 12.33, 12.62)
+spaincoord = (35.12, 43.44, 3.29, 4.22)
+
 bcnigcircles = [(41.40, 2.14), (41.46, 2.20), (41.33, 2.07), (41.445, 2.03)]
 parisigcircles = [(48.65, 2.33), (48.75, 2.33), (48.85, 2.33), (48.95, 2.33), (49.05, 2.33),
                   (48.8, 2.45), (48.9, 2.45), (49, 2.45), (48.7, 2.45),
@@ -57,13 +59,33 @@ milanigcircles = [(45.46, 9.18), (45.56, 9.18), (45.36, 9.18),
                   (45.51, 9.28), (45.41, 9.28),
                   (45.51, 9.08), (45.41, 9.08)]
 
-bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles, 300)
-milanparam = (mgdbmilan, milancoord, 'milan', milanigcircles, 300)
+bcnblacklist = ['LiberateBCN2', 'LiberateBCN2 ','trafficspain06', 'magnesiabcn', 'InformacionDGT', 'trendinaliaBCN', 'EB3TC', 'pisossantcugat', 'BarcelonaVE',
+                'Sabadell_Meteo', 'kartenquizde', 'BadalonaCT', 'SabadellES', 'BarcelonaCT', 'Map_Game', 'Fnac_ESP', 'Carutelam', 'ChangeBarcelona',
+                'Carutelam', 'Carutelam ', 'social11red', 'lakasiito_AM', 'tuitrafico_feed']
+milanblacklist = ['TrendsMilano', '_MilanIT', 'TrendsItalia', 'VMwareJobs', 'tami_lovatics', 'tmj_ita_jobs', 'italiaora']
+parisblacklist = ['Work_HiltonEMEA', 'remixjobs', 'VideosSexe_net', 'trendinaliaPAR', 'trendinaliaFR', '_ParisFR', 'soltempore', 'tmj_fra_legal',
+                  'tmj_fra_itqa', 'tmj_fra_jobs', 'tmj_fra_adv', 'Keys_for_Paris', 'tmj_fra_cler', 'VMwareJobs', 'tmj_fra_itdb', 'BCritique',
+                  'QuoteAdo_', 'BCritique ', 'LouAdn2 ', 'LouAdn2', 'Orayane_Models', 'QuoteAdo_ ', 'Nizard_Bdl']
+londonblacklist = ['trendinaliaGB', 'trendinaliaGB ', 'MWWeather', 'kt19weather', 'Newsminster', 'tmj_lon_jobs', 'ThurrockWeather', 'trendinaliaLON',
+                   'ScChouffot', 'kartenquizde', 'arsenalinks', 'footballinks', 'twinklekit', 'MusicNewsWeb', 'VirtualJukebox',
+                   'getketo', 'OvergroundBot', 'Work_HiltonEMEA', 'WorkatHilton', 'RPWeather ', 'RPWeather', 'kickalert', 'jxnchanel_',
+                   'tmj_LON_secure', 'tmj_LON_adm', 'tmj_lon_adv', 'tmj_lon_finance', 'tmj_lon_eng', 'tmj_lon_retail', 'tmj_LON_facmgmt',
+                   'tmj_lon_transp', 'DaiIyLONDON', 'TrafficStAlbans', 'Election20I5', 'ABPhotogra', 'tmj_lon_hrta', 'BroadenMyView']
+berlinblacklist = ['trendinaliaDE', 'RadioTeddyMusic', '_BB_RADIO_MUSIC', 'pairsonnalitesD', 'pharma24', 'BerlinDE',
+                   'dasauge_jobs', 'regenberlin', 'kartenquizde', 'trendinaliaBER', 'tmj_ger_green', 'tmj_ger_ins', 'tmj_ger_itdb',
+                   'tmj_ger_art', 'tmj_ger_jobs', 'tmj_ger_itjava', 'tmj_ger_media', 'tmj_ger_edu', 'pinkbigmac', '030_Berlin', 'dasauge_jobs ',
+                   'meteo_Berlin', 'tmj_ger_it', '_BerlinDE']
+romeblacklist = ['trendinaliaFCO', 'trendinaliaIT', 'TrendsItalia', 'VaticanVA', 'Rome', 'soltempore', 'luigispaziani1', 'trendinaliaIT ', 'trendinaliaFCO',
+                 'TrendsRoma', ]
+
+bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles, 300, set(bcnblacklist))
+milanparam = (mgdbmilan, milancoord, 'milan', milanigcircles, 300, set(milanblacklist))
 hlsnkparam = (mgdbhelsinki, hlsnkcoord, 'hlsnk')
-parisparam = (None, pariscoord, 'paris', parisigcircles, 180)
-londonparam = (None, londoncoord, 'london', londonigcircles, 180)
-berlinparam = (None, berlincoord, 'berlin', berlinigcircles, 300)
-romeparam = (None, romecoord, 'rome', romeigcircles, 300)
+parisparam = (None, pariscoord, 'paris', parisigcircles, 180, set(parisblacklist))
+londonparam = (None, londoncoord, 'london', londonigcircles, 180, set(londonblacklist))
+berlinparam = (None, berlincoord, 'berlin', berlinigcircles, 300, set(berlinblacklist))
+romeparam = (None, romecoord, 'rome', romeigcircles, 300, set(romeblacklist))
+spainparam= ('ES', spaincoord, 'spain', None, 0, set())
 
 cityparams = {
     'bcn': bcnparam,
@@ -71,7 +93,8 @@ cityparams = {
     'paris': parisparam,
     'london': londonparam,
     'berlin': berlinparam,
-    'rome': romeparam
+    'rome': romeparam,
+    'spain': spainparam
 }
 
 TW_TIMEOUT = 3600  # 1 hour
