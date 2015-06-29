@@ -61,11 +61,11 @@ milanigcircles = [(45.46, 9.18), (45.56, 9.18), (45.36, 9.18),
 
 bcnblacklist = ['LiberateBCN2', 'LiberateBCN2 ','trafficspain06', 'magnesiabcn', 'InformacionDGT', 'trendinaliaBCN', 'EB3TC', 'pisossantcugat', 'BarcelonaVE',
                 'Sabadell_Meteo', 'kartenquizde', 'BadalonaCT', 'SabadellES', 'BarcelonaCT', 'Map_Game', 'Fnac_ESP', 'Carutelam', 'ChangeBarcelona',
-                'Carutelam', 'Carutelam ', 'social11red', 'lakasiito_AM', 'tuitrafico_feed']
+                'Carutelam', 'Carutelam ', 'social11red', 'lakasiito_AM', 'tuitrafico_feed', 'oozora_otenki']
 milanblacklist = ['TrendsMilano', '_MilanIT', 'TrendsItalia', 'VMwareJobs', 'tami_lovatics', 'tmj_ita_jobs', 'italiaora']
 parisblacklist = ['Work_HiltonEMEA', 'remixjobs', 'VideosSexe_net', 'trendinaliaPAR', 'trendinaliaFR', '_ParisFR', 'soltempore', 'tmj_fra_legal',
                   'tmj_fra_itqa', 'tmj_fra_jobs', 'tmj_fra_adv', 'Keys_for_Paris', 'tmj_fra_cler', 'VMwareJobs', 'tmj_fra_itdb', 'BCritique',
-                  'QuoteAdo_', 'BCritique ', 'LouAdn2 ', 'LouAdn2', 'Orayane_Models', 'QuoteAdo_ ', 'Nizard_Bdl']
+                  'QuoteAdo_', 'BCritique ', 'LouAdn2 ', 'LouAdn2', 'Orayane_Models', 'QuoteAdo_ ', 'Nizard_Bdl', 'tmj_fra_hrta']
 londonblacklist = ['trendinaliaGB', 'trendinaliaGB ', 'MWWeather', 'kt19weather', 'Newsminster', 'tmj_lon_jobs', 'ThurrockWeather', 'trendinaliaLON',
                    'ScChouffot', 'kartenquizde', 'arsenalinks', 'footballinks', 'twinklekit', 'MusicNewsWeb', 'VirtualJukebox',
                    'getketo', 'OvergroundBot', 'Work_HiltonEMEA', 'WorkatHilton', 'RPWeather ', 'RPWeather', 'kickalert', 'jxnchanel_',
