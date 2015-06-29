@@ -32,6 +32,7 @@ pariscoord = (48.52, 49.05, 1.97, 2.68)
 londoncoord = (51.23, 51.8, -0.50, 0.37)
 berlincoord = (52.32, 52.62, 13.11, 13.60)
 romecoord = (41.78, 42.0, 12.33, 12.62)
+nycoord = (40.25, 40.60, -73.70, -73.40)
 spaincoord = (35.12, 43.44, 3.29, 4.22)
 
 bcnigcircles = [(41.40, 2.14), (41.46, 2.20), (41.33, 2.07), (41.445, 2.03)]
@@ -86,6 +87,7 @@ londonparam = (None, londoncoord, 'london', londonigcircles, 180, set(londonblac
 berlinparam = (None, berlincoord, 'berlin', berlinigcircles, 300, set(berlinblacklist))
 romeparam = (None, romecoord, 'rome', romeigcircles, 300, set(romeblacklist))
 spainparam= ('ES', spaincoord, 'spain', None, 0, set())
+nyparam = (None, nycoord, 'newyork', None, 300, set())
 
 cityparams = {
     'bcn': bcnparam,
@@ -94,7 +96,8 @@ cityparams = {
     'london': londonparam,
     'berlin': berlinparam,
     'rome': romeparam,
-    'spain': spainparam
+    'spain': spainparam,
+    'newyork': nyparam
 }
 
 TW_TIMEOUT = 3600  # 1 hour
