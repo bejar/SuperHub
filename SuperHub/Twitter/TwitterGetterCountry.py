@@ -47,12 +47,11 @@ class TimeoutException(Exception):
 def transform(tdata, city):
     return {'city': city,
             'twid': tdata[0],
-            'lat': tdata[2],
-            'lng': tdata[1],
-            'time': str(tdata[3]),
-            'user': tdata[4],
-            'uname': tdata[5],
-            'tweet': tdata[6]
+            'place': tdata[1],
+            'time': str(tdata[2]),
+            'user': tdata[3],
+            'uname': tdata[4],
+            'tweet': tdata[5]
             }
 
 
@@ -136,12 +135,11 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                 return 0
             elif item['user']['screen_name'] in blacklist:
                 logger.error('@@@@@@@@@@@@@@@@ Blacklisted @@@@@@@@@@@@@@@@@@')
-            elif item['place'] is not None and \
-                 item['place']['place_type'] == 'city' and \
+            elif item['place'] is not None and item['place']['place_type'] == 'city' and \
                  item['place']['country_code'] == ccode:
                 vals = []
                 vals.append(str(item['id']))
-                vals.append(str(item['place']['full_name']))
+                vals.append(str(item['place']['full_name'].encode('utf8', 'replace')))
                 vals.append(str(int(item['timestamp_ms'][0:-3])))
                 vals.append(str(item['user']['id']))
                 vals.append(str(item['user']['screen_name']))
@@ -151,52 +149,52 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                 else:
                     vals.append('(## ##)')
 
-                if (minLat <= vals[2] < maxLat) and (minLon <= vals[1] < maxLon):
-                    logger.info('Time: %s', time.ctime(int(item['timestamp_ms'][0:-3])))
-                    logger.info('ID: %s', str(item['user']['id']))
-                    logger.info('TW: %d', i)
-                    if col is not None:
-                        tomongo = transform(vals, city)
-                        try:
-                            #col.insert(tomongo)
-                            if 'text' in item:
-                                logger.info('Text: %s', item['text'].replace('\n', ' ').replace('\r', ''))
-                            logger.info('TWID: %s %s %s', tomongo['twid'], tomongo['uname'], tomongo['user'])
-                        except DuplicateKeyError:
-                            logger.info('Duplicate: %s', tomongo['twid'])
-                    else:
-                        if wfile is None:
-                            wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
-                        cnt = 0
-                        for v in vals:
-                            if type(v) is float:
-                                wfile.write(str(v))
-                            elif type(v) is unicode:
-                                wfile.write(v.encode('utf8', 'replace').rstrip())
-                            else:
-                                wfile.write(v)
-                            cnt += 1
-                            if cnt < len(vals):
-                                wfile.write('; ')
+                # if (minLat <= vals[2] < maxLat) and (minLon <= vals[1] < maxLon):
+                logger.info('Time: %s', time.ctime(int(item['timestamp_ms'][0:-3])))
+                logger.info('ID: %s', str(item['user']['id']))
+                logger.info('TW: %d', i)
+                if col is not None:
+                    tomongo = transform(vals, city)
+                    try:
+                        #col.insert(tomongo)
+                        if 'text' in item:
+                            logger.info('Text: %s', item['text'].replace('\n', ' ').replace('\r', ''))
+                        logger.info('TWID: %s %s %s', tomongo['twid'], tomongo['uname'], tomongo['user'])
+                    except DuplicateKeyError:
+                        logger.info('Duplicate: %s', tomongo['twid'])
+                else:
+                    if wfile is None:
+                        wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
+                    cnt = 0
+                    for v in vals:
+                        if type(v) is float:
+                            wfile.write(str(v))
+                        elif type(v) is unicode:
+                            wfile.write(v.encode('utf8', 'replace').rstrip())
+                        else:
+                            wfile.write(v)
+                        cnt += 1
+                        if cnt < len(vals):
+                            wfile.write('; ')
 
-                        wfile.write('\n')
-                        wfile.flush()
+                    wfile.write('\n')
+                    wfile.flush()
 
-                    currtime = int(time.time())
-                    deltatime = (currtime - initime) / 60.0
+                currtime = int(time.time())
+                deltatime = (currtime - initime) / 60.0
 
-                    if deltatime != 0:
-                        logger.info('---- %2.3f tweets/minute', i / deltatime)
+                if deltatime != 0:
+                    logger.info('---- %2.3f tweets/minute', i / deltatime)
 
-                    i += 1
-                    if wsinf and inform != 0 and i % inform == 0:
-                        try:
-                            requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
-                        except Timeout:
-                            wsinf = False
-                            logger.error('##########################  WS timed out! ###############################')
+                i += 1
+                if wsinf and inform != 0 and i % inform == 0:
+                    try:
+                        requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
+                    except Timeout:
+                        wsinf = False
+                        logger.error('##########################  WS timed out! ###############################')
             else:
-                print 'Lost'
+                print 'Lost', item['place']['country_code']
             j += 1
 
     except TimeoutException:

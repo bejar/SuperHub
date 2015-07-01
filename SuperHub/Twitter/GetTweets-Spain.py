@@ -38,7 +38,7 @@ db.authenticate(mglocal[2], password=mglocal[3])
 col = db['TwitterCountry']
 
 while True:
-    get_tweets(city, logger, col, inform=25, wsinf=True)
+    get_tweets(city, logger, col, inform=25, wsinf=False)
     sleep(10)
     # if not client.alive():
     #     col = None

@@ -160,8 +160,8 @@ def get_instagram(city, logger, col, wsinf=True):
         except OpenSSL.SSL.SysCallError:
             logger.error('SSL Error')
 
-    lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
-    logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
+    # lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
+    #logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
     # MapThis(cityparams[city], lcoord, lcircles, city)
 
     i = 0
@@ -171,7 +171,8 @@ def get_instagram(city, logger, col, wsinf=True):
                 col.insert(iphotos[v])
                 i += 1
             except DuplicateKeyError:
-                logger.info('Duplicate: %s', v)
+                pass
+                #logger.info('Duplicate: %s', v)
         else:
             if wfile is None:
                 wfile = open(homepath + cityparams[city][2] + '-instagram-py-%d.csv' % itime, 'w')
@@ -201,6 +202,7 @@ def get_instagram(city, logger, col, wsinf=True):
 
             wfile.write('\n')
             wfile.flush()
+    logger.info('---- %d different photos # %s', i, time.ctime(time.time()))
     if wsinf:
         try:
             requests.get(Webservice, params={'content': city + '-ig', 'count': i, 'delta': i / (timeout / 60)})

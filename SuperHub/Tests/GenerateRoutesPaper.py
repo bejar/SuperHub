@@ -17,20 +17,26 @@ from Analysis.Routes import transaction_routes_clustering, transaction_routes
 from Analysis.Clustering import cluster_events, cluster_cache
 from pylab import *
 from Analysis.Util import now
+import time
 
 
 def generate_routes(routes):
     for r in routes:
         print str(r)
-        param, datafile, mxhh, mnhh, alg, radius, mins, time = r
+        param, datafile, mxhh, mnhh, alg, radius, mins, timeres, dates = r
         data = STData(homepath, param, datafile)
         # data.read_py_data()
-        data.read_DB()
+        if dates is None:
+            data.read_DB()
+            tdates = ''
+        else:
+            data.read_DB_time(str(int(time.mktime(time.strptime(dates[0],'%d%m%Y')))), str(int(time.mktime(time.strptime(dates[1],'%d%m%Y')))))
+            tdates = dates[0] + '-' + dates[1]
         print data.info()
         print 'Data loaded.'
         datahh = data.select_heavy_hitters(mxhh, mnhh)
         if alg == 'Leader':
-            clust = cluster_cache(datahh, alg=alg, mxhh=mxhh, mnhh=mnhh, radius=radius, size=mins)
+            clust = None #= cluster_cache(datahh, alg=alg, mxhh=mxhh, mnhh=mnhh, radius=radius, size=mins)
             if clust is None:
                 print 'Computing Clustering'
                 clust = cluster_events(datahh, alg=alg, mxhh=mxhh, mnhh=mnhh, radius=radius, size=mins)
@@ -39,14 +45,14 @@ def generate_routes(routes):
             print 'Clustering Done.'
             now()
             transaction_routes_clustering(datahh, data.city[2] +
-                                          data.get_app_name() + '-Leader' + str(radius) + '-nusr' + str(
-                mxhh) + '+' + str(mnhh),
-                                          cluster=clust, supp=mins, timeres=time)
+                                          data.get_app_name() + '-Leader' + str(radius) + '-nusr' +
+                                          str(mxhh) + '+' + str(mnhh) + '-' + tdates,
+                                          cluster=clust, supp=mins, timeres=timeres)
             now()
         else:
             now()
             transaction_routes(datahh, data.city[2] + data.get_app_name() + '-Grid' + str(radius) + '-nusr' + str(mxhh)
-                               + '+' + str(mnhh), scale=radius, supp=mins, timeres=time)
+                               + '+' + str(mnhh) + '-' + tdates, scale=radius, supp=mins, timeres=timeres)
             now()
             print 'Discretized routes.'
 
@@ -124,13 +130,22 @@ def generate_routes_hours(routes, lhours):
 
 
 
+# generate_routes([
+#     [cityparams['bcn'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01062015']],
+#     [cityparams['london'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
+#     [cityparams['paris'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
+#     [cityparams['rome'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
+#     [cityparams['berlin'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
+#     [cityparams['milan'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]]
+# ])
+
 generate_routes([
-    [cityparams['bcn'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-    [cityparams['london'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-    [cityparams['paris'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-    [cityparams['rome'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-    [cityparams['berlin'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-    [cityparams['milan'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]]
+    [cityparams['paris'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '02072015']],
+    [cityparams['rome'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '02072015']],
+    [cityparams['milan'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '02072015']],
+    [cityparams['berlin'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '02072015']],
+    [cityparams['bcn'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '02072015']],
+
 ])
 
 print 'Done.'
