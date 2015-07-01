@@ -53,4 +53,4 @@ def info():
 
 if __name__ == '__main__':
     # Ponemos en marcha el servidor Flask
-    app.run(host='0.0.0.0', port=8870, debug=False)
+    app.run(host='0.0.0.0', port=8890, debug=False)

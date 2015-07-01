@@ -31,7 +31,8 @@ from Parameters.Pconstants import mglocal
 city = 'berlin'
 
 logger = config_logger(silent=False)
-mgdb = mglocal[0]
+mgdb = mglocal[
+    0]
 client = MongoClient(mgdb)
 db = client.local
 db.authenticate(mglocal[2], password=mglocal[3])
