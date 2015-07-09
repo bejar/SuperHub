@@ -256,7 +256,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                             logger.error('##########################  WS timed out! ###############################')
             else:
                 if 'text' in item:
-                    print item['text']
+                    #print item['text']
                     if 'I\'m at' in item['text'] or 'http' in item['text']:
                         ig_fq_tweet(item, city, logger, col, i, initime)
 
