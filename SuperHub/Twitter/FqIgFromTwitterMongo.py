@@ -338,8 +338,9 @@ for t in cursor:
     ltw = t['ltwid']
 
 print ltw
-
-do_the_job(ltw)
+while True:
+    do_the_job(ltw)
+    time.sleep(7200)
 
 print "The End"
 
