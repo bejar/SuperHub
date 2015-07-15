@@ -340,6 +340,7 @@ for t in cursor:
 print ltw
 while True:
     do_the_job(ltw)
+    print 'Sleeping ...'
     time.sleep(7200)
 
 print "The End"
