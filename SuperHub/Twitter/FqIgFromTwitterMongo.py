@@ -342,6 +342,10 @@ while True:
     do_the_job(ltw)
     print 'Sleeping ...'
     time.sleep(7200)
+    cursor = col.find({'update': 'foursquare'}, {'ltwid': 1})
+    ltw = None
+    for t in cursor:
+        ltw = t['ltwid']
 
 print "The End"
 
