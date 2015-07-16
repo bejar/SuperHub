@@ -340,7 +340,7 @@ for t in cursor:
 print ltw
 while True:
     do_the_job(ltw)
-    print 'Sleeping ...'
+    print 'Sleeping ...', time.ctime(time.time())
     time.sleep(7200)
     cursor = col.find({'update': 'foursquare'}, {'ltwid': 1})
     ltw = None
