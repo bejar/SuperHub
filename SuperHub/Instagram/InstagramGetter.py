@@ -153,13 +153,21 @@ def get_instagram(city, logger, col, wsinf=True):
                     logger.error('TypeError')
                 except KeyError:
                     logger.error('KeyError')
+        except KeyError:
+            logger.error('KeyError')
         except JSONDecodeError:
             logger.error('EMPTY')
         except ConnectionError:
             logger.error('Connection Error')
         except OpenSSL.SSL.SysCallError:
             logger.error('SSL Error')
+        except Exception:
+            logger.error('Other Exception')
+        except BaseException:
+            logger.error('Other Exception')
 
+                        
+            
     # lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
     #logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
     # MapThis(cityparams[city], lcoord, lcircles, city)
