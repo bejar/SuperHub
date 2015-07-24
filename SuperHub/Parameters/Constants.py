@@ -76,13 +76,15 @@ milanigcircles = [(i,j) for i in np.arange(45.35,45.6,0.05) for j in np.arange(9
 
 bcnblacklist = ['LiberateBCN2', 'LiberateBCN2 ','trafficspain06', 'magnesiabcn', 'InformacionDGT', 'trendinaliaBCN', 'EB3TC', 'pisossantcugat', 'BarcelonaVE',
                 'Sabadell_Meteo', 'kartenquizde', 'BadalonaCT', 'SabadellES', 'BarcelonaCT', 'Map_Game', 'Fnac_ESP', 'Carutelam', 'ChangeBarcelona', 'Forociudadcom',
-                'Carutelam', 'Carutelam ', 'social11red', 'lakasiito_AM', 'tuitrafico_feed', 'oozora_otenki', 'Map_Game', 'TrendsBarcelona', 'trendinalia']
+                'Carutelam', 'Carutelam ', 'social11red', 'lakasiito_AM', 'tuitrafico_feed', 'oozora_otenki', 'Map_Game', 'TrendsBarcelona', 'trendinalia',
+                'tmj_spn_acct']
 milanblacklist = ['TrendsMilano', '_MilanIT', 'TrendsItalia', 'VMwareJobs', 'tami_lovatics', 'tmj_ita_jobs', 'italiaora', 'Map_Game', 'trendinalia',
                   'milanstreaming', 'Nero_Press']
 parisblacklist = ['Work_HiltonEMEA', 'remixjobs', 'VideosSexe_net', 'trendinaliaPAR', 'trendinaliaFR', '_ParisFR', 'soltempore', 'tmj_fra_legal',
                   'tmj_fra_itqa', 'tmj_fra_jobs', 'tmj_fra_adv', 'Keys_for_Paris', 'tmj_fra_cler', 'VMwareJobs', 'tmj_fra_itdb', 'BCritique',
                   'QuoteAdo_', 'BCritique ', 'LouAdn2 ', 'LouAdn2', 'Orayane_Models', 'QuoteAdo_ ', 'Nizard_Bdl', 'tmj_fra_hrta', 'trendinalia',
-                  'chien_perdu', 'pairsonnalitesF', 'pairsonnalitesN', 'PairsonnalitesU', 'chat_perdu', 'tmj_fra_sales']
+                  'chien_perdu', 'pairsonnalitesF', 'pairsonnalitesN', 'PairsonnalitesU', 'chat_perdu', 'tmj_fra_sales', 'tmj_fra_it',
+                  'tmj_fra_itpm']
 londonblacklist = ['trendinaliaGB', 'trendinaliaGB ', 'MWWeather', 'kt19weather', 'Newsminster', 'tmj_lon_jobs', 'ThurrockWeather', 'trendinaliaLON',
                    'ScChouffot', 'kartenquizde', 'arsenalinks', 'footballinks', 'twinklekit', 'MusicNewsWeb', 'VirtualJukebox',
                    'getketo', 'OvergroundBot', 'Work_HiltonEMEA', 'WorkatHilton', 'RPWeather ', 'RPWeather', 'kickalert', 'jxnchanel_',
