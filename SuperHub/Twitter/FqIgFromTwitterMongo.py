@@ -164,7 +164,7 @@ def chop_fsq(url):
         error = True
 
     if not error:
-        soup = BeautifulSoup(data)
+        soup = BeautifulSoup(data, "lxml")
         res = []
         for link in soup.find_all('script'):
             z = link.get_text()
@@ -198,7 +198,7 @@ def chop_ig(url):
         error = True
 
     if not error:
-        soup = BeautifulSoup(data)
+        soup = BeautifulSoup(data, "lxml")
         res = []
         for link in soup.find_all('script'):
             z = link.get_text()
@@ -216,7 +216,7 @@ def do_the_job(ltwid):
     mgdb = mglocal[0]
     client = MongoClient(mgdb)
     db = client.local
-    db.authenticate(mglocal[2], password=mglocal[3])
+    #db.authenticate(mglocal[2], password=mglocal[3])
     col = db[mglocal[1]]
 
     cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, no_cursor_timeout=True)
@@ -329,7 +329,7 @@ logging.getLogger('log').addHandler(console)
 mgdb = mglocal[0]
 client = MongoClient(mgdb)
 db = client.local
-db.authenticate(mglocal[2], password=mglocal[3])
+#db.authenticate(mglocal[2], password=mglocal[3])
 col = db['Params']
 
 cursor = col.find({'update': 'foursquare'}, {'ltwid': 1})

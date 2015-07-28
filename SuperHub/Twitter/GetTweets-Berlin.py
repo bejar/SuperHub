@@ -35,7 +35,7 @@ mgdb = mglocal[
     0]
 client = MongoClient(mgdb)
 db = client.local
-db.authenticate(mglocal[2], password=mglocal[3])
+#db.authenticate(mglocal[2], password=mglocal[3])
 col = db['Twitter']
 
 while True:

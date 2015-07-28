@@ -50,7 +50,7 @@ if args.city:
         mgdb = mongodata.db
         client = MongoClient(mgdb)
         db = client.local
-        db.authenticate(mongodata.user, mongodata.passwd)
+        #db.authenticate(mongodata.user, mongodata.passwd)
         col = db['Twitter']
     else:
         col = None

@@ -35,6 +35,7 @@ def generate_routes(routes):
         print data.info()
         print 'Data loaded.'
         datahh = data.select_heavy_hitters(mxhh, mnhh)
+        print datahh.info()
         if alg == 'Leader':
             clust = None #= cluster_cache(datahh, alg=alg, mxhh=mxhh, mnhh=mnhh, radius=radius, size=mins)
             if clust is None:
@@ -140,12 +141,12 @@ def generate_routes_hours(routes, lhours):
 # ])
 
 generate_routes([
-    [cityparams['london'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '04072015']],
-    [cityparams['paris'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '04072015']],
-    [cityparams['rome'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '04072015']],
-    [cityparams['milan'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '04072015']],
-    [cityparams['berlin'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '04072015']],
-    [cityparams['bcn'], ['instagram'], 0, 100000, 'Leader', 0.001, 5, [6, 18], ['30062015', '04072015']],
+    [cityparams['london'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
+    [cityparams['paris'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
+    [cityparams['rome'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
+    [cityparams['milan'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
+    [cityparams['berlin'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
+    [cityparams['bcn'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
 
 ])
 
