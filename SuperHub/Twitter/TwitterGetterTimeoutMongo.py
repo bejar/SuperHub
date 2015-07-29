@@ -276,6 +276,8 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
         logger.error('##########################  Twitter Connection ERROR ###############################')
     except TwitterRequestError:
         logger.error('##########################  Twitter Request ERROR ###############################')
+    except TypeError:
+        logger.error('##########################  Twitter Request ERROR ###############################')
 
     if col is None:
         wfile.close()
