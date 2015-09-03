@@ -23,7 +23,7 @@
         <th>Count</th>
         <th>Delta</th>
     </tr>
-    {% for city in cities %}
+    {% for city in cities|sort %}
     <tr>
         <td> {{city}}</td>
         <td>{{cities[city]}}</td>

@@ -75,7 +75,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
     print 'Transactions', len(trans)
     ltrans = []
     print 'Applying fp-growth'
-    for itemset, sval in fpgrowth(trans, supp=-supp, min=2, target='m'):
+    for itemset, sval in fpgrowth(trans, supp=-supp, zmin=2, target='m'):
         if diff_items(itemset) > 1:
             ltrans.append(itemset)
             #print itemset, sval

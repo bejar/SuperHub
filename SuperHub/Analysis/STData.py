@@ -206,7 +206,7 @@ class STData:
         mgdb = mongodata.db
         client = MongoClient(mgdb)
         db = client.local
-        db.authenticate(mongodata.user, mongodata.passwd)
+        #db.authenticate(mongodata.user, mongodata.passwd)
         minLat, maxLat, minLon, maxLon = self.city[1]
         cityname = self.city[2]
         if type(self.application) != list:

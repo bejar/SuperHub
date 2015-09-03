@@ -98,14 +98,19 @@ def ig_fq_tweet(item, city, logger, col, i, initime):
         except ValueError as e:
             print 'ValueError:', e
         except IOError as e:
-            print 'IOError', e, url
+            print 'IOError'#, e, url
         except UnicodeError as e:
             print 'UnicodeError', e
         except urllib2.httplib.BadStatusLine:
             pass
         except urllib2.HTTPError:
             print 'HTTPError'
+        except Exception:
+            logger.error('Other Exception')
+        except BaseException:
+            logger.error('Other Exception')
 
+                        
 def transform(tdata, city):
     return {'city': city,
             'twid': tdata[0],
@@ -162,6 +167,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
     """
 
     initime = int(time.time())
+    prevtime = int(time.time())
     if col is None:
         wfile = open(homepath + cityparams[city][2] + '-twitter-py-%d.csv' % initime, 'w')
     else:
@@ -248,9 +254,11 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                         logger.info('---- %2.3f tweets/minute', i / deltatime)
 
                     i += 1
-                    if wsinf and inform != 0 and i % inform == 0:
+                    #if wsinf and inform != 0 and i % inform == 0:
+                    if wsinf and inform != 0 and ((currtime - prevtime)> 1800):
                         try:
                             requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
+                            prevtime = currtime
                         except Timeout:
                             wsinf = False
                             logger.error('##########################  WS timed out! ###############################')
