@@ -131,23 +131,22 @@ def generate_routes_hours(routes, lhours):
 
 
 
-# generate_routes([
-#     [cityparams['bcn'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01062015']],
-#     [cityparams['london'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-#     [cityparams['paris'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
+generate_routes([
+#     [cityparams['bcn'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01082015']],
+#     [cityparams['london'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01082015']],
+     [cityparams['paris'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01082015']],
 #     [cityparams['rome'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
 #     [cityparams['berlin'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
 #     [cityparams['milan'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]]
-# ])
+ ])
 
-generate_routes([
+#generate_routes([
  #   [cityparams['london'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
  #   [cityparams['paris'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
  #   [cityparams['rome'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
  #   [cityparams['milan'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
  #   [cityparams['berlin'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
-    [cityparams['bcn'], ['twitter'], 50, 100000, 'Leader', 0.005, 5, [6, 18], ['01082015', '01092015']],
-
-])
+ #   [cityparams['bcn'], ['twitter'], 50, 100000, 'Leader', 0.005, 5, [6, 18], ['01082015', '01092015']],
+#])
 
 print 'Done.'

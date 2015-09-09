@@ -77,7 +77,7 @@ milanigcircles = [(i,j) for i in np.arange(45.35,45.6,0.05) for j in np.arange(9
 bcnblacklist = ['LiberateBCN2', 'LiberateBCN2 ','trafficspain06', 'magnesiabcn', 'InformacionDGT', 'trendinaliaBCN', 'EB3TC', 'pisossantcugat', 'BarcelonaVE',
                 'Sabadell_Meteo', 'kartenquizde', 'BadalonaCT', 'SabadellES', 'BarcelonaCT', 'Map_Game', 'Fnac_ESP', 'Carutelam', 'ChangeBarcelona', 'Forociudadcom',
                 'Carutelam', 'Carutelam ', 'social11red', 'lakasiito_AM', 'tuitrafico_feed', 'oozora_otenki', 'Map_Game', 'TrendsBarcelona', 'trendinalia',
-                'tmj_spn_acct']
+                'tmj_spn_acct', 'segurpricat']
 milanblacklist = ['TrendsMilano', '_MilanIT', 'TrendsItalia', 'VMwareJobs', 'tami_lovatics', 'tmj_ita_jobs', 'italiaora', 'Map_Game', 'trendinalia',
                   'milanstreaming', 'Nero_Press', 'trendinaliaMXP']
 parisblacklist = ['Work_HiltonEMEA', 'remixjobs', 'VideosSexe_net', 'trendinaliaPAR', 'trendinaliaFR', '_ParisFR', 'soltempore', 'tmj_fra_legal',
@@ -100,7 +100,7 @@ berlinblacklist = ['trendinaliaDE', 'RadioTeddyMusic', '_BB_RADIO_MUSIC', 'pairs
                    'tmj_ger_art', 'tmj_ger_jobs', 'tmj_ger_itjava', 'tmj_ger_media', 'tmj_ger_edu', 'pinkbigmac', '030_Berlin', 'dasauge_jobs ',
                    'meteo_Berlin', 'tmj_ger_it', '_BerlinDE', 'Map_Game', 'tmj_ger_writing', 'trendinalia', 'cycloppi', 'tmj_ger_itpm']
 romeblacklist = ['trendinaliaFCO', 'trendinaliaIT', 'TrendsItalia', 'VaticanVA', 'Rome', 'soltempore', 'luigispaziani1', 'trendinaliaIT ', 'trendinaliaFCO',
-                 'TrendsRoma', 'Map_Game', 'tmj_ita_jobs', 'trendinalia', 'pairsonnalitesB']
+                 'TrendsRoma', 'Map_Game', 'tmj_ita_jobs', 'trendinalia', 'pairsonnalitesB', 'PairsonnalitesU']
 
 bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles, 120, set(bcnblacklist))
 milanparam = (mgdbmilan, milancoord, 'milan', milanigcircles, 120, set(milanblacklist))
