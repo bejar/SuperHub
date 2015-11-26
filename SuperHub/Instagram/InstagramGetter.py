@@ -34,7 +34,7 @@ import OpenSSL
 from Parameters.Constants import homepath, cityparams
 from Parameters.Private import ig_credentials
 from Parameters.Private import Webservice
-
+import sys
 
 class TimeoutException(Exception):
     """ Simple Exception to be called on timeouts. """
@@ -117,7 +117,7 @@ def get_instagram(city, logger, col, wsinf=True):
         try:
             api = requests.get(
                 'https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
-                (circ[0], circ[1], itime - timeout, itime, access_token))
+                (circ[0], circ[1], itime - timeout, itime, access_token), timeout=10)
             res = api.json()
 
             for media in res['data']:
@@ -161,12 +161,10 @@ def get_instagram(city, logger, col, wsinf=True):
             logger.error('Connection Error')
         except OpenSSL.SSL.SysCallError:
             logger.error('SSL Error')
-        except Exception:
-            logger.error('Other Exception')
-        except BaseException:
-            logger.error('Other Exception')
+        except:
+            print 'Other Exception:', sys.exc_info()[0]
+            break
 
-                        
             
     # lcoord = [(iphotos[v]['lat'], iphotos[v]['lng']) for v in iphotos]
     #logger.info('---- %d photos # %s', len(iphotos), time.ctime(time.time()))
@@ -213,7 +211,7 @@ def get_instagram(city, logger, col, wsinf=True):
     logger.info('---- %d different photos # %s', i, time.ctime(time.time()))
     if wsinf:
         try:
-            requests.get(Webservice, params={'content': city + '-ig', 'count': i, 'delta': i / (timeout / 60)})
+            requests.get(Webservice, params={'content':  'ig-' + city, 'count': i, 'delta': i / (timeout / 60)})
         except Timeout:
             logger.error('Webservice Timeout')
             wsinf = False

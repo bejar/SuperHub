@@ -257,7 +257,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                     #if wsinf and inform != 0 and i % inform == 0:
                     if wsinf and inform != 0 and ((currtime - prevtime)> 1800):
                         try:
-                            requests.get(Webservice, params={'content': city + '-twt', 'count': i, 'delta': i / deltatime})
+                            requests.get(Webservice, params={'content': 'twt-' + city, 'count': i, 'delta': i / deltatime})
                             prevtime = currtime
                         except Timeout:
                             wsinf = False

@@ -94,7 +94,8 @@ londonblacklist = ['trendinaliaGB', 'trendinaliaGB ', 'MWWeather', 'kt19weather'
                    'pairsonnalitesN', 'tmj_GBR_it', 'tmj_lon_itqa', 'tmj_LON_skltrd', 'tmj_LON_actuar', 'tmj_lon_constru',
                    'tmj_lon_hr', 'tmj_lon_itpm', 'tmj_lon_recruit', 'tmj_lon_green', 'tmj_lon_acct', 'tmj_LON_ins', 'tmj_GBR_LEGAL',
                    'tmj_lon_mgmt', 'tmj_lon_pharm', 'tmj_LON_prod', 'tmj_LON_manuf', 'tmj_GBR_EDU', 'tmj_lon_itdb', 'tmj_LON_undrwr',
-                   'tmj_GBR_ins', 'tmj_LON_LABOR', '_LondonUK', 'tmj_lon_sales', 'PairsonnalitesU', 'tmj_GBR_HRTA']
+                   'tmj_GBR_ins', 'tmj_LON_LABOR', '_LondonUK', 'tmj_lon_sales', 'PairsonnalitesU', 'tmj_GBR_HRTA', 'GreenwichLifts',
+                   'tmj_lon_legal', 'tmj_LON_itmgmt', 'tmj_LON_cstsrv', 'StockNewsWire', 'TycoCareers']
 berlinblacklist = ['trendinaliaDE', 'RadioTeddyMusic', '_BB_RADIO_MUSIC', 'pairsonnalitesD', 'pharma24', 'BerlinDE',
                    'dasauge_jobs', 'regenberlin', 'kartenquizde', 'trendinaliaBER', 'tmj_ger_green', 'tmj_ger_ins', 'tmj_ger_itdb',
                    'tmj_ger_art', 'tmj_ger_jobs', 'tmj_ger_itjava', 'tmj_ger_media', 'tmj_ger_edu', 'pinkbigmac', '030_Berlin', 'dasauge_jobs ',

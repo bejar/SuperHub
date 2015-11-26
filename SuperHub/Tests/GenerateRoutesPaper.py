@@ -131,14 +131,14 @@ def generate_routes_hours(routes, lhours):
 
 
 
-generate_routes([
-#     [cityparams['bcn'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01082015']],
-#     [cityparams['london'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01082015']],
-     [cityparams['paris'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.0025, 30, [6,18], ['01052015', '01082015']],
-#     [cityparams['rome'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-#     [cityparams['berlin'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]],
-#     [cityparams['milan'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.0025, 30, [6,18]]
- ])
+# generate_routes([
+#      [cityparams['bcn'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.001, 30, [6,12,18], ['01102015', '12102015']],
+#     [cityparams['london'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.001, 30, [6,12,18], ['01102015', '12102015']],
+#     [cityparams['paris'], ['twitter', 'instagram'], 50, 100000, 'Leader', 0.001, 30, [6,12,18], ['01102015', '12102015']],
+#     [cityparams['rome'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.001, 30, [6,12,18], ['01102015', '12102015']],
+#     [cityparams['berlin'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.001, 30, [6,12,18], ['01102015', '12102015']],
+#     [cityparams['milan'], ['twitter', 'instagram'], 100, 100000, 'Leader', 0.001, 30, [6,12,18], ['01102015', '12102015']]
+#  ])
 
 #generate_routes([
  #   [cityparams['london'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
@@ -148,5 +148,11 @@ generate_routes([
  #   [cityparams['berlin'], ['twitter'], 50, 100000, 'Leader', 0.001, 25, [6, 18], ['01072015', '24072015']],
  #   [cityparams['bcn'], ['twitter'], 50, 100000, 'Leader', 0.005, 5, [6, 18], ['01082015', '01092015']],
 #])
+
+generate_routes([
+     [cityparams['paris'], ['twitter'], 50, 100000, 'Leader', 0.0025, 20, [6,18], ['12112015', '15112015']],
+     [cityparams['paris'], ['instagram'], 0, 100000, 'Leader', 0.0025, 20, [6,18], ['12112015', '15112015']]
+ ])
+
 
 print 'Done.'

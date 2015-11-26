@@ -29,7 +29,7 @@ __author__ = 'bejar'
 import operator
 import time
 
-from numpy import loadtxt
+from numpy import loadtxt, savetxt
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -358,6 +358,21 @@ class STData:
                                                          ('venuepluralname', 'S20'),
                                                          ('venueshortname', 'S20'),
                                                          ('venueurl', 'S100')], delimiter=';', comments='*')
+
+    def save_data(self, filename, coordinates=True):
+        """
+        Saves some columns of the data to a csv file
+
+        @param filename:
+        @return:
+        """
+
+        if not coordinates:
+            savetxt(self.wpath+filename, self.dataset, delimiter=',')
+        else:
+            print self.wpath+filename
+            savetxt(self.wpath+filename, self.getDataCoordinates(), delimiter=',')
+
 
 
     def info(self):
