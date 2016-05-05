@@ -104,7 +104,7 @@ class STData:
                           }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1})
 
             qsize = c.count()
-            self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
+            self.dataset = np.zeros((qsize,), dtype='f8,f8,i4,S20')
             cnt = 0
             for val in c:
                 if cnt < qsize:
@@ -128,7 +128,7 @@ class STData:
                 lcount.append(c.count())
                 lcol.append(c)
 
-            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i32,S20')
+            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i4,S20')
             for c, qsize in zip(lcol, lcount):
                 cnt = 0
                 for val in c:
@@ -162,7 +162,7 @@ class STData:
                           }, {'lat': 1, 'lng': 1, 'time': 1, 'uname': 1})
 
             qsize = c.count()
-            self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
+            self.dataset = np.zeros((qsize,), dtype='f8,f8,i4,S20')
             cnt = 0
             for val in c:
                 if cnt < qsize:
@@ -186,7 +186,7 @@ class STData:
                 lcount.append(c.count())
                 lcol.append(c)
 
-            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i32,S20')
+            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i4,S20')
             for c, qsize in zip(lcol, lcount):
                 cnt = 0
                 for val in c:
@@ -219,7 +219,7 @@ class STData:
                           }, {'lat': 1, 'lng': 1, 'time': 1, 'user': 1})
 
             qsize = c.count()
-            self.dataset = np.zeros((qsize,), dtype='f8,f8,i32,S20')
+            self.dataset = np.zeros((qsize,), dtype='f8,f8,i4,S20')
             cnt = 0
             for val in c:
                 if cnt < qsize:
@@ -243,7 +243,7 @@ class STData:
                 lcount.append(c.count())
                 lcol.append(c)
 
-            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i32,S20')
+            self.dataset = np.zeros((sum(lcount),), dtype='f8,f8,i4,S20')
             for c, qsize in zip(lcol, lcount):
                 cnt = 0
                 for val in c:
@@ -263,7 +263,7 @@ class STData:
         print 'Reading Data ...'
         fname = self.wpath + 'Data/' + self.city[2] + '-' + self.application + '.csv.bz2'
         self.dataset = loadtxt(fname, skiprows=1,
-                               dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
+                               dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i4'), ('user', 'S20')],
                                usecols=(0, 1, 2, 3), delimiter=';', comments='#')
 
     def read_py_data(self):
@@ -274,7 +274,7 @@ class STData:
         print 'Reading Data ...'
         fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-py.data.bz2'
         self.dataset = loadtxt(fname, skiprows=0,
-                               dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20')],
+                               dtype=[('lat', 'f8'), ('lng', 'f8'), ('time', 'i4'), ('user', 'S20')],
                                usecols=(4, 3, 5, 2), delimiter=';', comments='*')
 
 
@@ -289,7 +289,7 @@ class STData:
         else:
             fname = self.wpath + 'Data-py/Data/' + self.city[2] + '-twitter-py-' + date + '.data'
         self.dataset = loadtxt(fname, skiprows=0,
-                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('time', 'i32'), ('user', 'S20'),
+                               dtype=[('twid', 'S25'), ('lat', 'f8'), ('lng', 'f8'), ('time', 'i4'), ('user', 'S20'),
                                       ('uname', 'S20'), ('tweet', 'S250')],
                                delimiter=';', comments='*')
 
@@ -368,10 +368,10 @@ class STData:
         """
 
         if not coordinates:
-            savetxt(self.wpath+filename, self.dataset, delimiter=',')
+            savetxt(self.wpath+filename, self.dataset, delimiter=',', fmt='%.18e, %.18e, %d, %s')
         else:
             print self.wpath+filename
-            savetxt(self.wpath+filename, self.getDataCoordinates(), delimiter=',')
+            savetxt(self.wpath+filename, self.getDataCoordinates(), delimiter=',', fmt='%.18e,%.18e')
 
 
 
@@ -778,7 +778,7 @@ class STData:
             for i in range(self.dataset.shape[0]):
                 posy = self.dataset[i][0]
                 posx = self.dataset[i][1]
-                ejem = np.array([[posy, posx]])
+                ejem = np.array([[posy, posx]]).reshape(1,-1)
                 ncl = cluster.predict(ejem)
                 ncl = ncl[0]
 
@@ -822,7 +822,7 @@ class STData:
             for i in range(self.dataset.shape[0]):
                 posy = self.dataset[i][0]
                 posx = self.dataset[i][1]
-                ejem = np.array([[posy, posx]])
+                ejem = np.array([[posy, posx]]).reshape(1,-1)
                 ncl = cluster.predict(ejem)
                 ncl = ncl[0]
 
@@ -857,7 +857,7 @@ class STData:
                 for i in range(self.dataset.shape[0]):
                     posy = self.dataset[i][0]
                     posx = self.dataset[i][1]
-                    ejem = np.array([[posy, posx]])
+                    ejem = np.array([[posy, posx]]).reshape(1,-1)
                     ncl = cluster.predict(ejem)
                     ncl = ncl[0]
 

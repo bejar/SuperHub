@@ -47,7 +47,7 @@ def plot_accumulated_events(data, distrib=True, scale=100):
     data.contingency(scale, distrib)
 
 
-def data_histograms(data, lhh=None):
+def data_histograms(data, lhh=None, dates=None):
     """
     Generate histograms for different characteristics of the data
     Outputs the data used to generate the histograms
@@ -65,7 +65,11 @@ def data_histograms(data, lhh=None):
         lhh = [(5, 100)]
     application = data.application
     city = data.city[2]
-    today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    if dates is  None:
+        today = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    else:
+        today = dates[0]+ '-' + dates[1]
+
     homepathr = homepath + 'Results/'
     for mxhh, mnhh in lhh:
         nfile = '-nusr' + str(mxhh) + '#' + str(mnhh) + '-ts' + today
@@ -90,6 +94,8 @@ def data_histograms(data, lhh=None):
 
         savePlot(range(24), ht, homepathr + city + '-' + application + '-hourly' + nfile + '.pdf')
         np.savetxt(homepathr + city + '-' + application + '-hourly' + nfile + '.csv',
+                   np.array([range(1, 25), np.array(ht)]).transpose(), fmt='%d')
+        np.savetxt(homepathr + city + '-' + application + '-hourly-norm' + nfile + '.csv',
                    np.array([range(1, 25), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
         print 'Computing daily histogram'
@@ -97,6 +103,8 @@ def data_histograms(data, lhh=None):
 
         savePlot(range(7), ht, homepathr + city + '-' + application + '-daily' + nfile + '.pdf')
         np.savetxt(homepathr + city + '-' + application + '-daily' + nfile + '.csv',
+                   np.array([range(1, 8), np.array(ht)]).transpose(), fmt='%d')
+        np.savetxt(homepathr + city + '-' + application + '-daily-norm' + nfile + '.csv',
                    np.array([range(1, 8), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
         print 'Computing montly histogram'
@@ -104,6 +112,8 @@ def data_histograms(data, lhh=None):
 
         savePlot(range(12), ht, homepathr + city + '-' + application + '-monthy' + nfile + '.pdf')
         np.savetxt(homepathr + city + '-' + application + '-monthly' + nfile + '.csv',
+                   np.array([range(1, 13), np.array(ht)]).transpose(), fmt='%d')
+        np.savetxt(homepathr + city + '-' + application + '-monthly-norm' + nfile + '.csv',
                    np.array([range(1, 13), np.array(ht) / float(np.sum(ht))]).transpose(), fmt='%f')
 
 

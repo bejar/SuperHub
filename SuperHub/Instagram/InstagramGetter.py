@@ -208,7 +208,7 @@ def get_instagram(city, logger, col, wsinf=True):
 
             wfile.write('\n')
             wfile.flush()
-    logger.info('---- %d different photos # %s', i, time.ctime(time.time()))
+    logger.info('%s ---- %d different photos # %s', city, i, time.ctime(time.time()))
     if wsinf:
         try:
             requests.get(Webservice, params={'content':  'ig-' + city, 'count': i, 'delta': i / (timeout / 60)})

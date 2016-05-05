@@ -213,14 +213,14 @@ def cluster_events(data, nclust=10, mxhh=0, mnhh=0, radius=0.01, mins=100, size=
                       sizes[sizes > size],
                       sizeprop=250,
                       dataname='leader-crd' + str(radius) + '-mex' + str(size) + shrs)
-        nfile = homepath + 'Results/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
+        nfile = homepath + 'Results/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) + \
+                '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
         if lhours is not None:
             nfile += '-hrs' + str(lhours)
 
         savetxt(nfile + '.csv', dbs.cluster_centers_[sizes > size], delimiter=';')
-        nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) \
-                + '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
+        nfile = homepath + 'Clusters/' + data.city[2] + data.get_app_name() + '-' + 'nusr' + str(mxhh) + '+' + str(mnhh) + \
+                '-' + 'Leader-crd' + str(radius) + '-mex' + str(size)
         if lhours is not None:
             nfile += '-hrs' + str(lhours)
 

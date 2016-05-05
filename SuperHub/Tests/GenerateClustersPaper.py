@@ -23,12 +23,12 @@ import time
 
 from pylab import *
 
-from Parameters.Constants import homepath, bcnparam
+from Parameters.Constants import homepath, bcnparam, londonparam
 from Analysis.STData import STData
 from Analysis.Transactions import DailyDiscretizedTransactions, DailyClusteredTransactions
 from Analysis.Clustering import cluster_events, cluster_cache, cluster_colapsed_events, cluster_colapsed_events_simple
 from Analysis.Util import now
-from Analysis import TimeDiscretizer
+from Analysis.TimeDiscretizer import TimeDiscretizer
 
 
 def compute_transactions_clusters(r, alg=['affinity'], mode='binidf', nclust=10,
@@ -40,9 +40,10 @@ def compute_transactions_clusters(r, alg=['affinity'], mode='binidf', nclust=10,
     @param output: 'map', 'sizes', 'labels'
     @return:
     """
-    param, datafile, mxhh, mnhh, calg, radius, mins, timedis = r
+    param, datafile, mxhh, mnhh, calg, radius, mins, timedis, dates = r
     data = STData(homepath, param, datafile)
-    data.read_data()
+    data.read_DB_time(str(int(time.mktime(time.strptime(dates[0],'%d%m%Y')))), str(int(time.mktime(time.strptime(dates[1],'%d%m%Y')))))
+    #data.read_data()
     datahh = data.select_heavy_hitters(mxhh, mnhh)
     print 'Data loaded.'
 
@@ -198,9 +199,9 @@ def explore_number_of_clusters(r, alg='affinity', mode='binidf', scale=100, nclu
 #                                       alg=['kmeans', 'affinity', 'spectral'], mode='bin', nclust=60,
 #                                       minloc=20, damping=0.999, minsize=20, output='sizes')
 
-for i in [0.001, 0.0025, 0.005]:
-    for j in [[6, 18], [6, 16, 22], [6, 16, 18, 22]]:
-        compute_transactions_clusters([bcnparam, 'twitter-september', 50, 70000, 'Leader', i, 25, j],
+for i in [0.0025]:
+    for j in [[6, 18]]:
+        compute_transactions_clusters([bcnparam, 'instagram', 0, 50000, 'Leader', i, 25, j, ['01032015', '01092015']],
                                       alg=['kmeans', 'affinity', 'spectral'], mode='bin', nclust=100,
                                       minloc=20, damping=0.5, minsize=20, output='all')
 

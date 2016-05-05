@@ -77,6 +77,7 @@ def savePlot(axis, data, fname):
     title = fname.split('/')
     plt.title(title[-1])
     fig.savefig(fname, orientation='landscape', format='pdf')
+    plt.close()
 
 
 def hourly_histogram(data):

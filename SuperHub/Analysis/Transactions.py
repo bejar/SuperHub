@@ -74,6 +74,7 @@ class DailyTransactions(Transactions):
                 else:
                     uev[evtime].append(pos)
         self.usertrans = usertrans
+        print len(usertrans)
 
     def serialize(self):
         """
@@ -169,6 +170,7 @@ class DailyTransactions(Transactions):
             for day in usertrans:
                 userdaytrans = usertrans[day]
                 fr.append(len(userdaytrans))
+        print len(fr)
         return fr
 
     def users_prevalence(self):
@@ -177,12 +179,13 @@ class DailyTransactions(Transactions):
 
         Used to compute user prevalence histograms
 
-        :returns: list with the count of tractactions for each user
+        :returns: list with the count of transactions for each user
         """
         transactions = self.usertrans
         fr = []
         for user in transactions:
             fr.append(len(transactions[user]))
+        print len(fr)
         return fr
 
 
@@ -210,7 +213,7 @@ class DailyClusteredTransactions(DailyTransactions):
             user = str(int(data[i][3]))
             posy = data[i][0]
             posx = data[i][1]
-            ejem = np.array([[posy, posx]])
+            ejem = np.array([[posy, posx]]).reshape(1,-1)
             ncl = cluster.predict(ejem)
             ncl = ncl[0]
             if ncl != -1:
@@ -255,7 +258,7 @@ class DailyClusteredTransactions(DailyTransactions):
             x = float(x)
             y = float(y)
             t = int(t)
-            ejem = np.array([[x, y]])
+            ejem = np.array([[x, y]]).reshape(1,-1)
             ncl = cluster.predict(ejem)
             ncl = ncl[0]
             if ncl != -1:

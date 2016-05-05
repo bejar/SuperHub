@@ -19,6 +19,7 @@ fsqtwitter2
 
 __author__ = 'bejar'
 
+
 import urllib2
 import httplib
 import time
@@ -26,7 +27,7 @@ import logging
 
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
-
+from pymongo.errors import OperationFailure
 from Parameters.Pconstants import mglocal
 
 
@@ -213,92 +214,98 @@ def chop_ig(url):
 
 
 def do_the_job(ltwid):
-    mgdb = mglocal[0]
-    client = MongoClient(mgdb)
-    db = client.local
-    #db.authenticate(mglocal[2], password=mglocal[3])
-    col = db[mglocal[1]]
+    try:
+        mgdb = mglocal[0]
+        client = MongoClient(mgdb)
+        db = client.local
+        #db.authenticate(mglocal[2], password=mglocal[3])
+        col = db[mglocal[1]]
 
-    cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, no_cursor_timeout=True)
-    cnt = 0
-    lasttwid = ''
-    for t in cursor:
-        if lasttwid < t['twid']:
-            lasttwid = t['twid']
-        if 'I\'m at' in t['tweet'] or 'http' in t['tweet']:
-            text = t['tweet'].split()
-            url = None
-            for p in text:
-                if 'http' in p:
-                    url = p[p.find('http'):]
-                    if '\"' in url:
-                        url = url[0: url.find('\"')]
-                        # if '\xe2' in url:
-                        # url = url[0: url.find('\xe2')]
-            if url is not None:
-                try:
-                    cnt += 1
-                    resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
-                    # print resp.url
-                    if 'foursquare' in resp.url or 'swarmapp' in resp.url:
-                        logger.info('FQ: %d %s', cnt, time.ctime(int(t['time'])))
-                        logger.info('%s', t['tweet'])
-                        logger.info('%s', resp.url)
-                        vals = [str(t['twid']), resp.url.rstrip()]
-                        url = vals[1]
-                        val = chop_fsq(url)
-                        if val is None:  # Try a second time
-                            time.sleep(2)
+        cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, no_cursor_timeout=True)
+        cnt = 0
+        lasttwid = ''
+        for t in cursor:
+            if lasttwid < t['twid']:
+                lasttwid = t['twid']
+            if 'I\'m at' in t['tweet'] or 'http' in t['tweet']:
+                text = t['tweet'].split()
+                url = None
+                for p in text:
+                    if 'http' in p:
+                        url = p[p.find('http'):]
+                        if '\"' in url:
+                            url = url[0: url.find('\"')]
+                            # if '\xe2' in url:
+                            # url = url[0: url.find('\xe2')]
+                if url is not None:
+                    try:
+                        cnt += 1
+                        resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
+                        # print resp.url
+                        if 'foursquare' in resp.url or 'swarmapp' in resp.url:
+                            logger.info('FQ: %d %s', cnt, time.ctime(int(t['time'])))
+                            logger.info('%s', t['tweet'])
+                            logger.info('%s', resp.url)
+                            vals = [str(t['twid']), resp.url.rstrip()]
+                            url = vals[1]
                             val = chop_fsq(url)
-                            logger.info('Trying a second time ...')
-                        if val is not None:
-                            vals.extend(val)
-                            if len(vals) == 14:
-                                upd = transform_fqr(vals)
-                                if upd is not None:
-                                    col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
-                                    logger.info('TWID FQ: %s', vals[0])
-                        else:  # If not successful go to next
-                            logger.info('Unsuccessfully')
+                            if val is None:  # Try a second time
+                                time.sleep(2)
+                                val = chop_fsq(url)
+                                logger.info('Trying a second time ...')
+                            if val is not None:
+                                vals.extend(val)
+                                if len(vals) == 14:
+                                    upd = transform_fqr(vals)
+                                    if upd is not None:
+                                        col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
+                                        logger.info('TWID FQ: %s', vals[0])
+                            else:  # If not successful go to next
+                                logger.info('Unsuccessfully')
 
-                    elif 'instagram' in resp.url:
-                        logger.info('IG: %d %s', cnt, time.ctime(int(t['time']), ))
-                        logger.info("%s ", t['tweet'])
-                        #print resp.url
-                        vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
-                        url = vals[3]
-                        val = chop_ig(url)
-                        if val is None:  # Try a second time
-                            time.sleep(2)
+                        elif 'instagram' in resp.url:
+                            logger.info('IG: %d %s', cnt, time.ctime(int(t['time']), ))
+                            logger.info("%s ", t['tweet'])
+                            #print resp.url
+                            vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
+                            url = vals[3]
                             val = chop_ig(url)
-                        if val is not None:
-                            vals.extend(val)
-                            print vals
-                            upd = transform_igr(vals)
-                            if upd is not None:
-                                col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
-                                logger.info('TWID IG: %s', vals[0])
+                            if val is None:  # Try a second time
+                                time.sleep(2)
+                                val = chop_ig(url)
+                            if val is not None:
+                                vals.extend(val)
+                                print vals
+                                upd = transform_igr(vals)
+                                if upd is not None:
+                                    col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
+                                    logger.info('TWID IG: %s', vals[0])
 
-                                # if cnt % 100 == 0:
-                                #     time.sleep(5)
-                                #     logger.info('Sleeping ...')
+                                    # if cnt % 100 == 0:
+                                    #     time.sleep(5)
+                                    #     logger.info('Sleeping ...')
 
 
-                except ValueError as e:
-                    logger.error('ValueError: %s', e)
-                except IOError as e:
-                    logger.error('IOError %s %s', e, url)
-                except UnicodeError as e:
-                    logger.error('UnicodeError %s', e)
-                except urllib2.httplib.BadStatusLine:
-                    pass
-                except urllib2.HTTPError:
-                    logger.error('HTTPError')
-                except  httplib.IncompleteRead:
-                    logger.error('HTTPError')
+                    except ValueError as e:
+                        logger.error('ValueError: %s', e)
+                    except IOError as e:
+                        logger.error('IOError %s %s', e, url)
+                    except UnicodeError as e:
+                        logger.error('UnicodeError %s', e)
+                    except urllib2.httplib.BadStatusLine:
+                        pass
+                    except urllib2.HTTPError:
+                        logger.error('HTTPError')
+                    except  httplib.IncompleteRead:
+                        logger.error('HTTPError')
+                    if cnt % 1000 == 0:
+                        col = db['Params']
+                        col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
+        col = db['Params']
+        col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
+    except OperationFailure:
+        pass
 
-    col = db['Params']
-    col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
 
 # ----------------------------------------------------------------------------------------------------
 
