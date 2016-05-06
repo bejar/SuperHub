@@ -368,7 +368,7 @@ class STData:
         """
 
         if not coordinates:
-            savetxt(self.wpath+filename, self.dataset, delimiter=',', fmt='%.18e, %.18e, %d, %s')
+            savetxt(self.wpath+filename, self.dataset, delimiter=',', fmt='%.18e,%.18e,%d,%s')
         else:
             print self.wpath+filename
             savetxt(self.wpath+filename, self.getDataCoordinates(), delimiter=',', fmt='%.18e,%.18e')
