@@ -73,7 +73,7 @@ def data_histograms(data, lhh=None, dates=None):
     homepathr = homepath + 'Results/'
     for mxhh, mnhh in lhh:
         nfile = '-nusr' + str(mxhh) + '#' + str(mnhh) + '-ts' + today
-        data.select_heavy_hitters(mxhh, mnhh)
+        data = data.select_heavy_hitters(mxhh, mnhh)
 
         print 'Computing daily length histogram'
         transactions = DailyTransactions(data)

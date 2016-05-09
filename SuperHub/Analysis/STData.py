@@ -431,7 +431,7 @@ class STData:
 
     def select_heavy_hitters(self, mxhh, mnhh):
         """
-        Deletes all the events that are not from the heavy hitters
+        returns all the events that are not from the heavy hitters
         Returns a new data object only with the heavy hitters
 
 

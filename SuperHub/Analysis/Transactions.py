@@ -74,7 +74,6 @@ class DailyTransactions(Transactions):
                 else:
                     uev[evtime].append(pos)
         self.usertrans = usertrans
-        print len(usertrans)
 
     def serialize(self):
         """
@@ -170,7 +169,6 @@ class DailyTransactions(Transactions):
             for day in usertrans:
                 userdaytrans = usertrans[day]
                 fr.append(len(userdaytrans))
-        print len(fr)
         return fr
 
     def users_prevalence(self):
@@ -185,7 +183,6 @@ class DailyTransactions(Transactions):
         fr = []
         for user in transactions:
             fr.append(len(transactions[user]))
-        print len(fr)
         return fr
 
 
