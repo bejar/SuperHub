@@ -84,7 +84,7 @@ parisblacklist = ['Work_HiltonEMEA', 'remixjobs', 'VideosSexe_net', 'trendinalia
                   'tmj_fra_itqa', 'tmj_fra_jobs', 'tmj_fra_adv', 'Keys_for_Paris', 'tmj_fra_cler', 'VMwareJobs', 'tmj_fra_itdb', 'BCritique',
                   'QuoteAdo_', 'BCritique ', 'LouAdn2 ', 'LouAdn2', 'Orayane_Models', 'QuoteAdo_ ', 'Nizard_Bdl', 'tmj_fra_hrta', 'trendinalia',
                   'chien_perdu', 'pairsonnalitesF', 'pairsonnalitesN', 'PairsonnalitesU', 'chat_perdu', 'tmj_fra_sales', 'tmj_fra_it',
-                  'tmj_fra_itpm']
+                  'tmj_fra_itpm', 'PhotoSchedule']
 londonblacklist = ['trendinaliaGB', 'trendinaliaGB ', 'MWWeather', 'kt19weather', 'Newsminster', 'tmj_lon_jobs', 'ThurrockWeather', 'trendinaliaLON',
                    'ScChouffot', 'kartenquizde', 'arsenalinks', 'footballinks', 'twinklekit', 'MusicNewsWeb', 'VirtualJukebox',
                    'getketo', 'OvergroundBot', 'Work_HiltonEMEA', 'WorkatHilton', 'RPWeather ', 'RPWeather', 'kickalert', 'jxnchanel_',
@@ -97,7 +97,7 @@ londonblacklist = ['trendinaliaGB', 'trendinaliaGB ', 'MWWeather', 'kt19weather'
                    'tmj_GBR_ins', 'tmj_LON_LABOR', '_LondonUK', 'tmj_lon_sales', 'PairsonnalitesU', 'tmj_GBR_HRTA', 'GreenwichLifts',
                    'tmj_lon_legal', 'tmj_LON_itmgmt', 'tmj_LON_cstsrv', 'StockNewsWire', 'TycoCareers', 'BroadbandComUK', 'DerekCopsey',
                    'tdweather', 'soltempore', 'PhotoSchedule', 'CIassicalMusic', 'ch2mjobs', 'infosrv', 'BryanGodfree', 'AndyHerrod',
-                   'SolarSchols', 'GrandyOfficial']
+                   'SolarSchols', 'GrandyOfficial', 'FANTASTICRADIOO']
 berlinblacklist = ['trendinaliaDE', 'RadioTeddyMusic', '_BB_RADIO_MUSIC', 'pairsonnalitesD', 'pharma24', 'BerlinDE'
                    'dasauge_jobs', 'regenberlin', 'kartenquizde', 'trendinaliaBER', 'tmj_ger_green', 'tmj_ger_ins', 'tmj_ger_itdb',
                    'tmj_ger_art', 'tmj_ger_jobs', 'tmj_ger_itjava', 'tmj_ger_media', 'tmj_ger_edu', 'pinkbigmac', '030_Berlin', 'dasauge_jobs ',
