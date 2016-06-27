@@ -38,11 +38,16 @@ db = client.local
 #db.authenticate(mglocal[2], password=mglocal[3])
 col = db['Instagram']
 timeout = cityparams[city][4]
-
+additional = 0
 ## Gets instagram Data at interval times
 while True:
-    get_instagram(city, logger, col, wsinf=True)
-    sleep(timeout)
+    res = get_instagram(city, logger, col, wsinf=True)
+    if res == 0:
+        sleep(timeout)
+    else:
+        additional += 240
+        sleep(timeout+additional)
+
     # if not client.alive():
     #     col = None
 

@@ -134,8 +134,6 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
     if colapsed:
         nfile += '-c'
 
-    # File for the textual results
-    rfile = open(homepath + 'Results/' + nfile + '.txt', 'w')
     userEvents = DailyDiscretizedTransactions(data, scale=scale, timeres=TimeDiscretizer(timeres))
 
     print 'Serializing the transactions'
@@ -146,11 +144,16 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
     print 'Transactions', len(trans)
     ltrans = []
     print 'Applying fp-growth'
+
+    # File for the textual results
+    rfile = open(homepath + 'Results/' + nfile + '.txt', 'w')
+
     for itemset, sval in fpgrowth(trans, supp=-supp, min=2, target='m'):
         if diff_items(itemset) > 1:
             ltrans.append(itemset)
             print itemset, sval
             rfile.write(str(sorted(itemset, key=item_key_sort)) + ' ' + str(sval) + '\n')
+    rfile.close()
 
     print 'Routes', len(ltrans)
     fig = plt.figure()
@@ -204,7 +207,7 @@ def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=Fals
 
     # Saving the plot
     fig.savefig(homepath + 'Results/' + nfile + '.pdf', orientation='landscape', format='pdf')
-    rfile.close()
+
     geoc = FeatureCollection(lgeo)
     dump = geojson.dumps(geoc)
     jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')

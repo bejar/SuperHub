@@ -57,11 +57,12 @@ if args.city:
     timeout = cityparams[city][4]
 
     wsinf = (args.webservice == 1)
-
-
+    additional = 0
     ## Gets instagram Data at interval times
     while True:
-        get_instagram(city, logger, col, wsinf=wsinf)
-        sleep(timeout)
-        # if args.mongo == 1 and not client.alive():
-        #     col = None
+        res = get_instagram(city, logger, col, wsinf=True)
+        if res == 0:
+            sleep(timeout)
+        else:
+            additional += 240
+            sleep(timeout + additional)

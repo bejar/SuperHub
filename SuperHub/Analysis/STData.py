@@ -504,6 +504,21 @@ class STData:
         data.dataset = self.dataset[sel]
         return data
 
+    def select_weekdays(self, ldays):
+        """
+        Selects only eventes inside a specific set of weekdays [0..6]
+        @param ldays:
+        @return:
+        """
+        sel = []
+        for i in range(self.dataset.shape[0]):
+            stime = time.localtime(np.int32(self.dataset[i][2]))
+            if stime[6] in ldays:
+                sel.append(i)
+        data = STData(self.wpath, self.city, self.application)
+        data.dataset = self.dataset[sel]
+        return data
+
 
     def hourly_table(self):
         """

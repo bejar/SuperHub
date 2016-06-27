@@ -23,7 +23,7 @@ import time
 def generate_routes(routes):
     for r in routes:
         print str(r)
-        param, datafile, mxhh, mnhh, alg, radius, mins, timeres, dates = r
+        param, datafile, mxhh, mnhh, alg, radius, mins, timeres, dates, weekdays = r
         data = STData(homepath, param, datafile)
         # data.read_py_data()
         if dates is None:
@@ -32,6 +32,9 @@ def generate_routes(routes):
         else:
             data.read_DB_time(str(int(time.mktime(time.strptime(dates[0],'%d%m%Y')))), str(int(time.mktime(time.strptime(dates[1],'%d%m%Y')))))
             tdates = dates[0] + '-' + dates[1]
+        if weekdays is not None:
+            data = data.select_weekdays(weekdays)
+            tdates += '-WD' + str(weekdays)
         print data.info()
         print 'Data loaded.'
         datahh = data.select_heavy_hitters(mxhh, mnhh)
@@ -155,8 +158,8 @@ generate_routes([
     # [cityparams['bcn'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
     #  [cityparams['london'], ['twitter'], 100, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
     # [cityparams['london'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
-     [cityparams['paris'], ['twitter'], 100, 50100, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
-     [cityparams['paris'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']]
+     [cityparams['paris'], ['twitter'], 100, 50100, 'Leader', 0.0025, 50, [6,18], ['01062015', '01062016'], [0,1,2,3,4]],
+     [cityparams['paris'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01062015', '01062016'], [0,1,2,3,4]]
  ])
 
 

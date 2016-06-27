@@ -119,6 +119,11 @@ def get_instagram(city, logger, col, wsinf=True):
                 'https://api.instagram.com/v1/media/search?lat=%f&lng=%f&distance=5000&count=100&min_timestamp=%d&max_timestamp=%d&access_token=%s' %
                 (circ[0], circ[1], itime - timeout, itime, access_token), timeout=10)
             res = api.json()
+            print res
+            if 'error_type' in res:
+                logger.error('Instagram Error Too many requests')
+                logger.error(res)
+                return 0
 
             for media in res['data']:
                 mid = media['id']
@@ -218,6 +223,7 @@ def get_instagram(city, logger, col, wsinf=True):
         except RequestException:
             logger.error('Webservice Request Exception')
             wsinf = False
+    return 1
 
 
 lattr = ['city', 'igid', 'user', 'lat', 'lng', 'time', 'text', 'name']
