@@ -53,6 +53,8 @@ def generate_routes(routes):
                                           str(mxhh) + '+' + str(mnhh) + '-' + tdates,
                                           cluster=clust, supp=mins, timeres=timeres)
             now()
+
+
         else:
             now()
             transaction_routes(datahh, data.city[2] + data.get_app_name() + '-Grid' + str(radius) + '-nusr' + str(mxhh)
@@ -158,9 +160,9 @@ generate_routes([
     # [cityparams['bcn'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
     #  [cityparams['london'], ['twitter'], 100, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
     # [cityparams['london'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
-     [cityparams['paris'], ['twitter'], 100, 50100, 'Leader', 0.0025, 50, [6,18], ['01062015', '01062016'], [0,1,2,3,4]],
-     [cityparams['paris'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01062015', '01062016'], [0,1,2,3,4]]
- ])
+     [cityparams['london'], ['twitter'], 100, 100100, 'Leader', 0.005, 30, [6,18], ['01062015', '01062016'], None],
+     [cityparams['london'], ['instagram'], 0, 100000, 'Leader', 0.005, 30, [6,18], ['01062015', '01062016'], None]
+])
 
 
 print 'Done.'

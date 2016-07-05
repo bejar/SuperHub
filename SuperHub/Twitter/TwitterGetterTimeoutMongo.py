@@ -158,7 +158,7 @@ def config_logger(silent=False, file=None):
 
 def get_tweets(city, logger, col, inform=50, wsinf=True):
     """
-    GEt tweets waiting ot a timeout
+    Get tweets waiting ot a timeout
 
     @param city:
     @param logger:

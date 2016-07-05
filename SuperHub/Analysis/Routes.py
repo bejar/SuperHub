@@ -40,8 +40,16 @@ import folium
 from geojson import LineString, FeatureCollection, Feature
 import geojson
 from Analysis.TimeDiscretizer import TimeDiscretizer
+import networkx as nx
+import community
+from Util import choose_color
 
 #import pygmaps
+
+def colorize(v):
+    v = int(2**24 /(v+50)*100)
+    return('#%s'%hex(v)[2:])
+
 
 def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4, colapsed=False):
     """
@@ -91,6 +99,7 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
                        height=1000)
 
     lgeo = []
+    gr = nx.Graph()
     for t in ltrans:
         seq = []
         for i in t:
@@ -105,8 +114,9 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
             x2 = float(x2)
             y2 = float(y2)
             lgeo.append(Feature(geometry=LineString([(y1, x1), (y2, x2)])))
+            gr.add_edge((x1, y1), (x2, y2))
 
-    # Saving the plot
+        # Saving the plot
     geoc = FeatureCollection(lgeo)
     dump = geojson.dumps(geoc)
     jsfile = open(homepath + 'Results/' + nfile + '.json', 'w')
@@ -115,6 +125,25 @@ def transaction_routes_clustering(data, nfile, cluster=None, supp=30, timeres=4,
     mymap.geo_json(geo_path=homepath + 'Results/' + nfile + '.json', fill_color='Black', line_color='Black',
                    line_weight=2)
     mymap.create_map(path=homepath + 'Results/' + nfile + '.html')
+
+    clmap = folium.Map(location=[(minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0], zoom_start=12, width=1500,
+                       height=1000)
+
+    partition = community.best_partition(gr)
+    dpart = set()
+
+    for vert in partition:
+        dpart.add(partition[vert])
+    nc = len(dpart)
+
+    lcolors = choose_color(nc)
+    for vert in partition:
+        x1, y1 = vert
+        c = partition[vert]
+        clmap.circle_marker(location=[x1, y1], radius=50, line_color=lcolors[c], fill_color=lcolors[c],
+                            fill_opacity=0.5, popup=str(partition[vert]))
+    print 'Num Partitions=', len(dpart)
+    clmap.create_map(path=homepath + 'Results/' + nfile + '-routes-partition.html')
 
 
 def transaction_routes(data, nfile, scale=100, supp=30, timeres=4, colapsed=False):
