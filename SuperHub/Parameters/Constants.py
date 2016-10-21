@@ -22,6 +22,8 @@ __author__ = 'bejar'
 
 from Parameters.Pconstants import mgdbbcn, mgdbmilan, mgdbhelsinki
 import numpy as np
+from colorama import Fore
+
 homepath = '/home/bejar/Data/SuperHub/'
 
 # 45.467 9.200
@@ -105,13 +107,13 @@ berlinblacklist = ['trendinaliaDE', 'RadioTeddyMusic', '_BB_RADIO_MUSIC', 'pairs
 romeblacklist = ['trendinaliaFCO', 'trendinaliaIT', 'TrendsItalia', 'VaticanVA', 'Rome', 'soltempore', 'luigispaziani1', 'trendinaliaIT ', 'trendinaliaFCO',
                  'TrendsRoma', 'Map_Game', 'tmj_ita_jobs', 'trendinalia', 'pairsonnalitesB', 'PairsonnalitesU', 'TalesToursTips']
 
-bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles, 360, set(bcnblacklist))
-milanparam = (mgdbmilan, milancoord, 'milan', milanigcircles, 360, set(milanblacklist))
+bcnparam = (mgdbbcn, bcncoord, 'bcn', bcnigcircles, 360, set(bcnblacklist), Fore.RED)
+milanparam = (mgdbmilan, milancoord, 'milan', milanigcircles, 360, set(milanblacklist), Fore.GREEN)
 hlsnkparam = (mgdbhelsinki, hlsnkcoord, 'hlsnk')
-parisparam = (None, pariscoord, 'paris', parisigcircles,240, set(parisblacklist))
-londonparam = (None, londoncoord, 'london', londonigcircles, 240, set(londonblacklist))
-berlinparam = (None, berlincoord, 'berlin', berlinigcircles, 360, set(berlinblacklist))
-romeparam = (None, romecoord, 'rome', romeigcircles, 360, set(romeblacklist))
+parisparam = (None, pariscoord, 'paris', parisigcircles,240, set(parisblacklist), Fore.BLUE)
+londonparam = (None, londoncoord, 'london', londonigcircles, 240, set(londonblacklist), Fore.CYAN)
+berlinparam = (None, berlincoord, 'berlin', berlinigcircles, 360, set(berlinblacklist), Fore.YELLOW)
+romeparam = (None, romecoord, 'rome', romeigcircles, 360, set(romeblacklist), Fore.MAGENTA)
 spainparam= ('ES', spaincoord, 'spain', None, 0, set())
 nyparam = (None, nycoord, 'newyork', None, 300, set())
 

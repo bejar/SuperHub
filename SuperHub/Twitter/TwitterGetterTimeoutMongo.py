@@ -36,6 +36,8 @@ from pymongo.errors import DuplicateKeyError
 
 from Parameters.Constants import cityparams, TW_TIMEOUT, homepath
 from Parameters.Private import credentials, Webservice
+from colorama import init, Style
+
 
 
 class TimeoutException(Exception):
@@ -182,6 +184,8 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
     minLon = cityparams[city][1][2]
     maxLon = cityparams[city][1][3]
     blacklist = cityparams[city][5]
+    citycolor = cityparams[city][6]
+    init()
 
     try:
         api = TwitterAPI(
@@ -201,7 +205,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                 logger.error('disconnecting because %s', item['disconnect'].get('reason'))
                 return 0
             elif item['user']['screen_name'] in blacklist:
-                logger.error('@@@@@@@@@@@@@@@@ Blacklisted @@@@@@@@@@@@@@@@@@')
+                logger.error('@@@@@@@@@@@@@@@@ %s Blacklisted @@@@@@@@@@@@@@@@@@', city)
             elif item['coordinates'] is not None:
                 vals = []
                 vals.append(str(item['id']))
@@ -251,7 +255,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                     deltatime = (currtime - initime) / 60.0
 
                     if deltatime != 0:
-                        logger.info('%s ---- %2.3f tweets/minute', city, i / deltatime)
+                        logger.info('%s %s ---- %2.3f tweets/minute %s', citycolor, city, i / deltatime, Style.RESET_ALL)
 
                     i += 1
                     #if wsinf and inform != 0 and i % inform == 0:
@@ -261,7 +265,7 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
                             prevtime = currtime
                         except Timeout:
                             wsinf = False
-                            logger.error('##########################  WS timed out! ###############################')
+                            logger.error('########################## %s WS timed out! ###############################', city)
             else:
                 if 'text' in item:
                     #print item['text']
@@ -272,20 +276,20 @@ def get_tweets(city, logger, col, inform=50, wsinf=True):
             j += 1
 
     except TimeoutException:
-        logger.error('##########################  It timed out! ###############################')
+        logger.error('########################## %s It timed out! ###############################', city)
     except ReadTimeoutError:
-        logger.error('##########################  READ timed out! ###############################')
+        logger.error('########################## %s READ timed out! ###############################', city)
     except RequestException:
-        logger.error('##########################  REQUEST ERROR ###############################')
+        logger.error('########################## %s REQUEST ERROR ###############################', city)
         wsinf = False
     except TwitterError:
-        logger.error('##########################  Twitter ERROR ###############################')
+        logger.error('########################## %s Twitter ERROR ###############################', city)
     except TwitterConnectionError:
-        logger.error('##########################  Twitter Connection ERROR ###############################')
+        logger.error('########################## %s Twitter Connection ERROR ###############################', city)
     except TwitterRequestError:
-        logger.error('##########################  Twitter Request ERROR ###############################')
+        logger.error('########################## %s Twitter Request ERROR ###############################', city)
     except TypeError:
-        logger.error('##########################  Twitter Request ERROR ###############################')
+        logger.error('########################## %s Twitter Request ERROR ###############################', city)
 
     if col is None:
         wfile.close()

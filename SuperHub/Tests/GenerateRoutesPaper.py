@@ -160,8 +160,7 @@ generate_routes([
     # [cityparams['bcn'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
     #  [cityparams['london'], ['twitter'], 100, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
     # [cityparams['london'], ['instagram'], 0, 50000, 'Leader', 0.0025, 50, [6,18], ['01012015', '01052015']],
-     [cityparams['london'], ['twitter'], 100, 100100, 'Leader', 0.005, 30, [6,18], ['01062015', '01062016'], None],
-     [cityparams['london'], ['instagram'], 0, 100000, 'Leader', 0.005, 30, [6,18], ['01062015', '01062016'], None]
+     [cityparams['london'], ['twitter'], 100, 100100, 'Leader', 0.0025, 30, [6,18], ['01072016', '01092016'], None],
 ])
 
 

@@ -29,7 +29,7 @@ from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from pymongo.errors import OperationFailure
 from Parameters.Pconstants import mglocal
-
+from colorama import init, Style, Fore
 
 def transform_fqr(tdata):
     if tdata[8] == ' ' or tdata[9] == ' ':
@@ -127,7 +127,7 @@ def find_first_ig(val, list):
 def hack_val_fq(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"', '').replace('{', '').replace('[', '')
+        vr = v.replace('\"', '').replace('{', '').replace('[', '').replace('}', '').replace(']', '')
         vals.append(vr.split(':'))
     # print vals
     return vals
@@ -136,8 +136,8 @@ def hack_val_fq(val):
 def hack_val_ig(val):
     vals = []
     for v in val.split(','):
-        vr = v.replace('\"', '')
-        vals.append(vr.split(':'))
+        vr = v.replace('\"', '').replace('[', '').replace(']', '').replace('}', '').replace('{', '')
+        vals.append([v.strip() for v in vr.split(':')])
     return vals
 
 
@@ -206,7 +206,7 @@ def chop_ig(url):
             if '_sharedData' in z:
                 powner = z.find('owner')
                 pfowner = z.find(',\"__get_params')
-                chk = z[powner + 8:pfowner - 2]
+                chk = z[powner+9:]
                 res.extend(extract_vals(hack_val_ig(chk), uservals_ig))
         return res
     else:
@@ -215,6 +215,7 @@ def chop_ig(url):
 
 def do_the_job(ltwid):
     try:
+        init()
         mgdb = mglocal[0]
         client = MongoClient(mgdb)
         db = client.local
@@ -243,7 +244,7 @@ def do_the_job(ltwid):
                         resp = urllib2.urlopen(url.encode('ascii', 'ignore'), timeout=5)
                         # print resp.url
                         if 'foursquare' in resp.url or 'swarmapp' in resp.url:
-                            logger.info('FQ: %d %s', cnt, time.ctime(int(t['time'])))
+                            logger.info('%s FQ: %d %s %s', Fore.BLUE, cnt, time.ctime(int(t['time'])), Style.RESET_ALL)
                             logger.info('%s', t['tweet'])
                             logger.info('%s', resp.url)
                             vals = [str(t['twid']), resp.url.rstrip()]
@@ -260,11 +261,12 @@ def do_the_job(ltwid):
                                     if upd is not None:
                                         col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
                                         logger.info('TWID FQ: %s', vals[0])
+                                        print vals
                             else:  # If not successful go to next
                                 logger.info('Unsuccessfully')
 
                         elif 'instagram' in resp.url:
-                            logger.info('IG: %d %s', cnt, time.ctime(int(t['time']), ))
+                            logger.info('%s IG: %d %s %s', Fore.RED, cnt, time.ctime(int(t['time']), ), Style.RESET_ALL)
                             logger.info("%s ", t['tweet'])
                             #print resp.url
                             vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]

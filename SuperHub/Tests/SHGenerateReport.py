@@ -24,16 +24,13 @@ from Analysis.STData import STData
 from Analysis.Descriptive import data_histograms
 import time
 
-dates = ['01012015', '01012016']
-for net in ['instagram', 'twitter']:
+dates = ['01092015', '01092016']
+for net in ['twitter']:
     for city in ['bcn', 'london', 'paris', 'milan', 'rome', 'berlin']:
         data = STData(homepath, cityparams[city], net)
         data.read_DB_time(str(int(time.mktime(time.strptime(dates[0],'%d%m%Y')))), str(int(time.mktime(time.strptime(dates[1],'%d%m%Y')))))
         #data.read_DB()
         data.info()
-
-        print data.dataset[0]
-        print data.dataset[1]
 
         data_histograms(data, lhh=[(20, 200000)], dates=dates)
 
