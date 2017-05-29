@@ -19,7 +19,6 @@ fsqtwitter2
 
 __author__ = 'bejar'
 
-
 import urllib2
 import httplib
 import time
@@ -30,6 +29,7 @@ from pymongo import MongoClient
 from pymongo.errors import OperationFailure
 from Parameters.Pconstants import mglocal
 from colorama import init, Style, Fore
+
 
 def transform_fqr(tdata):
     if tdata[8] == ' ' or tdata[9] == ' ':
@@ -148,7 +148,7 @@ def extract_vals(vals, patt):
         val = find_first_fq(p, vals)
         if val is not None:
             res.append(val)
-            #print val
+            # print val
         else:
             res.append('')
     return res
@@ -206,7 +206,7 @@ def chop_ig(url):
             if '_sharedData' in z:
                 powner = z.find('owner')
                 pfowner = z.find(',\"__get_params')
-                chk = z[powner+9:]
+                chk = z[powner + 9:]
                 res.extend(extract_vals(hack_val_ig(chk), uservals_ig))
         return res
     else:
@@ -219,16 +219,20 @@ def do_the_job(ltwid):
         mgdb = mglocal[0]
         client = MongoClient(mgdb)
         db = client.local
-        #db.authenticate(mglocal[2], password=mglocal[3])
+        # db.authenticate(mglocal[2], password=mglocal[3])
         col = db[mglocal[1]]
 
-        cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1}, no_cursor_timeout=True)
+        cursor = col.find({'twid': {'$gt': ltwid}}, {'tweet': 1, 'twid': 1, 'time': 1, 'lat': 1, 'lng': 1,
+                                                     'foursquare':1, 'instagram':1},
+                          no_cursor_timeout=True)
         cnt = 0
         lasttwid = ''
         for t in cursor:
             if lasttwid < t['twid']:
                 lasttwid = t['twid']
-            if 'I\'m at' in t['tweet'] or 'http' in t['tweet']:
+            if 'foursquare' in t or 'instagram' in t:
+                print 'Ya ta %s %s' % (t['twid'], time.ctime(int(t['time'])))
+            if ('I\'m at' in t['tweet'] or 'http' in t['tweet']) and 'foursquare' not in t and 'instagram' not in t:
                 text = t['tweet'].split()
                 url = None
                 for p in text:
@@ -268,7 +272,7 @@ def do_the_job(ltwid):
                         elif 'instagram' in resp.url:
                             logger.info('%s IG: %d %s %s', Fore.RED, cnt, time.ctime(int(t['time']), ), Style.RESET_ALL)
                             logger.info("%s ", t['tweet'])
-                            #print resp.url
+                            # print resp.url
                             vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
                             url = vals[3]
                             val = chop_ig(url)
@@ -289,18 +293,18 @@ def do_the_job(ltwid):
 
 
                     except ValueError as e:
-                        logger.error('ValueError: %s', e)
+                        logger.error('ValueError: %s %s %s', t['twid'], time.ctime(int(t['time'])), e)
                     except IOError as e:
-                        logger.error('IOError %s %s', e, url)
+                        logger.error('IOError %s %s %s %s', t['twid'], time.ctime(int(t['time'])), e, url)
                     except UnicodeError as e:
-                        logger.error('UnicodeError %s', e)
+                        logger.error('UnicodeError %s %s %s', t['twid'], time.ctime(int(t['time'])), e)
                     except urllib2.httplib.BadStatusLine:
                         pass
                     except urllib2.HTTPError:
                         logger.error('HTTPError')
                     except  httplib.IncompleteRead:
                         logger.error('HTTPError')
-                    if cnt % 1000 == 0:
+                    if cnt % 100 == 0:
                         col = db['Params']
                         col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
         col = db['Params']
@@ -310,51 +314,50 @@ def do_the_job(ltwid):
 
 
 # ----------------------------------------------------------------------------------------------------
+if __name__ == '__main__':
+    chkinvals_fq = ['createdAt', 'type']
+    uservals_fq = ['id', 'gender']
+    venuevals_fq = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
 
-chkinvals_fq = ['createdAt', 'type']
-uservals_fq = ['id', 'gender']
-venuevals_fq = ['id', 'name', 'lat', 'lng', 'categories', 'pluralName', 'shortName', 'canonicalUrl']
+    uservals_ig = ['id', 'username', 'location', 'name']
 
-uservals_ig = ['id', 'username', 'location', 'name']
+    silent = False
 
-silent = False
+    # Logging configuration
+    logger = logging.getLogger('log')
+    if silent:
+        logger.setLevel(logging.ERROR)
+    else:
+        logger.setLevel(logging.INFO)
 
-# Logging configuration
-logger = logging.getLogger('log')
-if silent:
-    logger.setLevel(logging.ERROR)
-else:
-    logger.setLevel(logging.INFO)
+    console = logging.StreamHandler()
+    if silent:
+        console.setLevel(logging.ERROR)
+    else:
+        console.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(message)s')
+    console.setFormatter(formatter)
+    logging.getLogger('log').addHandler(console)
 
-console = logging.StreamHandler()
-if silent:
-    console.setLevel(logging.ERROR)
-else:
-    console.setLevel(logging.INFO)
-formatter = logging.Formatter('%(message)s')
-console.setFormatter(formatter)
-logging.getLogger('log').addHandler(console)
+    mgdb = mglocal[0]
+    client = MongoClient(mgdb)
+    db = client.local
+    # db.authenticate(mglocal[2], password=mglocal[3])
+    col = db['Params']
 
-mgdb = mglocal[0]
-client = MongoClient(mgdb)
-db = client.local
-#db.authenticate(mglocal[2], password=mglocal[3])
-col = db['Params']
-
-cursor = col.find({'update': 'foursquare'}, {'ltwid': 1})
-ltw = None
-for t in cursor:
-    ltw = t['ltwid']
-
-print ltw
-while True:
-    do_the_job(ltw)
-    print 'Sleeping ...', time.ctime(time.time())
-    time.sleep(7200)
     cursor = col.find({'update': 'foursquare'}, {'ltwid': 1})
     ltw = None
     for t in cursor:
         ltw = t['ltwid']
 
-print "The End"
+    print ltw
+    while True:
+        do_the_job(ltw)
+        print 'Sleeping ...', time.ctime(time.time())
+        time.sleep(7200)
+        cursor = col.find({'update': 'foursquare'}, {'ltwid': 1})
+        ltw = None
+        for t in cursor:
+            ltw = t['ltwid']
 
+    print "The End"
