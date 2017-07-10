@@ -230,8 +230,8 @@ def do_the_job(ltwid):
         for t in cursor:
             if lasttwid < t['twid']:
                 lasttwid = t['twid']
-            if 'foursquare' in t or 'instagram' in t:
-                print 'Ya ta %s %s' % (t['twid'], time.ctime(int(t['time'])))
+            if ('foursquare' in t) or ('instagram' in t):
+                logger.info('%s Ya ta %s %s', Fore.RED, t['twid'], time.ctime(int(t['time'])))
             if ('I\'m at' in t['tweet'] or 'http' in t['tweet']) and 'foursquare' not in t and 'instagram' not in t:
                 text = t['tweet'].split()
                 url = None
@@ -263,14 +263,19 @@ def do_the_job(ltwid):
                                 if len(vals) == 14:
                                     upd = transform_fqr(vals)
                                     if upd is not None:
-                                        col.update({'twid': vals[0]}, {'$set': {"foursquare": upd}})
-                                        logger.info('TWID FQ: %s', vals[0])
+                                        result = col.update_one({'twid': vals[0]}, {'$set': {"foursquare": upd}})
+                                        # if result.acknowledged:
+                                        #     logger.info('%s TWID FQ: %s SUCCESS!', Fore.GREEN, vals[0])
+                                        #     result = col.find_one({'twid': vals[0]})
+                                        #     print result
+                                        # else:
+                                        #     logger.info('%s TWID FQ: %s FAILED!', Fore.RED, vals[0])
                                         print vals
                             else:  # If not successful go to next
                                 logger.info('Unsuccessfully')
 
                         elif 'instagram' in resp.url:
-                            logger.info('%s IG: %d %s %s', Fore.RED, cnt, time.ctime(int(t['time']), ), Style.RESET_ALL)
+                            logger.info('%s IG: %d %s %s', Fore.CYAN, cnt, time.ctime(int(t['time']), ), Style.RESET_ALL)
                             logger.info("%s ", t['tweet'])
                             # print resp.url
                             vals = [str(t['twid']), str(t['lat']), str(t['lng']), resp.url.rstrip()]
@@ -281,34 +286,43 @@ def do_the_job(ltwid):
                                 val = chop_ig(url)
                             if val is not None:
                                 vals.extend(val)
-                                print vals
                                 upd = transform_igr(vals)
                                 if upd is not None:
-                                    col.update({'twid': vals[0]}, {'$set': {"instagram": upd}})
-                                    logger.info('TWID IG: %s', vals[0])
+                                    result = col.update_one({'twid': vals[0]}, {'$set': {"instagram": upd}})
+                                    # if result.acknowledged:
+                                    #     logger.info('%s TWID IG: %s SUCCESS!', Fore.GREEN, vals[0])
+                                    #     result = col.find_one({'twid': vals[0]})
+                                    #     print result
+                                    # else:
+                                    #     logger.info('%s TWID IG: %s FAILED!', Fore.RED, vals[0])
 
                                     # if cnt % 100 == 0:
                                     #     time.sleep(5)
                                     #     logger.info('Sleeping ...')
-
+                                    print vals
 
                     except ValueError as e:
-                        logger.error('ValueError: %s %s %s', t['twid'], time.ctime(int(t['time'])), e)
+                        logger.error('%s ValueError: %s %s %s', Fore.RED, t['twid'], time.ctime(int(t['time'])), e)
                     except IOError as e:
-                        logger.error('IOError %s %s %s %s', t['twid'], time.ctime(int(t['time'])), e, url)
+                        logger.error('%s IOError %s %s %s %s', Fore.RED, url, t['twid'], time.ctime(int(t['time'])), e)
                     except UnicodeError as e:
-                        logger.error('UnicodeError %s %s %s', t['twid'], time.ctime(int(t['time'])), e)
+                        logger.error('%s UnicodeError %s %s %s', Fore.RED, t['twid'], time.ctime(int(t['time'])), e)
                     except urllib2.httplib.BadStatusLine:
                         pass
                     except urllib2.HTTPError:
-                        logger.error('HTTPError')
+                        logger.error('%s HTTPError', Fore.RED)
                     except  httplib.IncompleteRead:
-                        logger.error('HTTPError')
+                        logger.error('%s HTTPError', Fore.RED)
+
                     if cnt % 100 == 0:
                         col = db['Params']
-                        col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
+                        col.update_one({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
+                        col = db[mglocal[1]]
+
         col = db['Params']
         col.update({'update': 'foursquare'}, {'$set': {"ltwid": lasttwid}})
+        col = db[mglocal[1]]
+
     except OperationFailure:
         pass
 
